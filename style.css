@@ -1,0 +1,350 @@
+:root {
+    --szin-feher: #ffffff;
+    --szin-sotet: #1a1a1a;
+    --szin-szoveg: #c6a9a9;
+    --szin-kiemeles: #d4a94c; 
+    --logo-szin: #c6a9a9;
+    
+    --oldal-padding: clamp(1rem, 5vw, 4rem); 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--szin-sotet); 
+}
+
+/* FEJLEC */
+
+.fejlec {
+    background-color: rgba(0,0,0,0.2);
+    backdrop-filter: blur(5px);
+    padding: 1rem var(--oldal-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.karolyhaz {
+    font-size: 2rem;
+    color: var(--logo-szin);
+    text-decoration: none;
+}
+
+/* NAVIGACIO */
+
+
+.navigacio ul {
+    display: flex;       
+    gap: 2rem;           
+    list-style: none;
+
+}
+
+.navigacio a {
+    text-decoration: none;
+    color: var(--szin-szoveg);
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.navigacio a:hover {
+    color: var(--szin-kiemeles);
+}
+
+
+.gomb{
+    background-color: var(--szin-kiemeles);
+    color: black;
+    padding: 0.8rem 2rem; 
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    display: inline-block; 
+    border-radius: 3px;
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+}
+
+.gomb:hover {
+    background-color: rgb(185, 82, 53) ; 
+    transform: translateY(-2px); 
+}
+
+/* HERO RESZ */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items:center ;
+    overflow: hidden;
+}
+/* 1. RETEG */
+.hero-kepek {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.kep-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; 
+    transition: opacity 1.5s ease-in-out;
+}
+.kep-slide.aktiv {
+    opacity: 1;
+}
+
+/* 2. RETEG  */
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(to bottom, rgba(26,26,26,0.6) 0%, rgba(26,26,26,0.6) 70%, var(--szin-sotet) 100%);
+}
+
+/* 3. RETEG */
+
+.hero-tartalom {
+    position: relative;
+    z-index: 3;
+    padding-left: var(--oldal-padding);
+    color: var(--szin-szoveg);
+}
+.hero-tartalom h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    display: inline-block;
+    margin-bottom: 3rem;
+}
+.hero-tartalom p {
+    font-size: clamp(1.5rem, 2vw, 3.5rem);
+    line-height: 1.1;
+}
+.hero-gomb {
+    background-color: var(--szin-kiemeles);
+    color: black;
+    padding: 0.8rem 2rem; 
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    display: inline-block; 
+    margin-top: 8rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+}
+.hero-gomb:hover{
+    background-color: rgb(185, 82, 53) ; 
+    transform: translateY(-2px); 
+}
+
+/* LABLEC */
+
+.lablec {
+    background-color: #181818;
+}
+
+/* KEPSAV */
+
+.lablec-kepsav {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+}
+.lablec-kepsav img {
+    flex: 1 1 25%;
+    height: 20vh;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+/* TARTALOM */
+
+.lablec-tartalom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem var(--oldal-padding);
+    flex-wrap: wrap;
+}
+.lablec-kapcsolat {
+    color: var(--szin-szoveg);
+    line-height: 1.8;
+}
+.lablec-kapcsolat h4{
+    font-size: 1.3rem;
+    color: var(--szin-kiemeles);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+.lablec-kapcsolat a {
+    color: #cccccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.lablec-kapcsolat a:hover {
+    color: var(--szin-kiemeles);
+}
+.lablec-logo a {
+    font-size: 2.5rem;
+    color: var(--logo-szin);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+
+
+
+/* UJ OLDAL ROLUNK */
+
+
+
+
+.statik-hero {
+    background-size: cover;
+    background-position: center;
+}
+
+.rolunk-reszletek {
+    padding: 6rem var(--oldal-padding);
+    background-color: var(--szin-sotet);
+    color: var(--szin-feher);
+}
+.rolunk-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(to bottom, rgba(26,26,26,0.6) 0%, rgba(26,26,26,0.6) 70%, var(--szin-sotet) 100%);
+}
+
+.rolunk-hero-tartalom {
+    position: relative;
+    z-index: 3;
+    padding-left: var(--oldal-padding);
+    color: var(--szin-szoveg);
+    margin-top: clamp(120px, 25vh, 300px); 
+}
+
+.rolunk-hero-tartalom h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.rolunk-hero-tartalom p {
+    font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+    line-height: 1.6;
+    max-width: 800px;
+}
+
+.rolunk-reszletek {
+    padding: 6rem var(--oldal-padding);
+    background-color: var(--szin-sotet);
+}
+
+.szamok-kartyak {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; 
+    gap: 2rem;
+    margin-bottom: 6rem;
+    text-align: center;
+}
+
+.szam-kartya h2 {
+    font-size: 5rem;
+    color: var(--szin-kiemeles);
+    margin-bottom: 0.5rem;
+}
+
+.szam-kartya p {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #cccccc;
+    font-weight: bold;
+}
+
+
+.ertek-kartyak {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+
+.lablec-tartalom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem var(--oldal-padding);
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.lablec-kapcsolat {
+    color: #cccccc;
+    line-height: 1.8;
+}
+
+.lablec-kapcsolat h4 {
+    color: var(--szin-kiemeles);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.lablec-kapcsolat a {
+    color: #cccccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.lablec-kapcsolat a:hover {
+    color: var(--szin-kiemeles);
+}
+
+.lablec-logo a {
+    font-size: 2.5rem;
+    color: var(--szin-szoveg);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
