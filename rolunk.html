@@ -1,91 +1,187 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rólunk - Károlyház kft.</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-</head>
-<body>
-     <header class="fejlec">
-        <div class="logo">
-            <a href="index.html" class="karolyhaz">Karolyhaz kft.</a>
-        </div>
-        <nav class="navigacio">
-            <ul>
-                <li ><a href="rolunk.html">Rólunk</a></li>
-                <li><a href="munkaink.html">Munkáink</a></li>
-            </ul>
-        </nav>
-        <div class="kapcsolat">
-            <a href="kapcsolat.html" class="gomb">Kapcsolatfelvétel</a>
-        </div>        
+  </head>
+  <body>
+    <header class="fejlec">
+      <div class="logo">
+        <a href="index.html" class="karolyhaz"
+          ><img src="karolyhaz-logo.webp" alt="karolyhaz logo"
+        /></a>
+      </div>
+      <div class="lenyilomenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav class="navigacio">
+        <ul>
+          <li><a href="rolunk.html">Rólunk</a></li>
+          <li><a href="munkaink.html">Munkáink</a></li>
+          <li><a href="szolgaltatasaink.html">Szolgáltatások</a></li>
+        </ul>
+      </nav>
+      <div class="kapcsolat">
+        <a href="kapcsolat.html" class="gomb">Kapcsolatfelvétel</a>
+      </div>
     </header>
 
-    <section class="hero statik-hero" style="background-image: url('https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=1920');">
-        <div class="rolunk-hero-overlay"></div>
-        <div class="rolunk-hero-tartalom">
-            <h1>Rólunk</h1>
-            <p>Nem csupán épületeket emelünk, hanem otthonokat és maradandó értékeket teremtünk. Számunkra a legfontosabb a bizalom, a precizitás és a minőség – kompromisszumok nélkül.</p>
-        </div>
+    <section class="hero rolunk-hero statik-hero">
+      <div
+        class="hero-kep"
+        style="
+          background-image: url(&quot;https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=1920&quot;);
+        "
+      ></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-tartalom">
+        <h1 class="hero-cim">Rólunk</h1>
+        <p>
+          Nem csupán épületeket emelünk, hanem otthonokat és maradandó értékeket
+          teremtünk. Számunkra a legfontosabb a bizalom, a precizitás és a
+          minőség – kompromisszumok nélkül.
+        </p>
+      </div>
     </section>
 
-    <section class="rolunk-reszletek">
-        <div class="kontener">
-            
-            <div class="szamok-kartyak">
-                <div class="szam-kartya">
-                    <h2>15+</h2>
-                    <p>Év tapasztalat</p>
-                </div>
-                <div class="szam-kartya">
-                    <h2>100+</h2>
-                    <p>Sikeres projekt</p>
-                </div>
-                <div class="szam-kartya">
-                    <h2>100%</h2>
-                    <p>Ügyfél elégedettség</p>
-                </div>
-            </div>
-
-            <div class="ertek-kartyak">
-                <div class="bizalom-kartya">
-                    <h3>Minőség</h3>
-                    <p>Csak a legkiválóbb alapanyagokkal és bevált technológiákkal dolgozunk, hogy az eredmény évtizedekig kitartson.</p>
-                </div>
-                <div class="bizalom-kartya">
-                    <h3>Precizitás</h3>
-                    <p>Nálunk nincsenek csúszások és rejtett költségek. Pontosan azt adjuk át, amit megálmodtál, határidőre.</p>
-                </div>
-                <div class="bizalom-kartya">
-                    <h3>Bizalom</h3>
-                    <p>Folyamatos és transzparens kommunikációt tartunk fent az ügyféllel a tervezéstől a kulcsrakész átadásig.</p>
-                </div>
-            </div>
-
+    <!-- RÓLUNK: Nagy szöveges kártya + Nagy kép elrendezés -->
+    <section class="rolunk-bemutato-szekcio">
+      <div class="bemutato-grid">
+        <!-- Bal oldali hosszú, arany keretes kártya -->
+        <div class="hosszu-koszonto-doboz">
+          <h2>Építkezünk a jövőre</h2>
+          <p>
+            Napjainkra már megyei szinten is meghatározó kivitelezési
+            kapacitással rendelkezünk a magasépítési fővállalkozás teljeskörű
+            megvalósításának biztosításával. Tapasztalt, lelkiismeretes,
+            diplomás, felelős műszaki vezetői jogosultsággal, nyelvtudással
+            rendelkező fiatal csapat biztosítja feladataink színvonalas
+            megvalósítását.
+          </p>
+          <p>
+            Alaposan felkészült, folyamatosan felügyelt szállítói és
+            alvállalkozói körrel dolgozunk, amelynek teljesítményét minőségi
+            szintre emelve koordináljuk. Elsődleges célunk, hogy
+            szolgáltatásaink minősége megrendelőink igényeinek maximálisan
+            megfeleljen, ezért dolgozóink felkészültségét, a technikai
+            eszközeinket, gépparkunkat folyamatosan fejlesztjük.
+          </p>
+          <p>
+            Kifejezetten nagy hangsúlyt helyezünk arra, hogy tevékenységét
+            mindenkor az érvényes jogszabályoknak megfelelően végezzük.
+          </p>
         </div>
+
+        <!-- Jobb oldali nagy kép -->
+        <div class="bemutato-kep-doboz">
+          <img
+            src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1260"
+            alt="Károlyház Kft kivitelezés"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. MODERN INFORMÁCIÓS KÁRTYÁK (A cég erősségei) -->
+    <section class="rolunk-informaciok">
+      <div class="info-grid">
+        <!-- 1. Kártya: Csapat és Kapacitás -->
+        <div class="info-kartya">
+          <div class="kartya-szam">01</div>
+          <h3>Kapacitás & Szakértelem</h3>
+          <p>
+            Napjainkra már megyei szinten is meghatározó kivitelezési
+            kapacitással rendelkezünk a magasépítési fővállalkozás teljeskörű
+            megvalósításával. Tapasztalt, diplomás, felelős műszaki vezetői
+            jogosultsággal rendelkező fiatal csapat biztosítja a színvonalas
+            kivitelezést.
+          </p>
+        </div>
+
+        <!-- 2. Kártya: Szabványok és Minőség -->
+        <div class="info-kartya">
+          <div class="kartya-szam">02</div>
+          <h3>Minőség & Szabványok</h3>
+          <p>
+            Társaságunk az
+            <strong
+              >MSZ EN ISO 9001:2015, MSZ EN ISO 14001:2015 és MSZ ISO
+              45001:2018</strong
+            >
+            szabványoknak megfelelő minőségbiztosítási, környezetirányítási és
+            munkahelyi rendszer szerint működik, stabil alapot teremtve
+            ügyfeleinknek.
+          </p>
+        </div>
+
+        <!-- 3. Kártya: Biztosítások & Engedélyek -->
+        <div class="info-kartya">
+          <div class="kartya-szam">03</div>
+          <h3>Biztosítások & Engedélyek</h3>
+          <p>
+            Teljes körű építés-szerelési (CAR), kivitelezői és tervezői
+            felelősségbiztosítással, valamint hivatalos hulladékgazdálkodási,
+            szállítási és gyűjtési engedélyekkel rendelkezünk.
+          </p>
+        </div>
+
+        <!-- 4. Kártya: Saját Üzemek -->
+        <div class="info-kartya">
+          <div class="kartya-szam">04</div>
+          <h3>Saját Asztalos és Lakatos Üzem</h3>
+          <p>
+            Cégkapcsolatok révén saját telephelyen működő asztalos és lakatos
+            üzemmel is rendelkezünk, ahol az előgyártás, termékgyártás és az
+            építéshelyszíni beépítés közvetlenül zajlik.
+          </p>
+        </div>
+      </div>
     </section>
 
     <footer id="kapcsolat" class="lablec-szekcio">
-        <div class="lablec-kepsav">
-            <img src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 1">
-            <img src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 2">
-            <img src="https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 3">
-            <img src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 4">
+      <div class="lablec-kepsav">
+        <img
+          src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Építkezés 1"
+        />
+        <img
+          src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Építkezés 2"
+        />
+        <img
+          src="https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Építkezés 3"
+        />
+        <img
+          src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Építkezés 4"
+        />
+      </div>
+      <div class="lablec-tartalom">
+        <div class="lablec-kapcsolat">
+          <h2>KÁROLYHÁZ KFT.</h2>
+          <h4>Kapcsolat</h4>
+          <p><strong>Cím:</strong> 5000 Szolnok, Vércse utca 21.</p>
+          <p>
+            <strong>Telefonszám:</strong><a href="tel:+360000000">+360000000</a>
+          </p>
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:karolyhaz@gmail.com">karolyhaz@gmail.com</a>
+          </p>
+          <p>barmit meg lehet idetenni</p>
         </div>
-        <div class="lablec-tartalom">
-            <div class="lablec-kapcsolat">
-                <h4>Kapcsolat</h4>
-                <p><strong>Cím:</strong> 5000 Szolnok, Vércse utca 21.</p>
-                <p><strong>Telefonszám:</strong><a href="tel:+360000000">+360000000</a></p>
-                <p><strong>Email:</strong> <a href="mailto:karolyhaz@gmail.com">karolyhaz@gmail.com</a></p>
-                <p>barmit meg lehet idetenni</p>
-            </div>
-            <div class="lablec-logo">
-                <a href="index.html">Károlyház kft.</a>
-            </div>
+        <div class="lablec-logo">
+          <a href="index.html"
+            ><img src="karolyhaz-logo.webp" alt="Károlyház kft."
+          /></a>
         </div>
+      </div>
     </footer>
-</body>
+  </body>
 </html>
