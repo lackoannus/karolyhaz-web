@@ -8,6 +8,8 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <!-- FEJLEC -->
+
     <header class="fejlec">
       <div class="logo">
         <a href="index.html" class="karolyhaz"
@@ -31,12 +33,186 @@
       </div>
     </header>
 
+    <!-- HERO -->
+
     <section
       class="hero statik-hero"
       style="
         background-image: url(&quot;https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=1920&quot;);
       "
     ></section>
+
+    <!-- MUNKAINK -->
+
+    <section class="munkak-szekcio">
+      <div class="munkak-kontener">
+        <div class="galeria-fejlec">
+          <h2>Munkáink & Referenciák</h2>
+          <p>
+            Válassza ki az Ön számára releváns kategóriát, vagy szűrjön
+            település és évszám szerint.
+          </p>
+        </div>
+
+        <div class="fejlett-szuro-sav">
+          <!-- 1. Típus szűrő -->
+          <div class="szuro-csoport">
+            <label for="szuro-tipus">Típus:</label>
+            <select id="szuro-tipus" class="szuro-select">
+              <option value="osszes">Összes típus</option>
+              <option value="general">Generálkivitelezés</option>
+              <option value="tarsashaz">Társasház</option>
+              <option value="csarnok">Ipari csarnok</option>
+              <option value="intezmeny">Iskola / Óvoda</option>
+              <option value="terburkolat">Térburkolat</option>
+            </select>
+          </div>
+
+          <!-- 2. Évszám szűrő -->
+          <div class="szuro-csoport">
+            <label for="szuro-ev">Évszám:</label>
+            <select id="szuro-ev" class="szuro-select">
+              <option value="osszes">Összes év</option>
+              <option value="2026">2026</option>
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+            </select>
+          </div>
+
+          <!-- 3. Település szűrő -->
+          <div class="szuro-csoport">
+            <label for="szuro-helyszin">Település:</label>
+            <select id="szuro-helyszin" class="szuro-select">
+              <option value="osszes">Összes település</option>
+              <option value="szolnok">Szolnok</option>
+              <option value="kecskemet">Kecskemét</option>
+              <option value="cegled">Cegléd</option>
+            </select>
+          </div>
+
+          <!-- 4. Szűrők törlése gomb -->
+          <button id="szuro-torles" class="szuro-torles-gomb">
+            Szűrők törlése
+          </button>
+        </div>
+
+        <!-- KÁRTYÁK -->
+        <div class="projekt-grid">
+          <div
+            class="projekt-kartya"
+            data-tipus="general"
+            data-helyszin="szolnok"
+            data-ev="2025"
+          >
+            <div
+              class="kartya-hatter"
+              style="
+                background-image: url(&quot;https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=1260&quot;);
+              "
+            ></div>
+
+            <div class="kartya-overlay"></div>
+            <span class="kartya-badge">Generálkivitelezés</span>
+
+            <div class="kartya-tartalom">
+              <h3>Prémium Családi Ház Komplexum</h3>
+              <p class="kartya-meta">Szolnok &bull; 2025</p>
+            </div>
+          </div>
+
+          <div
+            class="projekt-kartya"
+            data-tipus="tarsashaz"
+            data-helyszin="kecskemet"
+            data-ev="2024"
+          >
+            <div
+              class="kartya-hatter"
+              style="
+                background-image: url(&quot;https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1260&quot;);
+              "
+            ></div>
+
+            <div class="kartya-overlay"></div>
+            <span class="kartya-badge">Társasház építés</span>
+
+            <div class="kartya-tartalom">
+              <h3>Zöldövezeti Lakópark</h3>
+              <p class="kartya-meta">Kecskemét &bull; 2024</p>
+            </div>
+          </div>
+
+          <div
+            class="projekt-kartya"
+            data-tipus="csarnok"
+            data-helyszin="szolnok"
+            data-ev="2025"
+          >
+            <div
+              class="kartya-hatter"
+              style="
+                background-image: url(&quot;https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=1260&quot;);
+              "
+            ></div>
+
+            <div class="kartya-overlay"></div>
+            <span class="kartya-badge">Ipari csarnok</span>
+
+            <div class="kartya-tartalom">
+              <h3>Logisztikai és Gyártócsarnok</h3>
+              <p class="kartya-meta">Szolnok &bull; 2025</p>
+            </div>
+          </div>
+
+          <div
+            class="projekt-kartya"
+            data-tipus="intezmeny"
+            data-helyszin="cegled"
+            data-ev="2023"
+          >
+            <div
+              class="kartya-hatter"
+              style="
+                background-image: url(&quot;https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&quot;);
+              "
+            ></div>
+
+            <div class="kartya-overlay"></div>
+            <span class="kartya-badge">Intézmény építés</span>
+
+            <div class="kartya-tartalom">
+              <h3>Modern Bölcsőde és Óvoda</h3>
+              <p class="kartya-meta">Cegléd &bull; 2023</p>
+            </div>
+          </div>
+
+          <div
+            class="projekt-kartya"
+            data-tipus="terburkolat"
+            data-helyszin="szolnok"
+            data-ev="2026"
+          >
+            <div
+              class="kartya-hatter"
+              style="
+                background-image: url(&quot;https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=1260&quot;);
+              "
+            ></div>
+
+            <div class="kartya-overlay"></div>
+            <span class="kartya-badge">Térburkolat & Járda</span>
+
+            <div class="kartya-tartalom">
+              <h3>Városi Sétány és Parkolók</h3>
+              <p class="kartya-meta">Szolnok &bull; 2026</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LABLEC -->
 
     <footer id="kapcsolat" class="lablec-szekcio">
       <div class="lablec-kepsav">

@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // =========================================
-  // 1. FŐOLDALI KÉPCSERÉLŐ (HERO)
-  // =========================================
+  /* FOOLDAL KEPCSERELO */
+
   const kepek = document.querySelectorAll(".kep-slide");
 
   if (kepek.length >= 2) {
@@ -16,30 +15,32 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(kepCsere, 4000);
   }
 
-  // =========================================
-  // 2. INTERAKTÍV TEVÉKENYSÉG LISTA
-  // =========================================
-  const szolgaltatasElemek = document.querySelectorAll(".szolgaltatas-elem");
-  const szolgaltatasKepek = document.querySelectorAll(".szolg-kep");
+  /* FOOLDAL TEVEKENYSEGEK KEPCSERELO */
+  const tevekenysegElemek = document.querySelectorAll(".tevekenyseg-elem");
+  const tevekenysegKepek = document.querySelectorAll(".tevekenyseg-kep");
 
-  if (szolgaltatasElemek.length > 0 && szolgaltatasKepek.length > 0) {
-    szolgaltatasElemek.forEach(function (elem) {
+  if (tevekenysegElemek.length > 0 && tevekenysegKepek.length > 0) {
+    tevekenysegElemek.forEach(function (elem) {
+      // Egér rávinny, kattintás vagy mobilos érintés események
       ["mouseenter", "click", "touchstart"].forEach(function (esemeny) {
         elem.addEventListener(esemeny, function (e) {
           if (esemeny === "touchstart") {
             e.preventDefault();
           }
 
-          szolgaltatasElemek.forEach((e) => e.classList.remove("aktiv-elem"));
-          szolgaltatasKepek.forEach((k) => k.classList.remove("aktiv-kep"));
+          tevekenysegElemek.keys().forEach((i) => {
+            tevekenysegElemek[i].classList.remove("aktiv-elem");
+          });
+          tevekenysegKepek.forEach(function (kep) {
+            kep.classList.remove("aktiv-kep");
+          });
 
           this.classList.add("aktiv-elem");
-
           const kepId = this.getAttribute("data-kep");
-          const aktivKep = document.querySelector(
-            `.szolg-kep[data-kep="${kepId}"]`,
-          );
 
+          const aktivKep = document.querySelector(
+            `.tevekenyseg-kep[data-kep="${kepId}"]`,
+          );
           if (aktivKep) {
             aktivKep.classList.add("aktiv-kep");
           }
@@ -48,9 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // =========================================
-  // 3. MOBIL MENÜ (HAMBURGER) LOGIKÁJA
-  // =========================================
+  /* LENYILÓ MENÜ */
   const lenyilomenuGomb = document.querySelector(".lenyilomenu");
   const fejlec = document.querySelector(".fejlec");
 
@@ -59,4 +58,57 @@ document.addEventListener("DOMContentLoaded", function () {
       fejlec.classList.toggle("mobil-nyitva");
     });
   }
-}); // <-- EZ ZÁRJA LE AZ EGÉSZET!
+
+  // =========================================
+  // FEJLETT KOMBINÁLT SZŰRŐ MOTOR (Munkáink)
+  // =========================================
+  const tipusSelect = document.getElementById("szuro-tipus");
+  const evSelect = document.getElementById("szuro-ev");
+  const helyszinSelect = document.getElementById("szuro-helyszin");
+  const torlesGomb = document.getElementById("szuro-torles");
+  const projektKartyak = document.querySelectorAll(".projekt-kartya");
+
+  if (tipusSelect && evSelect && helyszinSelect && projektKartyak.length > 0) {
+    function szuresFuttatasa() {
+      const kivalasztottTipus = tipusSelect.value;
+      const kivalasztottEv = evSelect.value;
+      const kivalasztottHelyszin = helyszinSelect.value;
+
+      projektKartyak.forEach(function (kartya) {
+        const kartyaTipus = kartya.getAttribute("data-tipus");
+        const kartyaEv = kartya.getAttribute("data-ev");
+        const kartyaHelyszin = kartya.getAttribute("data-helyszin");
+
+        // Feltételek vizsgálata (egyezik-e mindhárom szűrővel)
+        const tipusEgyezik =
+          kivalasztottTipus === "osszes" || kartyaTipus === kivalasztottTipus;
+        const evEgyezik =
+          kivalasztottEv === "osszes" || kartyaEv === kivalasztottEv;
+        const helyszinEgyezik =
+          kivalasztottHelyszin === "osszes" ||
+          kartyaHelyszin === kivalasztottHelyszin;
+
+        if (tipusEgyezik && evEgyezik && helyszinEgyezik) {
+          kartya.classList.remove("rejtett");
+        } else {
+          kartya.classList.add("rejtett");
+        }
+      });
+    }
+
+    // Eseményfigyelők a legördülő menükre
+    tipusSelect.addEventListener("change", szuresFuttatasa);
+    evSelect.addEventListener("change", szuresFuttatasa);
+    helyszinSelect.addEventListener("change", szuresFuttatasa);
+
+    // Szűrők törlése gomb eseménye
+    if (torlesGomb) {
+      torlesGomb.addEventListener("click", function () {
+        tipusSelect.value = "osszes";
+        evSelect.value = "osszes";
+        helyszinSelect.value = "osszes";
+        szuresFuttatasa();
+      });
+    }
+  }
+});

@@ -220,7 +220,7 @@ body {
   padding: 8rem var(--oldal-padding);
   background-color: var(--szin-sotet);
   color: var(--szin-feher);
-  height: 90vh;
+  height: 80vh;
 }
 
 .fooldal-szekcio {
@@ -279,12 +279,23 @@ body {
   transform: translateY(-2px);
 }
 
+
+
+
+
+
 /* FOOLDAL TEVEKENYSEGEINK */
+
+
+
+
+
 
 .fooldal-tevekenysegek {
   padding: 8rem var(--oldal-padding);
   background-color: var(--szin-sotet);
   color: var(--szin-feher);
+  margin-bottom: 10rem;
 }
 
 .tevekenyseg-fejlec {
@@ -305,7 +316,9 @@ body {
   color: var(--szin-feher);
 }
 
+
 /* FOOLDAL TEVEKENYSEGEINK LISTA */
+
 
 .interaktiv-lista-grid {
   display: grid;
@@ -360,7 +373,11 @@ body {
   transform: translateX(20px);
 }
 
+
+
 /* TEVEKENYSEG KEP */
+
+
 
 .kep-oldal {
   position: relative;
@@ -396,7 +413,7 @@ body {
   padding: 1.5rem var(--oldal-padding);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .kep-oldal {
     aspect-ratio: 16 / 9;
   }
@@ -643,6 +660,243 @@ body {
   font-size: 1rem;
   line-height: 1.7;
   color: var(--szin-szoveg);
+}
+
+
+
+
+
+
+
+
+
+/* UJ OLDAL MUNKAINK */
+
+
+
+
+
+
+
+.munkak-szekcio {
+  padding: 8rem var(--oldal-padding) 6rem var(--oldal-padding);
+  background-color: var(--szin-sotet);
+  color: var(--szin-feher);
+  min-height: 100vh;
+}
+
+.munkak-kontener {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.galeria-fejlec {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.galeria-fejlec h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--szin-kiemeles);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.galeria-fejlec p {
+  color: var(--szin-szoveg);
+  font-size: 1.1rem;
+}
+
+
+
+/*SZUROSAV*/
+
+
+
+.fejlett-szuro-sav {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  background-color: rgba(26, 26, 26, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 4rem;
+  backdrop-filter: blur(10px);
+}
+
+.szuro-csoport {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.szuro-csoport label {
+  font-size: 0.85rem;
+  color: var(--szin-szoveg);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.szuro-select {
+  background-color: rgba(20, 20, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--szin-feher);
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  min-width: 180px;
+}
+
+.szuro-select:hover,
+.szuro-select:focus {
+  border-color: var(--szin-kiemeles);
+  box-shadow: 0 0 10px rgba(212, 169, 76, 0.2);
+}
+
+.szuro-select option {
+  background-color: #2b2a2a;
+  color: var(--szin-feher);
+}
+
+
+.szuro-torles-gomb {
+  background-color: transparent;
+  border: 1px solid var(--szin-kiemeles);
+  color: var(--szin-kiemeles);
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  height: auto;
+  width: auto;
+}
+
+.szuro-torles-gomb:hover {
+  background-color: var(--szin-kiemeles);
+  color: black;
+  box-shadow: 0 5px 15px rgba(212, 169, 76, 0.3);
+}
+
+
+.projekt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+}
+
+
+
+.projekt-kartya {
+  position: relative;
+  height: 420px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: transform 0.4s ease, border-color 0.4s ease, opacity 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.projekt-kartya:hover {
+  transform: translateY(-8px);
+  border-color: var(--szin-kiemeles);
+}
+
+
+
+.kartya-hatter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+  z-index: 1;
+}
+
+.projekt-kartya:hover .kartya-hatter {
+  transform: scale(1.08); 
+}
+
+
+
+.kartya-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.1) 0%,
+    rgba(26,26,26,0.5) 50%,
+    rgba(26,26,26,0.95) 100%
+  );
+  z-index: 2;
+}
+
+
+
+.kartya-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 3;
+  background-color: rgba(26, 26, 26, 0.8);
+  border: 1px solid var(--szin-kiemeles);
+  color: var(--szin-kiemeles);
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  backdrop-filter: blur(5px);
+}
+
+
+
+.kartya-tartalom {
+  position: relative;
+  z-index: 3;
+  padding: 2rem;
+}
+
+.kartya-tartalom h3 {
+  font-size: 1.4rem;
+  color: var(--szin-feher);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.kartya-meta {
+  font-size: 0.95rem;
+  color: var(--szin-kiemeles);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+
+
+.projekt-kartya.rejtett {
+  display: none !important;
 }
 
 
