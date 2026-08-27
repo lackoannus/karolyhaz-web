@@ -1024,7 +1024,7 @@ body {
   font-size: 1.05rem;
 }
 
-/* Mobilos nézet: egymás alá kerül a kép és a szöveg */
+
 @media (max-width: 900px) {
   .modal-grid {
     grid-template-columns: 1fr;
@@ -1056,39 +1056,53 @@ body {
 
 
 @media (max-width: 900px) {
-  /* LENYILOMENU */
   .fejlec {
-    flex-wrap: wrap;
+    display: grid !important;
+    grid-template-columns: minmax(100px, 1fr) auto; 
+    grid-template-areas:
+      "logo gomb"
+      "menu menu"
+      "nav nav";
     align-items: center;
+    gap: 1.5rem 1rem;
     padding: 1rem var(--oldal-padding);
-    justify-content: space-between;
   }
+  
   .logo {
-    order: 1;
-    margin-right: auto;
-    max-width: 50%;
+    grid-area: logo;
+    min-width: 0; 
+    margin: 0;
   }
-  .lenyilomenu {
-    display: flex;
-    order: 3;
-    align-items: center;
-    width: 100%;
-    margin-top: 1.5rem;
+  
+  .logo img {
+    max-width: 100%;
+    height: auto;
   }
+  
   .kapcsolat {
-    order: 2;
-    margin-right: 0;
-    width: auto;
-    white-space: nowrap;
+    grid-area: gomb;
+    display: block !important;
+    margin: 0;
   }
-  .lenyilomenu span {
+  
+  .lenyilomenu {
+    grid-area: menu;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  .navigacio {
+    grid-area: nav;
+    display: none;
+  }
+
+}
+    .lenyilomenu span {
     margin: 4px;
     color: var(--szin-feher);
-  }
-  .navigacio {
-    display: none;
-    width: 100%;
-    order: 4;
   }
   .kapcsolat {
     display: block;
@@ -1186,6 +1200,13 @@ body {
   .kapcsolat .gomb {
     padding: 0.5rem 0.6rem !important; 
     font-size: 0.65rem !important;      
+    letter-spacing: 0 !important;
+  }
+}
+@media (max-width: 450px) {
+  .kapcsolat .gomb {
+    padding: 0.4rem 0.6rem !important;
+    font-size: 0.7rem !important;
     letter-spacing: 0 !important;
   }
 }
