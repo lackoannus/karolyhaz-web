@@ -109,11 +109,7 @@ body {
   transform-origin: center;
 }
 
-
-
 /* HERO RESZ */
-
-
 
 .hero {
   position: relative;
@@ -174,11 +170,11 @@ body {
   color: var(--szin-szoveg);
 }
 .hero-cim {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    line-height: 1.1;
-    display: inline-block;
-    margin-bottom: 3rem;
-    color: var(--szin-kiemeles);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.1;
+  display: inline-block;
+  margin-bottom: 3rem;
+  color: var(--szin-kiemeles);
 }
 .hero-tartalom h1 {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
@@ -210,26 +206,22 @@ body {
   transform: translateY(-2px);
 }
 
-
-
 /* FOOLDAL ROLUNK  */
-
-
 
 .fooldal-rolunk {
   padding: 8rem var(--oldal-padding);
   background-color: var(--szin-sotet);
   color: var(--szin-feher);
   height: 80vh;
-  padding-bottom: auto;
 }
 
 .fooldal-szekcio {
-  max-width: 80vw;
+  max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 4rem;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 5rem;
   align-items: center;
 }
 
@@ -241,20 +233,31 @@ body {
   letter-spacing: 2px;
 }
 
-.fooldal-rolunk-szoveg p {
-  font-size: 1.1rem;
+.szoveg-kiemeles {
+  border-left: 3px solid var(--szin-kiemeles);
+  padding-left: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.szoveg-kiemeles p {
+  font-size: 1.4rem;
   line-height: 1.8;
   color: var(--szin-feher);
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.szoveg-kiemeles p:last-child {
+  margin-bottom: 0;
 }
 
 .fooldal-rolunk-kep img {
   width: 100%;
   height: auto;
   border-radius: 4px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: block;
+  box-shadow: 15px 15px 0px var(--szin-kiemeles);
   transition: transform 0.3s ease;
-
+  margin-bottom: 2rem;
 }
 
 .fooldal-rolunk-kep:hover img {
@@ -265,7 +268,7 @@ body {
   background-color: transparent;
   color: var(--szin-kiemeles);
   border: 2px solid var(--szin-kiemeles);
-  padding: 0.8rem 2rem;
+  padding: 1rem 2rem;
   text-decoration: none;
   font-weight: bold;
   text-transform: uppercase;
@@ -273,6 +276,8 @@ body {
   display: inline-block;
   border-radius: 3px;
   transition: all 0.3s ease;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .bovebben-gomb:hover {
@@ -281,17 +286,7 @@ body {
   transform: translateY(-2px);
 }
 
-
-
-
-
-
 /* FOOLDAL TEVEKENYSEGEINK */
-
-
-
-
-
 
 .fooldal-tevekenysegek {
   padding: 8rem var(--oldal-padding);
@@ -318,18 +313,17 @@ body {
   color: var(--szin-feher);
 }
 
-
 /* FOOLDAL TEVEKENYSEGEINK LISTA */
 
-
 .interaktiv-lista-grid {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 5rem;
   align-items: last baseline;
 }
-
 
 .tevekenyseg-lista {
   list-style: none;
@@ -375,11 +369,7 @@ body {
   transform: translateX(20px);
 }
 
-
-
 /* TEVEKENYSEG KEP */
-
-
 
 .kep-oldal {
   position: relative;
@@ -488,21 +478,7 @@ body {
   display: block;
 }
 
-
-
-
-
-
-
-
 /* UJ OLDAL ROLUNK */
-
-
-
-
-
-
-
 
 /* 1. RETEG */
 .hero-kep {
@@ -513,7 +489,6 @@ body {
   height: 100%;
   z-index: 1;
 }
-
 
 /* 3. RETEG */
 
@@ -533,7 +508,6 @@ body {
   font-size: clamp(1.5rem, 2vw, 3.5rem);
   line-height: 1.1;
 }
-
 
 .rolunk-bemutato-szekcio {
   padding: 6rem var(--oldal-padding);
@@ -605,12 +579,11 @@ body {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .hosszu-koszonto-doboz {
     padding: 2rem;
   }
 }
-
 
 /* 2. Információs kártyák rács (Modern vizualizáció) */
 .rolunk-informaciok {
@@ -629,7 +602,10 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   padding: 2.5rem;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -664,24 +640,7 @@ body {
   color: var(--szin-szoveg);
 }
 
-
-
-
-
-
-
-
-
-
-
-
 /* UJ OLDAL MUNKAINK */
-
-
-
-
-
-
 
 .munkak-szekcio {
   padding: 8rem var(--oldal-padding) 6rem var(--oldal-padding);
@@ -713,11 +672,7 @@ body {
   font-size: 1.1rem;
 }
 
-
-
 /*SZUROSAV*/
-
-
 
 .fejlett-szuro-sav {
   display: flex;
@@ -756,7 +711,9 @@ body {
   font-size: 0.95rem;
   cursor: pointer;
   outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
   min-width: 180px;
 }
 
@@ -770,7 +727,6 @@ body {
   background-color: #2b2a2a;
   color: var(--szin-feher);
 }
-
 
 .szuro-torles-gomb {
   background-color: transparent;
@@ -794,14 +750,11 @@ body {
   box-shadow: 0 5px 15px rgba(212, 169, 76, 0.3);
 }
 
-
 .projekt-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2.5rem;
 }
-
-
 
 .projekt-kartya {
   position: relative;
@@ -811,7 +764,10 @@ body {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.08);
   cursor: pointer;
-  transition: transform 0.4s ease, border-color 0.4s ease, opacity 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    opacity 0.4s ease;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -821,8 +777,6 @@ body {
   transform: translateY(-8px);
   border-color: var(--szin-kiemeles);
 }
-
-
 
 .kartya-hatter {
   position: absolute;
@@ -837,10 +791,8 @@ body {
 }
 
 .projekt-kartya:hover .kartya-hatter {
-  transform: scale(1.08); 
+  transform: scale(1.08);
 }
-
-
 
 .kartya-overlay {
   position: absolute;
@@ -850,14 +802,12 @@ body {
   height: 100%;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.1) 0%,
-    rgba(26,26,26,0.5) 50%,
-    rgba(26,26,26,0.95) 100%
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(26, 26, 26, 0.5) 50%,
+    rgba(26, 26, 26, 0.95) 100%
   );
   z-index: 2;
 }
-
-
 
 .kartya-badge {
   position: absolute;
@@ -875,8 +825,6 @@ body {
   font-weight: bold;
   backdrop-filter: blur(5px);
 }
-
-
 
 .kartya-tartalom {
   position: relative;
@@ -898,12 +846,9 @@ body {
   letter-spacing: 0.5px;
 }
 
-
-
 .projekt-kartya.rejtett {
   display: none !important;
 }
-
 
 .reszletek-gomb {
   margin-top: 1rem;
@@ -940,7 +885,9 @@ body {
   align-items: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
 }
 
 /* Amikor megnyílik */
@@ -1024,7 +971,6 @@ body {
   font-size: 1.05rem;
 }
 
-
 @media (max-width: 900px) {
   .modal-grid {
     grid-template-columns: 1fr;
@@ -1037,28 +983,12 @@ body {
   }
 }
 
-
-
-
-
-
-
 /* MOBILNEZET JAVITAS */
-
-
-
-
-
-
-
-
-
-
 
 @media (max-width: 900px) {
   .fejlec {
     display: grid !important;
-    grid-template-columns: minmax(100px, 1fr) auto; 
+    grid-template-columns: minmax(100px, 1fr) auto;
     grid-template-areas:
       "logo gomb"
       "menu menu"
@@ -1067,24 +997,27 @@ body {
     gap: 1.5rem 1rem;
     padding: 1rem var(--oldal-padding);
   }
-  
+
   .logo {
     grid-area: logo;
-    min-width: 0; 
+    min-width: 0;
     margin: 0;
   }
-  
+
   .logo img {
     max-width: 100%;
     height: auto;
   }
-  
+
   .kapcsolat {
     grid-area: gomb;
     display: block !important;
     margin: 0;
   }
-  
+  .mobil-rejt {
+    display: none !important;
+  }
+
   .lenyilomenu {
     grid-area: menu;
     display: flex;
@@ -1098,9 +1031,7 @@ body {
     grid-area: nav;
     display: none;
   }
-
-}
-    .lenyilomenu span {
+  .lenyilomenu span {
     margin: 4px;
     color: var(--szin-feher);
   }
@@ -1110,9 +1041,9 @@ body {
     margin-left: 5rem;
   }
   .kapcsolat .gomb {
-    padding: 0.5rem 1rem;  
-    font-size: 0.8rem;     
-    white-space: nowrap;  
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
   }
   .fejlec.mobil-nyitva {
     background-color: var(--szin-sotet);
@@ -1158,48 +1089,45 @@ body {
     transform: translateY(-11px) rotate(-45deg);
   }
 
+  /* FOOLDAL HERO */
 
-
-
-
+  .hero-tartalom h1 {
+    padding-top: 10rem;
+  }
   /* FOOLDAL ROLUNK */
 
-
-
-
-
   .fooldal-szekcio {
-    grid-template-columns: 1fr !important;
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
+
   .fooldal-rolunk-kep img {
-    width: 100%;
-    height: auto;
-    max-height: 350px;
-    object-fit: cover;
-    display: block;
+    box-shadow: 10px 10px 0px rgba(212, 169, 76, 0.25);
   }
-  .fooldal-rolunk{
-    padding-bottom: 50rem;
+  .fooldal-rolunk {
+    padding-bottom: 4rem;
   }
-
-
 
   /* FOOLDAL TEVEKENYEGEINK */
-    .interaktiv-lista-grid {
+  .interaktiv-lista-grid {
     grid-template-columns: 1fr;
   }
+  .kep-oldal {
+    aspect-ratio: 16 / 9;
+  }
 }
+
 @media (max-width: 450px) {
   .kapcsolat .gomb {
-    padding: 0.6rem 0.8rem !important; 
-    font-size: 0.7rem !important;      
+    padding: 0.6rem 0.8rem !important;
+    font-size: 0.7rem !important;
     letter-spacing: 0 !important;
   }
-  @media (max-width: 410px) {
+}
+@media (max-width: 410px) {
   .kapcsolat .gomb {
-    padding: 0.5rem 0.6rem !important; 
-    font-size: 0.65rem !important;      
+    padding: 0.5rem 0.6rem !important;
+    font-size: 0.65rem !important;
     letter-spacing: 0 !important;
   }
 }
