@@ -369,7 +369,7 @@ body {
   transform: translateX(20px);
 }
 
-/* TEVEKENYSEG KEP */
+/* FOOLDAL TEVEKENYSEG KEP */
 
 .kep-oldal {
   position: relative;
@@ -409,6 +409,103 @@ body {
   .kep-oldal {
     aspect-ratio: 16 / 9;
   }
+}
+
+/* FOOLDAL SZOLGALTATASAINK */
+
+.fooldal-szolgaltatasok {
+  padding: 8rem var(--oldal-padding);
+  /* Egy picit eltérő háttérszín, hogy elváljon a többi szekciótól */
+  background-color: #222222;
+  color: var(--szin-feher);
+}
+
+.szolg-kontener {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.szolg-fejlec {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.szolg-fejlec h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--szin-kiemeles);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.szolg-fejlec p {
+  color: var(--szin-szoveg);
+  font-size: 1.1rem;
+}
+
+/* A 3 kártya rácsa */
+.szolg-kartyagrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 egyforma oszlop */
+  gap: 2.5rem;
+}
+
+/* Maga a kártya dizájnja */
+.szolg-kartya {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 3rem 2rem;
+  border-radius: 8px;
+  text-align: left;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover (rámutatás) effekt */
+.szolg-kartya:hover {
+  transform: translateY(-10px);
+  border-color: var(--szin-kiemeles);
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.5),
+    inset 0 0 20px rgba(212, 169, 76, 0.05);
+}
+
+/* Díszítő szám a kártyán */
+.szolg-ikon {
+  font-size: 3.5rem;
+  font-weight: bold;
+  font-family: monospace;
+  color: var(--szin-kiemeles);
+  opacity: 0.3; /* Halvány, vízjelszerű */
+  margin-bottom: 1rem;
+  transition: opacity 0.3s ease;
+}
+
+.szolg-kartya:hover .szolg-ikon {
+  opacity: 1; /* Rámutatáskor felvillan az arany szám */
+}
+
+.szolg-kartya h3 {
+  font-size: 1.4rem;
+  color: var(--szin-feher);
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.szolg-kartya p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--szin-szoveg);
+}
+
+.szolg-gomb-tarolo {
+  text-align: center;
+  margin-top: 4rem;
 }
 
 /* LABLEC */
@@ -983,6 +1080,128 @@ body {
   }
 }
 
+/* UJ OLDAL SZOLGALTATASAINK */
+
+.statik-hero {
+  height: 60vh;
+  min-height: 350px;
+}
+
+.statik-hero .hero-tartalom h1 {
+  padding-top: 0;
+  margin-top: 80px;
+}
+
+.szolgaltatas-reszletek {
+  padding: 6rem var(--oldal-padding);
+  background-color: var(--szin-sotet);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.szolgaltatas-sor {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  margin-bottom: 8rem;
+}
+
+.szolgaltatas-sor:last-child {
+  margin-bottom: 0;
+}
+
+.szolgaltatas-sor.forditott .sz-szoveg {
+  order: 2;
+}
+.szolgaltatas-sor.forditott .sz-kep {
+  order: 1;
+}
+
+.sz-sorszam {
+  display: block;
+  font-size: 4.5rem;
+  font-family: monospace;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.05);
+  margin-bottom: -20px;
+}
+
+.sz-szoveg h2 {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  color: var(--szin-kiemeles);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sz-szoveg p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--szin-szoveg);
+  margin-bottom: 1.5rem;
+}
+
+.sz-pipa-lista {
+  list-style: none;
+  padding: 0;
+}
+
+.sz-pipa-lista li {
+  font-size: 1.05rem;
+  color: var(--szin-feher);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.sz-pipa-lista li::before {
+  content: "✓";
+  color: var(--szin-kiemeles);
+  font-weight: bold;
+  margin-right: 12px;
+  font-size: 1.2rem;
+}
+
+.sz-kep {
+  width: 100%;
+}
+
+.sz-kep img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 15px 15px 0px rgba(212, 169, 76, 0.15); /* Halvány arany építész-árnyék */
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+  display: block;
+}
+
+.sz-kep img:hover {
+  transform: scale(1.02);
+  box-shadow: 20px 20px 0px rgba(212, 169, 76, 0.25);
+}
+
+/* ========================================= */
+/* CTA SZEKCIÓ (Kapcsolatfelvétel ösztönzés) */
+/* ========================================= */
+
+.szolgaltatas-cta {
+  background-color: #222222; /* Kicsit elütő, mélyebb fekete */
+  padding: 6rem var(--oldal-padding);
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.szolgaltatas-cta h2 {
+  color: var(--szin-feher);
+  margin-bottom: 2.5rem;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 /* MOBILNEZET JAVITAS */
 
 @media (max-width: 900px) {
@@ -1096,6 +1315,9 @@ body {
   }
   /* FOOLDAL ROLUNK */
 
+  .fooldal-rolunk {
+    margin-bottom: auto;
+  }
   .fooldal-szekcio {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -1103,17 +1325,49 @@ body {
 
   .fooldal-rolunk-kep img {
     box-shadow: 10px 10px 0px rgba(212, 169, 76, 0.25);
+    margin-bottom: 3rem;
   }
   .fooldal-rolunk {
     padding-bottom: 4rem;
   }
 
   /* FOOLDAL TEVEKENYEGEINK */
+  .fooldal-tevekenysegek {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
   .interaktiv-lista-grid {
     grid-template-columns: 1fr;
   }
   .kep-oldal {
     aspect-ratio: 16 / 9;
+  }
+
+  /* FOOLDAL SZOLGALTATASAINK */
+  .szolg-kartyagrid {
+    grid-template-columns: 1fr; /* Mobilon egymás alá esnek a kártyák */
+    gap: 1.5rem;
+  }
+  /* UJ OLDAL SZOLGALTATASAINK  */
+
+  .szolgaltatas-sor {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 5rem;
+  }
+
+  .szolgaltatas-sor.forditott .sz-szoveg,
+  .szolgaltatas-sor .sz-szoveg {
+    order: 2;
+  }
+
+  .szolgaltatas-sor.forditott .sz-kep,
+  .szolgaltatas-sor .sz-kep {
+    order: 1;
+  }
+
+  .sz-kep img {
+    box-shadow: 10px 10px 0px rgba(212, 169, 76, 0.15);
   }
 }
 
