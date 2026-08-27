@@ -106,7 +106,7 @@ body {
   transition:
     transform 0.3s ease,
     opacity 0.3s ease;
-  transform-origin: center; /* Ez kell a szimmetrikus forgatáshoz */
+  transform-origin: center;
 }
 
 
@@ -221,6 +221,7 @@ body {
   background-color: var(--szin-sotet);
   color: var(--szin-feher);
   height: 80vh;
+  padding-bottom: auto;
 }
 
 .fooldal-szekcio {
@@ -253,6 +254,7 @@ body {
   border-radius: 4px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease;
+
 }
 
 .fooldal-rolunk-kep:hover img {
@@ -670,6 +672,9 @@ body {
 
 
 
+
+
+
 /* UJ OLDAL MUNKAINK */
 
 
@@ -900,6 +905,137 @@ body {
 }
 
 
+.reszletek-gomb {
+  margin-top: 1rem;
+  background-color: transparent;
+  border: 1px solid var(--szin-kiemeles);
+  color: var(--szin-kiemeles);
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  pointer-events: none; /* Hogy a kártya kattintása érvényesüljön */
+}
+
+.projekt-kartya:hover .reszletek-gomb {
+  background-color: var(--szin-kiemeles);
+  color: black;
+}
+
+/* Felugró ablak (alapból rejtve) */
+.projekt-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Amikor megnyílik */
+.projekt-modal.aktiv {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* A modal doboz dizájnja */
+.modal-tartalom {
+  background-color: var(--szin-sotet);
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh;
+  border: 1px solid var(--szin-kiemeles);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+}
+
+.projekt-modal.aktiv .modal-tartalom {
+  transform: translateY(0);
+}
+
+/* X bezáró gomb */
+.modal-bezaras {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  color: var(--szin-feher);
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.3s ease;
+}
+
+.modal-bezaras:hover {
+  color: var(--szin-kiemeles);
+}
+
+/* Belső elrendezés: balra kép, jobbra szöveg */
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+.modal-kep {
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+}
+
+.modal-szoveg {
+  padding: 3rem;
+  overflow-y: auto; /* Ha nagyon hosszú a szöveg, görgethető legyen */
+  max-height: 85vh;
+}
+
+.modal-szoveg h2 {
+  font-size: 2rem;
+  color: var(--szin-feher);
+  margin: 1rem 0 0.5rem 0;
+}
+
+.modal-szoveg .modal-meta {
+  color: var(--szin-kiemeles);
+  margin-bottom: 2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.modal-leiras p {
+  color: var(--szin-szoveg);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+/* Mobilos nézet: egymás alá kerül a kép és a szöveg */
+@media (max-width: 900px) {
+  .modal-grid {
+    grid-template-columns: 1fr;
+  }
+  .modal-kep {
+    min-height: 250px;
+  }
+  .modal-szoveg {
+    padding: 2rem;
+  }
+}
 
 
 
@@ -925,14 +1061,25 @@ body {
     flex-wrap: wrap;
     align-items: center;
     padding: 1rem var(--oldal-padding);
+    justify-content: space-between;
   }
   .logo {
     order: 1;
     margin-right: auto;
+    max-width: 50%;
   }
   .lenyilomenu {
-    display: flex; /* Mobilon megjelenítjük */
+    display: flex;
     order: 3;
+    align-items: center;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+  .kapcsolat {
+    order: 2;
+    margin-right: 0;
+    width: auto;
+    white-space: nowrap;
   }
   .lenyilomenu span {
     margin: 4px;
@@ -949,8 +1096,9 @@ body {
     margin-left: 5rem;
   }
   .kapcsolat .gomb {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.5rem 1rem;  
+    font-size: 0.8rem;     
+    white-space: nowrap;  
   }
   .fejlec.mobil-nyitva {
     background-color: var(--szin-sotet);
@@ -1017,6 +1165,9 @@ body {
     object-fit: cover;
     display: block;
   }
+  .fooldal-rolunk{
+    padding-bottom: 50rem;
+  }
 
 
 
@@ -1025,4 +1176,16 @@ body {
     grid-template-columns: 1fr;
   }
 }
+@media (max-width: 450px) {
+  .kapcsolat .gomb {
+    padding: 0.6rem 0.8rem !important; 
+    font-size: 0.7rem !important;      
+    letter-spacing: 0 !important;
+  }
+  @media (max-width: 410px) {
+  .kapcsolat .gomb {
+    padding: 0.5rem 0.6rem !important; 
+    font-size: 0.65rem !important;      
+    letter-spacing: 0 !important;
+  }
 }

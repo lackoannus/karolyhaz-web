@@ -35,13 +35,21 @@
 
     <!-- HERO -->
 
-    <section
-      class="hero statik-hero"
-      style="
-        background-image: url(&quot;https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=1920&quot;);
-      "
-    ></section>
-
+    <section class="hero statik-hero">
+      <div
+        class="hero-kep"
+        style="
+          background-image: url(&quot;https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=1920&quot;);
+        "
+      ></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-tartalom">
+        <h1 class="hero-cim">Munkáink</h1>
+        <p>
+          szöveg
+        </p>
+      </div>
+    </section>
     <!-- MUNKAINK -->
 
     <section class="munkak-szekcio">
@@ -60,7 +68,6 @@
             <label for="szuro-tipus">Típus:</label>
             <select id="szuro-tipus" class="szuro-select">
               <option value="osszes">Összes típus</option>
-              <option value="general">Generálkivitelezés</option>
               <option value="tarsashaz">Társasház</option>
               <option value="csarnok">Ipari csarnok</option>
               <option value="intezmeny">Iskola / Óvoda</option>
@@ -73,10 +80,6 @@
             <label for="szuro-ev">Évszám:</label>
             <select id="szuro-ev" class="szuro-select">
               <option value="osszes">Összes év</option>
-              <option value="2026">2026</option>
-              <option value="2025">2025</option>
-              <option value="2024">2024</option>
-              <option value="2023">2023</option>
             </select>
           </div>
 
@@ -85,9 +88,6 @@
             <label for="szuro-helyszin">Település:</label>
             <select id="szuro-helyszin" class="szuro-select">
               <option value="osszes">Összes település</option>
-              <option value="szolnok">Szolnok</option>
-              <option value="kecskemet">Kecskemét</option>
-              <option value="cegled">Cegléd</option>
             </select>
           </div>
 
@@ -98,161 +98,796 @@
         </div>
 
         <!-- KÁRTYÁK -->
-        <div class="projekt-grid">
-          <div
-            class="projekt-kartya"
-            data-tipus="general"
-            data-helyszin="szolnok"
-            data-ev="2025"
-          >
-            <div
-              class="kartya-hatter"
-              style="
-                background-image: url(&quot;https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=1260&quot;);
-              "
-            ></div>
+<div class="projekt-grid">
 
-            <div class="kartya-overlay"></div>
-            <span class="kartya-badge">Generálkivitelezés</span>
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Tiszapüspöki" data-ev="2016">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>TISZA-TK Projekt Kft.</h3>
+      <p class="kartya-meta">5211 Tiszapüspöki, Fehértó part 1. &bull; 2016</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Tiszapüspöki, Gabona feldolgozó üzem építési munkák végzése: <br>
+        - karbantartó épület befejező munkái <br>
+        - szelektív hulladékgyűjtő építési munkái <br>
+        - tartálypark építése <br>
+        - trafóházak építése <br>
+        - 700 J. trafóépület befejező kivitelezési munkái <br>
+        - tartálykocsi töltő épület építése <br>
+        - 410-415-643 j. mérleg alapozása, mintavevő állomás kialakítása
+      </p>
+    </div>
+  </div>
 
-            <div class="kartya-tartalom">
-              <h3>Prémium Családi Ház Komplexum</h3>
-              <p class="kartya-meta">Szolnok &bull; 2025</p>
-            </div>
-          </div>
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2017">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Szolnok Megyei Jogú Város Önkormányzata</h3>
+      <p class="kartya-meta">5000 Szolnok, Kossuth tér 9. &bull; 2017</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Kivitelezés és az ehhez kapcsolódó kiviteli tervek elkészítése, tervezői művezetés elvégzése vállalkozási szerződés keretében a Hold úti óvoda újjáépítése TOP-6.2.1-15-SL1-2016-00002 projekt megvalósítása során II.</p>
+    </div>
+  </div>
 
-          <div
-            class="projekt-kartya"
-            data-tipus="tarsashaz"
-            data-helyszin="kecskemet"
-            data-ev="2024"
-          >
-            <div
-              class="kartya-hatter"
-              style="
-                background-image: url(&quot;https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1260&quot;);
-              "
-            ></div>
+  <div class="projekt-kartya" data-tipus="tarsashaz" data-helyszin="Kecskemét" data-ev="2017">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Társasház</div>
+    <div class="kartya-tartalom">
+      <h3>Fekete és Pentz Bau Kft.</h3>
+      <p class="kartya-meta">6500 Baja, Orgona u. 2. &bull; 2017</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Kecskemét, külterület 063/179 helyrajzi számon nyilvántartott ingatlanon létesítendő lakóépület szerkezetkész állapotra történő felépítésének kivitelezési munkái</p>
+    </div>
+  </div>
 
-            <div class="kartya-overlay"></div>
-            <span class="kartya-badge">Társasház építés</span>
+  <div class="projekt-kartya" data-tipus="tarsashaz" data-helyszin="Szolnok" data-ev="2016">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Társasház</div>
+    <div class="kartya-tartalom">
+      <h3>FÉRA-2005 Kft.</h3>
+      <p class="kartya-meta">5000 Szolnok, Szapáry u. 14. &bull; 2016</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Szolnok, Mária u. 26. sz. alatt 12 lakásos társasház építése</p>
+    </div>
+  </div>
 
-            <div class="kartya-tartalom">
-              <h3>Zöldövezeti Lakópark</h3>
-              <p class="kartya-meta">Kecskemét &bull; 2024</p>
-            </div>
-          </div>
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Fegyvernek" data-ev="2018">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Hermann Felületkezelő és Szolgáltató Kft.</h3>
+      <p class="kartya-meta">5231 Fegyvernek, Kun Farkas út 9. &bull; 2018</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Galvánüzem bővítési munkái (veszélyes hulladék gyűjtőhely és kézi raktár épület), rakodótérrel, kiszolgáló úttal</p>
+    </div>
+  </div>
 
-          <div
-            class="projekt-kartya"
-            data-tipus="csarnok"
-            data-helyszin="szolnok"
-            data-ev="2025"
-          >
-            <div
-              class="kartya-hatter"
-              style="
-                background-image: url(&quot;https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=1260&quot;);
-              "
-            ></div>
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2018">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Szolnok Megyei Jogú Város Önkormányzata</h3>
+      <p class="kartya-meta">5000 Szolnok, Kossuth tér 9. &bull; 2018</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>A szolnoki Szapáry úti óvoda újjáépítésének tervezési és kivitelezési munkái a TOP-6.2.1-16-SL1-2017-00002 azonosító számú „Központban a gyermekek! – Szapáry úti Óvoda újjáépítése</p>
+    </div>
+  </div>
 
-            <div class="kartya-overlay"></div>
-            <span class="kartya-badge">Ipari csarnok</span>
+  <div class="projekt-kartya" data-tipus="tarsashaz" data-helyszin="Zamárdi" data-ev="2018">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Társasház</div>
+    <div class="kartya-tartalom">
+      <h3>G-WERK Kft.</h3>
+      <p class="kartya-meta">1136 Budapest, Hegedűs Gy. u. 24. I/4. &bull; 2018</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Zamárdi, ikerházak kivitelezési munkái</p>
+    </div>
+  </div>
 
-            <div class="kartya-tartalom">
-              <h3>Logisztikai és Gyártócsarnok</h3>
-              <p class="kartya-meta">Szolnok &bull; 2025</p>
-            </div>
-          </div>
+  <div class="projekt-kartya" data-tipus="tarsashaz" data-helyszin="Szolnok" data-ev="2017">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Társasház</div>
+    <div class="kartya-tartalom">
+      <h3>FÉRA-2005 Kft.</h3>
+      <p class="kartya-meta">5000 Szolnok, Szapáry u. 14. &bull; 2017</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Szolnok, Mária u. 24. sz. alatt 12 lakásos társasház építése</p>
+    </div>
+  </div>
 
-          <div
-            class="projekt-kartya"
-            data-tipus="intezmeny"
-            data-helyszin="cegled"
-            data-ev="2023"
-          >
-            <div
-              class="kartya-hatter"
-              style="
-                background-image: url(&quot;https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&quot;);
-              "
-            ></div>
+  <div class="projekt-kartya" data-tipus="tarsashaz" data-helyszin="Szolnok" data-ev="2018">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Társasház</div>
+    <div class="kartya-tartalom">
+      <h3>Arany Lakóházépítő Kft.</h3>
+      <p class="kartya-meta">5000 Szolnok, Százados u. 6. &bull; 2018</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>5000 Szolnok, Arany J. u. 1. (hrsz.: 1593) alatt épülő 7 lakásos (5 garázs, 2 üzlet) társasház kiviteli terveinek elkészítését és komplett megépítését</p>
+    </div>
+  </div>
 
-            <div class="kartya-overlay"></div>
-            <span class="kartya-badge">Intézmény építés</span>
+  <div class="projekt-kartya" data-tipus="generalkivitelezes" data-helyszin="Szolnok" data-ev="2018">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Generálkivitelezés</div>
+    <div class="kartya-tartalom">
+      <h3>Szolnok Megyei Jogú Város Önkormányzata</h3>
+      <p class="kartya-meta">5000 Szolnok, Kossuth tér 9. &bull; 2018</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Kiviteli tervezési és magasépítési kivitelezési munkák a „TOP-6.1.4-15-SL1-2016-00001 számú, Szolnok Vár! - Szolnoki Várkerület turisztikai célú fejlesztése” című projekt megvalósításával kapcsolatosan</p>
+    </div>
+  </div>
 
-            <div class="kartya-tartalom">
-              <h3>Modern Bölcsőde és Óvoda</h3>
-              <p class="kartya-meta">Cegléd &bull; 2023</p>
-            </div>
-          </div>
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Nyárlőrinc" data-ev="2019">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Túri István egyéni vállalkozó</h3>
+      <p class="kartya-meta">6032 Nyárlőrinc, Petőfi S. u. 15. &bull; 2019</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Vágóhíd építése épületgépészettel, elektromos szereléssel, klímaberendezésekkel, napelemes rendszerrel, vágóüzemi berendezések beszerzésével, külső térburkolással, szennyvíztározó- és vagyonvédelmi kerítés kivitelezésével</p>
+    </div>
+  </div>
 
-          <div
-            class="projekt-kartya"
-            data-tipus="terburkolat"
-            data-helyszin="szolnok"
-            data-ev="2026"
-          >
-            <div
-              class="kartya-hatter"
-              style="
-                background-image: url(&quot;https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=1260&quot;);
-              "
-            ></div>
+  <div class="projekt-kartya" data-tipus="tarsashaz" data-helyszin="Zamárdi" data-ev="2018">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Társasház</div>
+    <div class="kartya-tartalom">
+      <h3>Bathó László – Bathó Lászlóné</h3>
+      <p class="kartya-meta">5000 Szolnok, Mészáros Lőrinc utca 28. &bull; 2018</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Lakóépület kivitelezési munkái</p>
+    </div>
+  </div>
 
-            <div class="kartya-overlay"></div>
-            <span class="kartya-badge">Térburkolat & Járda</span>
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Mezőtúr" data-ev="2018">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Hermann Mezőtúr Kft.</h3>
+      <p class="kartya-meta">5400 Mezőtúr, Szolnoki út 79. &bull; 2018</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Galvanizáló üzem és iroda meglévő épület építése és bővítése</p>
+    </div>
+  </div>
 
-            <div class="kartya-tartalom">
-              <h3>Városi Sétány és Parkolók</h3>
-              <p class="kartya-meta">Szolnok &bull; 2026</p>
-            </div>
+  <div class="projekt-kartya" data-tipus="generalkivitelezes" data-helyszin="Tiszanána" data-ev="2020">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Generálkivitelezés</div>
+    <div class="kartya-tartalom">
+      <h3>Tiszanána Község Önkormányzata</h3>
+      <p class="kartya-meta">3385 Tiszanána, Fő út 108/1. &bull; 2020</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Tiszanána strand- és csónakkikötő fejlesztése</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="tarsashaz" data-helyszin="Szolnok" data-ev="2019">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Társasház</div>
+    <div class="kartya-tartalom">
+      <h3>Arany Lakóházépítő Kft.</h3>
+      <p class="kartya-meta">5000 Szolnok, Százados u. 6. &bull; 2019</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Szolnok, Kántor u. 1. sz. alatti ingatlanon egy földszint + 2 emeletes, 3 lakásos lakóépület építése</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Rákóczifalva" data-ev="2020">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Szabados-Hús Húsipari Kft.</h3>
+      <p class="kartya-meta">5085 Rákóczifalva, Szent László király út 106. &bull; 2020</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Új húsipari csomagolóüzem kivitelezési munkái</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Cserkeszőlő" data-ev="2020">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Szolnoki Tankerületi Központ</h3>
+      <p class="kartya-meta">5000 Szolnok, Tiszaligeti sétány 14. &bull; 2020</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Cserkeszőlő Petőfi Sándor Általános Iskola Infrastrukturális fejlesztése a hátránykompenzáció elősegítése és a minőségi oktatás megteremtése érdekében II.</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2020">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Állami Egészségügyi Ellátó Központ</h3>
+      <p class="kartya-meta">1125 Budapest, Diós árok 3. &bull; 2020</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>EFOP-2.2.0-16-2016-00004 azonosító számú „Aktív fekvőbeteg-ellátási forma kiváltása az egynapos sebészeti ellátás rendszerének fejlesztésével”</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2021">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Állami Egészségügyi Ellátó Központ</h3>
+      <p class="kartya-meta">1125 Budapest, Diós árok 3. &bull; 2021</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>EFOP-2.2.0-16-2016-00002 azonosító számú „Gyermek- és ifjúságpszichiátriai, addiktológiai és mentálhigiénés ellátórendszer infrastrukturális feltételeinek fejlesztése”</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Mezőtúr" data-ev="2021">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Mezőtúri Vendéglátó Kft.</h3>
+      <p class="kartya-meta">5400 Mezőtúr, Rákóczi u. 51. &bull; 2021</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Növényvédőszer raktár építési munkái</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="terburkolat" data-helyszin="Kisújszállás" data-ev="2021">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Térburkolat</div>
+    <div class="kartya-tartalom">
+      <h3>Präzi-Hungaria Kft.</h3>
+      <p class="kartya-meta">5311 Kisújszállás, külterület hrsz.0821/12. &bull; 2021</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Belső út, térbeton készítése, raktársátor és ennek ipari térbeton készítése, meglévő térburkolat kiegészítés, készáru nyitott szín készítése</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Szajol" data-ev="2021">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Szajol Községi Önkormányzat</h3>
+      <p class="kartya-meta">5081 Szajol, Rózsák tere 1. &bull; 2021</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Bölcsődei férőhelyek kialakítása és fejlesztése tárgyú, TOP-1.4.1-19-JN1-2019-00021 azonosítószámú Támogatói Szerződés szerint, Bölcsőde kialakítása Szajol településen</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Fegyvernek" data-ev="2020">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Hermann Felületkezelő és Szolgáltató Kft.</h3>
+      <p class="kartya-meta">5231 Fegyvernek, Kun Farkas út 9. &bull; 2020</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Termékraktár csarnok kivitelezési munkái</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Szolnok" data-ev="2021">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Ring Autóház Kft.</h3>
+      <p class="kartya-meta">5000 Szolnok, Fék u. 4. &bull; 2021</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Autószalon energetikai felújítása, autószalon bővítése</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Mezőtúr" data-ev="2021">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Prince Job Holding Zrt.</h3>
+      <p class="kartya-meta">2724 Újlengyel, Ady Endre utca 15. &bull; 2021</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Új gazdasági épület kivitelezési</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Szolnok" data-ev="2022">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Szilaj 2000 Kft.</h3>
+      <p class="kartya-meta">5000 Szolnok, Bajnok u. 17. &bull; 2022</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Szolnok, külterület 089/8 hrsz.-ú ingatlanon tehergépkocsi javító műhely építése</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Törökszentmiklós" data-ev="2022">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Törökszentmiklós Városi Önkormányzat</h3>
+      <p class="kartya-meta">5200 Törökszentmiklós Kossuth Lajos utca 135. &bull; 2022</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>TOP-l.4.1-19-JNI-2019-00009 azonosító projekthez kapcsolódó „Városi Bölcsőde bővítése II.” tárgyú projekt kivitelezése</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2022">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Országos Kórházi Főigazgatóság</h3>
+      <p class="kartya-meta">1125 Budapest, Diós árok 3. &bull; 2022</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>„Pszichiátriai ellátórendszer strukturált fejlesztése keretében a szakellátások minőségének és hozzáférésének javítása” című, EFOP-2.2.0-16-2016-00005 azonosító számú</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2022">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Szolnok Megyei Jogú Város Önkormányzata</h3>
+      <p class="kartya-meta">5000 Szolnok, Kossuth tér 9 &bull; 2022</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Temető úti bölcsőde újjáépítése</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2021">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Belügyminisztérium Országos Katasztrófavédelmi Főigazgatóság</h3>
+      <p class="kartya-meta">1149 Budapest, Mogyoródi út 43. &bull; 2021</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Katasztrófavédelmi ingatlanok épületenergetikai beruházásai” című, KEHOP-5.2.2/16-2017-00113</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2023">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Szolnok Megyei Jogú Város Önkormányzata</h3>
+      <p class="kartya-meta">5000 Szolnok, Kossuth tér 9 &bull; 2023</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Új óvoda építése a szandaszőlősi városrészben</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Tiszafüred" data-ev="2022">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Jász-Nagykun-Szolnok Megyei Önkormányzat</h3>
+      <p class="kartya-meta">5000 Szolnok Kossuth L. u. 2. &bull; 2022</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>„Természetbúvár túraközpont létesítése Tiszafüreden 1. rész - Épület és külső infrastruktúra kivitelezés”</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Visonta" data-ev="2023">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Viresol Kft.</h3>
+      <p class="kartya-meta">3271 Visonta, 0158/5 hrsz. &bull; 2023</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>330 j. takarmánytároló, 056 j. veszélyeshulladék tároló, 057 j. szelektív hulladék tároló épületek vasbeton, acélszerkezeti, burkolási, villámvédelmi kivitelezési munkái valamint, 580 IBC tartály tárolóépület építési munkái</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Szolnok" data-ev="2023">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>G-SIS Integrations Zrt.</h3>
+      <p class="kartya-meta">8000 Székesfehérvár, Bástya u. 6. fszt/2. &bull; 2023</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>- Szolnok, Ecseri hegesztőüzem átalakítása <br>
+        - Szolnok, C1 irodarész, LACK irodarész építése, CNC bontása, akna alapozása <br>
+        - Szolnok, festőkabin, kiváltások, térbeton készítése
+      </p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Szolnok" data-ev="2024">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Bathó Kft.</h3>
+      <p class="kartya-meta">1204 Budapest, Ady Endre utca 106. X/42. &bull; 2024</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Új építőanyag raktár építési munkái</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Szajol" data-ev="2023">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Szajol Községi Önkormányzat</h3>
+      <p class="kartya-meta">5081 Szajol, Rózsák tere 1. &bull; 2023</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>TOP_Plusz-2.1.1-21-JN1-2022-00027 azonosító számú „Energetikai korszerűsítés Szajol településen</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="generalkivitelezes" data-helyszin="Abony" data-ev="2024">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Generálkivitelezés</div>
+    <div class="kartya-tartalom">
+      <h3>Abony Város Önkormányzata</h3>
+      <p class="kartya-meta">2740 Abony, Kossuth tér 1. &bull; 2024</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Abony, Kostyán Andor kúria felújítása</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="generalkivitelezes" data-helyszin="Abony" data-ev="2024">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Generálkivitelezés</div>
+    <div class="kartya-tartalom">
+      <h3>Abony Város Önkormányzata</h3>
+      <p class="kartya-meta">2740 Abony, Kossuth tér 1. &bull; 2024</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Abony, Ungár kúria felújítása</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Nagyhegyes" data-ev="2024">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Nagyhegyes Község Önkormányzata</h3>
+      <p class="kartya-meta">4064 Nagyhegyes, Kossuth u. 2. &bull; 2024</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Nagyhegyes, új bölcsődei épület építése</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="generalkivitelezes" data-helyszin="Mogyoród" data-ev="2024">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Generálkivitelezés</div>
+    <div class="kartya-tartalom">
+      <h3>Hungaroring Sport Zrt.</h3>
+      <p class="kartya-meta">2146 Mogyoród, Hungaroring út 10. &bull; 2024</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Gyalogos híd beszerzése a HUNGARORING Sport Zrt. részére</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Szada" data-ev="2024">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Szada Nagyközség Önkormányzata</h3>
+      <p class="kartya-meta">2111 Szada, Dózsa György út 88. &bull; 2024</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Szada, önkormányzati óvoda bővítése és részleges átalakítása</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Pilis" data-ev="2024">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Pilis Város Önkormányzata</h3>
+      <p class="kartya-meta">2721 Pilis, Kossuth Lajos út 47-49. &bull; 2024</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>TOP_PLUSZ-1.1.1-21-PT1-2022-00019 azonosítószámú „A Városi Piac létesítményeinek korszerűsítése és telephelyfejlesztés” c. projekt részét képező „Helyi gazdaságfejlesztés Pilisen 1. rész – Városi Piac létesítményeinek korszerűsítése</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Pilis" data-ev="2024">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Pilis Város Önkormányzata</h3>
+      <p class="kartya-meta">2721 Pilis, Kossuth Lajos út 47-49. &bull; 2024</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>TOP_PLUSZ-1.1.1-21-PT1-2022-00019 azonosítószámú „A Városi Piac létesítményeinek korszerűsítése és telephelyfejlesztés” c. projekt részét képező „Helyi gazdaságfejlesztés Pilisen 2. rész – Telephelyfejlesztés</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Gyömrő" data-ev="2024">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Gyömrő Város Önkormányzata</h3>
+      <p class="kartya-meta">2230 Gyömrő, Fő tér 1. &bull; 2024</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Új, két csoportszobás bölcsőde építése</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Mezőtúr" data-ev="2025">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Prince Job Holding Zrt.</h3>
+      <p class="kartya-meta">2724 Újlengyel, Ady Endre utca 15. &bull; 2025</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>- Új gazdasági épület kivitelezése („B” épület) <br>
+        - Meglévő gazdasági épület hőszigetelési munkái
+      </p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Őrbottyán" data-ev="2024">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Őrbottyán Város Önkormányzata</h3>
+      <p class="kartya-meta">2162 Őrbottyán, Fő út 99. &bull; 2024</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Multifunkciós közösségi és sportközpont</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Szolnok" data-ev="2025">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Stadler Szolnok Vasúti Járműgyártó Kft.</h3>
+      <p class="kartya-meta">5000 Szolnok, Bánki Donát u. 5. &bull; 2025</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Stadler szolnoki telephelyén kivitelezési munkák végzése (N1, N2, CNC, M1 épületek)</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="generalkivitelezes" data-helyszin="Újhartyán" data-ev="2024">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Generálkivitelezés</div>
+    <div class="kartya-tartalom">
+      <h3>Fail Mihályné egyéni vállalkozó</h3>
+      <p class="kartya-meta">2367 Újhartyán, Pipacs út 35. &bull; 2024</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Újhartyán, 14 szobás panzió szerkezetépítési munkái</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2024">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Intézmény</div>
+    <div class="kartya-tartalom">
+      <h3>Szolnoki Szakképzési Centrum</h3>
+      <p class="kartya-meta">5000 Szolnok, Baross u. 37/A. &bull; 2024</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>RRF-2.2.2-23-2023-00007 Jendrassik Gy. Technikum kivitelezési munkái</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Rákóczifalva" data-ev="2025">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Szabados-Hús Húsipari Kft.</h3>
+      <p class="kartya-meta">5085 Rákóczifalva, Szent László király út 106. &bull; 2025</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Húsbolt és húsfeldolgozó üzem felújítási munkái</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="ipari" data-helyszin="Karcag" data-ev="2026">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Ipari létesítmény</div>
+    <div class="kartya-tartalom">
+      <h3>Agrosprint Zrt.</h3>
+      <p class="kartya-meta">5300 Karcag, Arany J. u. 22. &bull; 2026</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Karcag, Gyorsfagyasztott zöldség-gyümölcs feldolgozó üzem expediáló épületrészének bővítése</p>
+    </div>
+  </div>
+
+  <div class="projekt-kartya" data-tipus="generalkivitelezes" data-helyszin="Csömör" data-ev="2025">
+    <div class="kartya-hatter" style="background-image: url('');"></div>
+    <div class="kartya-overlay"></div>
+    <div class="kartya-badge">Generálkivitelezés</div>
+    <div class="kartya-tartalom">
+      <h3>Csömör Nagyközség Önkormányzata</h3>
+      <p class="kartya-meta">2141 Csömör, Szabadság út 5. &bull; 2025</p>
+      <button class="reszletek-gomb">Részletek</button>
+    </div>
+    <div class="kartya-rejtett-reszletek" style="display: none;">
+      <p>Körpanorámás kilátó létesítése Csömörön</p>
+    </div>
+  </div>
+
+</div>
           </div>
         </div>
       </div>
     </section>
 
+
+
+    <div class="projekt-modal" id="projekt-modal">
+      <div class="modal-tartalom">
+        <span class="modal-bezaras" id="modal-bezaras">&times;</span>
+        <div class="modal-grid">
+            <div class="modal-kep" id="modal-kep"></div>
+            <div class="modal-szoveg">
+              <span class="modal-badge" id="modal-badge-szoveg"></span>
+              <h2 id="modal-cim"></h2>
+              <p class="modal-meta" id="modal-meta-szoveg"></p>
+              <div class="modal-leiras" id="modal-leiras">
+                  
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
     <!-- LABLEC -->
 
-    <footer id="kapcsolat" class="lablec-szekcio">
-      <div class="lablec-kepsav">
-        <img
-          src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Építkezés 1"
-        />
-        <img
-          src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Építkezés 2"
-        />
-        <img
-          src="https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Építkezés 3"
-        />
-        <img
-          src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Építkezés 4"
-        />
-      </div>
-      <div class="lablec-tartalom">
-        <div class="lablec-kapcsolat">
-          <h2>KÁROLYHÁZ KFT.</h2>
-          <h4>Kapcsolat</h4>
-          <p><strong>Cím:</strong> 5000 Szolnok, Vércse utca 21.</p>
-          <p>
-            <strong>Telefonszám:</strong><a href="tel:+360000000">+360000000</a>
-          </p>
-          <p>
-            <strong>Email:</strong>
-            <a href="mailto:karolyhaz@gmail.com">karolyhaz@gmail.com</a>
-          </p>
-          <p>barmit meg lehet idetenni</p>
+    <footer id="kapcsolat" class="lablec">
+        <div class="lablec-kepsav">
+            <img src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 1">
+            <img src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 2">
+            <img src="https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 3">
+            <img src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 4">
         </div>
-        <div class="lablec-logo">
-          <a href="index.html"
-            ><img src="karolyhaz-logo.webp" alt="Károlyház kft."
-          /></a>
+        <div class="lablec-tartalom">
+            <div class="lablec-kapcsolat">
+                <h2>KÁROLYHÁZ KFT.</h2>
+                <h4>Kapcsolat</h4>
+                <p><strong>Cím:</strong> 5000 Szolnok, Vércse utca 21.</p>
+                <p><strong>Telefonszám:</strong><a href="tel:+3656516030"> 06 56/516-030</a></p>
+                <p><strong>Email:</strong> <a href="mailto:karolyhaz@gmail.com">karolyhaz@gmail.com</a></p>
+                <p>barmit meg lehet idetenni</p>
+            </div>
+            <div class="lablec-logo">
+                <a href="index.html"><img src="karolyhaz-logo.webp" alt="Károlyház kft."></a>
+            </div>
         </div>
-      </div>
     </footer>
   </body>
 </html>
