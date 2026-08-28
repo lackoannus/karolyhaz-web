@@ -109,6 +109,76 @@ body {
   transform-origin: center;
 }
 
+.lenyilomenu-tarolo {
+  position: relative;
+}
+
+.lenyilo-gomb {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nyil {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.lenyilomenu-tartalom {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgba(26, 26, 26, 0.95);
+  min-width: 240px;
+  list-style: none;
+  padding: 1rem 0;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-top: 2px solid var(--szin-kiemeles);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.lenyilomenu-tartalom li {
+  width: 100%;
+}
+
+.lenyilomenu-tartalom a {
+  display: block;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.95rem;
+  color: var(--szin-szoveg);
+  transition: all 0.3s ease;
+}
+
+.lenyilomenu-tartalom a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--szin-kiemeles);
+  padding-left: 2rem;
+}
+
+@media (min-width: 901px) {
+  .lenyilomenu-tarolo:hover .lenyilomenu-tartalom {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lenyilomenu-tarolo.kattintva .lenyilomenu-tartalom {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lenyilomenu-tarolo.kattintva .nyil {
+    transform: rotate(180deg);
+  }
+}
+
 /* HERO RESZ */
 
 .hero {
@@ -296,7 +366,9 @@ body {
 }
 
 .tevekenyseg-fejlec {
-  margin-bottom: 4rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto 4rem auto;
   text-align: left;
 }
 
@@ -331,6 +403,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
+  align-items: left;
 }
 
 .tevekenyseg-elem {
@@ -401,7 +474,9 @@ body {
 }
 
 .tevekenyseg-bovebben {
-  margin-top: 2rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 1rem auto 0 auto;
   padding: 1.5rem var(--oldal-padding);
 }
 
@@ -573,6 +648,30 @@ body {
   width: auto;
   max-width: 100%;
   display: block;
+}
+
+/* IMPRESSZUM */
+
+.lablec-impresszum {
+  background-color: #111111; /* Egy fokkal sötétebb, mint a sima lábléc */
+  padding: 1.5rem var(--oldal-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Halvány választóvonal */
+  font-size: 0.9rem;
+  color: #777777; /* Diszkrét szürke szín */
+}
+
+.jogi-linkek a {
+  color: #777777;
+  text-decoration: none;
+  margin-left: 2rem;
+  transition: color 0.3s ease;
+}
+
+.jogi-linkek a:hover {
+  color: var(--szin-kiemeles);
 }
 
 /* UJ OLDAL ROLUNK */
@@ -1202,6 +1301,97 @@ body {
   letter-spacing: 1px;
 }
 
+/* UJ OLDAL IMPRESSZUM */
+
+/* ========================================= */
+/* IMPRESSZUM - MINIMALISTA, MŰSZAKI STÍLUS */
+/* ========================================= */
+
+.impresszum-szekcio {
+  padding: 8rem var(--oldal-padding) 10rem var(--oldal-padding);
+  background-color: var(--szin-sotet);
+  color: var(--szin-feher);
+  min-height: 100vh;
+}
+
+.impresszum-tartalom {
+  max-width: 800px; /* Keskenyebb olvasósáv, hogy a szemek ne ugráljanak */
+  margin: 0 auto;
+}
+
+.impresszum-fejlec {
+  margin-bottom: 5rem;
+}
+
+.impresszum-fejlec h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--szin-kiemeles);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Egy blokk (pl. Üzemeltető) */
+.adat-blokk {
+  margin-bottom: 4rem;
+  border-top: 3px solid var(--szin-kiemeles); /* Határozott, vastag arany vonal felül */
+  padding-top: 1.5rem;
+}
+
+.adat-blokk h2 {
+  font-size: 1.5rem;
+  color: var(--szin-feher);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Egy adatsor (flexbox a tökéletes igazításért) */
+.adat-sor {
+  display: flex;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Nagyon vékony elválasztó vonal */
+}
+
+/* A bal oldali címke (pl. "Adószám") mindig fix szélességű */
+.adat-cimke {
+  flex: 0 0 200px;
+  color: var(--szin-kiemeles);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* A jobb oldali érték kitölti a maradék helyet */
+.adat-ertek {
+  flex: 1;
+  color: var(--szin-szoveg);
+  font-size: 1.1rem;
+}
+
+.adat-ertek a {
+  color: var(--szin-feher);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.adat-ertek a:hover {
+  color: var(--szin-kiemeles);
+}
+
+/* MOBIL NÉZET */
+@media (max-width: 600px) {
+  .adat-sor {
+    flex-direction: column; /* Mobilon egymás alá kerül a címke és az érték */
+    gap: 0.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .adat-cimke {
+    flex: none;
+    font-size: 0.95rem;
+    opacity: 0.8;
+  }
+}
+
 /* MOBILNEZET JAVITAS */
 
 @media (max-width: 900px) {
@@ -1253,6 +1443,28 @@ body {
   .lenyilomenu span {
     margin: 4px;
     color: var(--szin-feher);
+  }
+
+  .lenyilomenu-tartalom {
+    position: static;
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: none;
+    border-left: 2px solid var(--szin-kiemeles);
+    padding: 0;
+    margin-top: 1rem;
+    display: none;
+  }
+
+  .lenyilomenu-tarolo.kattintva .lenyilomenu-tartalom {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .lenyilomenu-tarolo.kattintva .nyil {
+    transform: rotate(180deg);
   }
   .kapcsolat {
     display: block;
@@ -1348,6 +1560,21 @@ body {
     grid-template-columns: 1fr; /* Mobilon egymás alá esnek a kártyák */
     gap: 1.5rem;
   }
+
+  /* IMPRESSZUM */
+
+  .lablec-jogi {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 2rem var(--oldal-padding);
+  }
+
+  .jogi-linkek a {
+    display: block;
+    margin: 0.5rem 0;
+  }
+
   /* UJ OLDAL SZOLGALTATASAINK  */
 
   .szolgaltatas-sor {
