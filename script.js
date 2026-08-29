@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // =========================================
-  // 1. LENYILOMENU
+  // 1. LENYILOMENU (Mobil menü)
   // =========================================
   const lenyilomenuGomb = document.querySelector(".lenyilomenu");
   const fejlec = document.querySelector(".fejlec");
@@ -143,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (modal && projektKartyak.length > 0) {
     projektKartyak.forEach(function (kartya) {
       kartya.addEventListener("click", function () {
-        // Biztonságos adatkinyerés (Ha valami hiányzik, ne omoljon össze)
         const hatterDiv = this.querySelector(".kartya-hatter");
         const hatterKep = hatterDiv ? hatterDiv.style.backgroundImage : "";
 
@@ -161,7 +160,6 @@ document.addEventListener("DOMContentLoaded", function () {
           ? reszletek.innerHTML
           : "<p>Nincs további információ.</p>";
 
-        // Adatok betöltése
         document.getElementById("modal-kep").style.backgroundImage = hatterKep;
 
         const modalBadge = document.getElementById("modal-badge-szoveg");
@@ -175,12 +173,10 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("modal-meta-szoveg").innerText = metaSzoveg;
         document.getElementById("modal-leiras").innerHTML = reszletesLeiras;
 
-        // Ablak nyitása
         modal.classList.add("aktiv");
       });
     });
 
-    // Ablak bezárása
     if (modalBezaras) {
       modalBezaras.addEventListener("click", function () {
         modal.classList.remove("aktiv");
@@ -193,25 +189,24 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-  // CÉGINFORMÁCIÓK LEGÖRDÜLŐ MENÜ LOGIKÁJA
-  document.addEventListener("DOMContentLoaded", function () {
-    // Itt is átírtuk a megfelelő .lenyilomenu-tarolo osztályra!
-    const lenyiloTarolo = document.querySelector(".lenyilomenu-tarolo");
-    const lenyiloGomb = document.querySelector(".lenyilo-gomb");
 
-    if (lenyiloGomb && lenyiloTarolo) {
-      // Ha rákattintanak a gombra
-      lenyiloGomb.addEventListener("click", function (e) {
-        e.preventDefault();
-        lenyiloTarolo.classList.toggle("kattintva");
-      });
+  // =========================================
+  // 6. CÉGINFORMÁCIÓK LEGÖRDÜLŐ MENÜ (Fixálva)
+  // =========================================
+  const lenyiloTarolo = document.querySelector(".lenyilomenu-tarolo");
+  const lenyiloGomb = document.querySelector(".lenyilo-gomb");
 
-      // Ha a menün KÍVÜL kattintanak, bezáródik
-      document.addEventListener("click", function (e) {
-        if (!lenyiloTarolo.contains(e.target)) {
-          lenyiloTarolo.classList.remove("kattintva");
-        }
-      });
-    }
-  });
+  if (lenyiloGomb && lenyiloTarolo) {
+    lenyiloGomb.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      lenyiloTarolo.classList.toggle("kattintva");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!lenyiloTarolo.contains(e.target)) {
+        lenyiloTarolo.classList.remove("kattintva");
+      }
+    });
+  }
 });
