@@ -209,4 +209,50 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+  // =========================================
+  // 7. SÜTI (COOKIE) KEZELŐ
+  // =========================================
+  const sutiSav = document.getElementById("suti-sav");
+  const sutiElfogad = document.getElementById("suti-elfogad-gomb");
+  const sutiAlap = document.getElementById("suti-alap-gomb");
+
+  // A lenyíló menüben lévő "Sütik beállítása" link megkeresése
+  // Ehhez adj a HTML-ben a linknek egy id="suti-megnyito" azonosítót!
+  const sutiMegnyito = document.getElementById("suti-megnyito");
+
+  if (sutiSav) {
+    // 1. Ellenőrizzük a böngésző memóriáját (ha nincs még elmentve döntés, megmutatjuk)
+    if (!localStorage.getItem("karolyhazSutiKezeles")) {
+      // Kis késleltetéssel úszik be, elegánsabb!
+      setTimeout(() => {
+        sutiSav.classList.add("lathato");
+        sutiSav.classList.remove("rejtett");
+      }, 1500);
+    }
+
+    // 2. Ha rányom, hogy "Mindent elfogadok"
+    if (sutiElfogad) {
+      sutiElfogad.addEventListener("click", function () {
+        localStorage.setItem("karolyhazSutiKezeles", "minden_elfogadva");
+        sutiSav.classList.remove("lathato");
+        // Ide lehet majd betenni a Google Analytics indító kódját később!
+      });
+    }
+
+    // 3. Ha rányom, hogy "Csak a szükségesek"
+    if (sutiAlap) {
+      sutiAlap.addEventListener("click", function () {
+        localStorage.setItem("karolyhazSutiKezeles", "csak_alap");
+        sutiSav.classList.remove("lathato");
+      });
+    }
+
+    // 4. Bónusz: A lenyíló menüből bármikor újra megnyitható!
+    if (sutiMegnyito) {
+      sutiMegnyito.addEventListener("click", function (e) {
+        e.preventDefault(); // Ne ugorjon új oldalra
+        sutiSav.classList.add("lathato");
+      });
+    }
+  }
 });

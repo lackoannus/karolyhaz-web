@@ -1,9 +1,201 @@
 <!doctype html>
-<html lang="en">
+<html lang="hu">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="Károlyház Kft. - Süti (Cookie) Tájékoztató"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Károlyház kft. - Süti Tájékoztató</title>
   </head>
-  <body></body>
+  <body>
+    <!-- FEJLÉC (Ide másold be a pontos fejlécedet az index.html-ből!) -->
+    <header class="fejlec">
+      <!-- ... A te fejléced kódja ... -->
+    </header>
+
+    <!-- KISEBB HERO SZEKCIÓ -->
+    <section
+      class="statik-hero"
+      style="
+        background-image: linear-gradient(
+          rgba(26, 26, 26, 0.9),
+          rgba(26, 26, 26, 0.95)
+        );
+        height: 30vh;
+        min-height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <div
+        class="hero-tartalom"
+        style="text-align: center; width: 100%; padding: 0"
+      >
+        <h1 class="hero-cim" style="margin-bottom: 0">Süti Tájékoztató</h1>
+      </div>
+    </section>
+
+    <!-- HIVATALOS SÜTI SZÖVEGEZÉS -->
+    <section class="impresszum-szekcio" style="padding-top: 4rem">
+      <div class="impresszum-tartalom">
+        <div class="impresszum-fejlec">
+          <h2
+            style="
+              font-size: 1.5rem;
+              color: var(--szin-szoveg);
+              text-transform: none;
+              letter-spacing: normal;
+            "
+          >
+            Hivatalos tájékoztató a weboldalon alkalmazott adatkezelési
+            technológiákról
+          </h2>
+        </div>
+
+        <!-- 1. BLOKK -->
+        <div class="adat-blokk">
+          <h2>1. Általános rendelkezések</h2>
+          <p
+            style="
+              color: var(--szin-szoveg);
+              line-height: 1.8;
+              font-size: 1.1rem;
+              margin-bottom: 1.5rem;
+            "
+          >
+            A <strong>Károlyház Kft.</strong> (székhely: 5000 Szolnok, Vércse
+            utca 21., a továbbiakban: Adatkezelő) a weboldalának működtetése, a
+            felhasználói élmény javítása, valamint a weboldal forgalmának mérése
+            érdekében sütiket (cookie-kat) használ.
+          </p>
+          <p
+            style="
+              color: var(--szin-szoveg);
+              line-height: 1.8;
+              font-size: 1.1rem;
+            "
+          >
+            A jelen tájékoztató célja, hogy az Európai Parlament és a Tanács
+            (EU) 2016/679 rendelete (GDPR), valamint az információs
+            önrendelkezési jogról és az információszabadságról szóló 2011. évi
+            CXII. törvény alapján átlátható információt nyújtson a látogatók
+            számára a sütik használatáról.
+          </p>
+        </div>
+
+        <!-- 2. BLOKK -->
+        <div class="adat-blokk">
+          <h2>2. Mik azok a sütik (cookie-k)?</h2>
+          <p
+            style="
+              color: var(--szin-szoveg);
+              line-height: 1.8;
+              font-size: 1.1rem;
+            "
+          >
+            A süti egy olyan kisméretű adatfájl (szöveges fájl), amely a
+            weboldal látogatásakor a felhasználó számítógépére, okostelefonjára
+            vagy egyéb informatikai eszközére kerül mentésre. Ez teszi lehetővé,
+            hogy a weboldal megjegyezze a látogató bizonyos műveleteit és
+            beállításait (például, hogy elfogadta-e a sütik használatát), így
+            azokat nem kell újra megadnia a weboldal ismételt felkeresésekor.
+          </p>
+        </div>
+
+        <!-- 3. BLOKK (Táblázatszerű elrendezés a típusoknak az adat-sor osztályokkal) -->
+        <div class="adat-blokk">
+          <h2>3. A weboldalunkon használt sütik típusai</h2>
+
+          <div class="adat-sor">
+            <span class="adat-cimke">Feltétlenül szükséges sütik</span>
+            <span class="adat-ertek">
+              <strong
+                style="color: white; display: block; margin-bottom: 0.5rem"
+                >Működést biztosító (Alap) sütik</strong
+              >
+              Ezek a sütik elengedhetetlenek a weboldal megfelelő működéséhez,
+              navigációjához és biztonságához. Ezek a sütik nem gyűjtenek olyan
+              információkat, amelyekkel a látogatót azonosítani lehetne.
+              <br /><br />
+              <em>Jogalap:</em> Az Adatkezelő jogos érdeke [GDPR 6. cikk (1)
+              bek. f) pont].
+              <strong>Ezek használata nem kapcsolható ki.</strong>
+            </span>
+          </div>
+
+          <div class="adat-sor">
+            <span class="adat-cimke">Statisztikai sütik</span>
+            <span class="adat-ertek">
+              <strong
+                style="color: white; display: block; margin-bottom: 0.5rem"
+                >Analitikai mérések (Pl. Google Analytics)</strong
+              >
+              Ezek a sütik segítenek nekünk megérteni, hogy a látogatók hogyan
+              használják a weboldalt. Névtelen formában gyűjtenek információkat
+              (például: melyik oldalt nézték meg, mennyi időt töltöttek ott),
+              ezzel segítve a weblap fejlesztését.
+              <br /><br />
+              <em>Jogalap:</em> A látogató önkéntes hozzájárulása [GDPR 6. cikk
+              (1) bek. a) pont].
+              <strong
+                >Ezek csak az Ön kifejezett hozzájárulása ("Mindent elfogadok")
+                esetén töltődnek be.</strong
+              >
+            </span>
+          </div>
+        </div>
+
+        <!-- 4. BLOKK -->
+        <div class="adat-blokk">
+          <h2>4. A sütik kezelése és a hozzájárulás visszavonása</h2>
+          <p
+            style="
+              color: var(--szin-szoveg);
+              line-height: 1.8;
+              font-size: 1.1rem;
+              margin-bottom: 1.5rem;
+            "
+          >
+            A látogatónak joga van bármikor módosítani a sütikre vonatkozó
+            beállításait. A weboldalunkon megadott hozzájárulását visszavonhatja
+            vagy módosíthatja, ha a főmenüben található
+            <strong>Céginformációk -> Sütik beállítása</strong> gombra kattint.
+            Ekkor a beállító panel újra megjelenik.
+          </p>
+          <p
+            style="
+              color: var(--szin-szoveg);
+              line-height: 1.8;
+              font-size: 1.1rem;
+            "
+          >
+            Ezen felül a modern böngészők (Google Chrome, Firefox, Safari, Edge)
+            mindegyike lehetőséget biztosít a sütik teljes letiltására vagy
+            törlésére a böngésző beállítások menüpontjában (általában az
+            "Adatvédelem és biztonság" rész alatt). Felhívjuk figyelmét, hogy az
+            összes süti blokkolása esetén a weboldal bizonyos funkciói nem
+            fognak megfelelően működni.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LÁBLÉC (Ide másold be a pontos láblécedet az index.html-ből!) -->
+    <footer id="kapcsolat" class="lablec">
+      <!-- ... A te lábléced kódja ... -->
+    </footer>
+
+    <!-- SÜTI SÁV (Ide másold be a süti sávodat az index.html aljából!) -->
+    <div id="suti-sav" class="suti-tarolo rejtett">
+      <!-- ... -->
+    </div>
+  </body>
 </html>

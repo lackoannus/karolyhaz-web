@@ -703,6 +703,93 @@ img {
   color: var(--szin-kiemeles);
 }
 
+/* ========================================= */
+/* SÜTI (COOKIE) SÁV DIZÁJN */
+/* ========================================= */
+
+.suti-tarolo {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(20, 20, 20, 0.98);
+  border-top: 2px solid var(--szin-kiemeles);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 999999; /* Mindenek felett! */
+  transform: translateY(100%); /* Alapból le van tolva a képernyőről */
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Amikor a JavaScript ráteszi ezt az osztályt, felcsúszik a képernyőre */
+.suti-tarolo.lathato {
+  transform: translateY(0);
+}
+
+.suti-tartalom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem var(--oldal-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.suti-szoveg h3 {
+  color: var(--szin-kiemeles);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.suti-szoveg p {
+  color: var(--szin-szoveg);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.suti-szoveg a {
+  color: var(--szin-kiemeles);
+  text-decoration: underline;
+}
+
+.suti-gombok {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0; /* Ne nyomódjanak össze a gombok */
+}
+
+.suti-gomb-szurke {
+  background-color: transparent;
+  color: var(--szin-szoveg);
+  border: 1px solid var(--szin-szoveg);
+  padding: 0.7rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.suti-gomb-szurke:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--szin-feher);
+}
+
+.suti-gomb-arany {
+  background-color: var(--szin-kiemeles);
+  color: black;
+  border: 1px solid var(--szin-kiemeles);
+  padding: 0.7rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.suti-gomb-arany:hover {
+  background-color: #9c8418; /* Egy sötétebb arany hoverre */
+}
+
 /* UJ OLDAL ROLUNK */
 
 /* 1. RETEG */
@@ -1432,7 +1519,7 @@ img {
       "nav nav nav";
     align-items: center;
     gap: 0.5 rem;
-    padding: 0.8rem var(--oldal-padding);
+    padding: 2rem var(--oldal-padding);
   }
 
   .logo {
@@ -1444,7 +1531,7 @@ img {
 
   .logo img {
     max-width: 100%;
-    height: 3rem !important;
+    height: 4rem !important;
     width: auto;
   }
 
@@ -1599,6 +1686,17 @@ img {
   .szolg-kartyagrid {
     grid-template-columns: 1fr; /* Mobilon egymás alá esnek a kártyák */
     gap: 1.5rem;
+  }
+
+  /* SUTIK */
+
+  .suti-tartalom {
+    flex-direction: column;
+    text-align: center;
+  }
+  .suti-gombok {
+    width: 100%;
+    flex-direction: column;
   }
 
   /* IMPRESSZUM */

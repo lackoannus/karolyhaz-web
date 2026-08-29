@@ -1,135 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0", maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Károlyház Kft.:">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="Károlyház Kft. - A keresett oldal nem található"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-    <title>Károlyház kft.</title>
-</head>
-<body>
-    
-<!-- FEJLEC -->
-
+    <title>Oldal nem található | Károlyház Kft.</title>
+  </head>
+  <body>
+    <!-- FEJLÉC (Ide másold be a pontos, végleges fejlécedet az index.html-ből!) -->
     <header class="fejlec">
-      <div class="logo">
-        <a href="index.html" class="karolyhaz"
-          ><img src="karolyhaz-logo.webp" alt="karolyhaz logo"
-        /></a>
-      </div>
-      <div class="lenyilomenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <nav class="navigacio">
-        <ul>
-          <li><a href="index.html">Főoldal</a></li>
-          <li><a href="rolunk.html">Rólunk</a></li>
-          <li><a href="munkaink.html">Munkáink</a></li>
-          <li><a href="szolgaltatasaink.html">Szolgáltatások</a></li>
-        </ul>
-      </nav>
-      <div class="kapcsolat">
-            <a href="kapcsolat.html" class="gomb">Kapcsolat<span class="mobil-rejt">felvétel</span></a>
-      </div>
+      <!-- ... -->
     </header>
 
-    <!-- HERO -->
-
-    <section class="hero statik-hero">
-      <div
-        class="hero-kep"
+    <!-- 404 TARTALOM (Középre zárt, elegáns hibaoldal) -->
+    <section
+      class="hiba-szekcio"
+      style="
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 var(--oldal-padding);
+        background-color: var(--szin-sotet);
+      "
+    >
+      <!-- Hatalmas arany 404-es felirat -->
+      <h1
         style="
-          background-image: url(&quot;https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=1920&quot;);
+          font-size: clamp(6rem, 15vw, 12rem);
+          color: var(--szin-kiemeles);
+          line-height: 1;
+          margin-bottom: 1rem;
+          font-family: monospace;
         "
-      ></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-tartalom">
-        <h1 class="hero-cim">Szolgáltatásaink</h1>
-        <p>
-          szöveg
-        </p>
-      </div>
+      >
+        404
+      </h1>
+
+      <h2
+        style="
+          font-size: clamp(1.5rem, 4vw, 2.5rem);
+          color: var(--szin-feher);
+          margin-bottom: 1.5rem;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+        "
+      >
+        Itt valami összedőlt!
+      </h2>
+
+      <p
+        style="
+          color: var(--szin-szoveg);
+          font-size: 1.1rem;
+          max-width: 600px;
+          line-height: 1.6;
+          margin-bottom: 3rem;
+        "
+      >
+        Lehet, hogy elgépelted a webcímet, vagy az oldal, amit keresel időközben
+        áthelyezésre került. Ne aggódj, a főoldalról mindent újra megtalálsz!
+      </p>
+
+      <!-- Vissza a főoldalra gomb (a meglévő .gomb stílusodat használja) -->
+      <a
+        href="index.html"
+        class="gomb"
+        style="font-size: 1.1rem; padding: 1rem 3rem"
+        >Vissza a főoldalra</a
+      >
     </section>
-    
 
-    <!-- SZOLGALTATASOK -->
-
-
-<section class="szolgaltatas-reszletek">
-        
-        <div class="szolgaltatas-sor">
-            <div class="sz-szoveg">
-                <span class="sz-sorszam">01</span>
-                <h2>Generálkivitelezés</h2>
-                <p>A Károlyház Kft. leveszi a válláról az építkezéssel járó terheket. A tervezőasztaltól a kulcsrakész átadásig mindent egy kézben tartunk, így garantáljuk a határidők és a költségvetés szigorú betartását.</p>
-                <ul class="sz-pipa-lista">
-                    <li>Teljes projektmenedzsment</li>
-                    <li>Saját, megbízható alvállalkozói hálózat</li>
-                    <li>Folyamatos műszaki ellenőrzés</li>
-                </ul>
-            </div>
-            <div class="sz-kep">
-                <img src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Generálkivitelezés">
-            </div>
-        </div>
-
-        <div class="szolgaltatas-sor forditott">
-            <div class="sz-szoveg">
-                <span class="sz-sorszam">02</span>
-                <h2>Társasház építés</h2>
-                <p>Több tucat sikeresen átadott társasházi projektünk bizonyítja, hogy otthonosan mozgunk a többgenerációs, nagy volumenű lakóépületek kivitelezésében. Modern technológiák és értékálló anyaghasználat jellemez minket.</p>
-                <ul class="sz-pipa-lista">
-                    <li>Prémium lakóparkok kivitelezése</li>
-                    <li>Energiatakarékos és zöld megoldások</li>
-                    <li>Szigorú minőségbiztosítás</li>
-                </ul>
-            </div>
-            <div class="sz-kep">
-                <img src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Társasház építés">
-            </div>
-        </div>
-
-        <div class="szolgaltatas-sor">
-            <div class="sz-szoveg">
-                <span class="sz-sorszam">03</span>
-                <h2>Ipari csarnokok építése</h2>
-                <p>Gyártó- és logisztikai csarnokok gyors, precíz felépítése acél vagy vasbeton szerkezettel. Tudjuk, hogy az iparban az idő pénz, ezért a technológiai fegyelmet és a határidőket tartjuk a legfontosabbnak.</p>
-            </div>
-            <div class="sz-kep">
-                <img src="https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Ipari csarnokok">
-            </div>
-        </div>
-
-    </section>
-    
-    <section class="szolgaltatas-cta">
-      <h2>Kérdése van? Kérjen egyedi árajánlatot!</h2>
-      <a href="kapcsolat.html" class="gomb">Kapcsolatfelvétel</a>
-    </section>
-    
+    <!-- LÁBLÉC (Ide másold be a pontos láblécedet!) -->
     <footer id="kapcsolat" class="lablec">
-        <div class="lablec-kepsav">
-            <img src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 1">
-            <img src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 2">
-            <img src="https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 3">
-            <img src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 4">
-        </div>
-        <div class="lablec-tartalom">
-            <div class="lablec-kapcsolat">
-                <h2>KÁROLYHÁZ KFT.</h2>
-                <h4>Kapcsolat</h4>
-                <p><strong>Cím:</strong> 5000 Szolnok, Vércse utca 21.</p>
-                <p><strong>Telefonszám:</strong><a href="tel:+3656516030"> 06 56/516-030</a></p>
-                <p><strong>Email:</strong> <a href="mailto:karolyhaz@gmail.com">karolyhaz@gmail.com</a></p>
-                <p>barmit meg lehet idetenni</p>
-            </div>
-            <div class="lablec-logo">
-                <a href="index.html"><img src="karolyhaz-logo.webp" alt="Károlyház kft."></a>
-            </div>
-        </div>
+      <!-- ... -->
     </footer>
-</body>
+  </body>
 </html>
