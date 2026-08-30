@@ -10,27 +10,34 @@
   </head>
   <body>
     <header class="fejlec">
-      <div class="logo">
-        <a href="index.html" class="karolyhaz"
-          ><img src="karolyhaz-logo.webp" alt="karolyhaz logo"
-        /></a>
-      </div>
-      <div class="lenyilomenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <nav class="navigacio">
-        <ul>
-          <li><a href="index.html">Főoldal</a></li>
-          <li><a href="rolunk.html">Rólunk</a></li>
-          <li><a href="munkaink.html">Munkáink</a></li>
-          <li><a href="szolgaltatasaink.html">Szolgáltatások</a></li>
-        </ul>
-      </nav>
-      <div class="kapcsolat">
+        <div class="logo">
+            <a href="index.html" class="karolyhaz"><img src="karolyhaz-logo.webp" alt="karolyhaz logo"></a>
+        </div>
+
+        <nav class="navigacio">
+            <ul>
+                <li ><a href="rolunk.html" class="aktiv-navigacio">Rólunk</a></li>
+                <li><a href="munkaink.html">Munkáink</a></li>
+                <li><a href="szolgaltatasaink.html">Szolgáltatások</a></li>
+                <li class="lenyilomenu-tarolo">
+                    <a href="#" class="lenyilo-gomb">Céginformációk <span class="nyil">&#9662;</span></a>
+                    <ul class="lenyilomenu-tartalom">
+                        <li><a href="impresszum.html">Impresszum és Cégadatok</a></li>
+                        <li><a href="palyazatok.html">Pályázatok</a></li>
+                        <li><a href="#" id="suti-megnyito">Sütik beállítása</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="kapcsolat">
             <a href="kapcsolat.html" class="gomb">Kapcsolat<span class="mobil-rejt">felvétel</span></a>
-      </div>
+        </div>
+        
+        <div class="lenyilomenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
 
     <section class="hero rolunk-hero statik-hero">
@@ -136,7 +143,7 @@
       </div>
     </section>
 
-     <footer id="kapcsolat" class="lablec">
+    <footer id="kapcsolat" class="lablec">
         <div class="lablec-kepsav">
             <img src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 1">
             <img src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 2">
@@ -156,12 +163,21 @@
                 <a href="index.html"><img src="karolyhaz-logo.webp" alt="Károlyház kft."></a>
             </div>
         </div>
+        <div class="lablec-impresszum">
+            <div class="szerzoi-jog">
+                &copy; 2026 Károlyház Kft. Minden jog fenntartva.
+            </div>
+            <div class="jogi-linkek">
+                <a href="impresszum.html">Impresszum és Cégadatok</a>
+
+            </div>
+        </div>
     </footer>
     <div id="suti-sav" class="suti-tarolo rejtett">
         <div class="suti-tartalom">
             <div class="suti-szoveg">
                 <h3>Vigyázunk az adataidra! </h3>
-                <p>Weboldalunk alapvető működéséhez és a látogatói élmény javításához (statisztikákhoz) sütiket használunk. A "Mindent elfogadok" gombra kattintva hozzájárulsz ezek használatához. <a href="sutik.html">Részletes tájékoztató</a></p>
+                <p>Weboldalunk alapvető működéséhez és a látogatói élmény javításához (statisztikákhoz) sütiket használunk. A "Mindent elfogadok" gombra kattintva hozzájárulsz ezek használatához. <a href="sutik.html" target="_blank">Részletes tájékoztató</a></p>
             </div>
             <div class="suti-gombok">
                 <button id="suti-alap-gomb" class="suti-gomb-szurke">Csak a szükségesek</button>

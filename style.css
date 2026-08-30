@@ -4,7 +4,7 @@
   --szin-szoveg: #d7c7c7;
   --szin-kiemeles: rgb(181, 154, 29);
 
-  --oldal-padding: clamp(1rem, 5vw, 4rem);
+  --oldal-padding: clamp(0.5rem, 3vw, 6rem);
 }
 
 * {
@@ -17,7 +17,7 @@
 body,
 html {
   background-color: var(--szin-sotet);
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
 }
 img {
@@ -58,7 +58,9 @@ img {
 }
 
 /* NAVIGACIO */
-
+.aktiv-navigacio {
+  color: var(--szin-kiemeles) !important;
+}
 .navigacio ul {
   display: flex;
   gap: 2rem;
@@ -618,18 +620,80 @@ img {
   background-color: #181818;
 }
 
-/* KEPSAV */
+/* ========================================= */
+/* LÁBLÉC - KÉPSÁV (Elegáns, elmosódó kerettel) */
+/* ========================================= */
 
 .lablec-kepsav {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  flex-wrap: nowrap;
   width: 100%;
+  margin-top: 8rem;
+  position: relative; /* Fontos a díszítővonalak miatt */
+  box-shadow:
+    0 -15px 30px rgba(0, 0, 0, 0.4),
+    0 15px 30px rgba(0, 0, 0, 0.6); /* Térhatású árnyék alul és felül */
+  z-index: 5;
 }
+
+/* FELSŐ DÍSZÍTŐVONAL (Középen arany, a szélek felé átlátszó) */
+.lablec-kepsav::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--szin-kiemeles) 50%,
+    transparent 100%
+  );
+  z-index: 10; /* Hogy a képek felett legyen */
+}
+
+/* ALSÓ DÍSZÍTŐVONAL (Egy sokkal halványabb keret alulra is) */
+.lablec-kepsav::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 15%,
+    rgba(181, 154, 29, 0.3) 50%,
+    transparent 85%
+  );
+  z-index: 10;
+}
+
 .lablec-kepsav img {
   flex: 1 1 25%;
-  height: 20vh;
+  height: 22vh;
+  min-height: 180px;
   object-fit: cover;
-  transition: filter 0.3s ease;
+  filter: grayscale(40%) brightness(0.8);
+  transition: filter 0.5s ease;
+  display: block;
+}
+
+.lablec-kepsav img:hover {
+  filter: grayscale(0%) brightness(1.1);
+}
+
+/* MOBIL NÉZET JAVÍTÁS */
+@media (max-width: 600px) {
+  .lablec-kepsav {
+    grid-template-columns: repeat(2, auto);
+  }
+  .lablec-kepsav img {
+    height: 15vh !important;
+    min-height: 150px !important;
+  }
 }
 
 /* TARTALOM */
@@ -1670,16 +1734,59 @@ img {
     padding-bottom: 4rem;
   }
 
-  /* FOOLDAL TEVEKENYEGEINK */
-  .fooldal-tevekenysegek {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
+  /* ========================================= */
+  /* FŐOLDAL TEVÉKENYSÉGEK (Nagyobb kép asztalin) */
+  /* ========================================= */
+
   .interaktiv-lista-grid {
-    grid-template-columns: 1fr;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    /* EREDETI (1fr 1.5fr) HELYETT: */
+    grid-template-columns: 1fr 2.2fr; /* Hatalmas lesz a kép, keskenyebb a lista! */
+    gap: 4rem;
+    align-items: center; /* Hogy szépen függőlegesen is középen legyen */
   }
+
   .kep-oldal {
-    aspect-ratio: 16 / 9;
+    position: relative;
+    width: 100%;
+    /* 4/3 HELYETT: Szélesvásznú, "mozisabb" arány, hogy hatalmas lehessen, de ne lógjon ki a képernyőről */
+    aspect-ratio: 16 / 10;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  /* ========================================= */
+  /* MOBIL NÉZET: "Odaragadós" Kép a lista felett */
+  /* ========================================= */
+  @media (max-width: 900px) {
+    .interaktiv-lista-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .kep-oldal {
+      order: -1; /* 1. LÉPÉS: A képet erőszakkal a lista ELÉ rakjuk */
+      position: sticky; /* 2. LÉPÉS: Ráragad a képernyőre */
+      top: 80px; /* 3. LÉPÉS: Kicsivel a fejléc alatt ragad meg */
+      z-index: 20; /* Hogy a szövegek felett lebegjen görgetéskor */
+
+      aspect-ratio: 16 / 9; /* Mobilon marad a széles formátum */
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9); /* Brutális árnyék, hogy kiemelkedjen a listából */
+      margin-bottom: 1rem;
+    }
+
+    /* A listát picit kompaktabbá tesszük, hogy több férjen a képernyőre a lebegő kép alatt */
+    .tevekenyseg-elem {
+      padding: 1.2rem 0;
+    }
+
+    .tevekenyseg-nev {
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+    }
   }
 
   /* FOOLDAL SZOLGALTATASAINK */
