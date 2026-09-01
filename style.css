@@ -4,7 +4,7 @@
   --szin-szoveg: #d7c7c7;
   --szin-kiemeles: rgb(181, 154, 29);
 
-  --oldal-padding: clamp(0.5rem, 3vw, 6rem);
+  --oldal-padding: clamp(0.5rem, 6vw, 6rem);
 }
 
 * {
@@ -28,7 +28,7 @@ img {
 /* FEJLEC */
 
 .fejlec {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
   padding: 1rem var(--oldal-padding);
   display: flex;
@@ -227,6 +227,9 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
   z-index: 1;
 }
 
@@ -256,7 +259,7 @@ img {
   z-index: 2;
   background: linear-gradient(
     to bottom,
-    rgba(26, 26, 26, 0.6) 0%,
+    rgba(26, 26, 26, 0.4) 0%,
     rgba(26, 26, 26, 0.6) 70%,
     var(--szin-sotet) 100%
   );
@@ -279,7 +282,7 @@ img {
   color: var(--szin-kiemeles);
 }
 .hero-tartalom h1 {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
   line-height: 1.1;
   display: inline-block;
   margin-bottom: 3rem;
@@ -625,15 +628,18 @@ img {
 /* ========================================= */
 
 .lablec-kepsav {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  flex-wrap: nowrap;
-  width: 100%;
-  margin-top: 8rem;
-  position: relative; /* Fontos a díszítővonalak miatt */
+  display: grid !important;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ) !important; /* Szigorúan 4 egyforma oszlop */
+  width: 100% !important;
+  gap: 0 !important; /* Zéró tolerancia a hézagokra */
+  margin-top: 6rem;
+  position: relative;
   box-shadow:
     0 -15px 30px rgba(0, 0, 0, 0.4),
-    0 15px 30px rgba(0, 0, 0, 0.6); /* Térhatású árnyék alul és felül */
+    0 15px 30px rgba(0, 0, 0, 0.6);
   z-index: 5;
 }
 
@@ -670,15 +676,18 @@ img {
   );
   z-index: 10;
 }
-
 .lablec-kepsav img {
-  flex: 1 1 25%;
-  height: 22vh;
-  min-height: 180px;
-  object-fit: cover;
-  filter: grayscale(40%) brightness(0.8);
+  width: 100% !important; /* Kitölti a teljes rendelkezésre álló rácsot */
+  min-width: 100% !important;
+  max-width: none !important; /* Töröl minden korábbi akadályt és engedi nőni! */
+  height: 25vh !important;
+  min-height: 180px !important;
+  object-fit: cover !important; /* Torzulás nélkül, szépen vágja a képet */
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  filter: grayscale(50%) brightness(0.85);
   transition: filter 0.5s ease;
-  display: block;
 }
 
 .lablec-kepsav img:hover {
@@ -688,7 +697,10 @@ img {
 /* MOBIL NÉZET JAVÍTÁS */
 @media (max-width: 600px) {
   .lablec-kepsav {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ) !important; /* Mobilon 2 oszlopra vált */
   }
   .lablec-kepsav img {
     height: 15vh !important;
@@ -863,6 +875,9 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
   z-index: 1;
 }
 
@@ -1362,8 +1377,13 @@ img {
 /* UJ OLDAL SZOLGALTATASAINK */
 
 .statik-hero {
-  height: 60vh;
-  min-height: 350px;
+  position: relative;
+  height: 60vh; /* Itt a kötelező magasság */
+  min-height: 400px; /* Biztonsági minimum mobilra */
+  display: flex;
+  align-items: center; /* Függőlegesen középre zárja a szöveget */
+  justify-content: center; /* Vízszintesen középre zárja */
+  overflow: hidden; /* Ha a kép nagyobb lenne, kíméletlenül levágja a kilógó részt */
 }
 
 .statik-hero .hero-tartalom h1 {

@@ -1,109 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0", maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Károlyház Kft.:">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="Károlyház Kft. - Pályázatok és Európai Uniós támogatások"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-    <title>Károlyház kft.</title>
-</head>
-<body>
-    
-<!-- FEJLEC -->
-
+    <title>Pályázatok | Károlyház Kft.</title>
+  </head>
+  <body>
     <header class="fejlec">
-        <div class="logo">
-            <a href="index.html" class="karolyhaz"><img src="karolyhaz-logo.webp" alt="karolyhaz logo"></a>
-        </div>
+      <div class="logo">
+        <a href="index.html" class="karolyhaz"
+          ><img src="karolyhaz-logo.webp" alt="karolyhaz logo"
+        /></a>
+      </div>
 
-        <nav class="navigacio">
-            <ul>
-                <li ><a href="rolunk.html">Rólunk</a></li>
-                <li><a href="munkaink.html">Munkáink</a></li>
-                <li><a href="szolgaltatasaink.html">Szolgáltatások</a></li>
-                <li class="lenyilomenu-tarolo">
-                    <a href="#" class="lenyilo-gomb" class="aktiv-navigacio">Céginformációk <span class="nyil">&#9662;</span></a>
-                    <ul class="lenyilomenu-tartalom">
-                        <li><a href="impresszum.html">Impresszum és Cégadatok</a></li>
-                        <li><a href="palyazatok.html" class="aktiv-navigacio">Pályázatok</a></li>
-                        <li><a href="#" id="suti-megnyito">Sütik beállítása</a></li>
-                    </ul>
-                </li>
+      <nav class="navigacio">
+        <ul>
+          <li><a href="rolunk.html">Rólunk</a></li>
+          <li><a href="munkaink.html">Munkáink</a></li>
+          <li>
+            <a href="szolgaltatasaink.html" class="aktiv-navigacio"
+              >Szolgáltatások</a
+            >
+          </li>
+          <li class="lenyilomenu-tarolo">
+            <a href="#" class="lenyilo-gomb"
+              >Céginformációk <span class="nyil">&#9662;</span></a
+            >
+            <ul class="lenyilomenu-tartalom">
+              <li><a href="impresszum.html">Impresszum és Cégadatok</a></li>
+              <li><a href="palyazatok.html">Pályázatok</a></li>
+              <li><a href="#" id="suti-megnyito">Sütik beállítása</a></li>
             </ul>
-        </nav>
-        <div class="kapcsolat">
-            <a href="kapcsolat.html" class="gomb">Kapcsolat<span class="mobil-rejt">felvétel</span></a>
-        </div>
-        
-        <div class="lenyilomenu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="kapcsolat">
+        <a href="kapcsolat.html" class="gomb"
+          >Kapcsolat<span class="mobil-rejt">felvétel</span></a
+        >
+      </div>
+
+      <div class="lenyilomenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </header>
 
-    <!-- HERO -->
-
-    <section class="hero statik-hero">
+    <!-- KISEBB HERO SZEKCIÓ -->
+    <section
+      class="statik-hero"
+      style="
+        background-image: linear-gradient(
+          rgba(26, 26, 26, 0.9),
+          rgba(26, 26, 26, 0.95)
+        );
+        height: 30vh;
+        min-height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
       <div
-        class="hero-kep"
-        style="
-          background-image: url(&quot;https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=1920&quot;);
-        "
-      ></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-tartalom">
-        <h1 class="hero-cim">Szolgáltatásaink</h1>
-        <p>
-          szöveg
-        </p>
+        class="hero-tartalom"
+        style="text-align: center; width: 100%; padding: 0"
+      >
+        <h1 class="hero-cim" style="margin-bottom: 0">Pályázatok</h1>
       </div>
     </section>
-    
 
-    
-  <footer id="kapcsolat" class="lablec">
-        <div class="lablec-kepsav">
-            <img src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 1">
-            <img src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 2">
-            <img src="https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 3">
-            <img src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 4">
-        </div>
-        <div class="lablec-tartalom">
-            <div class="lablec-kapcsolat">
-                <h2>KÁROLYHÁZ KFT.</h2>
-                <h4>Kapcsolat</h4>
-                <p><strong>Cím:</strong> 5000 Szolnok, Vércse utca 21.</p>
-                <p><strong>Telefonszám:</strong><a href="tel:+3656516030"> 06 56/516-030</a></p>
-                <p><strong>Email:</strong> <a href="mailto:karolyhaz@gmail.com">karolyhaz@gmail.com</a></p>
-                <p>barmit meg lehet idetenni</p>
-            </div>
-            <div class="lablec-logo">
-                <a href="index.html"><img src="karolyhaz-logo.webp" alt="Károlyház kft."></a>
-            </div>
-        </div>
-        <div class="lablec-impresszum">
-            <div class="szerzoi-jog">
-                &copy; 2026 Károlyház Kft. Minden jog fenntartva.
-            </div>
-            <div class="jogi-linkek">
-                <a href="impresszum.html">Impresszum és Cégadatok</a>
+    <!-- PÁLYÁZATI KÉPEK TÁROLÓJA -->
+    <section
+      class="palyazat-szekcio"
+      style="
+        padding: 5rem var(--oldal-padding);
+        min-height: 50vh;
+        background-color: var(--szin-sotet);
+        text-align: center;
+      "
+    >
+      <!-- Ez a doboz tartja középen a képeket, és nem engedi, hogy túl nagyra nőjenek -->
+      <div
+        class="palyazat-kontener"
+        style="
+          max-width: 1000px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          gap: 4rem;
+          align-items: center;
+        "
+      >
+        <!-- 1. PÁLYÁZAT KÉPE -->
+        <!-- Ha meglesz a kép, csak cseréld ki a src attribútumot a kép elérhetőségére -->
+        <img
+          src="img/alapok/palyazat-tabla-minta.jpg"
+          alt="Pályázati tájékoztató tábla"
+          style="
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+          "
+        />
 
-            </div>
+        <!-- 2. PÁLYÁZAT KÉPE (Ha van több, csak másold be ezt a sort alá) -->
+        <!-- <img src="img/alapok/palyazat-tabla-2.jpg" alt="Második pályázat" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 15px 35px rgba(0,0,0,0.4);"> -->
+      </div>
+    </section>
+    <footer id="kapcsolat" class="lablec">
+      <div class="lablec-kepsav">
+        <img
+          src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Építkezés 1"
+        />
+        <img
+          src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Építkezés 2"
+        />
+        <img
+          src="https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Építkezés 3"
+        />
+        <img
+          src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Építkezés 4"
+        />
+      </div>
+      <div class="lablec-tartalom">
+        <div class="lablec-kapcsolat">
+          <h2>KÁROLYHÁZ KFT.</h2>
+          <h4>Kapcsolat</h4>
+          <p><strong>Cím:</strong> 5000 Szolnok, Vércse utca 21.</p>
+          <p>
+            <strong>Telefonszám:</strong
+            ><a href="tel:+3656516030"> 06 56/516-030</a>
+          </p>
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:karolyhaz@gmail.com">karolyhaz@gmail.com</a>
+          </p>
+          <p>barmit meg lehet idetenni</p>
         </div>
+        <div class="lablec-logo">
+          <a href="index.html"
+            ><img src="karolyhaz-logo.webp" alt="Károlyház kft."
+          /></a>
+        </div>
+      </div>
+      <div class="lablec-impresszum">
+        <div class="szerzoi-jog">
+          &copy; 2026 Károlyház Kft. Minden jog fenntartva.
+        </div>
+        <div class="jogi-linkek">
+          <a href="impresszum.html">Impresszum és Cégadatok</a>
+        </div>
+      </div>
     </footer>
     <div id="suti-sav" class="suti-tarolo rejtett">
-        <div class="suti-tartalom">
-            <div class="suti-szoveg">
-                <h3>Vigyázunk az adataidra! </h3>
-                <p>Weboldalunk alapvető működéséhez és a látogatói élmény javításához (statisztikákhoz) sütiket használunk. A "Mindent elfogadok" gombra kattintva hozzájárulsz ezek használatához. <a href="sutik.html" target="_blank">Részletes tájékoztató</a></p>
-            </div>
-            <div class="suti-gombok">
-                <button id="suti-alap-gomb" class="suti-gomb-szurke">Csak a szükségesek</button>
-                <button id="suti-elfogad-gomb" class="suti-gomb-arany">Mindent elfogadok</button>
-            </div>
+      <div class="suti-tartalom">
+        <div class="suti-szoveg">
+          <h3>Vigyázunk az adataidra!</h3>
+          <p>
+            Weboldalunk alapvető működéséhez és a látogatói élmény javításához
+            (statisztikákhoz) sütiket használunk. A "Mindent elfogadok" gombra
+            kattintva hozzájárulsz ezek használatához.
+            <a href="sutik.html" target="_blank">Részletes tájékoztató</a>
+          </p>
         </div>
+        <div class="suti-gombok">
+          <button id="suti-alap-gomb" class="suti-gomb-szurke">
+            Csak a szükségesek
+          </button>
+          <button id="suti-elfogad-gomb" class="suti-gomb-arany">
+            Mindent elfogadok
+          </button>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
