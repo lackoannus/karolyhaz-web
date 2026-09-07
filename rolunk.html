@@ -1,45 +1,60 @@
 <!doctype html>
 <html lang="hu">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0", maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Károlyház Kft.: Tudjon meg többet a cégünkről, történetünkről és értékeinkről. Ismerje meg, miért érdemes minket választani építkezési projektjeihez.">
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="Károlyház Kft.: Tudjon meg többet a cégünkről, történetünkről és értékeinkről. Ismerje meg, miért érdemes minket választani építkezési projektjeihez."
+    />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-    <title>Rólunk - Károlyház kft.</title>
+    <title>Rólunk - Károlyház Kft.</title>
   </head>
   <body>
+    <!-- FEJLÉC -->
     <header class="fejlec">
-        <div class="logo">
-            <a href="index.html" class="karolyhaz"><img src="karolyhaz-logo.webp" alt="karolyhaz logo"></a>
-        </div>
+      <div class="logo">
+        <a href="index.html" class="karolyhaz"
+          ><img src="karolyhaz-logo.webp" alt="karolyhaz logo"
+        /></a>
+      </div>
 
-        <nav class="navigacio">
-            <ul>
-                <li ><a href="rolunk.html" class="aktiv-navigacio">Rólunk</a></li>
-                <li><a href="munkaink.html">Munkáink</a></li>
-                <li><a href="szolgaltatasaink.html">Szolgáltatások</a></li>
-                <li class="lenyilomenu-tarolo">
-                    <a href="#" class="lenyilo-gomb">Céginformációk <span class="nyil">&#9662;</span></a>
-                    <ul class="lenyilomenu-tartalom">
-                        <li><a href="impresszum.html">Impresszum és Cégadatok</a></li>
-                        <li><a href="palyazatok.html">Pályázatok</a></li>
-                        <li><a href="#" id="suti-megnyito">Sütik beállítása</a></li>
-                    </ul>
-                </li>
+      <nav class="navigacio">
+        <ul>
+          <li><a href="index.html">Főoldal</a></li>
+          <li><a href="rolunk.html" class="aktiv-navigacio">Rólunk</a></li>
+          <li><a href="munkaink.html">Munkáink</a></li>
+          <li><a href="szolgaltatasaink.html">Szolgáltatások</a></li>
+          <li class="lenyilomenu-tarolo">
+            <a href="#" class="lenyilo-gomb"
+              >Céginformációk <span class="nyil">&#9662;</span></a
+            >
+            <ul class="lenyilomenu-tartalom">
+              <li><a href="impresszum.html">Impresszum és Cégadatok</a></li>
+              <li><a href="palyazatok.html">Pályázatok</a></li>
+              <li><a href="#" id="suti-megnyito">Sütik beállítása</a></li>
             </ul>
-        </nav>
-        <div class="kapcsolat">
-            <a href="kapcsolat.html" class="gomb">Kapcsolat<span class="mobil-rejt">felvétel</span></a>
-        </div>
-        
-        <div class="lenyilomenu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="kapcsolat">
+        <a href="kapcsolat.html" class="gomb"
+          >Kapcsolat<span class="mobil-rejt">felvétel</span></a
+        >
+      </div>
+
+      <div class="lenyilomenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </header>
 
+    <!-- HERO SZEKCIÓ -->
     <section class="hero rolunk-hero statik-hero">
       <div
         class="hero-kep"
@@ -58,44 +73,78 @@
       </div>
     </section>
 
-    <section class="rolunk-bemutato-szekcio">
-      <div class="bemutato-grid">
-        <div class="hosszu-koszonto-doboz">
-          <h2>Építkezünk a jövőre</h2>
-          <p>
-            Napjainkra már megyei szinten is meghatározó kivitelezési
-            kapacitással rendelkezünk a magasépítési fővállalkozás teljeskörű
-            megvalósításának biztosításával. Tapasztalt, lelkiismeretes,
-            diplomás, felelős műszaki vezetői jogosultsággal, nyelvtudással
-            rendelkező fiatal csapat biztosítja feladataink színvonalas
-            megvalósítását.
-          </p>
-          <p>
-            Alaposan felkészült, folyamatosan felügyelt szállítói és
-            alvállalkozói körrel dolgozunk, amelynek teljesítményét minőségi
-            szintre emelve koordináljuk. Elsődleges célunk, hogy
-            szolgáltatásaink minősége megrendelőink igényeinek maximálisan
-            megfeleljen, ezért dolgozóink felkészültségét, a technikai
-            eszközeinket, gépparkunkat folyamatosan fejlesztjük.
-          </p>
-          <p>
-            Kifejezetten nagy hangsúlyt helyezünk arra, hogy tevékenységét
-            mindenkor az érvényes jogszabályoknak megfelelően végezzük.
-          </p>
+    <!-- MODERN RÓLUNK SZEKCIÓ (Az új átfedéses dizájn a te szövegeiddel) -->
+    <section class="modern-rolunk-szekcio">
+      <div class="m-rolunk-kontener">
+        <div class="m-rolunk-grid">
+          <!-- Bal oldal: Kép és a lebegő badge -->
+          <div class="m-rolunk-kep animacio-alulrol">
+            <img
+              src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1260"
+              alt="Károlyház Kft kivitelezés"
+            />
+            <div class="lebelgo-badge">
+              <span class="badge-szam" data-cel="30">0</span>
+              <span class="badge-szoveg">Év<br />Tapasztalat</span>
+            </div>
+          </div>
+
+          <!-- Jobb oldal: Szövegdoboz, ami rácsúszik a képre -->
+          <div class="m-rolunk-szoveg animacio-jobbrol">
+            <h2 class="arany-alcim">Kik Vagyunk Mi?</h2>
+            <h3 class="fo-szlogen">Építkezünk a jövőre</h3>
+            <p>
+              Napjainkra már megyei szinten is meghatározó kivitelezési
+              kapacitással rendelkezünk a magasépítési fővállalkozás teljeskörű
+              megvalósításának biztosításával. Tapasztalt, lelkiismeretes,
+              diplomás, felelős műszaki vezetői jogosultsággal, nyelvtudással
+              rendelkező fiatal csapat biztosítja feladataink színvonalas
+              megvalósítását.
+            </p>
+            <p>
+              Alaposan felkészült, folyamatosan felügyelt szállítói és
+              alvállalkozói körrel dolgozunk. Elsődleges célunk, hogy
+              szolgáltatásaink minősége megrendelőink igényeinek maximálisan
+              megfeleljen, és tevékenységünket mindenkor az érvényes
+              jogszabályoknak megfelelően végezzük.
+            </p>
+          </div>
         </div>
 
-        <div class="bemutato-kep-doboz">
-          <img
-            src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1260"
-            alt="Károlyház Kft kivitelezés"
-          />
+        <!-- Dinamikus számok -->
+        <div class="statisztika-grid animacio-fade">
+          <div class="stat-elem">
+            <div class="stat-szam-tarolo">
+              <span class="stat-szam" data-cel="150">0</span>+
+            </div>
+            <div class="stat-szoveg">Sikeres Projekt</div>
+          </div>
+          <div class="stat-elem">
+            <div class="stat-szam-tarolo">
+              <span class="stat-szam" data-cel="100">0</span>%
+            </div>
+            <div class="stat-szoveg">Megrendelői Elégedettség</div>
+          </div>
+          <div class="stat-elem">
+            <div class="stat-szam-tarolo">
+              <span class="stat-szam" data-cel="45">0</span>
+            </div>
+            <div class="stat-szoveg">Fős Szakembergárda</div>
+          </div>
+          <div class="stat-elem">
+            <div class="stat-szam-tarolo">
+              <span class="stat-szam" data-cel="3">0</span>
+            </div>
+            <div class="stat-szoveg">ISO Minősítés</div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- INFORMÁCIÓS KÁRTYÁK SZEKCIÓ -->
     <section class="rolunk-informaciok">
       <div class="info-grid">
-        <div class="info-kartya">
+        <div class="info-kartya animacio-alulrol">
           <div class="kartya-szam">01</div>
           <h3>Kapacitás & Szakértelem</h3>
           <p>
@@ -106,7 +155,11 @@
             kivitelezést.
           </p>
         </div>
-        <div class="info-kartya">
+
+        <div
+          class="info-kartya animacio-alulrol"
+          style="transition-delay: 0.2s"
+        >
           <div class="kartya-szam">02</div>
           <h3>Minőség & Szabványok</h3>
           <p>
@@ -121,7 +174,10 @@
           </p>
         </div>
 
-        <div class="info-kartya">
+        <div
+          class="info-kartya animacio-alulrol"
+          style="transition-delay: 0.4s"
+        >
           <div class="kartya-szam">03</div>
           <h3>Biztosítások & Engedélyek</h3>
           <p>
@@ -131,7 +187,10 @@
           </p>
         </div>
 
-        <div class="info-kartya">
+        <div
+          class="info-kartya animacio-alulrol"
+          style="transition-delay: 0.6s"
+        >
           <div class="kartya-szam">04</div>
           <h3>Saját Asztalos és Lakatos Üzem</h3>
           <p>
@@ -143,12 +202,13 @@
       </div>
     </section>
 
+    <!-- LÁBLÉC -->
     <footer id="kapcsolat" class="lablec">
         <div class="lablec-kepsav">
-            <img src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 1">
-            <img src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 2">
-            <img src="https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 3">
-            <img src="https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Építkezés 4">
+            <img src=https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Építkezés 1">
+            <img src="https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg" alt="Építkezés 2">
+            <img src="https://lh5.googleusercontent.com/p/AF1QipORlzDY9g82D1MOj13boWE4AKnGX6qheUHArVv3=w650-h480-k-no" alt="Építkezés 3">
+            <img src="https://regioportal.hu/wp-content/uploads/stadler-szolnok-vasuti-jarmugyarto-kft-szolnok.jpg" alt="Építkezés 4">
         </div>
         <div class="lablec-tartalom">
             <div class="lablec-kapcsolat">
@@ -185,5 +245,5 @@
             </div>
         </div>
     </div>
-  </body>
+</body>
 </html>

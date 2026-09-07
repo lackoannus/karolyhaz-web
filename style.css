@@ -35,11 +35,28 @@ img {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
-  position: absolute;
+
+  /* absolute helyett fixed, hogy követni tudjon a képernyőn! */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 1000; /* Magasabb z-index, hogy a felugró ablakok kivételével minden felett legyen */
+
+  /* Animációk a le-fel csúszáshoz és a háttérszín váltáshoz */
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.4s ease;
+}
+
+/* EZT AZ OSZTÁLYT TESZI RÁ A JS, HA LEFELÉ GÖRGETSZ (Eltünteti felfelé) */
+.fejlec.rejtve {
+  transform: translateY(-100%);
+}
+
+/* EZT AKKOR TESZI RÁ, HA MÁR NEM A LEGTETEJÉN VAGY (Sötétebb lesz, hogy olvasható maradjon a szöveg felett) */
+.fejlec.gorgetve {
+  background-color: rgba(26, 26, 26, 0.95);
 }
 
 .logo,
@@ -330,7 +347,7 @@ img {
 }
 
 .fooldal-rolunk-szoveg h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   color: var(--szin-kiemeles);
   margin-bottom: 1.5rem;
   text-transform: uppercase;
@@ -1281,20 +1298,20 @@ img {
     visibility 0.3s ease;
 }
 
-/* Amikor megnyílik */
 .projekt-modal.aktiv {
   opacity: 1;
   visibility: visible;
 }
 
-/* A modal doboz dizájnja */
+/* ========================================= */
+/* A MODAL ABLAK MÉRETE (70% széles, 60% magas) */
+/* ========================================= */
 .modal-tartalom {
   background-color: var(--szin-sotet);
-  width: 90%;
-  max-width: 1000px;
-  max-height: 90vh;
+  width: 70vw; /* Pontosan a képernyő szélességének 70%-a */
+  height: 60vh; /* Pontosan a képernyő magasságának 60%-a */
   border: 1px solid var(--szin-kiemeles);
-  border-radius: 8px;
+  border-radius: 12px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
@@ -1306,7 +1323,7 @@ img {
   transform: translateY(0);
 }
 
-/* X bezáró gomb */
+/* BEZÁRÓ GOMB (Picit beljebb húzva, hogy a kereten belül legyen) */
 .modal-bezaras {
   position: absolute;
   top: 15px;
@@ -1315,7 +1332,7 @@ img {
   font-size: 2.5rem;
   font-weight: bold;
   cursor: pointer;
-  z-index: 10;
+  z-index: 20;
   transition: color 0.3s ease;
 }
 
@@ -1323,29 +1340,111 @@ img {
   color: var(--szin-kiemeles);
 }
 
-/* Belső elrendezés: balra kép, jobbra szöveg */
+/* ========================================= */
+/* BELSŐ ELRENDEZÉS ÉS A "LEVEGŐ" (PADDING) */
+/* ========================================= */
 .modal-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   height: 100%;
+  gap: 4rem; /* Távolság a kép és a szöveg között */
+  padding: 4rem; /* EZ ADJA A KERETET: 4rem távolság körben a falaktól! */
+  align-items: stretch; /* Hogy a kép és a szöveg függőlegesen középre kerüljön */
+}
+
+.modal-kep-tarolo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #000;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* 1. A "Keret", ami levágja a kilógó filmszalagot */
+.modal-kep-kivago {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 2. A "Filmszalag", ami fizikailag mozog balra-jobbra */
+.modal-kep-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Prémium, sima csúszás */
+}
+
+/* 3. Egyetlen képkocka a szalagon */
+.modal-kep-slide {
+  min-width: 100%; /* Minden kép kötelezően kitölti a keretet */
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .modal-kep {
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
-  min-height: 300px;
+  transition: background-image 0.4s ease-in-out;
 }
 
+/* LAPOZÓ GOMBOK */
+.slider-gomb {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(26, 26, 26, 0.8);
+  color: var(--szin-kiemeles);
+  border: 1px solid var(--szin-kiemeles);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  z-index: 10;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.slider-gomb:hover {
+  background-color: var(--szin-kiemeles);
+  color: black;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-elozo {
+  left: 15px;
+}
+.slider-kovetkezo {
+  right: 15px;
+}
+.slider-gomb.rejtett {
+  display: none !important;
+}
+
+/* ========================================= */
+/* JOBB OLDALI SZÖVEG */
+/* ========================================= */
 .modal-szoveg {
-  padding: 3rem;
-  overflow-y: auto; /* Ha nagyon hosszú a szöveg, görgethető legyen */
-  max-height: 85vh;
+  padding: 0; /* A grid paddingje miatt itt már nem kell extra belső szünet */
+  overflow-y: auto;
+  max-height: 100%; /* Kitölti a rendelkezésre álló teret */
+  padding-right: 1rem; /* Pici hely a görgetősávnak, ha hosszú lenne a szöveg */
 }
 
 .modal-szoveg h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--szin-feher);
-  margin: 1rem 0 0.5rem 0;
+  margin: 0.5rem 0;
 }
 
 .modal-szoveg .modal-meta {
@@ -1362,15 +1461,23 @@ img {
   font-size: 1.05rem;
 }
 
+/* ========================================= */
+/* MOBIL NÉZET (Biztonsági felülírás) */
+/* ========================================= */
 @media (max-width: 900px) {
+  .modal-tartalom {
+    width: 95vw; /* Mobilon ne legyen 70%, mert nem férne ki semmi */
+    height: auto;
+    max-height: 90vh;
+  }
   .modal-grid {
     grid-template-columns: 1fr;
+    padding: 2.5rem 1.5rem; /* Mobilon kisebb keret, hogy több maradjon a képnek */
+    gap: 2rem;
   }
-  .modal-kep {
+  .modal-kep-tarolo {
     min-height: 250px;
-  }
-  .modal-szoveg {
-    padding: 2rem;
+    height: 35vh;
   }
 }
 
@@ -1887,5 +1994,346 @@ img {
     padding: 0.4rem 0.6rem !important;
     font-size: 0.7rem !important;
     letter-spacing: 0 !important;
+  }
+}
+/* ========================================= */
+/* HERO BELÉPŐ ANIMÁCIÓK (Első betöltéskor) */
+/* ========================================= */
+
+/* 1. Maga a csúszás és felerősödés szabálya */
+@keyframes lentiCsuszas {
+  0% {
+    opacity: 0;
+    transform: translateY(60px); /* 60 pixellel lejjebbről indul */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Beáll az eredeti, végleges helyére */
+  }
+}
+
+/* 2. Az animáció ráhúzása a Hero elemekre */
+.hero-tartalom h1,
+.hero-tartalom p,
+.hero-gomb {
+  /* Alapból rejtve vannak, amíg az animáció el nem indul */
+  opacity: 0;
+  /* 0.8 másodperc alatt fut le, finom lassulással a végén (ease-out) */
+  animation: lentiCsuszas 0.8s ease-out forwards;
+}
+
+/* 3. Lépcsőzetes késleltetés (Kaszkád hatás) */
+.hero-tartalom h1 {
+  animation-delay: 0.2s; /* A cím indul a leghamarabb */
+}
+
+.hero-tartalom p {
+  animation-delay: 0.4s; /* A szöveg picit később követi */
+}
+
+.hero-gomb {
+  animation-delay: 0.6s; /* A gomb jelenik meg legutoljára */
+}
+/* ========================================= */
+/* GÖRGETÉSRE INDULÓ ANIMÁCIÓK */
+/* ========================================= */
+
+/* Alapállapot: rejtve és balra tolva 100 pixellel */
+.animacio-balrol {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Alapállapot: csak rejtve (a képhez) */
+.animacio-fade {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+/* Amikor a JavaScript ráteszi ezt az osztályt, az elemek beállnak a helyükre */
+.animacio-balrol.megjelent {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animacio-fade.megjelent {
+  opacity: 1;
+}
+
+/* ========================================= */
+/* KÁRTYÁK BECSÚSZÁSA JOBBRÓL (KASZKÁD) */
+/* ========================================= */
+/* ========================================= */
+/* KÁRTYÁK BECSÚSZÁSA (ASZTALI ÉS MOBIL) */
+/* ========================================= */
+
+.animacio-jobbrol {
+  opacity: 0;
+}
+
+/* ASZTALI NÉZET: A képernyő legszéléről érkeznek */
+.animacio-jobbrol.megjelent {
+  /* Egy picit lendületesebb ív (cubic-bezier), ami jól mutat nagy távolságnál */
+  animation: beCsuszasLegjobbrol 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes beCsuszasLegjobbrol {
+  0% {
+    opacity: 0;
+    transform: translateX(100vw); /* Teljesen letolja a képernyő jobb szélére */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* Visszaáll az eredeti helyére */
+  }
+}
+
+/* Asztali késleltetés (dominó) */
+.szolg-kartya:nth-child(1).megjelent {
+  animation-delay: 0s;
+}
+.szolg-kartya:nth-child(2).megjelent {
+  animation-delay: 0.2s;
+}
+.szolg-kartya:nth-child(3).megjelent {
+  animation-delay: 0.4s;
+}
+
+/* ========================================= */
+/* MOBIL NÉZET: Lentről felfelé csúszás */
+/* ========================================= */
+@media (max-width: 900px) {
+  .animacio-jobbrol.megjelent {
+    /* Felülírjuk az animációt: mobilon lentről jöjjenek */
+    animation: beCsuszasAlulrol 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  /* Mobilon, mivel egymás alatt vannak, gyorsítjuk a dominót, 
+     hogy a görgetésnél ne kelljen sokat várni a legalsóra */
+  .szolg-kartya:nth-child(1).megjelent {
+    animation-delay: 0s;
+  }
+  .szolg-kartya:nth-child(2).megjelent {
+    animation-delay: 0.15s;
+  }
+  .szolg-kartya:nth-child(3).megjelent {
+    animation-delay: 0.3s;
+  }
+}
+
+@keyframes beCsuszasAlulrol {
+  0% {
+    opacity: 0;
+    transform: translateY(80px); /* Lentről indul */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ========================================= */
+/* FINOM CSÚSZÁS JOBBRÓL (Szolgáltatásokhoz) */
+/* ========================================= */
+
+.animacio-jobbrol-alap {
+  opacity: 0;
+  transform: translateX(100px); /* +100px, tehát jobbról jön */
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animacio-jobbrol-alap.megjelent {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* ========================================= */
+/* ÚJ ANIMÁCIÓK */
+/* ========================================= */
+.animacio-alulrol {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.animacio-alulrol.megjelent {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================= */
+/* MODERN RÓLUNK: ÁTFEDÉSES (OVERLAPPING) DIZÁJN */
+/* ========================================= */
+.modern-rolunk-szekcio {
+  padding: 8rem var(--oldal-padding);
+  background-color: var(--szin-sotet);
+  color: var(--szin-feher);
+  overflow: hidden; /* Ne lógjon ki az animáció az oldalról */
+}
+
+.m-rolunk-kontener {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* 1. Az átfedés logikája (Javított, kőbe vésett méretek) */
+.m-rolunk-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8rem;
+  flex-wrap: wrap; /* Ha nem fér ki, törje a sort, ne nyomja össze! */
+}
+
+.m-rolunk-kep {
+  flex: 0 0 55%; /* Szigorúan a hely 55%-át kapja, se többet, se kevesebbet */
+  position: relative;
+  z-index: 1;
+}
+
+.m-rolunk-kep img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  display: block;
+}
+
+.m-rolunk-szoveg {
+  flex: 0 0 50%; /* Szigorúan 50% */
+  background-color: #1a1a1a;
+  padding: 4rem;
+  border-radius: 8px;
+  box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+  margin-left: -5%; /* A mínusz 5% adja a tökéletes átfedést */
+  border-left: 4px solid var(--szin-kiemeles);
+}
+
+/* ========================================= */
+/* MOBIL NÉZET: Átalakulás szimpla oszloppá */
+/* ========================================= */
+@media (max-width: 1000px) {
+  .m-rolunk-kep,
+  .m-rolunk-szoveg {
+    flex: 0 0 100%; /* Mobilon teljes szélesség */
+    margin-left: 0; /* Mobilon tilos az átfedés */
+  }
+  .m-rolunk-grid {
+    gap: 4rem;
+  }
+}
+
+/* A lebegő arany plakett */
+.lebelgo-badge {
+  position: absolute;
+  bottom: -30px;
+  left: -30px; /* A VARÁZSLAT: right helyett left, így a kép bal sarkán fog lebegni! */
+  background-color: var(--szin-kiemeles);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  color: black;
+  z-index: 3;
+}
+
+.badge-szam {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 900;
+  font-family: monospace;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.badge-szoveg {
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.arany-alcim {
+  color: var(--szin-kiemeles);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+}
+
+.fo-szlogen {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.m-rolunk-szoveg p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--szin-szoveg);
+  margin-bottom: 2rem;
+}
+
+.m-pipa-lista {
+  list-style: none;
+  padding: 0;
+}
+
+.m-pipa-lista li {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  color: #dddddd;
+}
+
+.m-pipa-lista li::before {
+  content: "✓";
+  color: var(--szin-kiemeles);
+  font-weight: bold;
+  margin-right: 15px;
+  font-size: 1.3rem;
+}
+
+/* 3. Statisztika számláló sor */
+.statisztika-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 5rem;
+}
+
+.stat-elem {
+  text-align: center;
+}
+
+.stat-szam-tarolo {
+  font-size: 4rem;
+  font-weight: 900;
+  font-family: monospace;
+  color: var(--szin-kiemeles);
+  margin-bottom: 0.5rem;
+}
+
+.stat-szoveg {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--szin-szoveg);
+}
+
+/* ========================================= */
+/* MOBIL NÉZET: Átalakulás szimpla oszloppá */
+/* ========================================= */
+@media (max-width: 1000px) {
+  .lebelgo-badge {
+    bottom: -20px;
+    left: 20px; /* Mobilon 20 pixellel beljebb húzzuk a bal széltől */
+    padding: 1.5rem;
+  }
+  .statisztika-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 1.5rem;
   }
 }
