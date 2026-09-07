@@ -62,7 +62,8 @@ img {
 .logo,
 .logo a {
   display: flex;
-  align-items: center;
+  flex: 1;
+  justify-content: flex-start;
   margin: 0;
   padding: 0;
 }
@@ -75,12 +76,22 @@ img {
 }
 
 /* NAVIGACIO */
+.navigacio {
+  display: flex;
+  justify-content: center;
+  flex: 2;
+}
 .aktiv-navigacio {
   color: var(--szin-kiemeles) !important;
 }
 .navigacio ul {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
   gap: 2rem;
+  margin: 0;
+  padding: 0;
   list-style: none;
   flex-wrap: wrap;
 }
@@ -97,6 +108,11 @@ img {
   color: var(--szin-kiemeles);
 }
 
+.kapcsolat {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
 .gomb {
   background-color: var(--szin-kiemeles);
   color: black;
@@ -1462,22 +1478,73 @@ img {
 }
 
 /* ========================================= */
+/* ELEGÁNS, Feltételes Gördülősáv (Scrollbar) */
+/* ========================================= */
+
+.modal-szoveg,
+.modal-grid {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--szin-kiemeles) rgba(26, 26, 26, 0.5);
+}
+
+/* Sáv szélessége */
+.modal-szoveg::-webkit-scrollbar,
+.modal-grid::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Sáv háttere */
+.modal-szoveg::-webkit-scrollbar-track,
+.modal-grid::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+/* A csúszka maga */
+.modal-szoveg::-webkit-scrollbar-thumb,
+.modal-grid::-webkit-scrollbar-thumb {
+  background-color: var(--szin-kiemeles);
+  border-radius: 10px;
+}
+
+.modal-szoveg::-webkit-scrollbar-thumb:hover,
+.modal-grid::-webkit-scrollbar-thumb:hover {
+  background-color: #ffd700;
+}
+
+/* ========================================= */
 /* MOBIL NÉZET (Biztonsági felülírás) */
 /* ========================================= */
 @media (max-width: 900px) {
   .modal-tartalom {
-    width: 95vw; /* Mobilon ne legyen 70%, mert nem férne ki semmi */
-    height: auto;
-    max-height: 90vh;
+    width: 95vw;
+    height: 85vh; /* Mobilon a képernyő 85%-a */
+    max-height: 85vh;
+    overflow: hidden; /* A külső doboz nem görget, csak a belső szöveg */
   }
+
   .modal-grid {
     grid-template-columns: 1fr;
-    padding: 2.5rem 1.5rem; /* Mobilon kisebb keret, hogy több maradjon a képnek */
-    gap: 2rem;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    height: 100%;
+    overflow-y: auto; /* HA EGÉSZBEN AKAROD HOGY GÖRGESSÖN A MODAL: */
+    -webkit-overflow-scrolling: touch;
   }
+
   .modal-kep-tarolo {
-    min-height: 250px;
-    height: 35vh;
+    min-height: 220px;
+    height: 25vh;
+    flex-shrink: 0; /* A kép ne tudjon összenyomódni */
+  }
+
+  /* A JOBB OLDALI SZÖVEGDOBOZ GÖRGETÉSE */
+  .modal-szoveg {
+    overflow-y: auto !important; /* Engedélyezzük a függőleges görgetést */
+    max-height: none;
+    padding-right: 0.5rem;
+    -webkit-overflow-scrolling: touch; /* Sima, natív mobilos görgetés iOS-en és Androidon */
   }
 }
 
@@ -1588,7 +1655,54 @@ img {
   transform: scale(1.02);
   box-shadow: 20px 20px 0px rgba(212, 169, 76, 0.25);
 }
+/* ========================================= */
+/* MOBIL JAVÍTÁSOK A SZOLGÁLTATÁSOK OLDALHOZ */
+/* ========================================= */
 
+@media (max-width: 900px) {
+  /* 1. CIKKCAKK SOROK: Mobilon mindent egymás alá kényszerítünk */
+  .szolgaltatas-sor,
+  .szolgaltatas-sor.forditott {
+    flex-direction: column !important; /* Megszüntetjük a fordított oldalak kavarodását */
+    gap: 2rem !important;
+    margin-bottom: 4rem !important;
+  }
+
+  /* A szöveg és a kép is elfoglalja a teljes szélességet */
+  .sz-szoveg,
+  .sz-kep {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* A kép magassága mobilon se legyen túl óriási vagy túl lapos */
+  .sz-kep img {
+    width: 100% !important;
+    height: 250px !important;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* 2. HERO CÍM: Megakadályozzuk, hogy kilógjon a képernyőről */
+  .hero-tartalom {
+    padding: 0 1.5rem;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hero-cim {
+    /* Reszponzív méret: automatikusan összébb megy pici képernyőn */
+    font-size: clamp(2.2rem, 7vw, 3.5rem) !important;
+    line-height: 1.2;
+    word-break: break-word; /* Ha túl hosszú szó lenne, eltöri, de nem lóg ki */
+  }
+
+  .hero-tartalom p {
+    font-size: 1rem !important;
+    line-height: 1.6;
+  }
+}
 /* ========================================= */
 /* CTA SZEKCIÓ (Kapcsolatfelvétel ösztönzés) */
 /* ========================================= */
@@ -2327,13 +2441,73 @@ img {
 /* MOBIL NÉZET: Átalakulás szimpla oszloppá */
 /* ========================================= */
 @media (max-width: 1000px) {
-  .lebelgo-badge {
-    bottom: -20px;
-    left: 20px; /* Mobilon 20 pixellel beljebb húzzuk a bal széltől */
-    padding: 1.5rem;
-  }
+  /* 1. A statisztikai számok méretének csökkentése mobilon, hogy ne lógjanak ki */
   .statisztika-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 3rem 1.5rem;
+    gap: 2rem 1rem;
+    padding-top: 3rem;
+  }
+
+  .stat-szam-tarolo {
+    font-size: 2.8rem; /* 4rem-ről visszavéve, így garantáltan elfér kettő egymás mellett */
+  }
+
+  .stat-szoveg {
+    font-size: 0.9rem; /* Picit finomabb betűméret alatta */
+  }
+
+  /* 2. A lebegő arany badge méretezése mobilon, hogy ne lógjon le a képről */
+  .lebelgo-badge {
+    bottom: -15px;
+    left: 15px;
+    padding: 1rem 1.2rem;
+  }
+
+  .badge-szam {
+    font-size: 2.5rem; /* Itt is kisebbre vesszük, hogy ne torzuljon */
+  }
+
+  .badge-szoveg {
+    font-size: 0.85rem;
+  }
+}
+/* ========================================= */
+/* FŐOLDALI HERO FIX (Középre igazítás mobilon és gépen) */
+/* ========================================= */
+body.fooldal .hero, 
+.index-hero .hero-tartalom,
+/* Ha a főoldalon külön osztály nincs a bodyn, akkor az index.html hero-jára célozzunk: */
+.hero {
+  text-align: center; /* Visszaállítjuk a középső igazítást */
+}
+
+.hero-tartalom {
+  max-width: 900px;
+  margin: 0 auto; /* Középre húzza a dobozt */
+  padding: 0 2rem; /* Biztosít egy kis helyet a széleken, hogy ne ragadjon ki a képernyő szélére */
+  box-sizing: border-box;
+}
+
+/* Mobilon is garantáljuk a szép, középre zárt, nem kilógó elrendezést */
+@media (max-width: 900px) {
+  .hero-tartalom {
+    padding: 0 1.5rem !important;
+    margin: 0 auto !important;
+    left: auto !important;
+    transform: none !important;
+    text-align: center !important;
+  }
+}
+@media (max-width: 900px) {
+  .navigacio ul,
+  .navigacio.aktiv ul,
+  .mobil-menu-tartalom {
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .navigacio li {
+    text-align: center !important;
   }
 }
