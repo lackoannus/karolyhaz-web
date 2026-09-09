@@ -540,3 +540,263 @@ document.addEventListener("DOMContentLoaded", function () {
 
   szamlalok.forEach((sz) => szamlaloFigyelo.observe(sz));
 });
+// =========================================================
+// KÖZPONTI PROJEKT MODAL & TÉRKÉP RENDSZER
+// =========================================================
+document.addEventListener("DOMContentLoaded", function () {
+  // =========================================================
+  // 1. MODAL MEGNYITÁSA ÉS SLIDER FELTÖLTÉSE
+  // =========================================================
+  function nyisdMegAProjektModalt(kartya) {
+    const pModal = document.getElementById("projekt-modal");
+    if (!pModal) return;
+
+    const cim = kartya.querySelector("h3")
+      ? kartya.querySelector("h3").innerText
+      : "";
+    const badge = kartya.querySelector(".kartya-badge")
+      ? kartya.querySelector(".kartya-badge").innerText
+      : "";
+    const meta = kartya.querySelector(".kartya-meta")
+      ? kartya.querySelector(".kartya-meta").innerHTML
+      : "";
+    const leiras = kartya.querySelector(".kartya-rejtett-reszletek")
+      ? kartya.querySelector(".kartya-rejtett-reszletek").innerHTML
+      : "";
+
+    let kepek = [];
+    const hatter = kartya.querySelector(".kartya-hatter");
+    if (hatter && hatter.style.backgroundImage) {
+      let alapKep = hatter.style.backgroundImage
+        .slice(4, -1)
+        .replace(/["']/g, "");
+      if (alapKep) kepek.push(alapKep);
+    }
+    const galeriaAttr = kartya.getAttribute("data-galeria");
+    if (galeriaAttr) {
+      const galeriaKepek = galeriaAttr
+        .split(",")
+        .map((k) => k.trim())
+        .filter((k) => k !== "");
+      kepek = kepek.concat(galeriaKepek);
+    }
+
+    const modalCim = document.getElementById("modal-cim");
+    const modalBadge = document.getElementById("modal-badge-szoveg");
+    const modalMeta = document.getElementById("modal-meta-szoveg");
+    const modalLeiras = document.getElementById("modal-leiras");
+
+    if (modalCim) modalCim.innerText = cim;
+    if (modalMeta) modalMeta.innerHTML = meta;
+    if (modalLeiras) modalLeiras.innerHTML = leiras;
+    if (modalBadge) {
+      modalBadge.innerText = badge;
+      modalBadge.style.display = badge ? "inline-block" : "none";
+    }
+
+    // Slider mechanika
+    const track = document.getElementById("modal-kep-track");
+    let jelenlegiKepIndex = 0;
+
+    if (track) {
+      track.innerHTML = "";
+      track.style.display = "flex";
+      track.style.transition = "transform 0.3s ease-in-out";
+
+      kepek.forEach((url) => {
+        const img = document.createElement("img");
+        img.src = url;
+        img.style.width = "100%";
+        img.style.flexShrink = "0";
+        img.style.objectFit = "cover";
+        track.appendChild(img);
+      });
+      track.style.transform = `translateX(0%)`;
+    }
+
+    const gombElozo = document.getElementById("modal-elozo");
+    const gombKovetkezo = document.getElementById("modal-kovetkezo");
+
+    if (gombElozo && gombKovetkezo && track) {
+      const ujElozo = gombElozo.cloneNode(true);
+      const ujKovetkezo = gombKovetkezo.cloneNode(true);
+      gombElozo.parentNode.replaceChild(ujElozo, gombElozo);
+      gombKovetkezo.parentNode.replaceChild(ujKovetkezo, gombKovetkezo);
+
+      ujElozo.style.display = kepek.length > 1 ? "block" : "none";
+      ujKovetkezo.style.display = kepek.length > 1 ? "block" : "none";
+
+      ujKovetkezo.addEventListener("click", () => {
+        if (jelenlegiKepIndex < kepek.length - 1) {
+          jelenlegiKepIndex++;
+          track.style.transform = `translateX(-${jelenlegiKepIndex * 100}%)`;
+        }
+      });
+
+      ujElozo.addEventListener("click", () => {
+        if (jelenlegiKepIndex > 0) {
+          jelenlegiKepIndex--;
+          track.style.transform = `translateX(-${jelenlegiKepIndex * 100}%)`;
+        }
+      });
+    }
+
+    // Modal megjelenítése a stílus felülírása nélkül
+    pModal.classList.remove("rejtett");
+    pModal.style.zIndex = "99999";
+  }
+
+  // =========================================================
+  // 2. KÁRTYÁK RÁKÖTÉSE (A rejtetteket is beleértve)
+  // =========================================================
+  const osszesOldaliKartya = document.querySelectorAll(".projekt-kartya");
+  osszesOldaliKartya.forEach((kartya) => {
+    const gomb = kartya.querySelector(".reszletek-gomb");
+    if (gomb) {
+      gomb.addEventListener("click", (e) => {
+        e.stopPropagation();
+        nyisdMegAProjektModalt(kartya);
+      });
+    }
+  });
+
+  const pModal = document.getElementById("projekt-modal");
+  const pModalBezar = document.getElementById("modal-bezaras");
+
+  if (pModal) {
+    if (pModalBezar) {
+      pModalBezar.addEventListener("click", () => {
+        pModal.classList.add("rejtett");
+      });
+    }
+    pModal.addEventListener("click", (e) => {
+      if (e.target === pModal) pModal.classList.add("rejtett");
+    });
+  }
+
+  // =========================================================
+  // 3. TÉRKÉP MOTOR
+  // =========================================================
+  const terkepTarolo = document.getElementById("terkep-pontok-tarolo");
+  const kategoriaSzuro = document.getElementById("terkep-kategoria");
+
+  // Ha nincs kártya és nincs térkép, ne csináljon semmit
+  if (!terkepTarolo || osszesOldaliKartya.length === 0) return;
+
+  const varosKoordinatak = {
+    Szolnok: { top: 58, left: 63 },
+    Budapest: { top: 40, left: 47 },
+    Jászberény: { top: 45, left: 56 },
+  };
+
+  if (kategoriaSzuro) {
+    const tipusok = new Set();
+    osszesOldaliKartya.forEach((k) => {
+      const badge = k.querySelector(".kartya-badge");
+      if (badge) tipusok.add(badge.textContent.trim());
+    });
+
+    kategoriaSzuro.innerHTML = '<option value="osszes">Minden projekt</option>';
+    Array.from(tipusok)
+      .sort()
+      .forEach((t) => {
+        const opc = document.createElement("option");
+        opc.value = t;
+        opc.textContent = t;
+        kategoriaSzuro.appendChild(opc);
+      });
+  }
+
+  const vModal = document.getElementById("varos-modal");
+  const vModalCim = document.getElementById("varos-modal-cim");
+  const vModalLista = document.getElementById("varos-projekt-lista");
+  const vModalBezar = document.querySelector(".varos-bezar");
+
+  function terkepFrissitese() {
+    const kategoria = kategoriaSzuro ? kategoriaSzuro.value : "osszes";
+    terkepTarolo.innerHTML = "";
+    let statisztika = {};
+
+    osszesOldaliKartya.forEach((kartya) => {
+      const hely = kartya.getAttribute("data-helyszin");
+      const badge = kartya.querySelector(".kartya-badge");
+      const tipus = badge ? badge.textContent.trim() : "";
+
+      if (!hely) return;
+
+      if (kategoria === "osszes" || tipus === kategoria) {
+        if (!statisztika[hely]) {
+          statisztika[hely] = { darab: 0, kartyak: [] };
+        }
+        statisztika[hely].darab++;
+        statisztika[hely].kartyak.push(kartya);
+      }
+    });
+
+    Object.keys(statisztika).forEach((varosNev) => {
+      if (statisztika[varosNev].darab > 0 && varosKoordinatak[varosNev]) {
+        const koord = varosKoordinatak[varosNev];
+
+        const pont = document.createElement("div");
+        pont.className = "terkep-pont";
+        pont.style.top = koord.top + "%";
+        pont.style.left = koord.left + "%";
+
+        const szam = document.createElement("div");
+        szam.className = "terkep-szam";
+        szam.innerText = statisztika[varosNev].darab;
+        pont.appendChild(szam);
+
+        const cimke = document.createElement("div");
+        cimke.className = "terkep-varos-nev";
+        cimke.innerText = varosNev;
+        pont.appendChild(cimke);
+
+        pont.addEventListener("click", function () {
+          vModalCim.innerText = `${varosNev} (${statisztika[varosNev].darab} projekt)`;
+          vModalLista.innerHTML = "";
+
+          statisztika[varosNev].kartyak.forEach((eredetiKartya) => {
+            const klonKartya = eredetiKartya.cloneNode(true);
+            klonKartya.classList.remove("rejtett");
+
+            // Közvetlenül az eredeti kártyát küldjük a modalnak,
+            // aminek a CSS/JS rétegződése már kényszeríti, hogy a város ablak felett nyíljon meg!
+            const triggereles = (e) => {
+              e.stopPropagation();
+              nyisdMegAProjektModalt(eredetiKartya);
+            };
+
+            klonKartya.style.cursor = "pointer";
+            klonKartya.addEventListener("click", triggereles);
+
+            const klonGomb = klonKartya.querySelector(".reszletek-gomb");
+            if (klonGomb) {
+              klonGomb.addEventListener("click", triggereles);
+            }
+
+            vModalLista.appendChild(klonKartya);
+          });
+
+          vModal.classList.remove("rejtett");
+        });
+
+        terkepTarolo.appendChild(pont);
+      }
+    });
+  }
+
+  if (vModalBezar && vModal) {
+    vModalBezar.addEventListener("click", () =>
+      vModal.classList.add("rejtett"),
+    );
+    vModal.addEventListener("click", (e) => {
+      if (e.target === vModal) vModal.classList.add("rejtett");
+    });
+  }
+
+  if (kategoriaSzuro)
+    kategoriaSzuro.addEventListener("change", terkepFrissitese);
+
+  terkepFrissitese();
+});
