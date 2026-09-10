@@ -842,147 +842,172 @@ document.addEventListener("DOMContentLoaded", function () {
   terkepFrissitese();
 
   // =========================================================
-  // 4. PRÉMIUM MOZGATÁS ÉS EGÉRHEZ ZOOMOLÁS MOTOR
+  // 4. PRÉMIUM GOOGLE MAPS MOTOR (BIZTONSÁGOS, IZOLÁLT VERZIÓ)
   // =========================================================
-  const gorgetoDiv = document.querySelector(".terkep-gorgeto");
-  const mapDiv = document.getElementById("magyarorszag-terkep");
+  {
+    const mapTaroloDiv = document.querySelector(".terkep-gorgeto");
+    const mapHatterDiv = document.getElementById("magyarorszag-terkep");
 
-  let zoomSzint = 1;
-  const MIN_ZOOM = 1;
-  const MAX_ZOOM = 4.5; // Kicsit nagyobbra engedjük a zoomot a sűrű pontok miatt
+    if (mapTaroloDiv && mapHatterDiv) {
+      let jelenlegiZoom = 1;
+      let dinamikusMinZoom = 1;
+      const MAX_ZOOM = 4.5;
 
-  // -- 1. ASZTALI: EGÉRREL HÚZÁS (Drag-to-pan) --
-  let isDown = false;
-  let startX;
-  let startY;
-  let scrollLeft;
-  let scrollTop;
+      // --- DINAMIKUS MÉRETKALIBRÁLÁS ÉS ZÓNA VÁLTÁS ---
+      const alkalmazZoom = () => {
+        mapHatterDiv.style.width = jelenlegiZoom * 100 + "%";
+        mapHatterDiv.style.minWidth = jelenlegiZoom * 800 + "px";
+        mapHatterDiv.style.height = jelenlegiZoom * 600 + "px";
 
-  if (gorgetoDiv) {
-    gorgetoDiv.addEventListener("mousedown", (e) => {
-      isDown = true;
-      gorgetoDiv.classList.add("huzas-aktiv");
-      startX = e.pageX - gorgetoDiv.offsetLeft;
-      startY = e.pageY - gorgetoDiv.offsetTop;
-      scrollLeft = gorgetoDiv.scrollLeft;
-      scrollTop = gorgetoDiv.scrollTop;
-    });
-
-    gorgetoDiv.addEventListener("mouseleave", () => {
-      isDown = false;
-      gorgetoDiv.classList.remove("huzas-aktiv");
-    });
-
-    gorgetoDiv.addEventListener("mouseup", () => {
-      isDown = false;
-      gorgetoDiv.classList.remove("huzas-aktiv");
-    });
-
-    gorgetoDiv.addEventListener("mousemove", (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - gorgetoDiv.offsetLeft;
-      const y = e.pageY - gorgetoDiv.offsetTop;
-      const walkX = (x - startX) * 1.5;
-      const walkY = (y - startY) * 1.5;
-      gorgetoDiv.scrollLeft = scrollLeft - walkX;
-      gorgetoDiv.scrollTop = scrollTop - walkY;
-    });
-  }
-
-  // -- 2. ASZTALI: GÖRGŐS ZOOM PONTOSAN A KURZORHOZ --
-  if (gorgetoDiv && mapDiv) {
-    gorgetoDiv.addEventListener(
-      "wheel",
-      (e) => {
-        e.preventDefault(); // Ne az egész weboldalt görgesse
-
-        const rect = gorgetoDiv.getBoundingClientRect();
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-
-        const scrollX = gorgetoDiv.scrollLeft;
-        const scrollY = gorgetoDiv.scrollTop;
-
-        // Kiszámoljuk, hol van az egér pontosan a térkép "fizikai" méretén belül
-        const mapX = mouseX + scrollX;
-        const mapY = mouseY + scrollY;
-
-        const oldZoom = zoomSzint;
-
-        // Nagyítás / Kicsinyítés
-        if (e.deltaY < 0) {
-          zoomSzint += 0.25;
+        // ÚJ: Itt dől el a varázslat!
+        // Ha 1.8-szorosnál közelebb vagyunk, szétnyílnak a zónák!
+        const ZONA_HATAR = 1.8;
+        if (jelenlegiZoom >= ZONA_HATAR) {
+          mapHatterDiv.classList.add("reszletes-nezet");
+          mapHatterDiv.classList.remove("zona-nezet");
         } else {
-          zoomSzint -= 0.25;
+          mapHatterDiv.classList.add("zona-nezet");
+          mapHatterDiv.classList.remove("reszletes-nezet");
         }
-        zoomSzint = Math.max(MIN_ZOOM, Math.min(zoomSzint, MAX_ZOOM));
+      };
 
-        // Ha változott a méret, igazítsuk a pozíciót az egérhez!
-        if (oldZoom !== zoomSzint) {
-          const zoomRatio = zoomSzint / oldZoom;
+      const initTerkepMeret = () => {
+        const taroloSzelesseg = mapTaroloDiv.clientWidth;
+        const fittZoom = taroloSzelesseg / 800;
+        dinamikusMinZoom = Math.min(1, fittZoom);
+        jelenlegiZoom = dinamikusMinZoom;
+        alkalmazZoom();
+      };
 
-          // Az új pozíció, aminek továbbra is a kurzor alatt kell lennie
-          const newMapX = mapX * zoomRatio;
-          const newMapY = mapY * zoomRatio;
+      initTerkepMeret();
+      window.addEventListener("resize", initTerkepMeret);
 
-          // Azonnali méretváltás
-          mapDiv.style.width = zoomSzint * 100 + "%";
-          mapDiv.style.minWidth = zoomSzint * 800 + "px";
-          mapDiv.style.height = zoomSzint * 600 + "px";
+      // --- ASZTALI EGÉR HÚZÁS ---
+      let egerLentVan = false;
+      let kezdoX, kezdoY, gorgetesBal, gorgetesFent;
 
-          // Visszagörgetünk úgy, hogy az egér hajszálpontosan ugyanott maradjon a térképen
-          gorgetoDiv.scrollLeft = newMapX - mouseX;
-          gorgetoDiv.scrollTop = newMapY - mouseY;
-        }
-      },
-      { passive: false },
-    );
-  }
+      mapTaroloDiv.addEventListener("mousedown", (e) => {
+        egerLentVan = true;
+        mapTaroloDiv.classList.add("huzas-aktiv");
+        kezdoX = e.pageX - mapTaroloDiv.offsetLeft;
+        kezdoY = e.pageY - mapTaroloDiv.offsetTop;
+        gorgetesBal = mapTaroloDiv.scrollLeft;
+        gorgetesFent = mapTaroloDiv.scrollTop;
+      });
+      mapTaroloDiv.addEventListener("mouseleave", () => {
+        egerLentVan = false;
+        mapTaroloDiv.classList.remove("huzas-aktiv");
+      });
+      mapTaroloDiv.addEventListener("mouseup", () => {
+        egerLentVan = false;
+        mapTaroloDiv.classList.remove("huzas-aktiv");
+      });
+      mapTaroloDiv.addEventListener("mousemove", (e) => {
+        if (!egerLentVan) return;
+        e.preventDefault();
+        const x = e.pageX - mapTaroloDiv.offsetLeft;
+        const y = e.pageY - mapTaroloDiv.offsetTop;
+        mapTaroloDiv.scrollLeft = gorgetesBal - (x - kezdoX) * 1.5;
+        mapTaroloDiv.scrollTop = gorgetesFent - (y - kezdoY) * 1.5;
+      });
 
-  // -- 3. MOBIL KÉTUJJAS ZOOM ÉS TITKOS KERESŐ --
-  function alkalmazMobilZoom() {
-    if (!mapDiv) return;
-    mapDiv.style.width = zoomSzint * 100 + "%";
-    mapDiv.style.minWidth = zoomSzint * 800 + "px";
-    mapDiv.style.height = zoomSzint * 600 + "px";
-  }
-
-  if (gorgetoDiv && mapDiv) {
-    let startTavolsag = 0;
-    let induloZoom = 1;
-
-    gorgetoDiv.addEventListener(
-      "touchstart",
-      (e) => {
-        if (e.touches.length === 2) {
+      // --- ASZTALI GÖRGŐS ZOOM ---
+      mapTaroloDiv.addEventListener(
+        "wheel",
+        (e) => {
           e.preventDefault();
-          startTavolsag = Math.hypot(
-            e.touches[0].pageX - e.touches[1].pageX,
-            e.touches[0].pageY - e.touches[1].pageY,
-          );
-          induloZoom = zoomSzint;
-        }
-      },
-      { passive: false },
-    );
+          const rect = mapTaroloDiv.getBoundingClientRect();
+          const mouseX = e.clientX - rect.left;
+          const mouseY = e.clientY - rect.top;
 
-    gorgetoDiv.addEventListener(
-      "touchmove",
-      (e) => {
-        if (e.touches.length === 2) {
-          e.preventDefault();
-          const jelenlegiTavolsag = Math.hypot(
-            e.touches[0].pageX - e.touches[1].pageX,
-            e.touches[0].pageY - e.touches[1].pageY,
+          const mapX = mouseX + mapTaroloDiv.scrollLeft;
+          const mapY = mouseY + mapTaroloDiv.scrollTop;
+          const regiZoom = jelenlegiZoom;
+
+          if (e.deltaY < 0) {
+            jelenlegiZoom += 0.2;
+          } else {
+            jelenlegiZoom -= 0.2;
+          }
+          jelenlegiZoom = Math.max(
+            dinamikusMinZoom,
+            Math.min(jelenlegiZoom, MAX_ZOOM),
           );
-          const arany = jelenlegiTavolsag / startTavolsag;
-          zoomSzint = induloZoom * arany;
-          zoomSzint = Math.max(MIN_ZOOM, Math.min(zoomSzint, MAX_ZOOM));
-          alkalmazMobilZoom();
-        }
-      },
-      { passive: false },
-    );
+
+          if (regiZoom !== jelenlegiZoom) {
+            const arany = jelenlegiZoom / regiZoom;
+            alkalmazZoom();
+            mapTaroloDiv.scrollLeft = mapX * arany - mouseX;
+            mapTaroloDiv.scrollTop = mapY * arany - mouseY;
+          }
+        },
+        { passive: false },
+      );
+
+      // --- MOBIL KÉTUJJAS ZOOM ---
+      let elozoTavolsag = 0;
+      let elozoFokuszX = 0;
+      let elozoFokuszY = 0;
+
+      mapTaroloDiv.addEventListener(
+        "touchstart",
+        (e) => {
+          if (e.touches.length === 2) {
+            e.preventDefault();
+            elozoTavolsag = Math.hypot(
+              e.touches[0].pageX - e.touches[1].pageX,
+              e.touches[0].pageY - e.touches[1].pageY,
+            );
+            const rect = mapTaroloDiv.getBoundingClientRect();
+            elozoFokuszX =
+              (e.touches[0].clientX + e.touches[1].clientX) / 2 - rect.left;
+            elozoFokuszY =
+              (e.touches[0].clientY + e.touches[1].clientY) / 2 - rect.top;
+          }
+        },
+        { passive: false },
+      );
+
+      mapTaroloDiv.addEventListener(
+        "touchmove",
+        (e) => {
+          if (e.touches.length === 2) {
+            e.preventDefault();
+            const rect = mapTaroloDiv.getBoundingClientRect();
+            const ujTavolsag = Math.hypot(
+              e.touches[0].pageX - e.touches[1].pageX,
+              e.touches[0].pageY - e.touches[1].pageY,
+            );
+            const ujFokuszX =
+              (e.touches[0].clientX + e.touches[1].clientX) / 2 - rect.left;
+            const ujFokuszY =
+              (e.touches[0].clientY + e.touches[1].clientY) / 2 - rect.top;
+
+            mapTaroloDiv.scrollLeft -= ujFokuszX - elozoFokuszX;
+            mapTaroloDiv.scrollTop -= ujFokuszY - elozoFokuszY;
+
+            const regiZoom = jelenlegiZoom;
+            jelenlegiZoom = regiZoom * (ujTavolsag / elozoTavolsag);
+            jelenlegiZoom = Math.max(
+              dinamikusMinZoom,
+              Math.min(jelenlegiZoom, MAX_ZOOM),
+            );
+
+            if (regiZoom !== jelenlegiZoom) {
+              const mapX = ujFokuszX + mapTaroloDiv.scrollLeft;
+              const mapY = ujFokuszY + mapTaroloDiv.scrollTop;
+              const arany = jelenlegiZoom / regiZoom;
+              alkalmazZoom();
+              mapTaroloDiv.scrollLeft = mapX * arany - ujFokuszX;
+              mapTaroloDiv.scrollTop = mapY * arany - ujFokuszY;
+            }
+            elozoTavolsag = ujTavolsag;
+            elozoFokuszX = ujFokuszX;
+            elozoFokuszY = ujFokuszY;
+          }
+        },
+        { passive: false },
+      );
+    }
   }
 });

@@ -4,7 +4,7 @@
   --szin-szoveg: #d7c7c7;
   --szin-kiemeles: rgb(181, 154, 29);
 
-  --oldal-padding: clamp(0.5rem, 6vw, 6rem);
+  --oldal-padding: clamp(0.5rem, 6dvw, 6rem);
 }
 
 * {
@@ -17,7 +17,7 @@
 body,
 html {
   background-color: var(--szin-sotet);
-  overflow-x: clip;
+  overflow-x: hidden;
   max-width: 100%;
 }
 img {
@@ -248,7 +248,7 @@ img {
 
 .hero {
   position: relative;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -309,23 +309,23 @@ img {
   color: var(--szin-szoveg);
 }
 .hero-cim {
-  font-size: clamp(2.5rem, 8vw, 5.5rem)!;
+  font-size: clamp(2.5rem, 8dvw, 5.5rem)!;
   line-height: 1.1;
   display: inline-block;
   margin-bottom: 3rem;
   color: var(--szin-kiemeles);
 }
 .fo-hero-cim{
-  font-size: clamp(2.5rem, 10vw, 7.5rem)!important;
+  font-size: clamp(2.5rem, 10dvw, 7.5rem)!important;
 }
 .hero-tartalom h1 {
-  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  font-size: clamp(2.5rem, 8dvw, 5.5rem);
   line-height: 1.1;
   display: inline-block;
   margin-bottom: 4rem;
 }
 .hero-tartalom h2 {
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-size: clamp(1.5rem, 3dvw, 2.2rem);
   color: var(--szin-kiemeles);
   font-weight: 500;
   line-height: 1.1;
@@ -378,7 +378,7 @@ img {
 }
 
 .fooldal-rolunk-szoveg h2 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 5dvw, 3.5rem);
   color: var(--szin-kiemeles);
   margin-bottom: 1.5rem;
   text-transform: uppercase;
@@ -456,7 +456,7 @@ img {
 }
 
 .tevekenyseg-fejlec h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4dvw, 3rem);
   color: var(--szin-kiemeles);
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -533,7 +533,7 @@ img {
 }
 /* A szöveg méretének rugalmassá tétele a kártyán belül */
 .tevekenyseg-elem span {
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-size: clamp(0.9rem, 2dvw, 1.1rem);
   line-height: 1.3;
 }
 
@@ -556,7 +556,7 @@ img {
 .kep-oldal {
   width: 100%;
   max-width: 900px; /* EZT KERESTED: Itt maximáljuk a méretét, nem nyúlik ki a képernyő széléig! */
-  max-height: 60vh; /* Ne legyen túl magas, hogy ne nyomja le a szöveget */
+  max-height: 60dvh; /* Ne legyen túl magas, hogy ne nyomja le a szöveget */
   aspect-ratio: 16 / 9; /* Szélesvásznú mozi arány */
   border-radius: 12px;
   overflow: hidden;
@@ -610,7 +610,7 @@ img {
 }
 
 .tevekenyseg-nev {
-  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  font-size: clamp(1.5rem, 2.5dvw, 2.5rem);
   font-weight: bold;
   transition: transform 0.4s ease;
 }
@@ -690,7 +690,7 @@ img {
 }
 
 .szolg-fejlec h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4dvw, 3rem);
   color: var(--szin-kiemeles);
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -786,7 +786,7 @@ img {
 }
 
 .k-szekcio-fejlec h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2rem, 4dvw, 3rem);
     color: var(--szin-kiemeles);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -902,7 +902,7 @@ img {
 }
 
 .cta-kontener h2 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(2rem, 5dvw, 3.5rem);
     color: var(--szin-feher);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -911,7 +911,7 @@ img {
 }
 
 .cta-kontener p {
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-size: clamp(1.2rem, 3dvw, 1.5rem);
     color: var(--szin-kiemeles); /* A szlogen arany színű lesz */
     margin-bottom: 3rem;
     font-weight: 500;
@@ -1010,7 +1010,7 @@ img {
   width: 100% !important; /* Kitölti a teljes rendelkezésre álló rácsot */
   min-width: 100% !important;
   max-width: none !important; /* Töröl minden korábbi akadályt és engedi nőni! */
-  height: 25vh !important;
+  height: 25dvh !important;
   min-height: 180px !important;
   object-fit: cover !important; /* Torzulás nélkül, szépen vágja a képet */
   display: block !important;
@@ -1033,7 +1033,7 @@ img {
     ) !important; /* Mobilon 2 oszlopra vált */
   }
   .lablec-kepsav img {
-    height: 15vh !important;
+    height: 15dvh !important;
     min-height: 150px !important;
   }
 }
@@ -1220,13 +1220,13 @@ img {
   color: var(--szin-szoveg);
 }
 .rolunk-hero-tartalom h1 {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2.5rem, 5dvw, 4.5rem);
   line-height: 1.1;
   display: inline-block;
   margin-bottom: 3rem;
 }
 .rolunk-hero-tartalom p {
-  font-size: clamp(1.5rem, 2vw, 3.5rem);
+  font-size: clamp(1.5rem, 2dvw, 3.5rem);
   line-height: 1.1;
 }
 
@@ -1253,7 +1253,7 @@ img {
 }
 
 .hosszu-koszonto-doboz h2 {
-  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-size: clamp(2rem, 3dvw, 2.5rem);
   color: var(--szin-kiemeles);
   margin-bottom: 2rem;
   text-transform: uppercase;
@@ -1367,7 +1367,7 @@ img {
   padding: 8rem var(--oldal-padding) 6rem var(--oldal-padding);
   background-color: var(--szin-sotet);
   color: var(--szin-feher);
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .munkak-kontener {
@@ -1381,7 +1381,7 @@ img {
 }
 
 .galeria-fejlec h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4dvw, 3rem);
   color: var(--szin-kiemeles);
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -1729,8 +1729,8 @@ img {
 }
 .modal-tartalom {
   background-color: var(--szin-sotet);
-  width: 70vw; /* Pontosan a képernyő szélességének 70%-a */
-  height: 60vh; /* Pontosan a képernyő magasságának 60%-a */
+  width: 70dvw; /* Pontosan a képernyő szélességének 70%-a */
+  height: 60dvh; /* Pontosan a képernyő magasságának 60%-a */
   border: 1px solid var(--szin-kiemeles);
   border-radius: 12px;
   position: relative;
@@ -1923,9 +1923,9 @@ img {
 /* ========================================= */
 @media (max-width: 900px) {
   .modal-tartalom {
-    width: 95vw;
-    height: 85vh; /* Mobilon a képernyő 85%-a */
-    max-height: 85vh;
+    width: 95dvw;
+    height: 85dvh; /* Mobilon a képernyő 85%-a */
+    max-height: 85dvh;
     overflow: hidden; /* A külső doboz nem görget, csak a belső szöveg */
   }
 
@@ -1940,7 +1940,7 @@ img {
 
   .modal-kep-tarolo {
     min-height: 220px;
-    height: 25vh;
+    height: 25dvh;
     flex-shrink: 0; /* A kép ne tudjon összenyomódni */
   }
 
@@ -1957,7 +1957,7 @@ img {
 
 .statik-hero {
   position: relative;
-  height: 60vh; /* Itt a kötelező magasság */
+  height: 60dvh; /* Itt a kötelező magasság */
   min-height: 400px; /* Biztonsági minimum mobilra */
   display: flex;
   align-items: center; /* Függőlegesen középre zárja a szöveget */
@@ -2002,7 +2002,7 @@ img {
 }
 
 .sz-szoveg h2 {
-  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-size: clamp(2rem, 3dvw, 2.5rem);
   color: var(--szin-kiemeles);
   margin-bottom: 1.5rem;
   text-transform: uppercase;
@@ -2101,7 +2101,7 @@ img {
 .szolgaltatas-cta h2 {
   color: var(--szin-feher);
   margin-bottom: 2.5rem;
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-size: clamp(1.8rem, 3dvw, 2.5rem);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -2116,7 +2116,7 @@ img {
   padding: 8rem var(--oldal-padding) 10rem var(--oldal-padding);
   background-color: var(--szin-sotet);
   color: var(--szin-feher);
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .impresszum-tartalom {
@@ -2129,7 +2129,7 @@ img {
 }
 
 .impresszum-fejlec h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4dvw, 3rem);
   color: var(--szin-kiemeles);
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -2408,7 +2408,7 @@ img {
     }
 
     .tevekenyseg-nev {
-      font-size: clamp(1.2rem, 4vw, 1.5rem);
+      font-size: clamp(1.2rem, 4dvw, 1.5rem);
     }
   }
 
@@ -2580,7 +2580,7 @@ img {
 @keyframes beCsuszasLegjobbrol {
   0% {
     opacity: 0;
-    transform: translateX(100vw); /* Teljesen letolja a képernyő jobb szélére */
+    transform: translateX(100dvw); /* Teljesen letolja a képernyő jobb szélére */
   }
   100% {
     opacity: 1;
@@ -2760,7 +2760,7 @@ img {
 }
 
 .fo-szlogen {
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-size: clamp(1.8rem, 3dvw, 2.5rem);
   line-height: 1.3;
   margin-bottom: 2rem;
   color: white;
@@ -2877,12 +2877,12 @@ body.fooldal .hero,
     text-align: center !important;
   }
   .hero-tartalom h1 {
-        font-size: clamp(2rem, 7vw, 2.8rem);
+        font-size: clamp(2rem, 7dvw, 2.8rem);
         margin-bottom: 0.5rem;
     }
     
     .hero-tartalom h2 {
-        font-size: clamp(1.2rem, 5vw, 1.5rem);
+        font-size: clamp(1.2rem, 5dvw, 1.5rem);
         margin-bottom: 1.2rem;
     }
     
@@ -3055,7 +3055,7 @@ body.fooldal .hero,
   border-radius: 8px;
   width: 95%;
   max-width: 1200px;
-  max-height: 85vh;
+  max-height: 85dvh;
   overflow-y: auto;
   position: relative;
   border-top: 4px solid var(--szin-kiemeles);
@@ -3165,7 +3165,7 @@ body.fooldal .hero,
 
   /* ÚJ: EZT A KÉT SORT ADD HOZZÁ, HOGY FÜGGŐLEGESEN IS LEHESSEN HÚZNI! */
   height: 600px;
-  max-height: 65vh; /* Mobilon okosan alkalmazkodik, nem lóg ki */
+  max-height: 65dvh; /* Mobilon okosan alkalmazkodik, nem lóg ki */
 
   overflow: auto;
   -webkit-overflow-scrolling: touch;
@@ -3214,15 +3214,15 @@ body.fooldal .hero,
 }
 
 /* ========================================= */
-/* "B" VERZIÓ - 90VH MEGJELENÉS, EREDETI KÁRTYÁK */
+/* "B" VERZIÓ - 90dvh MEGJELENÉS, EREDETI KÁRTYÁK */
 /* ========================================= */
 
 .fooldal-tevekenysegek-b {
     padding: 4rem var(--oldal-padding) 6rem var(--oldal-padding);
     background-color: var(--szin-sotet);
     
-    /* 100vh helyett 90vh, így picit barátibb a méret */
-    min-height: 90vh; 
+    /* 100dvh helyett 90dvh, így picit barátibb a méret */
+    min-height: 90dvh; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -3235,7 +3235,7 @@ body.fooldal .hero,
 
 /* Visszaállítva a korábbi, arányosabb méretre */
 .tevekenyseg-fejlec-b h2 {
-    font-size: clamp(2rem, 4vw, 3rem); 
+    font-size: clamp(2rem, 4dvw, 3rem); 
     color: var(--szin-feher);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -3243,7 +3243,7 @@ body.fooldal .hero,
 
 /* --- A Hatalmas Grid Elrendezés --- */
 .interaktiv-lista-grid-b {
-    width: 75vw;
+    width: 75dvw;
     max-width: 1500px;
     margin: 0 auto;
     
@@ -3382,17 +3382,17 @@ body.fooldal .hero,
 /* --- MOBIL NÉZET --- */
 @media (max-width: 1200px) {
     .interaktiv-lista-grid-b {
-        width: 90vw;
+        width: 90dvw;
         grid-template-columns: 1fr 1fr;
     }
 }
 
 @media (max-width: 900px) {
     .fooldal-tevekenysegek-b {
-        min-height: auto; /* Mobilon kiszedjük a 90vh-t */
+        min-height: auto; /* Mobilon kiszedjük a 90dvh-t */
     }
     .interaktiv-lista-grid-b {
-        width: 95vw;
+        width: 95dvw;
         grid-template-columns: 1fr;
     }
     .kep-oldal-b {
@@ -3403,4 +3403,48 @@ body.fooldal .hero,
     .tevekenyseg-elem-b.aktiv-elem-b {
         transform: translateY(-5px); /* Mobilon jobbra helyett felfelé ugrik */
     }
+}
+
+/* ========================================= */
+/* CLUSTERING (ZÓNÁK) MEGJELENÍTÉSE          */
+/* ========================================= */
+
+/* 1. Amikor KI VAN ZOOMOLVA (Zóna nézet) */
+.magyarorszag-terkep.zona-nezet .terkep-pont.zona-tag {
+    opacity: 0;
+    pointer-events: none; /* Ne lehessen véletlenül rákattintani a láthatatlan pöttyre */
+    transform: translate(-50%, -50%) scale(0);
+}
+.magyarorszag-terkep.zona-nezet .terkep-pont.zona-kozpont {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1.3); /* Nagyobbra fújja a gyűjtőpöttyöt */
+}
+
+/* 2. Amikor BE VAN ZOOMOLVA (Részletes nézet) */
+.magyarorszag-terkep.reszletes-nezet .terkep-pont.zona-tag {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+.magyarorszag-terkep.reszletes-nezet .terkep-pont.zona-kozpont {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0); /* Eltűnik a gyűjtőpötty */
+}
+
+/* --- A Nagy Zóna Pötty Extrém Dizájnja --- */
+.terkep-pont.zona-kozpont {
+    background-color: var(--szin-kiemeles); /* Legyen telibe arany színű */
+    z-index: 100 !important; /* Mindig legfelül */
+    transition: all 0.4s ease;
+}
+.terkep-pont.zona-kozpont .terkep-szam {
+    background-color: #000;
+    color: var(--szin-kiemeles);
+    width: auto;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    white-space: nowrap;
 }
