@@ -27,8 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =========================================
-  // 3. FŐOLDAL: TEVÉKENYSÉGEK KÉPCSERÉLŐJE
+  // 3. FŐOLDAL: TEVÉKENYSÉGEK KÉPCSERÉLŐJE (A és B verzió)
   // =========================================
+
+  // --- "A" VERZIÓ ---
   const tevekenysegElemek = document.querySelectorAll(".tevekenyseg-elem");
   const tevekenysegKepek = document.querySelectorAll(".tevekenyseg-kep");
 
@@ -53,6 +55,39 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // --- "B" VERZIÓ (ÚJ) ---
+  const tevekenysegElemekB = document.querySelectorAll(".tevekenyseg-elem-b");
+  const tevekenysegKepekB = document.querySelectorAll(".tevekenyseg-kep-b");
+
+  if (tevekenysegElemekB.length > 0 && tevekenysegKepekB.length > 0) {
+    tevekenysegElemekB.forEach(function (elem) {
+      ["mouseenter", "click", "touchstart"].forEach(function (esemeny) {
+        elem.addEventListener(esemeny, function (e) {
+          // Mobilon megelőzzük a duplikált kattintást
+          if (esemeny === "touchstart") e.preventDefault();
+
+          // Mindenkiről levesszük az aktív osztályt
+          tevekenysegElemekB.forEach((el) =>
+            el.classList.remove("aktiv-elem-b"),
+          );
+          tevekenysegKepekB.forEach((kep) =>
+            kep.classList.remove("aktiv-kep-b"),
+          );
+
+          // Rátesszük az aktuálisra
+          this.classList.add("aktiv-elem-b");
+          const kepId = this.getAttribute("data-kep");
+          const aktivKep = document.querySelector(
+            `.tevekenyseg-kep-b[data-kep="${kepId}"]`,
+          );
+
+          // Megjelenítjük a képet
+          if (aktivKep) aktivKep.classList.add("aktiv-kep-b");
+        });
+      });
+    });
+  }
+
   // =========================================
   // 4. MUNKÁINK: AUTOMATIKUS SZŰRŐ MOTOR (Badge-alapú, ékezethelyes)
   // =========================================
@@ -67,12 +102,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const evekHalmaza = new Set();
     const helyszinekHalmaza = new Set();
 
-    // Adatok kigyűjtése közvetlenül a kártyákról
     projektKartyak.forEach((kartya) => {
-      // A típust mostantól a kártya látható badge-éből (címkéjéből) olvassuk ki!
       const badgeElem = kartya.querySelector(".kartya-badge");
       const tipus = badgeElem ? badgeElem.textContent : "";
-
       const ev = kartya.getAttribute("data-ev");
       const helyszin = kartya.getAttribute("data-helyszin");
 
@@ -82,18 +114,16 @@ document.addEventListener("DOMContentLoaded", function () {
         helyszinekHalmaza.add(helyszin.trim());
     });
 
-    // 1. Típusok betöltése (Pontosan úgy, ahogy a kártyán ki van írva)
     tipusSelect.innerHTML = '<option value="osszes">Összes típus</option>';
     Array.from(tipusokHalmaza)
       .sort()
       .forEach((tipus) => {
         const opcio = document.createElement("option");
-        opcio.value = tipus; // A szűréshez is ezt a pontos szöveget használjuk
+        opcio.value = tipus;
         opcio.textContent = tipus;
         tipusSelect.appendChild(opcio);
       });
 
-    // 2. Évek betöltése (Csökkenő sorrendben)
     evSelect.innerHTML = '<option value="osszes">Összes év</option>';
     Array.from(evekHalmaza)
       .sort()
@@ -105,7 +135,6 @@ document.addEventListener("DOMContentLoaded", function () {
         evSelect.appendChild(opcio);
       });
 
-    // 3. Települések betöltése (ABC sorrendben)
     helyszinSelect.innerHTML =
       '<option value="osszes">Összes település</option>';
     Array.from(helyszinekHalmaza)
@@ -117,7 +146,6 @@ document.addEventListener("DOMContentLoaded", function () {
         helyszinSelect.appendChild(opcio);
       });
 
-    // Szűrési logika
     function szuresFuttatasa() {
       const kTipus = tipusSelect.value;
       const kEv = evSelect.value;
@@ -126,7 +154,6 @@ document.addEventListener("DOMContentLoaded", function () {
       projektKartyak.forEach(function (kartya) {
         const badgeElem = kartya.querySelector(".kartya-badge");
         const kTipusVal = badgeElem ? badgeElem.textContent.trim() : "";
-
         const kEvVal = kartya.getAttribute("data-ev") || "";
         const kHelyszinVal = kartya.getAttribute("data-helyszin") || "";
 
@@ -168,16 +195,12 @@ document.addEventListener("DOMContentLoaded", function () {
       kartya.addEventListener("click", function () {
         const hatterDiv = this.querySelector(".kartya-hatter");
         const hatterKep = hatterDiv ? hatterDiv.style.backgroundImage : "";
-
         const badge = this.querySelector(".kartya-badge");
         const badgeSzoveg = badge ? badge.innerText : "";
-
         const cim = this.querySelector("h3");
         const cimSzoveg = cim ? cim.innerText : "";
-
         const meta = this.querySelector(".kartya-meta");
         const metaSzoveg = meta ? meta.innerText : "";
-
         const reszletek = this.querySelector(".kartya-rejtett-reszletek");
         const reszletesLeiras = reszletek
           ? reszletek.innerHTML
@@ -232,37 +255,30 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
   // =========================================
   // 7. SÜTI (COOKIE) KEZELŐ
   // =========================================
   const sutiSav = document.getElementById("suti-sav");
   const sutiElfogad = document.getElementById("suti-elfogad-gomb");
   const sutiAlap = document.getElementById("suti-alap-gomb");
-
-  // A lenyíló menüben lévő "Sütik beállítása" link megkeresése
-  // Ehhez adj a HTML-ben a linknek egy id="suti-megnyito" azonosítót!
   const sutiMegnyito = document.getElementById("suti-megnyito");
 
   if (sutiSav) {
-    // 1. Ellenőrizzük a böngésző memóriáját (ha nincs még elmentve döntés, megmutatjuk)
     if (!localStorage.getItem("karolyhazSutiKezeles")) {
-      // Kis késleltetéssel úszik be, elegánsabb!
       setTimeout(() => {
         sutiSav.classList.add("lathato");
         sutiSav.classList.remove("rejtett");
       }, 1500);
     }
 
-    // 2. Ha rányom, hogy "Mindent elfogadok"
     if (sutiElfogad) {
       sutiElfogad.addEventListener("click", function () {
         localStorage.setItem("karolyhazSutiKezeles", "minden_elfogadva");
         sutiSav.classList.remove("lathato");
-        // Ide lehet majd betenni a Google Analytics indító kódját később!
       });
     }
 
-    // 3. Ha rányom, hogy "Csak a szükségesek"
     if (sutiAlap) {
       sutiAlap.addEventListener("click", function () {
         localStorage.setItem("karolyhazSutiKezeles", "csak_alap");
@@ -270,211 +286,61 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // 4. Bónusz: A lenyíló menüből bármikor újra megnyitható!
     if (sutiMegnyito) {
       sutiMegnyito.addEventListener("click", function (e) {
-        e.preventDefault(); // Ne ugorjon új oldalra
+        e.preventDefault();
         sutiSav.classList.add("lathato");
       });
     }
   }
 });
-document.addEventListener("DOMContentLoaded", function () {
-  const projektKartyak = document.querySelectorAll(".projekt-kartya");
-  const modal = document.getElementById("projekt-modal");
 
-  if (!modal || projektKartyak.length === 0) return;
-
-  const modalBezaras = document.getElementById("modal-bezaras");
-  const modalKepTrack = document.getElementById("modal-kep-track");
-  const gombElozo = document.getElementById("modal-elozo");
-  const gombKovetkezo = document.getElementById("modal-kovetkezo");
-
-  let aktualisKepek = [];
-  let aktualisKepIndex = 0;
-
-  // A CSÚSZÁS MOTORJA
-  function modalKepFrissit() {
-    if (modalKepTrack) {
-      // Eltoljuk a filmszalagot X * 100%-kal balra!
-      modalKepTrack.style.transform = `translateX(-${aktualisKepIndex * 100}%)`;
-    }
-
-    if (aktualisKepek.length <= 1) {
-      gombElozo.classList.add("rejtett");
-      gombKovetkezo.classList.add("rejtett");
-    } else {
-      gombElozo.classList.remove("rejtett");
-      gombKovetkezo.classList.remove("rejtett");
-    }
-  }
-
-  projektKartyak.forEach(function (kartya) {
-    kartya.addEventListener("click", function () {
-      // 1. SZÖVEGEK KINYERÉSE
-      const badgeSzoveg = this.querySelector(".kartya-badge")
-        ? this.querySelector(".kartya-badge").innerText
-        : "";
-      const cimSzoveg = this.querySelector("h3")
-        ? this.querySelector("h3").innerText
-        : "";
-      const metaSzoveg = this.querySelector(".kartya-meta")
-        ? this.querySelector(".kartya-meta").innerText
-        : "";
-      const reszletesLeiras = this.querySelector(".kartya-rejtett-reszletek")
-        ? this.querySelector(".kartya-rejtett-reszletek").innerHTML
-        : "";
-
-      const modalBadge = document.getElementById("modal-badge-szoveg");
-      if (modalBadge) {
-        modalBadge.innerText = badgeSzoveg;
-        modalBadge.style.display = badgeSzoveg ? "inline-block" : "none";
-      }
-      if (document.getElementById("modal-cim"))
-        document.getElementById("modal-cim").innerText = cimSzoveg;
-      if (document.getElementById("modal-meta-szoveg"))
-        document.getElementById("modal-meta-szoveg").innerText = metaSzoveg;
-      if (document.getElementById("modal-leiras"))
-        document.getElementById("modal-leiras").innerHTML = reszletesLeiras;
-
-      // 2. KÉPEK KINYERÉSE
-      const galeriaAdat = this.getAttribute("data-galeria");
-      if (galeriaAdat) {
-        aktualisKepek = galeriaAdat.split(",");
-      } else {
-        const hatterDiv = this.querySelector(".kartya-hatter");
-        if (hatterDiv && hatterDiv.style.backgroundImage) {
-          aktualisKepek = [
-            hatterDiv.style.backgroundImage
-              .replace(/^url\(["']?/, "")
-              .replace(/["']?\)$/, ""),
-          ];
-        } else {
-          aktualisKepek = [];
-        }
-      }
-
-      // 3. A FILMSZALAG FELÉPÍTÉSE
-      if (modalKepTrack) {
-        modalKepTrack.innerHTML = ""; // Kipucoljuk a régi képeket
-        aktualisKepek.forEach(function (kepUrl) {
-          const slide = document.createElement("div");
-          slide.className = "modal-kep-slide";
-          slide.style.backgroundImage = `url('${kepUrl.trim()}')`;
-          modalKepTrack.appendChild(slide);
-        });
-      }
-
-      aktualisKepIndex = 0; // Mindig az első képpel nyitunk
-
-      // Trükk: Kikapcsoljuk az animációt nyitáskor, hogy ne csússzon be furcsán a legelső kép
-      modalKepTrack.style.transition = "none";
-      modalKepFrissit();
-
-      // 10 milliszekundum múlva visszakapcsoljuk az animációt a lapozáshoz
-      setTimeout(() => {
-        modalKepTrack.style.transition =
-          "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)";
-      }, 10);
-
-      modal.classList.add("aktiv");
-    });
-  });
-
-  // JOBBRA LAPOZÁS
-  if (gombKovetkezo) {
-    gombKovetkezo.addEventListener("click", function (e) {
-      e.stopPropagation();
-      aktualisKepIndex = (aktualisKepIndex + 1) % aktualisKepek.length; // Végtelenítés (modulo matek)
-      modalKepFrissit();
-    });
-  }
-
-  // BALRA LAPOZÁS
-  if (gombElozo) {
-    gombElozo.addEventListener("click", function (e) {
-      e.stopPropagation();
-      aktualisKepIndex =
-        (aktualisKepIndex - 1 + aktualisKepek.length) % aktualisKepek.length;
-      modalKepFrissit();
-    });
-  }
-
-  // BEZÁRÁS KATTINTÁSRA
-  if (modalBezaras) {
-    modalBezaras.addEventListener("click", function () {
-      modal.classList.remove("aktiv");
-    });
-  }
-  modal.addEventListener("click", function (e) {
-    if (e.target === modal) {
-      modal.classList.remove("aktiv");
-    }
-  });
-});
 // =========================================
 // OKOS MENÜ (Felfelé görgetésre előcsúszik)
 // =========================================
 document.addEventListener("DOMContentLoaded", function () {
   const fejlec = document.querySelector(".fejlec");
-
-  // Ha véletlenül nincs fejléc az oldalon, ne csináljon semmit
   if (!fejlec) return;
 
-  // Eltároljuk, hol voltunk legutóbb
   let utolsoGorgetes = window.pageYOffset || document.documentElement.scrollTop;
 
   window.addEventListener("scroll", function () {
     const aktualisGorgetes =
       window.pageYOffset || document.documentElement.scrollTop;
 
-    // BIZTONSÁGI FÉK: Ha a mobil menü le van nyitva, tilos eltüntetni a fejlécet!
-    if (fejlec.classList.contains("mobil-nyitva")) {
-      return;
-    }
+    if (fejlec.classList.contains("mobil-nyitva")) return;
 
-    // 1. SÖTÉTÍTÉS: Ha lementünk legalább 50 pixelt, kapjon sötétebb hátteret a fejléc
     if (aktualisGorgetes > 50) {
       fejlec.classList.add("gorgetve");
     } else {
       fejlec.classList.remove("gorgetve");
     }
 
-    // 2. ELTŰNÉS LEFELÉ: Ha lefelé görgetünk ÉS már lementünk legalább 100 pixelt
     if (aktualisGorgetes > utolsoGorgetes && aktualisGorgetes > 100) {
       fejlec.classList.add("rejtve");
-    }
-    // 3. ELŐBUKKANÁS FELFELÉ: Ha megindultunk visszafelé
-    else if (aktualisGorgetes < utolsoGorgetes) {
+    } else if (aktualisGorgetes < utolsoGorgetes) {
       fejlec.classList.remove("rejtve");
     }
 
-    // Frissítjük a pozíciót a következő lépéshez
     utolsoGorgetes = aktualisGorgetes;
   });
 });
+
+// =========================================
+// ANIMÁCIÓK MEGJELENÍTÉSE (Intersection Observer)
+// =========================================
 document.addEventListener("DOMContentLoaded", function () {
-  // 1. Létrehozzuk a figyelőt
   const megfigyelo = new IntersectionObserver(
     (bejegyzesek) => {
       bejegyzesek.forEach((bejegyzes) => {
-        // Ha az elem beér a képernyőre (legalább 20%-a látszik)
         if (bejegyzes.isIntersecting) {
-          // Rátesszük a CSS-ben megírt .megjelent osztályt
           bejegyzes.target.classList.add("megjelent");
-
-          // Opcionális: Ha azt akarod, hogy csak egyszer fusson le (ne ismétlődjön, ha fel-le görgetnek),
-          // akkor vedd le a kommentet a következő sorról:
-          // megfigyelo.unobserve(bejegyzes.target);
         }
       });
     },
-    {
-      threshold: 0.2, // Az elem 20%-ának látszódnia kell a képernyőn, hogy induljon
-    },
+    { threshold: 0.2 },
   );
 
-  // 2. Megkeressük az összes animálandó elemet az oldalon, és ráküldjük a figyelőt
   const animalandoElemek = document.querySelectorAll(
     ".animacio-balrol, .animacio-fade, .animacio-jobbrol, .animacio-jobbrol-alap, .animacio-alulrol",
   );
@@ -482,6 +348,7 @@ document.addEventListener("DOMContentLoaded", function () {
     megfigyelo.observe(elem);
   });
 });
+
 // =========================================
 // DINAMIKUS SZÁMLÁLÓ MOTOR (Lassuló Ease-Out verzió)
 // =========================================
@@ -499,59 +366,44 @@ document.addEventListener("DOMContentLoaded", function () {
           szamlalo.classList.add("befejezve");
 
           const celSzam = parseInt(szamlalo.getAttribute("data-cel"), 10);
-
-          // Az animáció hossza milliszekundumban (2000 = 2 másodperc)
           const animacioHossz = 2000;
           let kezdoIdo = null;
 
           const frissitSzamlalo = (aktualisIdo) => {
             if (!kezdoIdo) kezdoIdo = aktualisIdo;
             const elteltIdo = aktualisIdo - kezdoIdo;
-
-            // Kiszámoljuk, hol tartunk az időben 0.0 és 1.0 között
             const haladas = Math.min(elteltIdo / animacioHossz, 1);
-
-            // A "Varázslat": Ease-Out matematikai képlet, amitől a végén lelassul
             const lassuloHaladas = haladas * (2 - haladas);
 
-            // Kiszámoljuk és kiírjuk a pillanatnyi értéket
             szamlalo.innerText = Math.floor(lassuloHaladas * celSzam);
 
             if (haladas < 1) {
-              // Ha még nem telt le a 2 másodperc, kérjük a következő képkockát
               requestAnimationFrame(frissitSzamlalo);
             } else {
-              // A legvégén kőbe véssük a pontos célszámot
               szamlalo.innerText = celSzam;
             }
           };
 
-          // Elindítjuk a hardveresen gyorsított animációt
           requestAnimationFrame(frissitSzamlalo);
-
           figyelo.unobserve(szamlalo);
         }
       });
     },
-    {
-      threshold: 0.1,
-    },
+    { threshold: 0.1 },
   );
 
   szamlalok.forEach((sz) => szamlaloFigyelo.observe(sz));
 });
+
 // =========================================================
 // KÖZPONTI PROJEKT MODAL & TÉRKÉP RENDSZER
 // =========================================================
 document.addEventListener("DOMContentLoaded", function () {
-  // =========================================================
   // 1. MODAL MEGNYITÁSA ÉS SLIDER FELTÖLTÉSE
-  // =========================================================
   function nyisdMegAProjektModalt(kartya) {
     const pModal = document.getElementById("projekt-modal");
     if (!pModal) return;
 
-    // Adatok kinyerése (textContent a láthatatlan elemekhez is jó)
     const cim = kartya.querySelector("h3")
       ? kartya.querySelector("h3").textContent
       : "";
@@ -565,7 +417,6 @@ document.addEventListener("DOMContentLoaded", function () {
       ? kartya.querySelector(".kartya-rejtett-reszletek").innerHTML
       : "";
 
-    // Képek kinyerése
     let kepek = [];
     const hatter = kartya.querySelector(".kartya-hatter");
     if (hatter && hatter.style.backgroundImage) {
@@ -583,7 +434,6 @@ document.addEventListener("DOMContentLoaded", function () {
       kepek = kepek.concat(galeriaKepek);
     }
 
-    // Modal elemek kitöltése
     const modalCim = document.getElementById("modal-cim");
     const modalBadge = document.getElementById("modal-badge-szoveg");
     const modalMeta = document.getElementById("modal-meta-szoveg");
@@ -597,7 +447,6 @@ document.addEventListener("DOMContentLoaded", function () {
       modalBadge.style.display = badge ? "inline-block" : "none";
     }
 
-    // Slider mechanika
     const track = document.getElementById("modal-kep-track");
     let jelenlegiKepIndex = 0;
 
@@ -644,27 +493,23 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // A MÁGIA ITT VAN: Eltüntetjük a display:none-t, és RÁADJUK A TE CSS "AKTIV" OSZTÁLYODAT!
     pModal.classList.remove("rejtett");
     setTimeout(() => {
       pModal.classList.add("aktiv");
     }, 10);
   }
 
-  // KÖZÖS BEZÁRÓ FÜGGVÉNY (Figyelembe veszi a CSS animációdat)
   function bezarProjektModalt() {
     const pModal = document.getElementById("projekt-modal");
     if (pModal) {
-      pModal.classList.remove("aktiv"); // Elindítja a halványulást
+      pModal.classList.remove("aktiv");
       setTimeout(() => {
-        pModal.classList.add("rejtett"); // Ha elhalványult, eltünteti a gombokat is
-      }, 300); // 0.3 másodperc, pont mint a te CSS transition-öd
+        pModal.classList.add("rejtett");
+      }, 300);
     }
   }
 
-  // =========================================================
   // 2. NORMÁL KÁRTYÁK RÁKÖTÉSE
-  // =========================================================
   const osszesOldaliKartya = document.querySelectorAll(".projekt-kartya");
   osszesOldaliKartya.forEach((kartya) => {
     const gomb = kartya.querySelector(".reszletek-gomb");
@@ -677,7 +522,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Modal Bezárása Események
   const pModal = document.getElementById("projekt-modal");
   const pModalBezar = document.getElementById("modal-bezaras");
 
@@ -686,14 +530,11 @@ document.addEventListener("DOMContentLoaded", function () {
       pModalBezar.addEventListener("click", bezarProjektModalt);
     }
     pModal.addEventListener("click", (e) => {
-      // Csak akkor zárjon be, ha az overlay-re kattintunk
       if (e.target === pModal) bezarProjektModalt();
     });
   }
 
-  // =========================================================
   // 3. TÉRKÉP MOTOR
-  // =========================================================
   const terkepTarolo = document.getElementById("terkep-pontok-tarolo");
   const kategoriaSzuro = document.getElementById("terkep-kategoria");
 
@@ -726,7 +567,6 @@ document.addEventListener("DOMContentLoaded", function () {
     Újhartyán: { top: 47.4, left: 49.2 },
     Karcag: { top: 45.2, left: 76.5 },
     Szada: { top: 34.3, left: 49.5 },
-    Nagyhegyes: { top: 33.5, left: 80.6 },
   };
 
   if (kategoriaSzuro) {
@@ -803,7 +643,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const triggereles = (e) => {
               e.preventDefault();
               e.stopPropagation();
-              // A klónozott kártyát adjuk be
               nyisdMegAProjektModalt(klonKartya);
             };
 
@@ -826,7 +665,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Város Modal Bezárása (A térkép modalnál nem volt aktiv animáció beállítva a CSS-ben)
   if (vModalBezar && vModal) {
     vModalBezar.addEventListener("click", () =>
       vModal.classList.add("rejtett"),
@@ -838,7 +676,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (kategoriaSzuro)
     kategoriaSzuro.addEventListener("change", terkepFrissitese);
-
   terkepFrissitese();
 
   // =========================================================
@@ -853,14 +690,11 @@ document.addEventListener("DOMContentLoaded", function () {
       let dinamikusMinZoom = 1;
       const MAX_ZOOM = 4.5;
 
-      // --- DINAMIKUS MÉRETKALIBRÁLÁS ÉS ZÓNA VÁLTÁS ---
       const alkalmazZoom = () => {
         mapHatterDiv.style.width = jelenlegiZoom * 100 + "%";
         mapHatterDiv.style.minWidth = jelenlegiZoom * 800 + "px";
         mapHatterDiv.style.height = jelenlegiZoom * 600 + "px";
 
-        // ÚJ: Itt dől el a varázslat!
-        // Ha 1.8-szorosnál közelebb vagyunk, szétnyílnak a zónák!
         const ZONA_HATAR = 1.8;
         if (jelenlegiZoom >= ZONA_HATAR) {
           mapHatterDiv.classList.add("reszletes-nezet");
@@ -882,7 +716,6 @@ document.addEventListener("DOMContentLoaded", function () {
       initTerkepMeret();
       window.addEventListener("resize", initTerkepMeret);
 
-      // --- ASZTALI EGÉR HÚZÁS ---
       let egerLentVan = false;
       let kezdoX, kezdoY, gorgetesBal, gorgetesFent;
 
@@ -911,7 +744,6 @@ document.addEventListener("DOMContentLoaded", function () {
         mapTaroloDiv.scrollTop = gorgetesFent - (y - kezdoY) * 1.5;
       });
 
-      // --- ASZTALI GÖRGŐS ZOOM ---
       mapTaroloDiv.addEventListener(
         "wheel",
         (e) => {
@@ -944,7 +776,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { passive: false },
       );
 
-      // --- MOBIL KÉTUJJAS ZOOM ---
       let elozoTavolsag = 0;
       let elozoFokuszX = 0;
       let elozoFokuszY = 0;

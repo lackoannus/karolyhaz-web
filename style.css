@@ -2759,3 +2759,261 @@ body.fooldal .hero,
     transform: translateY(0);
   }
 }
+/* ========================================= */
+/* MOBIL FIXEK (Lebegő kép és szimmetrikus kártyák) */
+/* ========================================= */
+
+/* Ez a varázsszó megakadályozza az oldal vízszintes kóválygását, DE nem tiltja le a lebegő (sticky) képet! */
+html,
+body {
+  overflow-x: clip !important;
+}
+
+@media (max-width: 900px) {
+  /* A Grid helyett Flexboxot használunk, így a kép kap teret, hogy lefelé csússzon a lista mellett! */
+  .interaktiv-lista-grid {
+    display: flex !important;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Visszavesszük a bal oldali nagy távolságot, így a szöveg középre kerül és szimmetrikus lesz! */
+  .tevekenyseg-elem {
+    padding: 1.2rem 1.5rem !important;
+    gap: 1.2rem !important;
+  }
+}
+
+/* ========================================= */
+/* "B" VERZIÓ (VISSZAÁLLÍTVA) */
+/* ========================================= */
+.fooldal-tevekenysegek-b {
+  padding: 4rem var(--oldal-padding) 6rem var(--oldal-padding);
+  background-color: var(--szin-sotet);
+  min-height: 90dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tevekenyseg-fejlec-b {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.tevekenyseg-fejlec-b h2 {
+  font-size: clamp(2rem, 4dvw, 3rem);
+  color: var(--szin-feher);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.interaktiv-lista-grid-b {
+  width: 75dvw;
+  max-width: 1500px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 5rem;
+  align-items: stretch;
+}
+
+.lista-oldal-b {
+  display: flex;
+  flex-direction: column;
+}
+
+.tevekenyseg-lista-b {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 1rem;
+}
+
+.tevekenyseg-elem-b {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1.5rem;
+  cursor: pointer;
+  background: linear-gradient(145deg, #222222, #181818);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  color: #ababab;
+  text-align: left;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.tevekenyseg-elem-b > * {
+  white-space: normal !important;
+  word-break: break-word;
+  line-height: 1.3;
+  margin: 0;
+  font-weight: 500;
+}
+
+.tevekenyseg-elem-b .sorszam-b {
+  font-family: monospace;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.tevekenyseg-elem-b:hover,
+.tevekenyseg-elem-b.aktiv-elem-b {
+  background: var(--szin-kiemeles);
+  border-color: var(--szin-kiemeles);
+  transform: translateX(10px);
+  box-shadow: 0 15px 35px rgba(212, 169, 76, 0.35);
+}
+
+.tevekenyseg-elem-b:hover *,
+.tevekenyseg-elem-b.aktiv-elem-b * {
+  color: #000 !important;
+}
+
+.kep-oldal-b {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+  background-color: #000;
+}
+
+.tevekenyseg-kep-b {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.6s ease-in-out,
+    visibility 0.6s ease-in-out;
+}
+
+.tevekenyseg-kep-b.aktiv-kep-b {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tevekenyseg-bovebben-b {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.bovebben-gomb-b {
+  display: inline-block;
+  padding: 1rem 3rem;
+  background-color: transparent;
+  color: var(--szin-kiemeles);
+  border: 2px solid var(--szin-kiemeles);
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.bovebben-gomb-b:hover {
+  background-color: var(--szin-kiemeles);
+  color: #000;
+}
+
+@media (max-width: 1200px) {
+  .interaktiv-lista-grid-b {
+    width: 90dvw;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .fooldal-tevekenysegek-b {
+    min-height: auto;
+  }
+  .interaktiv-lista-grid-b {
+    width: 95dvw;
+    grid-template-columns: 1fr;
+  }
+  .kep-oldal-b {
+    height: 400px;
+    order: -1;
+  }
+  .tevekenyseg-elem-b:hover,
+  .tevekenyseg-elem-b.aktiv-elem-b {
+    transform: translateY(-5px);
+  }
+}
+/* ========================================= */
+/* "A" VERZIÓ - ASZTALI NÉZET HELYREÁLLÍTÁSA (4x2 kártya felül, nagy kép alul) */
+/* ========================================= */
+@media (min-width: 901px) {
+  /* A fő konténer újra egymás alá rendezi a listát és a képet */
+  .interaktiv-lista-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 4rem !important;
+  }
+
+  /* A lista újra 4 oszlopos rács lesz (4 kártya felül, 4 alul) */
+  .tevekenyseg-lista {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    width: 100% !important;
+    gap: 1.5rem !important;
+  }
+
+  /* A kép szépen középre igazodik a kártyák alatt */
+  .kep-oldal {
+    width: 100% !important;
+    max-width: 1100px !important; /* Szép szélesvásznú mozi méret */
+    margin: 0 auto !important;
+    order: 2 !important; /* Biztosítjuk, hogy a kártyák alatt maradjon */
+  }
+}
+/* ========================================= */
+/* GLOBÁLIS KÁRTYA ÉS MODAL SZÖVEG FŐKAPCSOLÓ MOBILON */
+/* ========================================= */
+@media (max-width: 900px) {
+  /* 
+      Itt tudod egyetlen számmal állítani az EGÉSZ OLDALON 
+      az összes kártya, projekt elem és modal szövegméretét!
+      (Alapértelmezés: 115% - ha nagyobb kell, írd át pl. 125%-ra)
+    */
+  .tevekenyseg-elem span,
+  .tevekenyseg-elem-b span,
+  .tevekenyseg-nev,
+  .tevekenyseg-nev-b,
+  .k-kartya-szoveg p,
+  .k-kartya-szoveg h3,
+  .projekt-kartya,
+  .kartya-tartalom h3,
+  .projekt-kartya,
+  .kartya-meta,
+  .mini-kartya,
+  .modal-szoveg p,
+  .modal-szoveg h2,
+  .varos-projekt-lista,
+  .kategoria-kartya,
+  .k-tartalom p,
+  .varos-projekt-lista {
+    font-size: 115% !important;
+  }
+}
