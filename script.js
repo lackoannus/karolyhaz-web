@@ -551,11 +551,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const pModal = document.getElementById("projekt-modal");
     if (!pModal) return;
 
+    // Adatok kinyerése (textContent a láthatatlan elemekhez is jó)
     const cim = kartya.querySelector("h3")
-      ? kartya.querySelector("h3").innerText
+      ? kartya.querySelector("h3").textContent
       : "";
     const badge = kartya.querySelector(".kartya-badge")
-      ? kartya.querySelector(".kartya-badge").innerText
+      ? kartya.querySelector(".kartya-badge").textContent
       : "";
     const meta = kartya.querySelector(".kartya-meta")
       ? kartya.querySelector(".kartya-meta").innerHTML
@@ -564,13 +565,14 @@ document.addEventListener("DOMContentLoaded", function () {
       ? kartya.querySelector(".kartya-rejtett-reszletek").innerHTML
       : "";
 
+    // Képek kinyerése
     let kepek = [];
     const hatter = kartya.querySelector(".kartya-hatter");
     if (hatter && hatter.style.backgroundImage) {
       let alapKep = hatter.style.backgroundImage
         .slice(4, -1)
         .replace(/["']/g, "");
-      if (alapKep) kepek.push(alapKep);
+      if (alapKep && alapKep !== "") kepek.push(alapKep);
     }
     const galeriaAttr = kartya.getAttribute("data-galeria");
     if (galeriaAttr) {
@@ -581,6 +583,7 @@ document.addEventListener("DOMContentLoaded", function () {
       kepek = kepek.concat(galeriaKepek);
     }
 
+    // Modal elemek kitöltése
     const modalCim = document.getElementById("modal-cim");
     const modalBadge = document.getElementById("modal-badge-szoveg");
     const modalMeta = document.getElementById("modal-meta-szoveg");
@@ -601,7 +604,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (track) {
       track.innerHTML = "";
       track.style.display = "flex";
-      track.style.transition = "transform 0.3s ease-in-out";
+      track.style.transition = "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)";
 
       kepek.forEach((url) => {
         const img = document.createElement("img");
@@ -623,8 +626,8 @@ document.addEventListener("DOMContentLoaded", function () {
       gombElozo.parentNode.replaceChild(ujElozo, gombElozo);
       gombKovetkezo.parentNode.replaceChild(ujKovetkezo, gombKovetkezo);
 
-      ujElozo.style.display = kepek.length > 1 ? "block" : "none";
-      ujKovetkezo.style.display = kepek.length > 1 ? "block" : "none";
+      ujElozo.style.display = kepek.length > 1 ? "flex" : "none";
+      ujKovetkezo.style.display = kepek.length > 1 ? "flex" : "none";
 
       ujKovetkezo.addEventListener("click", () => {
         if (jelenlegiKepIndex < kepek.length - 1) {
@@ -641,36 +644,50 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Modal megjelenítése a stílus felülírása nélkül
+    // A MÁGIA ITT VAN: Eltüntetjük a display:none-t, és RÁADJUK A TE CSS "AKTIV" OSZTÁLYODAT!
     pModal.classList.remove("rejtett");
-    pModal.style.zIndex = "99999";
+    setTimeout(() => {
+      pModal.classList.add("aktiv");
+    }, 10);
+  }
+
+  // KÖZÖS BEZÁRÓ FÜGGVÉNY (Figyelembe veszi a CSS animációdat)
+  function bezarProjektModalt() {
+    const pModal = document.getElementById("projekt-modal");
+    if (pModal) {
+      pModal.classList.remove("aktiv"); // Elindítja a halványulást
+      setTimeout(() => {
+        pModal.classList.add("rejtett"); // Ha elhalványult, eltünteti a gombokat is
+      }, 300); // 0.3 másodperc, pont mint a te CSS transition-öd
+    }
   }
 
   // =========================================================
-  // 2. KÁRTYÁK RÁKÖTÉSE (A rejtetteket is beleértve)
+  // 2. NORMÁL KÁRTYÁK RÁKÖTÉSE
   // =========================================================
   const osszesOldaliKartya = document.querySelectorAll(".projekt-kartya");
   osszesOldaliKartya.forEach((kartya) => {
     const gomb = kartya.querySelector(".reszletek-gomb");
     if (gomb) {
       gomb.addEventListener("click", (e) => {
+        e.preventDefault();
         e.stopPropagation();
         nyisdMegAProjektModalt(kartya);
       });
     }
   });
 
+  // Modal Bezárása Események
   const pModal = document.getElementById("projekt-modal");
   const pModalBezar = document.getElementById("modal-bezaras");
 
   if (pModal) {
     if (pModalBezar) {
-      pModalBezar.addEventListener("click", () => {
-        pModal.classList.add("rejtett");
-      });
+      pModalBezar.addEventListener("click", bezarProjektModalt);
     }
     pModal.addEventListener("click", (e) => {
-      if (e.target === pModal) pModal.classList.add("rejtett");
+      // Csak akkor zárjon be, ha az overlay-re kattintunk
+      if (e.target === pModal) bezarProjektModalt();
     });
   }
 
@@ -680,13 +697,36 @@ document.addEventListener("DOMContentLoaded", function () {
   const terkepTarolo = document.getElementById("terkep-pontok-tarolo");
   const kategoriaSzuro = document.getElementById("terkep-kategoria");
 
-  // Ha nincs kártya és nincs térkép, ne csináljon semmit
   if (!terkepTarolo || osszesOldaliKartya.length === 0) return;
 
   const varosKoordinatak = {
-    Szolnok: { top: 58, left: 63 },
-    Budapest: { top: 40, left: 47 },
-    Jászberény: { top: 45, left: 56 },
+    Budapest: { top: 38.5, left: 47.0 },
+    Jászberény: { top: 41.0, left: 56.5 },
+    Szolnok: { top: 49.2, left: 61.8 },
+    Tiszapüspöki: { top: 45.5, left: 65.5 },
+    Fegyvernek: { top: 41.2, left: 68.3 },
+    Zamárdi: { top: 60, left: 28.65 },
+    Nyárlőrinc: { top: 59.3, left: 56 },
+    Mezőtúr: { top: 55, left: 67.6 },
+    Tiszanána: { top: 34.9, left: 67 },
+    Rákóczifalva: { top: 51.5, left: 62.5 },
+    Cserkeszőlő: { top: 59.5, left: 61.3 },
+    Kisújszállás: { top: 47.2, left: 72.7 },
+    Szajol: { top: 48.7, left: 65.1 },
+    Törökszentmiklós: { top: 48.5, left: 67.3 },
+    Tiszafüred: { top: 34, left: 69.7 },
+    Visonta: { top: 29, left: 60 },
+    Abony: { top: 47.4, left: 57.3 },
+    Nagyhegyes: { top: 33.5, left: 80.6 },
+    Csömör: { top: 38.4, left: 47.1 },
+    Mogyoród: { top: 35.5, left: 47.9 },
+    Pilis: { top: 44.5, left: 52.4 },
+    Gyömrő: { top: 40.3, left: 51.1 },
+    Őrbottyán: { top: 31.9, left: 48.5 },
+    Újhartyán: { top: 47.4, left: 49.2 },
+    Karcag: { top: 45.2, left: 76.5 },
+    Szada: { top: 34.3, left: 49.5 },
+    Nagyhegyes: { top: 33.5, left: 80.6 },
   };
 
   if (kategoriaSzuro) {
@@ -760,11 +800,11 @@ document.addEventListener("DOMContentLoaded", function () {
             const klonKartya = eredetiKartya.cloneNode(true);
             klonKartya.classList.remove("rejtett");
 
-            // Közvetlenül az eredeti kártyát küldjük a modalnak,
-            // aminek a CSS/JS rétegződése már kényszeríti, hogy a város ablak felett nyíljon meg!
             const triggereles = (e) => {
+              e.preventDefault();
               e.stopPropagation();
-              nyisdMegAProjektModalt(eredetiKartya);
+              // A klónozott kártyát adjuk be
+              nyisdMegAProjektModalt(klonKartya);
             };
 
             klonKartya.style.cursor = "pointer";
@@ -786,6 +826,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Város Modal Bezárása (A térkép modalnál nem volt aktiv animáció beállítva a CSS-ben)
   if (vModalBezar && vModal) {
     vModalBezar.addEventListener("click", () =>
       vModal.classList.add("rejtett"),
@@ -799,4 +840,149 @@ document.addEventListener("DOMContentLoaded", function () {
     kategoriaSzuro.addEventListener("change", terkepFrissitese);
 
   terkepFrissitese();
+
+  // =========================================================
+  // 4. PRÉMIUM MOZGATÁS ÉS EGÉRHEZ ZOOMOLÁS MOTOR
+  // =========================================================
+  const gorgetoDiv = document.querySelector(".terkep-gorgeto");
+  const mapDiv = document.getElementById("magyarorszag-terkep");
+
+  let zoomSzint = 1;
+  const MIN_ZOOM = 1;
+  const MAX_ZOOM = 4.5; // Kicsit nagyobbra engedjük a zoomot a sűrű pontok miatt
+
+  // -- 1. ASZTALI: EGÉRREL HÚZÁS (Drag-to-pan) --
+  let isDown = false;
+  let startX;
+  let startY;
+  let scrollLeft;
+  let scrollTop;
+
+  if (gorgetoDiv) {
+    gorgetoDiv.addEventListener("mousedown", (e) => {
+      isDown = true;
+      gorgetoDiv.classList.add("huzas-aktiv");
+      startX = e.pageX - gorgetoDiv.offsetLeft;
+      startY = e.pageY - gorgetoDiv.offsetTop;
+      scrollLeft = gorgetoDiv.scrollLeft;
+      scrollTop = gorgetoDiv.scrollTop;
+    });
+
+    gorgetoDiv.addEventListener("mouseleave", () => {
+      isDown = false;
+      gorgetoDiv.classList.remove("huzas-aktiv");
+    });
+
+    gorgetoDiv.addEventListener("mouseup", () => {
+      isDown = false;
+      gorgetoDiv.classList.remove("huzas-aktiv");
+    });
+
+    gorgetoDiv.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - gorgetoDiv.offsetLeft;
+      const y = e.pageY - gorgetoDiv.offsetTop;
+      const walkX = (x - startX) * 1.5;
+      const walkY = (y - startY) * 1.5;
+      gorgetoDiv.scrollLeft = scrollLeft - walkX;
+      gorgetoDiv.scrollTop = scrollTop - walkY;
+    });
+  }
+
+  // -- 2. ASZTALI: GÖRGŐS ZOOM PONTOSAN A KURZORHOZ --
+  if (gorgetoDiv && mapDiv) {
+    gorgetoDiv.addEventListener(
+      "wheel",
+      (e) => {
+        e.preventDefault(); // Ne az egész weboldalt görgesse
+
+        const rect = gorgetoDiv.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        const scrollX = gorgetoDiv.scrollLeft;
+        const scrollY = gorgetoDiv.scrollTop;
+
+        // Kiszámoljuk, hol van az egér pontosan a térkép "fizikai" méretén belül
+        const mapX = mouseX + scrollX;
+        const mapY = mouseY + scrollY;
+
+        const oldZoom = zoomSzint;
+
+        // Nagyítás / Kicsinyítés
+        if (e.deltaY < 0) {
+          zoomSzint += 0.25;
+        } else {
+          zoomSzint -= 0.25;
+        }
+        zoomSzint = Math.max(MIN_ZOOM, Math.min(zoomSzint, MAX_ZOOM));
+
+        // Ha változott a méret, igazítsuk a pozíciót az egérhez!
+        if (oldZoom !== zoomSzint) {
+          const zoomRatio = zoomSzint / oldZoom;
+
+          // Az új pozíció, aminek továbbra is a kurzor alatt kell lennie
+          const newMapX = mapX * zoomRatio;
+          const newMapY = mapY * zoomRatio;
+
+          // Azonnali méretváltás
+          mapDiv.style.width = zoomSzint * 100 + "%";
+          mapDiv.style.minWidth = zoomSzint * 800 + "px";
+          mapDiv.style.height = zoomSzint * 600 + "px";
+
+          // Visszagörgetünk úgy, hogy az egér hajszálpontosan ugyanott maradjon a térképen
+          gorgetoDiv.scrollLeft = newMapX - mouseX;
+          gorgetoDiv.scrollTop = newMapY - mouseY;
+        }
+      },
+      { passive: false },
+    );
+  }
+
+  // -- 3. MOBIL KÉTUJJAS ZOOM ÉS TITKOS KERESŐ --
+  function alkalmazMobilZoom() {
+    if (!mapDiv) return;
+    mapDiv.style.width = zoomSzint * 100 + "%";
+    mapDiv.style.minWidth = zoomSzint * 800 + "px";
+    mapDiv.style.height = zoomSzint * 600 + "px";
+  }
+
+  if (gorgetoDiv && mapDiv) {
+    let startTavolsag = 0;
+    let induloZoom = 1;
+
+    gorgetoDiv.addEventListener(
+      "touchstart",
+      (e) => {
+        if (e.touches.length === 2) {
+          e.preventDefault();
+          startTavolsag = Math.hypot(
+            e.touches[0].pageX - e.touches[1].pageX,
+            e.touches[0].pageY - e.touches[1].pageY,
+          );
+          induloZoom = zoomSzint;
+        }
+      },
+      { passive: false },
+    );
+
+    gorgetoDiv.addEventListener(
+      "touchmove",
+      (e) => {
+        if (e.touches.length === 2) {
+          e.preventDefault();
+          const jelenlegiTavolsag = Math.hypot(
+            e.touches[0].pageX - e.touches[1].pageX,
+            e.touches[0].pageY - e.touches[1].pageY,
+          );
+          const arany = jelenlegiTavolsag / startTavolsag;
+          zoomSzint = induloZoom * arany;
+          zoomSzint = Math.max(MIN_ZOOM, Math.min(zoomSzint, MAX_ZOOM));
+          alkalmazMobilZoom();
+        }
+      },
+      { passive: false },
+    );
+  }
 });

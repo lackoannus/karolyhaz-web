@@ -303,26 +303,41 @@ img {
 .hero-tartalom {
   position: relative;
   z-index: 3;
-  width: 70%;
-  padding-left: var(--oldal-padding);
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 0 2rem;
   color: var(--szin-szoveg);
 }
 .hero-cim {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2.5rem, 8vw, 5.5rem)!;
   line-height: 1.1;
   display: inline-block;
   margin-bottom: 3rem;
   color: var(--szin-kiemeles);
 }
+.fo-hero-cim{
+  font-size: clamp(2.5rem, 10vw, 7.5rem)!important;
+}
 .hero-tartalom h1 {
   font-size: clamp(2.5rem, 8vw, 5.5rem);
   line-height: 1.1;
   display: inline-block;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
+}
+.hero-tartalom h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--szin-kiemeles);
+  font-weight: 500;
+  line-height: 1.1;
+  display: inline-block;
+  margin-bottom: 2.5rem;
 }
 .hero-tartalom p {
-  font-size: clamp(1.5rem, 2vw, 3.5rem);
-  line-height: 1.1;
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9); /* Picit tompított fehér, hogy ne vonja el a figyelmet a cíkről */
+    max-width: 750px;
+    margin: 0 auto 2rem auto; /* Középre húzzuk a szöveget */
 }
 .hero-gomb {
   background-color: var(--szin-kiemeles);
@@ -368,6 +383,7 @@ img {
   margin-bottom: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+  flex-wrap: nowrap;
 }
 
 .szoveg-kiemeles {
@@ -452,40 +468,140 @@ img {
   color: var(--szin-feher);
 }
 
-/* FOOLDAL TEVEKENYSEGEINK LISTA */
+//* ========================================= */
+/* PRÉMIUM INTERAKTÍV LISTA (8 ELEM FELÜL, KÉP ALUL) */
+/* ========================================= */
 
 .interaktiv-lista-grid {
-  max-width: 1400px;
+  max-width: 1200px; /* Picit szűkebb a 1400-nál, hogy jobban egyben legyen */
   width: 100%;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 5rem;
-  align-items: last baseline;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  display: flex; 
+  flex-direction: column;
+  align-items: center; /* Mindent gyönyörűen középre húzunk */
+  gap: 3.5rem; /* Távolság a 8 kártya és a kép között */
 }
 
+/* --- A 8 KÁRTYA RÁCSA --- */
 .tevekenyseg-lista {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
+  justify-self: center;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  grid-auto-rows: minmax(80px, auto); /* Minimum magasság, de rugalmasan nőhet */
+  gap: 1.5rem; /* Kényelmes tér a kártyák között */
 }
 
+/* --- PRÉMIUM KÁRTYA DIZÁJN (A gombok) --- */
 .tevekenyseg-elem {
-  display: flex;
+  display: grid;
+  grid-template-columns: 25px 1fr; /* Egy oszlop, hogy a szöveg középre kerüljön */
   align-items: center;
-  gap: 1.5rem;
+  text-align: left;
+  gap: 1rem;
   cursor: pointer;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.2rem 1.5rem;
+  
+  /* Modern, finom 3D hatású sötét háttér */
+  background: linear-gradient(145deg, #222222, #181818); 
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  
   color: #ababab;
-  transition: all 0.4s ease;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  
+  /* EZ AKADÁLYOZZA MEG MOBILON A KILÓGÁST! */
+  box-sizing: border-box;
+  word-wrap: break-word;
+  hyphens: auto; 
+  max-width: 100%;
+  overflow: hidden;
+}
+/* Kényszerítjük a kártyán belüli elemeket, hogy ne lógjanak ki */
+.tevekenyseg-elem > * {
+  white-space: normal !important; /* Erőszakkal engedélyezzük a sortörést */
+  word-break: break-word; /* Ha túl hosszú egy szó, eltöri a felénél */
+  line-height: 1.3;
+  margin: 0;
+}
+/* A szöveg méretének rugalmassá tétele a kártyán belül */
+.tevekenyseg-elem span {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  line-height: 1.3;
 }
 
-.tevekenyseg-elem:last-child {
-  border-bottom: none;
+/* AKTÍV ÉS HOVER ÁLLAPOT (Arany kiemelés) */
+.tevekenyseg-elem:hover,
+.tevekenyseg-elem.aktiv {
+  background: var(--szin-kiemeles); 
+  border-color: var(--szin-kiemeles);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(212, 169, 76, 0.35);
+}
+
+/* JAVÍTÁS: Kifejezetten a belső szövegeket kényszerítjük feketére hoverkor! */
+.tevekenyseg-elem:hover *,
+.tevekenyseg-elem.aktiv * {
+  color: #000 !important; /* Ezzel 100%, hogy nem tűnik el a szöveg a sárga háttéren */
+}
+
+/* --- KÉP/SLIDER DIZÁJN (Kisebb, elegánsabb) --- */
+.kep-oldal {
+  width: 100%;
+  max-width: 900px; /* EZT KERESTED: Itt maximáljuk a méretét, nem nyúlik ki a képernyő széléig! */
+  max-height: 60vh; /* Ne legyen túl magas, hogy ne nyomja le a szöveget */
+  aspect-ratio: 16 / 9; /* Szélesvásznú mozi arány */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+  justify-self: center; /* Középre igazítja a képet a rácsban */
+  margin-top: 4rem;
+  position: relative;
+  background-color: #000; /* Ha lassabban tölt be a kép, sötét maradjon */
+}
+
+/* ========================================= */
+/* MOBIL ÉS TABLET NÉZET                     */
+/* ========================================= */
+
+@media (max-width: 1000px) {
+  .tevekenyseg-lista {
+    grid-template-columns: repeat(2, 1fr); /* Tableten 2x4 kártya */
+  }
+  .kep-oldal {
+    max-width: 100%; /* Kisebb gépen már kitöltheti a helyet */
+  }
+/* ÚJ: A kártya bal oldali belső szünetét (padding) megnöveljük! */
+  .tevekenyseg-elem {
+    padding: 1.2rem 1.5rem 1.2rem 2.5rem; /* Fent, Jobb, Lent, BAL (ide tettem 2.5rem-et!) */
+  }
+}
+
+@media (max-width: 600px) {
+  .tevekenyseg-lista {
+    grid-template-columns: 1fr; /* Mobilon 1 oszlop (egymás alá kerül mind) */
+    gap: 1rem;
+  }
+  
+  .tevekenyseg-elem {
+    padding: 1rem; 
+    min-height: 60px; /* Hogy az ujjaddal könnyen rá lehessen bökni */
+  }
+  
+  .kep-oldal {
+    aspect-ratio: 4 / 3; /* Mobilon kicsit magasabb képarány, hogy jobban mutasson */
+  }
+  
+  .interaktiv-lista-grid {
+    gap: 2rem; /* Mobilon kisebb hely a kártyák és a kép között */
+  }
 }
 
 .sorszam {
@@ -648,6 +764,187 @@ img {
 .szolg-gomb-tarolo {
   text-align: center;
   margin-top: 4rem;
+}
+
+
+/* ========================================= */
+/* KIEMELT REFERENCIÁK (FŐOLDAL)             */
+/* ========================================= */
+.kiemelt-referenciak-szekcio {
+    padding: 6rem var(--oldal-padding);
+    background-color: var(--szin-sotet); /* Sötét háttér */
+}
+
+.k-referencia-kontener {
+    max-width: 1650px;
+    margin: 0 auto;
+}
+
+.k-szekcio-fejlec {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.k-szekcio-fejlec h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--szin-kiemeles);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.k-szekcio-fejlec p {
+    font-size: 1.15rem;
+    color: var(--szin-szoveg);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 4 oszlopos elrendezés asztalin (ha 4 kártya van, tökéletes) */
+.k-referencia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+/* Prémium kártya dizájn */
+.k-kartya {
+    background: linear-gradient(145deg, #222222, #181818);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.k-kartya:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(212, 169, 76, 0.2); /* Finom arany árnyék */
+}
+
+.k-kartya-kep {
+    width: 100%;
+    height: 280px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-bottom: 3px solid var(--szin-kiemeles);
+}
+
+.k-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: var(--szin-kiemeles);
+    color: black;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.k-kartya-szoveg {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Hogy a kártyák egyforma magasak legyenek */
+}
+
+.k-kartya-szoveg h3 {
+    font-size: 1.5rem;
+    color: var(--szin-feher);
+    margin-bottom: 0.8rem;
+}
+
+.k-kartya-szoveg p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--szin-szoveg);
+    margin: 0;
+}
+
+.k-gomb-tarolo {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Átlátszóbb, másodlagos gomb dizájn */
+.masodlagos-gomb {
+    background-color: transparent !important;
+    border: 2px solid var(--szin-kiemeles) !important;
+    color: var(--szin-kiemeles) !important;
+}
+
+.masodlagos-gomb:hover {
+    background-color: var(--szin-kiemeles) !important;
+    color: black !important;
+}
+
+/* ========================================= */
+/* ZÁRÓ CTA BLOKK                            */
+/* ========================================= */
+.zaro-cta-szekcio {
+    padding: 6rem var(--oldal-padding);
+    background-color: #111111; /* Mély, szinte teljesen fekete háttér */
+    background-image: radial-gradient(circle at center, #2a2210 0%, #111111 70%); /* Középről finoman kifelé sötétedő arany derengés */
+    border-top: 2px solid rgba(212, 169, 76, 0.2); /* Nagyon vékony arany vonal felül */
+    text-align: center;
+}
+
+.cta-kontener {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-kontener h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--szin-feher);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.cta-kontener p {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: var(--szin-kiemeles); /* A szlogen arany színű lesz */
+    margin-bottom: 3rem;
+    font-weight: 500;
+}
+
+/* Brutális, kiugró gomb a lezáráshoz */
+.cta-gomb {
+    font-size: 1.2rem !important;
+    padding: 1rem 3rem !important;
+    box-shadow: 0 10px 30px rgba(212, 169, 76, 0.2);
+}
+
+.cta-gomb:hover {
+    box-shadow: 0 15px 40px rgba(212, 169, 76, 0.3);
+    transform: scale(1.05);
+}
+
+/* ========================================= */
+/* MOBIL NÉZET                               */
+/* ========================================= */
+@media (max-width: 1100px) {
+    .k-referencia-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 kártya egymás mellett tableten */
+    }
+}
+
+@media (max-width: 700px) {
+    .k-referencia-grid {
+        grid-template-columns: 1fr; /* Mobilon egymás alatt az összes */
+    }
+    .zaro-cta-szekcio {
+        padding: 4rem var(--oldal-padding);
+    }
 }
 
 /* LABLEC */
@@ -1668,10 +1965,6 @@ img {
   overflow: hidden; /* Ha a kép nagyobb lenne, kíméletlenül levágja a kilógó részt */
 }
 
-.statik-hero .hero-tartalom h1 {
-  padding-top: 0;
-  margin-top: 80px;
-}
 
 .szolgaltatas-reszletek {
   padding: 6rem var(--oldal-padding);
@@ -1791,25 +2084,8 @@ img {
     border-radius: 8px;
   }
 
-  /* 2. HERO CÍM: Megakadályozzuk, hogy kilógjon a képernyőről */
-  .hero-tartalom {
-    padding: 0 1.5rem;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
-  }
 
-  .hero-cim {
-    /* Reszponzív méret: automatikusan összébb megy pici képernyőn */
-    font-size: clamp(2.2rem, 7vw, 3.5rem) !important;
-    line-height: 1.2;
-    word-break: break-word; /* Ha túl hosszú szó lenne, eltöri, de nem lóg ki */
-  }
 
-  .hero-tartalom p {
-    font-size: 1rem !important;
-    line-height: 1.6;
-  }
 }
 /* ========================================= */
 /* CTA SZEKCIÓ (Kapcsolatfelvétel ösztönzés) */
@@ -2062,9 +2338,7 @@ img {
 
   /* FOOLDAL HERO */
 
-  .hero-tartalom h1 {
-    padding-top: 10rem;
-  }
+
   /* FOOLDAL ROLUNK */
 
   .fooldal-rolunk {
@@ -2236,6 +2510,7 @@ img {
 
 /* 2. Az animáció ráhúzása a Hero elemekre */
 .hero-tartalom h1,
+.hero-tartalom h2,
 .hero-tartalom p,
 .hero-gomb {
   /* Alapból rejtve vannak, amíg az animáció el nem indul */
@@ -2248,13 +2523,15 @@ img {
 .hero-tartalom h1 {
   animation-delay: 0.2s; /* A cím indul a leghamarabb */
 }
-
+.hero-tartalom h2 {
+  animation-delay: 0.4s; /* A cím alatti alcím kicsit később */
+}
 .hero-tartalom p {
-  animation-delay: 0.4s; /* A szöveg picit később követi */
+  animation-delay: 0.6s; /* A szöveg picit később követi */
 }
 
 .hero-gomb {
-  animation-delay: 0.6s; /* A gomb jelenik meg legutoljára */
+  animation-delay: 0.8s; /* A gomb jelenik meg legutoljára */
 }
 /* ========================================= */
 /* GÖRGETÉSRE INDULÓ ANIMÁCIÓK */
@@ -2589,12 +2866,6 @@ body.fooldal .hero,
   text-align: center; /* Visszaállítjuk a középső igazítást */
 }
 
-.hero-tartalom {
-  max-width: 900px;
-  margin: 0 auto; /* Középre húzza a dobozt */
-  padding: 0 2rem; /* Biztosít egy kis helyet a széleken, hogy ne ragadjon ki a képernyő szélére */
-  box-sizing: border-box;
-}
 
 /* Mobilon is garantáljuk a szép, középre zárt, nem kilógó elrendezést */
 @media (max-width: 900px) {
@@ -2605,6 +2876,22 @@ body.fooldal .hero,
     transform: none !important;
     text-align: center !important;
   }
+  .hero-tartalom h1 {
+        font-size: clamp(2rem, 7vw, 2.8rem);
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-tartalom h2 {
+        font-size: clamp(1.2rem, 5vw, 1.5rem);
+        margin-bottom: 1.2rem;
+    }
+    
+    .hero-tartalom p {
+        font-size: 1rem;
+        line-height: 1.6;
+        padding: 0 1rem;
+    }
+}
 }
 @media (max-width: 900px) {
   .navigacio ul,
@@ -2857,4 +3144,263 @@ body.fooldal .hero,
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
+}
+
+/* ========================================= */
+/* TÉRKÉP - KÉTUJJAS ZOOM ÉS GÖRGETÉS        */
+/* ========================================= */
+
+.terkep-kontener {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden; /* Garantálja, hogy soha semmi nem lóg ki a konténerből */
+}
+/* A belső keret, ami engedi a pásztázást (mozgatást) */
+.terkep-gorgeto {
+  width: 100%;
+
+  /* ÚJ: EZT A KÉT SORT ADD HOZZÁ, HOGY FÜGGŐLEGESEN IS LEHESSEN HÚZNI! */
+  height: 600px;
+  max-height: 65vh; /* Mobilon okosan alkalmazkodik, nem lóg ki */
+
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab; /* "Megfogható" kéz ikon asztali gépen */
+  user-select: none; 
+    -webkit-user-select: none; /* Safari, Chrome */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Régi Windows böngészők */
+}
+}
+
+/* Amikor nyomva tartod az egeret (Húzás) */
+.terkep-gorgeto.huzas-aktiv {
+  cursor: grabbing;
+}
+
+/* Elegáns, sötét görgetősáv (desktopra) */
+.terkep-gorgeto::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.terkep-gorgeto::-webkit-scrollbar-track {
+  background: #111;
+}
+.terkep-gorgeto::-webkit-scrollbar-thumb {
+  background: var(--szin-kiemeles);
+  border-radius: 4px;
+}
+
+/* A térkép háttere */
+.magyarorszag-terkep {
+  position: relative;
+  width: 100%;
+  min-width: 800px;
+  height: 600px;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: none !important; /* KÖTELEZŐ: Ezt vedd ki/írd felül, különben ugrálni fog a kurzorhoz nagyítás! */
+}
+
+/* AMIKOR RÁVISZED AZ EGERET A PÖTTYRE: Ugorjon minden más elé! */
+.terkep-pont:hover {
+  transform: translate(-50%, -50%) scale(1.4);
+  z-index: 100 !important; /* Ez a varázsszó hozza előre a többi pötty és felirat fölé */
+}
+
+/* ========================================= */
+/* "B" VERZIÓ - 90VH MEGJELENÉS, EREDETI KÁRTYÁK */
+/* ========================================= */
+
+.fooldal-tevekenysegek-b {
+    padding: 4rem var(--oldal-padding) 6rem var(--oldal-padding);
+    background-color: var(--szin-sotet);
+    
+    /* 100vh helyett 90vh, így picit barátibb a méret */
+    min-height: 90vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tevekenyseg-fejlec-b {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+/* Visszaállítva a korábbi, arányosabb méretre */
+.tevekenyseg-fejlec-b h2 {
+    font-size: clamp(2rem, 4vw, 3rem); 
+    color: var(--szin-feher);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- A Hatalmas Grid Elrendezés --- */
+.interaktiv-lista-grid-b {
+    width: 75vw;
+    max-width: 1500px;
+    margin: 0 auto;
+    
+    display: grid;
+    grid-template-columns: 1fr 1.6fr; 
+    gap: 5rem;
+    align-items: stretch; 
+}
+
+/* --- BAL OLDAL: A Lista --- */
+.lista-oldal-b {
+    display: flex;
+    flex-direction: column;
+}
+
+.tevekenyseg-lista-b {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    
+    /* Elosztja a kártyákat a rendelkezésre álló helyen */
+    justify-content: space-between; 
+    height: 100%;
+    gap: 1rem;
+}
+
+/* --- VISSZAÁLLÍTOTT PRÉMIUM KÁRTYA DIZÁJN --- */
+.tevekenyseg-elem-b {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    align-items: center;
+    gap: 1rem;
+    
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+    
+    /* A korábbi, kedvelt sötét színátmenet és árnyék */
+    background: linear-gradient(145deg, #222222, #181818); 
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    
+    color: #ababab;
+    text-align: left;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.tevekenyseg-elem-b > * {
+    white-space: normal !important;
+    word-break: break-word;
+    line-height: 1.3;
+    margin: 0;
+    font-weight: 500;
+}
+
+.tevekenyseg-elem-b .sorszam-b {
+    font-family: monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* AKTÍV ÉS HOVER ÁLLAPOT (Teljes arany kártya, fekete szöveg) */
+.tevekenyseg-elem-b:hover,
+.tevekenyseg-elem-b.aktiv-elem-b {
+    background: var(--szin-kiemeles); 
+    border-color: var(--szin-kiemeles);
+    transform: translateX(10px); /* Kicsit jobbra csúszik */
+    box-shadow: 0 15px 35px rgba(212, 169, 76, 0.35);
+}
+
+.tevekenyseg-elem-b:hover *,
+.tevekenyseg-elem-b.aktiv-elem-b * {
+    color: #000 !important; /* Sziklaszilárdan fekete marad a szöveg */
+}
+
+/* --- JOBB OLDAL: A Kép --- */
+.kep-oldal-b {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    background-color: #000;
+}
+
+.tevekenyseg-kep-b {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+}
+
+.tevekenyseg-kep-b.aktiv-kep-b {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- GOMB --- */
+.tevekenyseg-bovebben-b {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.bovebben-gomb-b {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background-color: transparent;
+    color: var(--szin-kiemeles);
+    border: 2px solid var(--szin-kiemeles);
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.bovebben-gomb-b:hover {
+    background-color: var(--szin-kiemeles);
+    color: #000;
+}
+
+/* --- MOBIL NÉZET --- */
+@media (max-width: 1200px) {
+    .interaktiv-lista-grid-b {
+        width: 90vw;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .fooldal-tevekenysegek-b {
+        min-height: auto; /* Mobilon kiszedjük a 90vh-t */
+    }
+    .interaktiv-lista-grid-b {
+        width: 95vw;
+        grid-template-columns: 1fr;
+    }
+    .kep-oldal-b {
+        height: 400px;
+        order: -1; /* Mobilon felülre ugrik a kép */
+    }
+    .tevekenyseg-elem-b:hover,
+    .tevekenyseg-elem-b.aktiv-elem-b {
+        transform: translateY(-5px); /* Mobilon jobbra helyett felfelé ugrik */
+    }
 }

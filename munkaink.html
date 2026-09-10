@@ -20,7 +20,7 @@
             <ul>
                 <li ><a href="index.html">Főoldal</a></li>
                 <li ><a href="rolunk.html">Rólunk</a></li>
-                <li><a href="munkaink.html" class="aktiv-navigacio">Munkáink</a></li>
+                <li><a href="munkaink.html" class="aktiv-navigacio">Referenciák</a></li>
                 <li><a href="szolgaltatasaink.html">Szolgáltatások</a></li>
                 <li class="lenyilomenu-tarolo">
                     <a href="#" class="lenyilo-gomb">Céginformációk <span class="nyil">&#9662;</span></a>
@@ -178,25 +178,23 @@ megvalósításában.
 <!-- ========================================= -->
 <section class="terkep-szekcio">
     <div class="terkep-fejlec">
-        <h2>Ahol Építünk</h2>
+        <h2>Ahol már építkeztünk</h2>
         
-        <!-- Térkép kategória szűrő -->
         <div class="terkep-szuro">
             <label for="terkep-kategoria">Szűrés kategóriára:</label>
             <select id="terkep-kategoria">
                 <option value="osszes">Minden projekt</option>
-                <option value="Társasház">Társasházak</option>
-                <option value="Ipari">Ipari Létesítmények</option>
-                <option value="Közintézmény">Közintézmények</option>
-                <!-- Bővítheted a saját típusaiddal -->
+                <!-- A JS automatikusan feltölti a többit -->
             </select>
         </div>
     </div>
 
     <div class="terkep-kontener">
-        <div class="magyarorszag-terkep" style="background-image: url('img/magyarorszag-terkep.webp');">
-            <!-- A JAVASCRIPT IDE FOGJA AUTOMATIKUSAN BEINJEKTÁLNI AZ ARANY PONTOKAT -->
-            <div id="terkep-pontok-tarolo"></div>
+        <!-- A keret, amiben görgetni és zoomolni lehet -->
+        <div class="terkep-gorgeto">
+            <div id="magyarorszag-terkep" class="magyarorszag-terkep" style="background-image: url('img/magyarorszag-terkep.webp');">
+                <div id="terkep-pontok-tarolo"></div>
+            </div>
         </div>
     </div>
 </section>
@@ -206,24 +204,7 @@ megvalósításában.
 <!-- ========================================= -->
 <!-- Ide (ebbe a rejtett dobozba) másold be az aloldalakról a .projekt-kartya elemeket! 
 A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyöket és a felugró listát. -->
-<div id="rejtett-terkep-adatok" style="display: none;">
-    
-    <!-- PÉLDA KÁRTYA (Cseréld le a valósakra) -->
-    <div class="projekt-kartya" data-galeria="" data-tipus="ipari" data-helyszin="Szolnok" data-ev="2021">
-        <div class="kartya-hatter" style="background-image: url('https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg');"></div>
-        <div class="kartya-overlay"></div>
-        <div class="kartya-badge">Ipari létesítmény</div>
-        <div class="kartya-tartalom">
-            <h3>Ring Autóház Kft.</h3>
-            <p class="kartya-meta">5000 Szolnok, Fék u. 4. &bull; 2021</p>
-            <button class="reszletek-gomb">Részletek</button>
-        </div>
-        <div class="kartya-rejtett-reszletek" style="display: none;">
-            <p>Autószalon energetikai felújítása, autószalon bővítése</p>
-        </div>
-    </div>
-    
-</div>
+
 
 <!-- ========================================= -->
 <!-- 1. TÉRKÉP VÁROS MODAL -->
@@ -267,7 +248,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
   </div>
 </div>
 
-
+<div id="rejtett-terkep-adatok" style="display: none;">
 
         <!-- KÁRTYÁK -->
 <div id="projekt-adatbazis" style="display: none;" >
@@ -1036,6 +1017,8 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
       
     </div>
   </div>
+</div>
+
 </div>
 
     <!-- LABLEC -->
