@@ -2647,6 +2647,10 @@ body.fooldal .hero,
   .kategoria-kartya {
     height: 450px;
   }
+  .k-referencia-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
   .k-tartalom {
     padding: 2rem;
     transform: translateY(0);
