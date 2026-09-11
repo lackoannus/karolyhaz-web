@@ -307,6 +307,7 @@ img {
   display: inline-block;
   margin-bottom: 3rem;
   color: var(--szin-kiemeles);
+  margin-top: 4rem;
 }
 
 .fo-hero-cim {
@@ -417,25 +418,22 @@ img {
 }
 
 .bovebben-gomb {
+  display: inline-block;
+  padding: 1rem 3rem;
   background-color: transparent;
   color: var(--szin-kiemeles);
   border: 2px solid var(--szin-kiemeles);
-  padding: 1rem 2rem;
-  text-decoration: none;
-  font-weight: bold;
+  border-radius: 4px;
   text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
   letter-spacing: 1px;
-  display: inline-block;
-  border-radius: 3px;
   transition: all 0.3s ease;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 
 .bovebben-gomb:hover {
   background-color: var(--szin-kiemeles);
-  color: black;
-  transform: translateY(-2px);
+  color: #000;
 }
 
 /* ========================================= */
@@ -446,13 +444,14 @@ img {
   background-color: var(--szin-sotet);
   color: var(--szin-feher);
   margin-bottom: 10rem;
+  height:auto;
 }
 
 .tevekenyseg-fejlec {
   max-width: 1400px;
   width: 100%;
   margin: 0 auto 4rem auto;
-  text-align: left;
+  text-align: center;
 }
 
 .tevekenyseg-fejlec h2 {
@@ -480,13 +479,15 @@ img {
   align-items: center;
 }
 
-.tevekenyseg-lista {
+.tevekenyseg-lista-b {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 1rem;
 }
 
 .tevekenyseg-elem {
@@ -590,6 +591,11 @@ img {
   width: 100%;
   margin: 1rem auto 0 auto;
   padding: 1.5rem var(--oldal-padding);
+}
+
+.munkaink-gomb {
+    display: inline-block !important;
+    margin: 2rem auto 3rem auto!important; /* Tökéletes vízszintes középre húzás */
 }
 
 /* ========================================= */
@@ -1273,7 +1279,7 @@ img {
 .kategoria-kartya {
   display: block;
   position: relative;
-  height: 550px;
+  height: 430px;
   border-radius: 12px;
   overflow: hidden;
   text-decoration: none;
@@ -1316,7 +1322,7 @@ img {
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 3rem;
+  padding: 2rem;
   box-sizing: border-box;
   transform: translateY(20px);
   transition: transform 0.4s ease;
@@ -1333,7 +1339,7 @@ img {
 }
 
 .k-tartalom h2 {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   color: var(--szin-feher);
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -1892,10 +1898,10 @@ img {
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
-  border-radius: 8px;
-  background-color: #1a1a1a;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  background-color: transparent;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Vékony, nagyon elegáns keret */
+  border-radius: 12px !important; /* Szép lekerekítés */
 }
 
 .terkep-gorgeto {
@@ -2645,7 +2651,7 @@ body.fooldal .hero,
     gap: 2rem;
   }
   .kategoria-kartya {
-    height: 450px;
+    height: 350px;
   }
   .k-referencia-grid {
     grid-template-columns: 1fr;
@@ -2660,7 +2666,7 @@ body.fooldal .hero,
     transform: translateY(0);
   }
   .k-tartalom h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   /* Modal ablak fixek telefonra */
@@ -2829,16 +2835,7 @@ body {
   flex-direction: column;
 }
 
-.tevekenyseg-lista-b {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  gap: 1rem;
-}
+
 
 .tevekenyseg-elem-b {
   display: grid;
@@ -2921,24 +2918,7 @@ body {
   margin-top: 4rem;
 }
 
-.bovebben-gomb-b {
-  display: inline-block;
-  padding: 1rem 3rem;
-  background-color: transparent;
-  color: var(--szin-kiemeles);
-  border: 2px solid var(--szin-kiemeles);
-  border-radius: 4px;
-  text-transform: uppercase;
-  font-weight: bold;
-  text-decoration: none;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-}
 
-.bovebben-gomb-b:hover {
-  background-color: var(--szin-kiemeles);
-  color: #000;
-}
 
 @media (max-width: 1200px) {
   .interaktiv-lista-grid-b {
@@ -2962,34 +2942,6 @@ body {
   .tevekenyseg-elem-b:hover,
   .tevekenyseg-elem-b.aktiv-elem-b {
     transform: translateY(-5px);
-  }
-}
-/* ========================================= */
-/* "A" VERZIÓ - ASZTALI NÉZET HELYREÁLLÍTÁSA (4x2 kártya felül, nagy kép alul) */
-/* ========================================= */
-@media (min-width: 901px) {
-  /* A fő konténer újra egymás alá rendezi a listát és a képet */
-  .interaktiv-lista-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 4rem !important;
-  }
-
-  /* A lista újra 4 oszlopos rács lesz (4 kártya felül, 4 alul) */
-  .tevekenyseg-lista {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    width: 100% !important;
-    gap: 1.5rem !important;
-  }
-
-  /* A kép szépen középre igazodik a kártyák alatt */
-  .kep-oldal {
-    width: 100% !important;
-    max-width: 1100px !important; /* Szép szélesvásznú mozi méret */
-    margin: 0 auto !important;
-    order: 2 !important; /* Biztosítjuk, hogy a kártyák alatt maradjon */
   }
 }
 /* ========================================= */
@@ -3020,4 +2972,370 @@ body {
   .varos-projekt-lista {
     font-size: 115% !important;
   }
+}
+/* ========================================= */
+/* NAVIGÁCIÓ ZÁRT ÁLLAPOT TÖKÉLETESÍTÉSE     */
+/* ========================================= */
+
+/* 1. TÖBB HELY A MENÜNEK (Dinamikusan, pixel nélkül!) */
+.navigacio {
+    flex: 3.5 !important; /* Az eredeti 2 helyett hatalmasabb teret kap a logóhoz képest */
+}
+
+/* A menüpontok közötti távolság dinamikus lesz (képernyőmérettől függ, px nélkül) */
+.navigacio ul {
+    gap: clamp(1rem, 2vw, 2.5rem) !important; 
+}
+
+/* 2. AZ ÖSSZENYOMÓDÁS ÉS ÖSSZEÉRÉS MEGTILTÁSA */
+.navigacio ul li a,
+.lenyilo-gomb {
+    white-space: nowrap !important; /* Szigorúan megtiltjuk, hogy eltörje a szót! */
+    flex-wrap: nowrap !important; /* Nem csúszhat egymásra a nyíl és a szöveg */
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* 3. A FEKETE PONT KÍMÉLETLEN KILÖVÉSE */
+.navigacio ul li,
+.lenyilomenu-tarolo {
+    list-style: none !important;
+    list-style-type: none !important;
+    list-style-image: none !important; /* Biztos ami biztos */
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ha a böngésző trükközve (pszeudó-elemként) tette be a pöttyöt, itt megöljük */
+.lenyilomenu-tarolo::before,
+.lenyilomenu-tarolo::after,
+.navigacio ul li::before {
+    display: none !important;
+    content: none !important;
+}
+/* ========================================= */
+/* 1. KATEGÓRIA KÁRTYÁK KISEBBÍTÉSE (Munkáink oldal teteje) */
+/* ========================================= */
+.kategoria-kartya { height: 380px !important; }
+.k-tartalom { padding: 2rem !important; }
+.k-tartalom h2 { font-size: 1.8rem !important; }
+
+@media (max-width: 900px) {
+    .kategoria-kartya { height: 300px !important; }
+    .k-tartalom h2 { font-size: 1.5rem !important; }
+}
+
+/* ========================================= */
+/* 2. REFERENCIA "FAL" ÉS SZŰRŐSÁV (Térkép alatt) */
+/* ========================================= */
+.szuro-sav-tarolo {
+    display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+    margin-bottom: 4rem; background-color: #1a1a1a; padding: 1.5rem;
+    border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.szuro-sav-tarolo select {
+    background-color: #222; color: white; border: 1px solid var(--szin-kiemeles);
+    padding: 0.6rem 1.2rem; border-radius: 4px; font-size: 0.95rem;
+    cursor: pointer; min-width: 180px; outline: none;
+}
+.szuro-sav-tarolo select:focus { box-shadow: 0 0 10px rgba(212, 169, 76, 0.3); }
+
+@media (max-width: 700px) {
+    .szuro-sav-tarolo { flex-direction: column; gap: 1rem; }
+    .szuro-sav-tarolo select, .szuro-sav-tarolo .gomb { width: 100%; }
+}
+
+/* KIZÁRÓLAG ebben a gridben lesznek kicsik és sűrűek a kártyák! */
+.referencia-fal-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+    gap: 1.5rem !important; 
+}
+.referencia-fal-grid .projekt-kartya { height: 300px !important; }
+.referencia-fal-grid .kartya-tartalom { padding: 1.2rem !important; }
+.referencia-fal-grid .projekt-kartya h3 { font-size: 1.15rem !important; margin-bottom: 0.3rem !important; }
+.referencia-fal-grid .projekt-kartya .kartya-meta { font-size: 0.85rem !important; }
+.referencia-fal-grid .kartya-badge { padding: 0.3rem 0.6rem !important; font-size: 0.7rem !important; top: 10px !important; left: 10px !important; }
+
+/* ========================================= */
+/* 3. KÁRTYA META BEKEZDÉS (P TAG) FIX       */
+/* ========================================= */
+.projekt-kartya .kartya-tartalom p.kartya-meta {
+    margin-top: 0 !important;
+    margin-bottom: 1rem !important; 
+}
+
+/* ========================================= */
+/* 4. "MIT ÉPÍTÜNK" GOMB KÖZÉPRE IGAZÍTÁSA   */
+/* ========================================= */
+.tevekenyseg-bovebben { text-align: center !important; }
+.munkaink-gomb { display: inline-block !important; margin: 0 auto !important; }
+
+/* ========================================= */
+/* 5. GLOBÁLIS KÁRTYA SZÖVEG FŐKAPCSOLÓ (MOBIL) */
+/* ========================================= */
+@media (max-width: 900px) {
+    .tevekenyseg-elem span, 
+    .tevekenyseg-elem-b span,
+    .tevekenyseg-nev,
+    .tevekenyseg-nev-b,
+    .k-kartya-szoveg p,
+    .k-kartya-szoveg h3,
+    .projekt-kartya .kartya-tartalom h3,
+    .projekt-kartya .kartya-meta,
+    .mini-kartya,
+    .modal-szoveg p,
+    .modal-szoveg h2,
+    .varos-projekt-lista {
+        font-size: 115% !important; /* Itt tudsz játszani vele (pl. 120%)! */
+    }
+}
+/* ========================================= */
+/* RUGALMAS TÉRKÉP ABLAK (Képarány tartása)  */
+/* ========================================= */
+.terkep-kontener {
+    width: 100% !important;
+    max-width: 1200px !important;
+    height: auto !important;
+    aspect-ratio: 10 / 6 !important;
+    margin: 0 auto !important;
+    padding: 0 !important; /* Kinyírjuk az üres helyet! */
+    overflow: hidden !important; /* Ha a térkép sarka szögletes, ez a kerethez kerekíti! */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    background-color: transparent !important;
+}
+
+.terkep-gorgeto {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    padding: 0 !important;
+}
+/* ========================================= */
+/* TÉRKÉP ABLAK KISEBBÍTÉSE ÉS KÖZÉPRE ZÁRÁS */
+/* ========================================= */
+
+/* 1. Az ablak laposítása (hogy ne legyen alul nagy űr) */
+.terkep-kontener {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important; /* Magát az ablakot középre húzza a weboldalon */
+    
+    /* Itt tudod állítani az ablak "lapossátát". 
+       A 16/9 egy klasszikus, szép szélesvásznú arány. 
+       Ha még mindig túl magas az ablak, írd át pl. 2/1 -re! */
+    aspect-ratio: 16 / 9 !important; 
+    
+    background-color: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+}
+
+/* 2. A belső görgető doboz felkészítése a középre igazításra */
+.terkep-gorgeto {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    display: flex !important; /* Ez teszi lehetővé az okos igazítást */
+}
+
+/* 3. A térkép telibe középre húzása (Mint a Word-ben a középre igazítás!) */
+#magyarorszag-terkep {
+    margin: auto !important; /* Ez a varázsszó: kitolja magát minden irányból pontosan középre! */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* Eltüntetjük a csúnya görgetősávokat, ha esetleg megjelennének */
+.terkep-gorgeto::-webkit-scrollbar { display: none !important; }
+.terkep-gorgeto { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+/* ========================================= */
+/* TÉRKÉP ABLAK VÉGLEGES (Csúszkák + Nincs üres hely) */
+/* ========================================= */
+
+.terkep-kontener {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    
+    /* Mivel a JS 1000x600-zal számol, a 10/6 a TÖKÉLETES arány. 
+       Így hajszálpontosan akkora lesz a keret, mint a térkép! */
+    aspect-ratio: 10 / 6 !important; 
+    
+    background-color: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+}
+
+/* 2. Visszahozzuk a csúszkákat és kinyírjuk a zoom hibát! */
+.terkep-gorgeto {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    display: block !important; /* Levettük a flexet, ami a szürke sávot okozta! */
+    overflow: auto !important; /* Visszaadtuk a görgetősávokat! */
+}
+
+/* 3. Tökéletes középre igazítás levágás nélkül */
+#magyarorszag-terkep {
+    margin: 0 auto !important; /* Fent/lent nulla margó, jobbra/balra középre húz */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+* ========================================= */
+/* 7. TÉRKÉP SZEKCIÓ */
+/* ========================================= */
+.terkep-szekcio {
+  padding: 4rem var(--oldal-padding);
+  background-color: #222222;
+  color: white;
+}
+
+.terkep-fejlec {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.terkep-fejlec h2 {
+  font-size: 2.5rem;
+  color: var(--szin-kiemeles);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.terkep-kontener {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  aspect-ratio: 10 / 6 !important;
+  background-color: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+.terkep-gorgeto {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+  display: block !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  user-select: none;
+}
+
+.terkep-gorgeto.huzas-aktiv {
+  cursor: grabbing;
+}
+
+#magyarorszag-terkep {
+  margin: 0 auto !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  position: relative;
+  width: 100%;
+  min-width: 800px;
+  height: 600px;
+  background-size: 100% 100%;
+}
+
+.terkep-pont {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: var(--szin-kiemeles);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--szin-kiemeles);
+  z-index: 10;
+}
+
+.terkep-szam {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.terkep-varos-nev {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: var(--szin-kiemeles);
+  color: black;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.terkep-pont:hover .terkep-varos-nev {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.varos-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.varos-modal.rejtett {
+  display: none !important;
+}
+.varos-modal-tartalom {
+  background-color: #1a1a1a;
+  padding: 2.5rem;
+  border-radius: 8px;
+  width: 95%;
+  max-width: 1200px;
+  max-height: 85dvh;
+  overflow-y: auto;
+  position: relative;
+  border-top: 4px solid var(--szin-kiemeles);
+}
+.varos-bezar {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.varos-projekt-lista {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.mini-kartya {
+  background-color: #2a2a2a;
+  padding: 1rem;
+  border-left: 3px solid var(--szin-kiemeles);
+  border-radius: 4px;
 }

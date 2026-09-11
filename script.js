@@ -236,23 +236,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+// =========================================
+  // 6. TÖBB LEGÖRDÜLŐ MENÜ KEZELÉSE (Okosított)
   // =========================================
-  // 6. CÉGINFORMÁCIÓK LEGÖRDÜLŐ MENÜ (Fixálva)
-  // =========================================
-  const lenyiloTarolo = document.querySelector(".lenyilomenu-tarolo");
-  const lenyiloGomb = document.querySelector(".lenyilo-gomb");
+  const lenyiloTarolok = document.querySelectorAll(".lenyilomenu-tarolo");
 
-  if (lenyiloGomb && lenyiloTarolo) {
-    lenyiloGomb.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      lenyiloTarolo.classList.toggle("kattintva");
+  if (lenyiloTarolok.length > 0) {
+    lenyiloTarolok.forEach(tarolo => {
+      const lenyiloGomb = tarolo.querySelector(".lenyilo-gomb");
+      
+      if (lenyiloGomb) {
+        lenyiloGomb.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Bezárjuk az összes többit, mielőtt ezt kinyitjuk (így nem takarják be egymást)
+          lenyiloTarolok.forEach(masikTarolo => {
+            if (masikTarolo !== tarolo) {
+              masikTarolo.classList.remove("kattintva");
+            }
+          });
+
+          // Kinyitjuk/bezárjuk azt, amire rákattintottunk
+          tarolo.classList.toggle("kattintva");
+        });
+      }
     });
 
+    // Ha bárhova máshova kattintunk a képernyőn, záruljon be az összes nyitott menü
     document.addEventListener("click", function (e) {
-      if (!lenyiloTarolo.contains(e.target)) {
-        lenyiloTarolo.classList.remove("kattintva");
-      }
+      lenyiloTarolok.forEach(tarolo => {
+        if (!tarolo.contains(e.target)) {
+          tarolo.classList.remove("kattintva");
+        }
+      });
     });
   }
 
@@ -690,10 +707,23 @@ document.addEventListener("DOMContentLoaded", function () {
       let dinamikusMinZoom = 1;
       const MAX_ZOOM = 4.5;
 
+      // --- DINAMIKUS MÉRETKALIBRÁLÁS ÉS ZÓNA VÁLTÁS ---
+// --- DINAMIKUS MÉRETKALIBRÁLÁS ÉS ZÓNA VÁLTÁS ---
       const alkalmazZoom = () => {
-        mapHatterDiv.style.width = jelenlegiZoom * 100 + "%";
-        mapHatterDiv.style.minWidth = jelenlegiZoom * 800 + "px";
-        mapHatterDiv.style.height = jelenlegiZoom * 600 + "px";
+        const aktualisSzelesseg = jelenlegiZoom * 1000;
+        const aktualisMagassag = jelenlegiZoom * 600;
+        
+        mapHatterDiv.style.width = aktualisSzelesseg + "px";
+        mapHatterDiv.style.minWidth = aktualisSzelesseg + "px";
+        mapHatterDiv.style.maxWidth = aktualisSzelesseg + "px"; 
+        
+        mapHatterDiv.style.height = aktualisMagassag + "px";
+        mapHatterDiv.style.minHeight = aktualisMagassag + "px";
+        mapHatterDiv.style.maxHeight = aktualisMagassag + "px";
+
+        // Mivel a doboz és a térkép alakja most már milliméterre megegyezik,
+        // nem kell trükközni a margókkal, egyszerűen nullázzuk!
+        mapHatterDiv.style.margin = "0px";
 
         const ZONA_HATAR = 1.8;
         if (jelenlegiZoom >= ZONA_HATAR) {
@@ -707,11 +737,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const initTerkepMeret = () => {
         const taroloSzelesseg = mapTaroloDiv.clientWidth;
-        const fittZoom = taroloSzelesseg / 800;
-        dinamikusMinZoom = Math.min(1, fittZoom);
+        const taroloMagassag = mapTaroloDiv.clientHeight;
+        
+        if (taroloSzelesseg === 0 || taroloMagassag === 0) {
+            setTimeout(initTerkepMeret, 50);
+            return;
+        }
+
+        const zoomX = taroloSzelesseg / 1000;
+        const zoomY = taroloMagassag / 600;
+        
+        // SEMMI ZSUGORÍTÁS! 100%-osan, hézagmentesen kitöltjük a dobozt.
+        dinamikusMinZoom = Math.min(zoomX, zoomY);
         jelenlegiZoom = dinamikusMinZoom;
         alkalmazZoom();
       };
+
+      initTerkepMeret();
+      window.addEventListener("resize", initTerkepMeret);
+      initTerkepMeret();
+      window.addEventListener("resize", initTerkepMeret);
 
       initTerkepMeret();
       window.addEventListener("resize", initTerkepMeret);

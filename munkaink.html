@@ -17,15 +17,27 @@
         </div>
 
         <nav class="navigacio">
-            <ul>
-                <li ><a href="index.html">Főoldal</a></li>
-                <li ><a href="rolunk.html">Rólunk</a></li>
-                <li><a href="munkaink.html" class="aktiv-navigacio">Referenciák</a></li>
+          <ul>
+            <li ><a href="index.html">Főoldal</a></li>
+            <li ><a href="rolunk.html">Rólunk</a></li>
+            <li class="lenyilomenu-tarolo">
+              <a href="munkaink.html" class="lenyilo-gomb">Referenciák <span class="nyil">&#9662;</span></a>
+              <ul class="lenyilomenu-tartalom">
+                <li><a href="tarsashazak.html">Társasházak és Lakóépületek</a></li>
+                <li><a href="ipari-letesitmenyek.html">Ipari létesítmények</a></li>
+                <li><a href="kozintezmenyek.html">Közintézmények</a></li>
+                <li><a href="oktatasi-epuletek.html">Oktatási és nevelési intézmények</a></li>
+                <li><a href="kereskedelmi-epuletek.html">Kereskedelmi és Üzleti épületek</a></li>
+                <li><a href="sport-letesitmenyek.html">Sport- és Szabadidő-intézmények</a></li>
+                <li><a href="mezogazdasagi-letesitmenyek.html">Mezőgazdasági és Élelmiszeripari</a></li>
+                <li><a href="felujitasok.html">Felújítások és Rekonstrukciók</a></li>
+              </ul>
+            </li>
                 <li><a href="szolgaltatasaink.html">Szolgáltatások</a></li>
                 <li class="lenyilomenu-tarolo">
-                    <a href="#" class="lenyilo-gomb">Céginformációk <span class="nyil">&#9662;</span></a>
-                    <ul class="lenyilomenu-tartalom">
-                        <li><a href="impresszum.html">Impresszum és Cégadatok</a></li>
+                  <a href="#" class="lenyilo-gomb">Céginformációk <span class="nyil">&#9662;</span></a>
+                  <ul class="lenyilomenu-tartalom">
+                    <li><a href="impresszum.html">Impresszum és Cégadatok</a></li>
                         <li><a href="palyazatok.html">Pályázatok</a></li>
                         <li><a href="#" id="suti-megnyito">Sütik beállítása</a></li>
                     </ul>
@@ -248,12 +260,35 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
   </div>
 </div>
 
-<div id="rejtett-terkep-adatok" style="display: none;">
+<section class="munkak-szekcio" style="padding-top: 4rem;">
+    <div class="munkak-kontener">
+        
+        <div class="galeria-fejlec">
+            <h2>Összes Referenciánk</h2>
+        </div>
 
-        <!-- KÁRTYÁK -->
-<div id="projekt-adatbazis" style="display: none;" >
+        <!-- 1. PRÉMIUM SZŰRŐSÁV -->
+        <div class="szuro-sav-tarolo">
+            <select id="szuro-tipus">
+                <option value="osszes">Összes típus betöltése...</option>
+            </select>
+            
+            <select id="szuro-ev">
+                <option value="osszes">Összes év betöltése...</option>
+            </select>
+            
+            <select id="szuro-helyszin">
+                <option value="osszes">Összes település betöltése...</option>
+            </select>
+            
+            <!-- Törlés gomb -->
+            <button id="szuro-torles" class="gomb" style="padding: 0.6rem 1.5rem; background-color: transparent; border: 1px solid var(--szin-kiemeles); color: var(--szin-kiemeles);">Szűrők törlése</button>
+        </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="ipari" data-helyszin="Tiszapüspöki" data-ev="2016">
+        <!-- 2. A SŰRŰ KÁRTYARÁCS (Nincs display:none, ide jön az összes kártya!) -->
+        <div class="projekt-grid referencia-fal-grid">
+
+  <div class="projekt-kartya" data-galeria="" data-tipus="ipari" data-helyszin="Tiszapüspöki" data-ev="2016">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Ipari létesítmény</div>
@@ -275,7 +310,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-galeria="" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2017">
+  <div class="projekt-kartya" data-galeria="" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2017">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Intézmény</div>
@@ -291,7 +326,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
 
 
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="tarsashaz" data-helyszin="Szolnok" data-ev="2016">
+  <div class="projekt-kartya" data-galeria="" data-tipus="tarsashaz" data-helyszin="Szolnok" data-ev="2016">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Társasház</div>
@@ -305,7 +340,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="ipari" data-helyszin="Fegyvernek" data-ev="2018">
+  <div class="projekt-kartya" data-galeria="" data-tipus="ipari" data-helyszin="Fegyvernek" data-ev="2018">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Ipari létesítmény</div>
@@ -319,7 +354,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2018">
+  <div class="projekt-kartya" data-galeria="" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2018">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Intézmény</div>
@@ -333,7 +368,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="tarsashaz" data-helyszin="Zamárdi" data-ev="2018">
+  <div class="projekt-kartya" data-galeria="" data-tipus="tarsashaz" data-helyszin="Zamárdi" data-ev="2018">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Társasház</div>
@@ -347,7 +382,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="tarsashaz" data-helyszin="Szolnok" data-ev="2017">
+  <div class="projekt-kartya" data-galeria="" data-tipus="tarsashaz" data-helyszin="Szolnok" data-ev="2017">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Társasház</div>
@@ -361,7 +396,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="tarsashaz" data-helyszin="Szolnok" data-ev="2018">
+  <div class="projekt-kartya" data-galeria="" data-tipus="tarsashaz" data-helyszin="Szolnok" data-ev="2018">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Társasház</div>
@@ -375,7 +410,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="generalkivitelezes" data-helyszin="Szolnok" data-ev="2018">
+  <div class="projekt-kartya" data-galeria="" data-tipus="generalkivitelezes" data-helyszin="Szolnok" data-ev="2018">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Generálkivitelezés</div>
@@ -389,7 +424,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="ipari" data-helyszin="Nyárlőrinc" data-ev="2019">
+  <div class="projekt-kartya" data-galeria="" data-tipus="ipari" data-helyszin="Nyárlőrinc" data-ev="2019">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Ipari létesítmény</div>
@@ -403,7 +438,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="tarsashaz" data-helyszin="Zamárdi" data-ev="2018">
+  <div class="projekt-kartya" data-galeria="" data-tipus="tarsashaz" data-helyszin="Zamárdi" data-ev="2018">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Társasház</div>
@@ -417,7 +452,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="ipari" data-helyszin="Mezőtúr" data-ev="2018">
+  <div class="projekt-kartya" data-galeria="" data-tipus="ipari" data-helyszin="Mezőtúr" data-ev="2018">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Ipari létesítmény</div>
@@ -431,7 +466,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="generalkivitelezes" data-helyszin="Tiszanána" data-ev="2020">
+  <div class="projekt-kartya" data-galeria="" data-tipus="generalkivitelezes" data-helyszin="Tiszanána" data-ev="2020">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Generálkivitelezés</div>
@@ -445,7 +480,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="tarsashaz" data-helyszin="Szolnok" data-ev="2019">
+  <div class="projekt-kartya" data-galeria="" data-tipus="tarsashaz" data-helyszin="Szolnok" data-ev="2019">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Társasház</div>
@@ -459,7 +494,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="ipari" data-helyszin="Rákóczifalva" data-ev="2020">
+  <div class="projekt-kartya" data-galeria="" data-tipus="ipari" data-helyszin="Rákóczifalva" data-ev="2020">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Ipari létesítmény</div>
@@ -473,7 +508,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="intezmenyek" data-helyszin="Cserkeszőlő" data-ev="2020">
+  <div class="projekt-kartya" data-galeria="" data-tipus="intezmenyek" data-helyszin="Cserkeszőlő" data-ev="2020">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Intézmény</div>
@@ -487,7 +522,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2020">
+  <div class="projekt-kartya" data-galeria="" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2020">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Intézmény</div>
@@ -501,7 +536,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2021">
+  <div class="projekt-kartya" data-galeria="" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2021">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Intézmény</div>
@@ -515,7 +550,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="ipari" data-helyszin="Mezőtúr" data-ev="2021">
+  <div class="projekt-kartya" data-galeria="" data-tipus="ipari" data-helyszin="Mezőtúr" data-ev="2021">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Ipari létesítmény</div>
@@ -529,7 +564,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="terburkolat" data-helyszin="Kisújszállás" data-ev="2021">
+  <div class="projekt-kartya" data-galeria="" data-tipus="terburkolat" data-helyszin="Kisújszállás" data-ev="2021">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Térburkolat</div>
@@ -543,7 +578,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="intezmenyek" data-helyszin="Szajol" data-ev="2021">
+  <div class="projekt-kartya" data-galeria="" data-tipus="intezmenyek" data-helyszin="Szajol" data-ev="2021">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Intézmény</div>
@@ -557,7 +592,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="ipari" data-helyszin="Fegyvernek" data-ev="2020">
+  <div class="projekt-kartya" data-galeria="" data-tipus="ipari" data-helyszin="Fegyvernek" data-ev="2020">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Ipari létesítmény</div>
@@ -585,7 +620,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="ipari" data-helyszin="Mezőtúr" data-ev="2021">
+  <div class="projekt-kartya" data-galeria="" data-tipus="ipari" data-helyszin="Mezőtúr" data-ev="2021">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Ipari létesítmény</div>
@@ -599,7 +634,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="ipari" data-helyszin="Szolnok" data-ev="2022">
+  <div class="projekt-kartya" data-galeria="" data-tipus="ipari" data-helyszin="Szolnok" data-ev="2022">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Ipari létesítmény</div>
@@ -840,7 +875,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="ipari" data-helyszin="Pilis" data-ev="2024">
+  <div class="projekt-kartya" data-galeria="" data-tipus="ipari" data-helyszin="Pilis" data-ev="2024">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Ipari létesítmény</div>
@@ -854,7 +889,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="intezmenyek" data-helyszin="Gyömrő" data-ev="2024">
+  <div class="projekt-kartya" data-galeria="" data-tipus="intezmenyek" data-helyszin="Gyömrő" data-ev="2024">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Intézmény</div>
@@ -868,7 +903,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="ipari" data-helyszin="Mezőtúr" data-ev="2025">
+  <div class="projekt-kartya" data-galeria="" data-tipus="ipari" data-helyszin="Mezőtúr" data-ev="2025">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Ipari létesítmény</div>
@@ -884,7 +919,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="intezmenyek" data-helyszin="Őrbottyán" data-ev="2024">
+  <div class="projekt-kartya" data-galeria="" data-tipus="intezmenyek" data-helyszin="Őrbottyán" data-ev="2024">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Intézmény</div>
@@ -898,7 +933,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="ipari" data-helyszin="Szolnok" data-ev="2025">
+  <div class="projekt-kartya" data-galeria="" data-tipus="ipari" data-helyszin="Szolnok" data-ev="2025">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Ipari létesítmény</div>
@@ -912,7 +947,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="generalkivitelezes" data-helyszin="Újhartyán" data-ev="2024">
+  <div class="projekt-kartya" data-galeria="" data-tipus="generalkivitelezes" data-helyszin="Újhartyán" data-ev="2024">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Generálkivitelezés</div>
@@ -926,7 +961,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2024">
+  <div class="projekt-kartya" data-galeria="" data-tipus="intezmenyek" data-helyszin="Szolnok" data-ev="2024">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Intézmény</div>
@@ -940,7 +975,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="ipari" data-helyszin="Rákóczifalva" data-ev="2025">
+  <div class="projekt-kartya" data-galeria="" data-tipus="ipari" data-helyszin="Rákóczifalva" data-ev="2025">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Ipari létesítmény</div>
@@ -954,7 +989,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="ipari" data-helyszin="Karcag" data-ev="2026">
+  <div class="projekt-kartya" data-galeria="" data-tipus="ipari" data-helyszin="Karcag" data-ev="2026">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Ipari létesítmény</div>
@@ -968,7 +1003,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
     </div>
   </div>
 
-  <div class="projekt-kartya" data-galeria="" data-galeria="" data-tipus="generalkivitelezes" data-helyszin="Csömör" data-ev="2025">
+  <div class="projekt-kartya" data-galeria="" data-tipus="generalkivitelezes" data-helyszin="Csömör" data-ev="2025">
     <div class="kartya-hatter" style="background-image: url('');"></div>
     <div class="kartya-overlay"></div>
     <div class="kartya-badge">Generálkivitelezés</div>
@@ -983,10 +1018,8 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
   </div>
 
 </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
+</section>
 
 
 
