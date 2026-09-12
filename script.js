@@ -63,10 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
     tevekenysegElemekB.forEach(function (elem) {
       ["mouseenter", "click", "touchstart"].forEach(function (esemeny) {
         elem.addEventListener(esemeny, function (e) {
-          // Mobilon megelőzzük a duplikált kattintást
           if (esemeny === "touchstart") e.preventDefault();
 
-          // Mindenkiről levesszük az aktív osztályt
           tevekenysegElemekB.forEach((el) =>
             el.classList.remove("aktiv-elem-b"),
           );
@@ -74,14 +72,12 @@ document.addEventListener("DOMContentLoaded", function () {
             kep.classList.remove("aktiv-kep-b"),
           );
 
-          // Rátesszük az aktuálisra
           this.classList.add("aktiv-elem-b");
           const kepId = this.getAttribute("data-kep");
           const aktivKep = document.querySelector(
             `.tevekenyseg-kep-b[data-kep="${kepId}"]`,
           );
 
-          // Megjelenítjük a képet
           if (aktivKep) aktivKep.classList.add("aktiv-kep-b");
         });
       });
@@ -89,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =========================================
-  // 4. MUNKÁINK: AUTOMATIKUS SZŰRŐ MOTOR (Badge-alapú, ékezethelyes)
+  // 4. MUNKÁINK: AUTOMATIKUS SZŰRŐ MOTOR
   // =========================================
   const tipusSelect = document.getElementById("szuro-tipus");
   const evSelect = document.getElementById("szuro-ev");
@@ -236,36 +232,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-// =========================================
-  // 6. TÖBB LEGÖRDÜLŐ MENÜ KEZELÉSE (Okosított)
+  // =========================================
+  // 6. TÖBB LEGÖRDÜLŐ MENÜ KEZELÉSE
   // =========================================
   const lenyiloTarolok = document.querySelectorAll(".lenyilomenu-tarolo");
 
   if (lenyiloTarolok.length > 0) {
-    lenyiloTarolok.forEach(tarolo => {
+    lenyiloTarolok.forEach((tarolo) => {
       const lenyiloGomb = tarolo.querySelector(".lenyilo-gomb");
-      
+
       if (lenyiloGomb) {
         lenyiloGomb.addEventListener("click", function (e) {
           e.preventDefault();
           e.stopPropagation();
-          
-          // Bezárjuk az összes többit, mielőtt ezt kinyitjuk (így nem takarják be egymást)
-          lenyiloTarolok.forEach(masikTarolo => {
+
+          lenyiloTarolok.forEach((masikTarolo) => {
             if (masikTarolo !== tarolo) {
               masikTarolo.classList.remove("kattintva");
             }
           });
 
-          // Kinyitjuk/bezárjuk azt, amire rákattintottunk
           tarolo.classList.toggle("kattintva");
         });
       }
     });
 
-    // Ha bárhova máshova kattintunk a képernyőn, záruljon be az összes nyitott menü
     document.addEventListener("click", function (e) {
-      lenyiloTarolok.forEach(tarolo => {
+      lenyiloTarolok.forEach((tarolo) => {
         if (!tarolo.contains(e.target)) {
           tarolo.classList.remove("kattintva");
         }
@@ -639,6 +632,8 @@ document.addEventListener("DOMContentLoaded", function () {
         pont.style.top = koord.top + "%";
         pont.style.left = koord.left + "%";
 
+        pont.style.zIndex = statisztika[varosNev].darab + 10;
+
         const szam = document.createElement("div");
         szam.className = "terkep-szam";
         szam.innerText = statisztika[varosNev].darab;
@@ -696,33 +691,34 @@ document.addEventListener("DOMContentLoaded", function () {
   terkepFrissitese();
 
   // =========================================================
-  // 4. PRÉMIUM GOOGLE MAPS MOTOR (BIZTONSÁGOS, IZOLÁLT VERZIÓ)
+  // 4. PRÉMIUM GOOGLE MAPS MOTOR (GOMBOS ZOOM)
   // =========================================================
   {
     const mapTaroloDiv = document.querySelector(".terkep-gorgeto");
     const mapHatterDiv = document.getElementById("magyarorszag-terkep");
 
+    // Zoom Gombok
+    const zoomInGomb = document.getElementById("zoom-in");
+    const zoomOutGomb = document.getElementById("zoom-out");
+
     if (mapTaroloDiv && mapHatterDiv) {
       let jelenlegiZoom = 1;
       let dinamikusMinZoom = 1;
       const MAX_ZOOM = 4.5;
+      const ZOOM_LEPES = 0.3; // Ennyivel nagyít a gomb kattintásonként
 
-      // --- DINAMIKUS MÉRETKALIBRÁLÁS ÉS ZÓNA VÁLTÁS ---
-// --- DINAMIKUS MÉRETKALIBRÁLÁS ÉS ZÓNA VÁLTÁS ---
       const alkalmazZoom = () => {
         const aktualisSzelesseg = jelenlegiZoom * 1000;
         const aktualisMagassag = jelenlegiZoom * 600;
-        
+
         mapHatterDiv.style.width = aktualisSzelesseg + "px";
         mapHatterDiv.style.minWidth = aktualisSzelesseg + "px";
-        mapHatterDiv.style.maxWidth = aktualisSzelesseg + "px"; 
-        
+        mapHatterDiv.style.maxWidth = aktualisSzelesseg + "px";
+
         mapHatterDiv.style.height = aktualisMagassag + "px";
         mapHatterDiv.style.minHeight = aktualisMagassag + "px";
         mapHatterDiv.style.maxHeight = aktualisMagassag + "px";
 
-        // Mivel a doboz és a térkép alakja most már milliméterre megegyezik,
-        // nem kell trükközni a margókkal, egyszerűen nullázzuk!
         mapHatterDiv.style.margin = "0px";
 
         const ZONA_HATAR = 1.8;
@@ -738,29 +734,66 @@ document.addEventListener("DOMContentLoaded", function () {
       const initTerkepMeret = () => {
         const taroloSzelesseg = mapTaroloDiv.clientWidth;
         const taroloMagassag = mapTaroloDiv.clientHeight;
-        
+
         if (taroloSzelesseg === 0 || taroloMagassag === 0) {
-            setTimeout(initTerkepMeret, 50);
-            return;
+          setTimeout(initTerkepMeret, 50);
+          return;
         }
 
         const zoomX = taroloSzelesseg / 1000;
         const zoomY = taroloMagassag / 600;
-        
-        // SEMMI ZSUGORÍTÁS! 100%-osan, hézagmentesen kitöltjük a dobozt.
+
         dinamikusMinZoom = Math.min(zoomX, zoomY);
-        jelenlegiZoom = dinamikusMinZoom;
+        jelenlegiZoom = Math.max(
+          dinamikusMinZoom,
+          Math.min(jelenlegiZoom, MAX_ZOOM),
+        );
         alkalmazZoom();
       };
 
-      initTerkepMeret();
-      window.addEventListener("resize", initTerkepMeret);
-      initTerkepMeret();
-      window.addEventListener("resize", initTerkepMeret);
-
+      // Felesleges másolatok törölve
       initTerkepMeret();
       window.addEventListener("resize", initTerkepMeret);
 
+      // --- ZOOM GOMBOK ESEMÉNYEI (A képernyő közepe felé nagyítanak) ---
+      function gombZoom(irany) {
+        const regiZoom = jelenlegiZoom;
+        if (irany === "be") {
+          jelenlegiZoom += ZOOM_LEPES;
+        } else {
+          jelenlegiZoom -= ZOOM_LEPES;
+        }
+
+        jelenlegiZoom = Math.max(
+          dinamikusMinZoom,
+          Math.min(jelenlegiZoom, MAX_ZOOM),
+        );
+
+        if (regiZoom !== jelenlegiZoom) {
+          // Kiszámítjuk a képernyő (konténer) mértani közepét
+          const rect = mapTaroloDiv.getBoundingClientRect();
+          const kozepX = rect.width / 2;
+          const kozepY = rect.height / 2;
+
+          // A térkép pontos közepe görgetéssel együtt
+          const mapX = kozepX + mapTaroloDiv.scrollLeft;
+          const mapY = kozepY + mapTaroloDiv.scrollTop;
+          const arany = jelenlegiZoom / regiZoom;
+
+          alkalmazZoom();
+
+          // Pontosan középre fókuszálva görgetjük vissza
+          mapTaroloDiv.scrollLeft = mapX * arany - kozepX;
+          mapTaroloDiv.scrollTop = mapY * arany - kozepY;
+        }
+      }
+
+      if (zoomInGomb)
+        zoomInGomb.addEventListener("click", () => gombZoom("be"));
+      if (zoomOutGomb)
+        zoomOutGomb.addEventListener("click", () => gombZoom("ki"));
+
+      // --- EGÉRREL TÖRTÉNŐ HÚZÁS (Görgős zoom eltávolítva) ---
       let egerLentVan = false;
       let kezdoX, kezdoY, gorgetesBal, gorgetesFent;
 
@@ -789,38 +822,7 @@ document.addEventListener("DOMContentLoaded", function () {
         mapTaroloDiv.scrollTop = gorgetesFent - (y - kezdoY) * 1.5;
       });
 
-      mapTaroloDiv.addEventListener(
-        "wheel",
-        (e) => {
-          e.preventDefault();
-          const rect = mapTaroloDiv.getBoundingClientRect();
-          const mouseX = e.clientX - rect.left;
-          const mouseY = e.clientY - rect.top;
-
-          const mapX = mouseX + mapTaroloDiv.scrollLeft;
-          const mapY = mouseY + mapTaroloDiv.scrollTop;
-          const regiZoom = jelenlegiZoom;
-
-          if (e.deltaY < 0) {
-            jelenlegiZoom += 0.2;
-          } else {
-            jelenlegiZoom -= 0.2;
-          }
-          jelenlegiZoom = Math.max(
-            dinamikusMinZoom,
-            Math.min(jelenlegiZoom, MAX_ZOOM),
-          );
-
-          if (regiZoom !== jelenlegiZoom) {
-            const arany = jelenlegiZoom / regiZoom;
-            alkalmazZoom();
-            mapTaroloDiv.scrollLeft = mapX * arany - mouseX;
-            mapTaroloDiv.scrollTop = mapY * arany - mouseY;
-          }
-        },
-        { passive: false },
-      );
-
+      // --- MOBIL KÉT UJJAS ZOOM (Érintőképernyőre meghagyva) ---
       let elozoTavolsag = 0;
       let elozoFokuszX = 0;
       let elozoFokuszY = 0;
