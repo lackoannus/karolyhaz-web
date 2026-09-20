@@ -744,10 +744,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const zoomY = taroloMagassag / 600;
 
         dinamikusMinZoom = Math.min(zoomX, zoomY);
-        jelenlegiZoom = Math.max(
-          dinamikusMinZoom,
-          Math.min(jelenlegiZoom, MAX_ZOOM),
-        );
+        
+        // A HIBA JAVÍTÁSA: Ráerőltetjük a legkisebb zoomot az induláskor és forgatáskor,
+        // így mobilon is 100%-osan, kilógás nélkül fog megjelenni a térkép!
+        jelenlegiZoom = dinamikusMinZoom; 
+        
         alkalmazZoom();
       };
 
@@ -886,6 +887,25 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         { passive: false },
       );
+    }
+  }
+});
+// =========================================
+// KÁRTYÁK ÉS "RÉSZLETEK" GOMBOK AKTIVÁLÁSA A TÉRKÉP ALATT
+// =========================================
+document.addEventListener("click", function (e) {
+  // Megnézzük, hogy a kattintás egy projekt kártyán (vagy annak valamelyik belső elemén) történt-e
+  const kattintottKartya = e.target.closest(".projekt-kartya");
+  
+  // Ha találtunk kártyát, ÉS ez a kártya NINCS benne a felugró város-modalban 
+  // (mert azokat a fenti kódod már tökéletesen kezeli)
+  if (kattintottKartya && !kattintottKartya.closest(".varos-modal")) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // Meghívjuk a te már meglévő Modal-nyitó függvényedet az eredeti kártyával!
+    if (typeof nyisdMegAProjektModalt === "function") {
+      nyisdMegAProjektModalt(kattintottKartya);
     }
   }
 });
