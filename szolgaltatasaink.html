@@ -18,19 +18,43 @@
         </div>
 
         <nav class="navigacio">
-            <ul>
-                <li ><a href="index.html">Főoldal</a></li>
-                <li ><a href="rolunk.html">Rólunk</a></li>
-                <li><a href="munkaink.html">Munkáink</a></li>
-                <li><a href="szolgaltatasaink.html" class="aktiv-navigacio">Szolgáltatások</a></li>
+          <ul>
+            <li ><a href="index.html">Főoldal</a></li>
+            <li ><a href="rolunk.html">Rólunk</a></li>
+            <li class="lenyilomenu-tarolo">
+              <li class="lenyilomenu-tarolo">
+                  <!-- Szétválasztott gomb: Külön a Link és külön a Nyíl -->
+                  <div class="lenyilo-gomb-tarolo">
+                      <!-- 1. Ha ide kattint, átvisz a munkaink oldalra -->
+                      <a href="munkaink.html" class="fo-link">Referenciák</a>
+                      
+                      <!-- 2. Ha ide kattint, kinyitja a menüt (a nyíl pici marad, de a gomb körülötte nagy) -->
+                      <div class="nyil-kattinto" onclick="this.closest('.lenyilomenu-tarolo').classList.toggle('kattintva')">
+                          <span class="nyil">▼</span>
+                      </div>
+                  </div>
+              <ul class="lenyilomenu-tartalom">
+                <li><a href="tarsashazak.html">Társasházak és Lakóépületek</a></li>
+                <li><a href="ipari-letesitmenyek.html">Ipari létesítmények</a></li>
+                <li><a href="kozintezmenyek.html">Közintézmények</a></li>
+                <li><a href="oktatasi-epuletek.html">Oktatási és nevelési intézmények</a></li>
+                <li><a href="kereskedelmi-epuletek.html">Kereskedelmi és Üzleti épületek</a></li>
+                <li><a href="sport-letesitmenyek.html">Sport- és Szabadidő-intézmények</a></li>
+                <li><a href="mezogazdasagi-letesitmenyek.html">Mezőgazdasági és Élelmiszeripari</a></li>
+                <li><a href="felujitasok.html">Felújítások és Rekonstrukciók</a></li>
+              </ul>
+            </li>
+                <li><a href="szolgaltatasaink.html" class="aktiv-navigacio">Tevékenységek</a></li>
+                <li><a href="aktualis.html">Aktuális</a></li>
                 <li class="lenyilomenu-tarolo">
-                    <a href="#" class="lenyilo-gomb">Céginformációk <span class="nyil">&#9662;</span></a>
-                    <ul class="lenyilomenu-tartalom">
-                        <li><a href="impresszum.html">Impresszum és Cégadatok</a></li>
+                  <a href="#" class="lenyilo-gomb">Céginformációk <span class="nyil">▼</span></a>
+                  <ul class="lenyilomenu-tartalom">
+                    <li><a href="impresszum.html">Impresszum és Cégadatok</a></li>
                         <li><a href="palyazatok.html">Pályázatok</a></li>
                         <li><a href="#" id="suti-megnyito">Sütik beállítása</a></li>
                     </ul>
                 </li>
+                <li ><a href="karrier.html">Karrier</a></li>
             </ul>
         </nav>
         <div class="kapcsolat">
@@ -147,7 +171,23 @@
       <h2>Kérdése van? Kérjen egyedi árajánlatot!</h2>
       <a href="kapcsolat.html" class="gomb">Kapcsolatfelvétel</a>
     </section>
+    <!-- ========================================= -->
+<!-- KÉPNÉZEGETŐ (LIGHTBOX) A MODAL FÖLÉ       -->
+<!-- ========================================= -->
+<div id="lightbox-overlay" class="rejtett">
+    <div id="lightbox-bezar">&times;</div>
     
+    <div class="lightbox-kozep">
+        <button id="lb-elozo" class="lb-gomb">&lt;</button>
+        <div class="lightbox-fokep-tarolo">
+            <img id="lightbox-fokep" src="" alt="Kinagyított kép">
+        </div>
+        <button id="lb-kovetkezo" class="lb-gomb">&gt;</button>
+    </div>
+
+    <!-- Ide kerülnek a kis képek -->
+    <div class="lightbox-miniaturok" id="lightbox-thumbs"></div>
+</div>
     <footer id="kapcsolat" class="lablec">
         <div class="lablec-kepsav">
             <img src=https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Építkezés 1">

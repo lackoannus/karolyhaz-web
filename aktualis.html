@@ -21,7 +21,17 @@
             <li ><a href="index.html">Főoldal</a></li>
             <li ><a href="rolunk.html">Rólunk</a></li>
             <li class="lenyilomenu-tarolo">
-            <a href="munkaink.html" class="lenyilo-gomb">Referenciák <span class="nyil">&#9662;</span></a>
+              <li class="lenyilomenu-tarolo">
+                  <!-- Szétválasztott gomb: Külön a Link és külön a Nyíl -->
+                  <div class="lenyilo-gomb-tarolo">
+                      <!-- 1. Ha ide kattint, átvisz a munkaink oldalra -->
+                      <a href="munkaink.html" class="fo-link">Referenciák</a>
+                      
+                      <!-- 2. Ha ide kattint, kinyitja a menüt (a nyíl pici marad, de a gomb körülötte nagy) -->
+                      <div class="nyil-kattinto" onclick="this.closest('.lenyilomenu-tarolo').classList.toggle('kattintva')">
+                          <span class="nyil">▼</span>
+                      </div>
+                  </div>
               <ul class="lenyilomenu-tartalom">
                 <li><a href="tarsashazak.html">Társasházak és Lakóépületek</a></li>
                 <li><a href="ipari-letesitmenyek.html">Ipari létesítmények</a></li>
@@ -33,10 +43,10 @@
                 <li><a href="felujitasok.html">Felújítások és Rekonstrukciók</a></li>
               </ul>
             </li>
-                <li><a href="szolgaltatasaink.html">Tevékenységek</a></li>
-                <li><a href="aktualis.html">Aktuális</a></li>
+                <li><a href="szolgaltatasaink.html" >Tevékenységek</a></li>
+                <li><a href="aktualis.html" class="aktiv-navigacio">Aktuális</a></li>
                 <li class="lenyilomenu-tarolo">
-                  <a href="#" class="lenyilo-gomb">Céginformációk <span class="nyil">&#9662;</span></a>
+                  <a href="#" class="lenyilo-gomb">Céginformációk <span class="nyil">▼</span></a>
                   <ul class="lenyilomenu-tartalom">
                     <li><a href="impresszum.html">Impresszum és Cégadatok</a></li>
                         <li><a href="palyazatok.html">Pályázatok</a></li>
@@ -127,7 +137,7 @@
                     <span class="hir-datum">Hamarosan</span>
                     <h3>Konstantin utca 29 Társasház</h3>
                     <p>Készülünk legújabb nagyszabású beruházásunk megkezdésére. További részletek hamarosan...</p>
-                    <a href="https://lackoannus.github.io/tarsashaz-web/" class="hir-link">Tovább olvasom &rarr;</a>
+                    <a href="https://lackoannus.github.io/tarsashaz-web/" class="hir-link"  target="_blank">Tovább olvasom &rarr;</a>
                 </div>
             </div>
 
@@ -135,72 +145,61 @@
     </div>
 </section>
 
-<!-- 2. KATEGÓRIA: Átadások -->
-        <div class="hir-kategoria-blokk">
-            <h2 class="kategoria-cim">Átadások</h2>
-            <div class="kategoria-tartalom">
-                
-                <div class="hir-sor">
-                    <div class="hir-sor-meta">2026. Szeptember 14.</div>
-                    <div class="hir-sor-szoveg">
-                        <h4>Megnyílt a csömöri Rozsdafarkú kilátó</h4>
-                        <p>Sikeresen átadtuk a legújabb faépítésű kilátót a kirándulók számára, amely hozzájárul a régió turizmusának fellendítéséhez.</p>
-                        <a href="https://csomor.hu/megnyilt-a-csomori-rozsdafarku-kilato/" target="_blank">Tovább olvasom &rarr;</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- 3. KATEGÓRIA: Céghez kapcsolódó hírek -->
-        <div class="hir-kategoria-blokk">
-            <h2 class="kategoria-cim">Céghez kapcsolódó hírek</h2>
-            <div class="kategoria-tartalom">
-                
-                <div class="hir-sor">
-                    <div class="hir-sor-meta">2026. Január</div>
-                    <div class="hir-sor-szoveg">
-                        <h4>Mosoda és nyomóüzem az MLSZ központban</h4>
-                        <p>Telkiben az edzőközpont területén egy új, modern épületegyüttes valósul meg vállalatunk kivitelezésében.</p>
-                        <a href="https://magyarepitok.hu/mi-epul/2026/01/mosoda-es-nyomouzem-epul-az-mlsz-telki-edzokozpontjaban" target="_blank">Tovább olvasom &rarr;</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- 4. KATEGÓRIA: Új beruházások -->
+<!-- ========================================= -->
+<!-- AKTUÁLIS KATEGORIZÁLT TARTALOM            -->
+<!-- ========================================= -->
+<section class="aktualis-kategoriak-szekcio">
+    <div class="aktualis-kontener">
+        
+        <!-- 1. ÚJ BERUHÁZÁSOK (Kártyás) -->
         <div class="hir-kategoria-blokk">
             <h2 class="kategoria-cim">Új beruházások</h2>
-            <div class="kategoria-tartalom">
-                
-                <div class="hir-sor">
-                    <div class="hir-sor-meta">Hamarosan</div>
-                    <div class="hir-sor-szoveg">
-                        <h4>Konstantin Beruházás</h4>
-                        <p>Készülünk legújabb nagyszabású beruházásunk megkezdésére. További részletek hamarosan...</p>
-                        <a href="#">Tovább olvasom &rarr;</a>
+            <div class="aktualis-grid">
+                <div class="hir-kartya">
+                    <div class="hir-kep" style="background-image: url('konstantin-kep.jpg');">
+                        <span class="hir-badge">Társasház</span>
                     </div>
+                    <div class="hir-tartalom">
+                        <span class="hir-datum">Hamarosan</span>
+                        <h3>Konstantin Beruházás</h3>
+                        <p>Készülünk legújabb nagyszabású beruházásunk megkezdésére. További részletek hamarosan érkeznek...</p>
+                        <a href="#" class="hir-link">Tovább olvasom &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. ÚJ PROJEKTEK INDULÁSA (ÚJ IDŐVONAL DIZÁJN) -->
+        <div class="hir-kategoria-blokk">
+            <h2 class="kategoria-cim">Új projektek indulása</h2>
+            
+            <div class="kategoria-tartalom-idovonal">
+                
+                <div class="hir-idovonal-elem">
+                    <div class="hir-idovonal-datum">2026. Július</div>
+                    <h4 class="hir-idovonal-cim">Jelentős művészeti intézmény bővül</h4>
+                    <p class="hir-idovonal-szoveg">Megkezdtük a Bükk déli kapujában található kulturális és művészeti központ kivitelezési és bővítési munkáit.</p>
+                    <a href="https://magyarepitok.hu/mi-epul/2026/07/jelentos-muveszeti-intezmeny-bovul-a-bukk-deli-kapujaban" target="_blank" class="hir-idovonal-link">Tovább olvasom &rarr;</a>
                 </div>
 
             </div>
         </div>
 
-        <!-- 5. KATEGÓRIA: Jelentősebb kivitelezési mérföldkövek (Példa üres blokkra) -->
+        <!-- 3. ÁTADÁSOK -->
         <div class="hir-kategoria-blokk">
-            <h2 class="kategoria-cim">Jelentősebb kivitelezési mérföldkövek</h2>
-            <div class="kategoria-tartalom">
-                <p style="color: var(--szin-szoveg); font-style: italic;">Jelenleg nincs feltöltött hír ebben a kategóriában.</p>
+            <h2 class="kategoria-cim">Átadások</h2>
+            
+            <div class="kategoria-tartalom-idovonal">
+                <div class="hir-idovonal-elem">
+                    <div class="hir-idovonal-datum">2026. Szeptember 14.</div>
+                    <h4 class="hir-idovonal-cim">Megnyílt a csömöri Rozsdafarkú kilátó</h4>
+                    <p class="hir-idovonal-szoveg">Sikeresen átadtuk a legújabb faépítésű kilátót a kirándulók számára, amely hozzájárul a régió turizmusának fellendítéséhez.</p>
+                    <a href="https://csomor.hu/megnyilt-a-csomori-rozsdafarku-kilato/" target="_blank" class="hir-idovonal-link">Tovább olvasom &rarr;</a>
+                </div>
             </div>
         </div>
 
-        <!-- 6. KATEGÓRIA: Események / Szakmai hírek -->
-        <div class="hir-kategoria-blokk">
-            <h2 class="kategoria-cim">Események és szakmai hírek</h2>
-            <div class="kategoria-tartalom">
-                <p style="color: var(--szin-szoveg); font-style: italic;">Jelenleg nincs feltöltött hír ebben a kategóriában.</p>
-            </div>
-        </div>
+        <!-- Ide jöhet a többi kategória ugyanígy (Szakmai hírek, Események stb.) -->
 
     </div>
 </section>
