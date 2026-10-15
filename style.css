@@ -20,9 +20,10 @@
   font-weight: 100 900;
   font-display: swap;
   src: url("fonts/inter-latin-wght-normal.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
-    U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
   font-family: "Inter";
@@ -30,9 +31,10 @@
   font-weight: 100 900;
   font-display: swap;
   src: url("fonts/inter-latin-ext-wght-normal.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
-    U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
-    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+    U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
   font-family: "Archivo";
@@ -40,9 +42,10 @@
   font-weight: 100 900;
   font-display: swap;
   src: url("fonts/archivo-latin-wght-normal.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
-    U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
   font-family: "Archivo";
@@ -50,9 +53,10 @@
   font-weight: 100 900;
   font-display: swap;
   src: url("fonts/archivo-latin-ext-wght-normal.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
-    U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
-    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+    U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 :root {
@@ -77,7 +81,8 @@
   --tinta: #171512;
   --tinta-halvany: #5c574d;
 
-  --betu-szoveg: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --betu-szoveg:
+    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --betu-cim: "Archivo", "Inter", system-ui, sans-serif;
 
   --kontener: 1240px;
@@ -494,7 +499,12 @@ strong {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(8, 8, 8, 0.88) 0%, rgba(8, 8, 8, 0.55) 45%, rgba(8, 8, 8, 0.15) 100%),
+    linear-gradient(
+      90deg,
+      rgba(8, 8, 8, 0.88) 0%,
+      rgba(8, 8, 8, 0.55) 45%,
+      rgba(8, 8, 8, 0.15) 100%
+    ),
     linear-gradient(0deg, rgba(8, 8, 8, 0.9) 0%, rgba(8, 8, 8, 0) 45%);
 }
 
@@ -574,14 +584,19 @@ strong {
   background-color: #0b0b0b;
 }
 .statik-hero .hero-overlay {
-  background:
-    linear-gradient(0deg, rgba(10, 10, 10, 0.96) 0%, rgba(10, 10, 10, 0.55) 55%, rgba(10, 10, 10, 0.35) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(10, 10, 10, 0.96) 0%,
+    rgba(10, 10, 10, 0.55) 55%,
+    rgba(10, 10, 10, 0.35) 100%
+  );
 }
 .statik-hero .hero-tartalom {
   width: 100%;
   max-width: var(--kontener);
   margin: 0 auto;
-  padding: calc(var(--fejlec-magassag) + 2rem) var(--oldal-padding) clamp(2.5rem, 6vw, 4rem);
+  padding: calc(var(--fejlec-magassag) + 2rem) var(--oldal-padding)
+    clamp(2.5rem, 6vw, 4rem);
 }
 .statik-hero .hero-cim {
   font-size: clamp(2.5rem, 6.5vw, 4.75rem);
@@ -604,7 +619,11 @@ strong {
 .statik-hero-kicsi {
   min-height: 0;
   background:
-    radial-gradient(1200px 400px at 15% 0%, rgba(201, 166, 58, 0.14), transparent 60%),
+    radial-gradient(
+      1200px 400px at 15% 0%,
+      rgba(201, 166, 58, 0.14),
+      transparent 60%
+    ),
     var(--felulet-1);
   border-bottom: 1px solid var(--vonal);
 }
@@ -878,8 +897,16 @@ strong {
   inset: 0;
   z-index: -1;
   background:
-    repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.045) 0 1px, transparent 1px 22px),
-    radial-gradient(600px 300px at 100% 0%, rgba(255, 255, 255, 0.25), transparent 70%);
+    repeating-linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.045) 0 1px,
+      transparent 1px 22px
+    ),
+    radial-gradient(
+      600px 300px at 100% 0%,
+      rgba(255, 255, 255, 0.25),
+      transparent 70%
+    );
 }
 .cta-kontener {
   display: grid;
@@ -932,8 +959,7 @@ strong {
   aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: var(--r-kozepes);
-  background:
-    linear-gradient(160deg, #262626, #161616);
+  background: linear-gradient(160deg, #262626, #161616);
   border: 1px solid var(--vonal);
   cursor: pointer;
   transition:
@@ -961,7 +987,12 @@ strong {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(0deg, rgba(8, 8, 8, 0.95) 0%, rgba(8, 8, 8, 0.55) 45%, rgba(8, 8, 8, 0.05) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(8, 8, 8, 0.95) 0%,
+    rgba(8, 8, 8, 0.55) 45%,
+    rgba(8, 8, 8, 0.05) 100%
+  );
 }
 .kartya-badge {
   position: absolute;
@@ -1189,8 +1220,7 @@ strong {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background:
-    var(--arany-halvany)
+  background: var(--arany-halvany)
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9a63a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")
     center / 12px no-repeat;
 }
@@ -1313,8 +1343,7 @@ section.szolgaltatas-cta {
   padding: 0.6rem 2.75rem 0.6rem 1.1rem;
   border: 1px solid var(--vonal-eros);
   border-radius: 999px;
-  background:
-    var(--felulet-2)
+  background: var(--felulet-2)
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9a63a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")
     right 1rem center / 14px no-repeat;
   color: var(--szin-feher);
@@ -1722,7 +1751,8 @@ section.szolgaltatas-cta {
 /* 12. IMPRESSZUM, SÜTI, 404, PÁLYÁZAT       */
 /* ========================================= */
 .impresszum-szekcio {
-  padding: calc(var(--fejlec-magassag) + 4rem) var(--oldal-padding) var(--szekcio-terkoz);
+  padding: calc(var(--fejlec-magassag) + 4rem) var(--oldal-padding)
+    var(--szekcio-terkoz);
 }
 .statik-hero + .impresszum-szekcio {
   padding-top: clamp(3rem, 6vw, 4.5rem);
@@ -1795,7 +1825,11 @@ section.szolgaltatas-cta {
   gap: 1.25rem;
   padding: calc(var(--fejlec-magassag) + 2rem) var(--oldal-padding) 4rem;
   text-align: center;
-  background: radial-gradient(800px 400px at 50% 30%, rgba(201, 166, 58, 0.12), transparent 70%);
+  background: radial-gradient(
+    800px 400px at 50% 30%,
+    rgba(201, 166, 58, 0.12),
+    transparent 70%
+  );
 }
 .hiba-kod {
   font-family: var(--betu-cim);
@@ -2284,17 +2318,39 @@ section.szolgaltatas-cta {
 /* 15. ANIMÁCIÓK, AKADÁLYMENTESSÉG           */
 /* ========================================= */
 /* Csak JS mellett rejtünk el bármit, így JS nélkül is minden látszik */
-.js :is(.animacio-balrol, .animacio-fade, .animacio-jobbrol, .animacio-jobbrol-alap, .animacio-alulrol) {
+.js
+  :is(
+    .animacio-balrol,
+    .animacio-fade,
+    .animacio-jobbrol,
+    .animacio-jobbrol-alap,
+    .animacio-alulrol
+  ) {
   opacity: 0;
-  transform: translateY(28px);
   transition:
     opacity 0.8s ease,
     transform 0.8s var(--atmenet);
 }
+.js .animacio-balrol {
+  transform: translateX(-56px);
+}
+.js :is(.animacio-jobbrol, .animacio-jobbrol-alap) {
+  transform: translateX(56px);
+}
 .js .animacio-fade {
   transform: none;
 }
-.js :is(.animacio-balrol, .animacio-fade, .animacio-jobbrol, .animacio-jobbrol-alap, .animacio-alulrol).megjelent {
+.js .animacio-alulrol {
+  transform: translateY(28px);
+}
+.js
+  :is(
+    .animacio-balrol,
+    .animacio-fade,
+    .animacio-jobbrol,
+    .animacio-jobbrol-alap,
+    .animacio-alulrol
+  ).megjelent {
   opacity: 1;
   transform: none;
 }
@@ -2325,7 +2381,14 @@ section.szolgaltatas-cta {
     transition-duration: 0.01ms !important;
     transition-delay: 0s !important;
   }
-  .js :is(.animacio-balrol, .animacio-fade, .animacio-jobbrol, .animacio-jobbrol-alap, .animacio-alulrol) {
+  .js
+    :is(
+      .animacio-balrol,
+      .animacio-fade,
+      .animacio-jobbrol,
+      .animacio-jobbrol-alap,
+      .animacio-alulrol
+    ) {
     opacity: 1;
     transform: none;
   }
@@ -2338,8 +2401,10 @@ section.szolgaltatas-cta {
 /* Asztali: lenyíló menük hoverre / billentyűzetre */
 @media (min-width: 1101px) {
   .lenyilomenu-tarolo:not(.csak-nyil-nyit):hover .lenyilomenu-tartalom,
-  .lenyilomenu-tarolo.csak-nyil-nyit:has(.nyil-kattinto:hover) .lenyilomenu-tartalom,
-  .lenyilomenu-tarolo.csak-nyil-nyit:has(.lenyilomenu-tartalom:hover) .lenyilomenu-tartalom,
+  .lenyilomenu-tarolo.csak-nyil-nyit:has(.nyil-kattinto:hover)
+    .lenyilomenu-tartalom,
+  .lenyilomenu-tarolo.csak-nyil-nyit:has(.lenyilomenu-tartalom:hover)
+    .lenyilomenu-tartalom,
   .lenyilomenu-tarolo:focus-within .lenyilomenu-tartalom,
   .lenyilomenu-tarolo.kattintva .lenyilomenu-tartalom {
     opacity: 1;

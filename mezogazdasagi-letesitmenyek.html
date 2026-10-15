@@ -1,239 +1,426 @@
 <!doctype html>
 <html lang="hu">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mezőgazdasági és Élelmiszeripari Létesítmények - Károlyház Kft.</title>
-    <meta name="description" content="Mezőgazdasági épületek, terménytárolók, hűtőházak és élelmiszeripari üzemek szakszerű kivitelezése. Technológiai kiszolgáló létesítmények építése.">
-    <meta name="theme-color" content="#2b2a2a">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="hu_HU">
-    <meta property="og:site_name" content="Károlyház Kft.">
-    <meta property="og:title" content="Mezőgazdasági és Élelmiszeripari Létesítmények - Károlyház Kft.">
-    <meta property="og:description" content="Mezőgazdasági épületek, terménytárolók, hűtőházak és élelmiszeripari üzemek szakszerű kivitelezése. Technológiai kiszolgáló létesítmények építése.">
-    <link rel="icon" type="image/webp" href="karolyhaz-logo.webp">
-    <link rel="preconnect" href="https://i0.wp.com">
-    <link rel="preconnect" href="https://ringautohaz.hu">
-    <link rel="preconnect" href="https://lelepo.hu">
-    <link rel="preconnect" href="https://images.pexels.com">
-    <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <script>document.documentElement.classList.add("js")</script>
-    <link rel="preload" as="image" href="https://i0.wp.com/szolnokiovodak.hu/wp-content/uploads/2024/08/IMG_0013.jpg?resize=1024%2C683&amp;ssl=1" fetchpriority="high">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Mezőgazdasági és Élelmiszeripari Létesítmények - Károlyház Kft.
+    </title>
+    <meta
+      name="description"
+      content="Mezőgazdasági épületek, terménytárolók, hűtőházak és élelmiszeripari üzemek szakszerű kivitelezése. Technológiai kiszolgáló létesítmények építése."
+    />
+    <meta name="theme-color" content="#2b2a2a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="hu_HU" />
+    <meta property="og:site_name" content="Károlyház Kft." />
+    <meta
+      property="og:title"
+      content="Mezőgazdasági és Élelmiszeripari Létesítmények - Károlyház Kft."
+    />
+    <meta
+      property="og:description"
+      content="Mezőgazdasági épületek, terménytárolók, hűtőházak és élelmiszeripari üzemek szakszerű kivitelezése. Technológiai kiszolgáló létesítmények építése."
+    />
+    <link rel="icon" type="image/webp" href="karolyhaz-logo.webp" />
+    <link rel="preconnect" href="https://i0.wp.com" />
+    <link rel="preconnect" href="https://ringautohaz.hu" />
+    <link rel="preconnect" href="https://lelepo.hu" />
+    <link rel="preconnect" href="https://images.pexels.com" />
+    <link
+      rel="preload"
+      href="fonts/inter-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/archivo-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+    <link
+      rel="preload"
+      as="image"
+      href="https://i0.wp.com/szolnokiovodak.hu/wp-content/uploads/2024/08/IMG_0013.jpg?resize=1024%2C683&amp;ssl=1"
+      fetchpriority="high"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
     <header class="fejlec">
-        <div class="logo">
-            <a href="index.html" class="karolyhaz"><img src="karolyhaz-logo.webp" alt="Károlyház Kft. logó" width="600" height="396"></a>
-        </div>
+      <div class="logo">
+        <a href="index.html" class="karolyhaz"
+          ><img
+            src="karolyhaz-logo.webp"
+            alt="Károlyház Kft. logó"
+            width="600"
+            height="396"
+        /></a>
+      </div>
 
-        <nav class="navigacio">
-          <ul>
-            <li ><a href="index.html">Főoldal</a></li>
-            <li ><a href="rolunk.html">Rólunk</a></li>
-            <li class="lenyilomenu-tarolo">
-              <li class="lenyilomenu-tarolo">
-                  <!-- Szétválasztott gomb: Külön a Link és külön a Nyíl -->
-                  <div class="lenyilo-gomb-tarolo">
-                      <!-- 1. Ha ide kattint, átvisz a munkaink oldalra -->
-                      <a href="munkaink.html" class="fo-link">Referenciák</a>
-                      
-                      <!-- 2. Ha ide kattint, kinyitja a menüt (a nyíl pici marad, de a gomb körülötte nagy) -->
-                      <button type="button" class="nyil-kattinto" aria-label="Referenciák almenü" aria-expanded="false">
-                          <span class="nyil" aria-hidden="true">▼</span>
-                      </button>
-                  </div>
-              <ul class="lenyilomenu-tartalom">
-                <li><a href="tarsashazak.html">Társasházak és Lakóépületek</a></li>
-                <li><a href="ipari-letesitmenyek.html">Ipari létesítmények</a></li>
-                <li><a href="kozintezmenyek.html">Közintézmények</a></li>
-                <li><a href="oktatasi-epuletek.html">Oktatási és nevelési intézmények</a></li>
-                <li><a href="kereskedelmi-epuletek.html">Kereskedelmi és Üzleti épületek</a></li>
-                <li><a href="sport-letesitmenyek.html">Sport- és Szabadidő-intézmények</a></li>
-                <li><a href="mezogazdasagi-letesitmenyek.html">Mezőgazdasági és Élelmiszeripari</a></li>
-                <li><a href="felujitasok.html">Felújítások és Rekonstrukciók</a></li>
-              </ul>
-            </li>
-                <li><a href="szolgaltatasaink.html">Tevékenységek</a></li>
-                <li><a href="aktualis.html">Aktuális</a></li>
-                <li class="lenyilomenu-tarolo">
-                  <a href="#" class="lenyilo-gomb" role="button" aria-haspopup="true" aria-expanded="false">Céginformációk <span class="nyil" aria-hidden="true">▼</span></a>
-                  <ul class="lenyilomenu-tartalom">
-                    <li><a href="impresszum.html">Impresszum és Cégadatok</a></li>
-                        <li><a href="palyazatok.html">Pályázatok</a></li>
-                        <li><a href="#" id="suti-megnyito">Sütik beállítása</a></li>
-                    </ul>
-                </li>
-                <li ><a href="karrier.html">Karrier</a></li>
+      <nav class="navigacio">
+        <ul>
+          <li><a href="index.html">Főoldal</a></li>
+          <li><a href="rolunk.html">Rólunk</a></li>
+          <li class="lenyilomenu-tarolo"></li>
+          <li class="lenyilomenu-tarolo">
+            <!-- Szétválasztott gomb: Külön a Link és külön a Nyíl -->
+            <div class="lenyilo-gomb-tarolo">
+              <!-- 1. Ha ide kattint, átvisz a munkaink oldalra -->
+              <a href="munkaink.html" class="fo-link">Referenciák</a>
+
+              <!-- 2. Ha ide kattint, kinyitja a menüt (a nyíl pici marad, de a gomb körülötte nagy) -->
+              <button
+                type="button"
+                class="nyil-kattinto"
+                aria-label="Referenciák almenü"
+                aria-expanded="false"
+              >
+                <span class="nyil" aria-hidden="true">▼</span>
+              </button>
+            </div>
+            <ul class="lenyilomenu-tartalom">
+              <li>
+                <a href="tarsashazak.html">Társasházak és Lakóépületek</a>
+              </li>
+              <li>
+                <a href="ipari-letesitmenyek.html">Ipari létesítmények</a>
+              </li>
+              <li><a href="kozintezmenyek.html">Közintézmények</a></li>
+              <li>
+                <a href="oktatasi-epuletek.html"
+                  >Oktatási és nevelési intézmények</a
+                >
+              </li>
+              <li>
+                <a href="kereskedelmi-epuletek.html"
+                  >Kereskedelmi és Üzleti épületek</a
+                >
+              </li>
+              <li>
+                <a href="sport-letesitmenyek.html"
+                  >Sport- és Szabadidő-intézmények</a
+                >
+              </li>
+              <li>
+                <a href="mezogazdasagi-letesitmenyek.html"
+                  >Mezőgazdasági és Élelmiszeripari</a
+                >
+              </li>
+              <li>
+                <a href="felujitasok.html">Felújítások és Rekonstrukciók</a>
+              </li>
             </ul>
-        </nav>
-        <div class="kapcsolat">
-            <a href="#kapcsolat" class="gomb">Kapcsolat<span class="mobil-rejt">felvétel</span></a>
-        </div>
-        
-        <button type="button" class="lenyilomenu" aria-label="Menü megnyitása" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+          </li>
+          <li><a href="szolgaltatasaink.html">Tevékenységek</a></li>
+          <li><a href="aktualis.html">Aktuális</a></li>
+          <li class="lenyilomenu-tarolo">
+            <a
+              href="#"
+              class="lenyilo-gomb"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >Céginformációk <span class="nyil" aria-hidden="true">▼</span></a
+            >
+            <ul class="lenyilomenu-tartalom">
+              <li><a href="impresszum.html">Impresszum és Cégadatok</a></li>
+              <li><a href="palyazatok.html">Pályázatok</a></li>
+              <li><a href="#" id="suti-megnyito">Sütik beállítása</a></li>
+            </ul>
+          </li>
+          <li><a href="karrier.html">Karrier</a></li>
+        </ul>
+      </nav>
+      <div class="kapcsolat">
+        <a href="#kapcsolat" class="gomb"
+          >Kapcsolat<span class="mobil-rejt">felvétel</span></a
+        >
+      </div>
+
+      <button
+        type="button"
+        class="lenyilomenu"
+        aria-label="Menü megnyitása"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </header>
 
-     <!-- HERO -->
+    <!-- HERO -->
 
     <section class="hero statik-hero">
-      <div
-        class="hero-kep"
-        style="
-          background-image: url(&quot;https://i0.wp.com/szolnokiovodak.hu/wp-content/uploads/2024/08/IMG_0013.jpg?resize=1024%2C683&ssl=1&quot;);
-        "
-      ></div>
+      <div class="hero-kepek">
+        <div
+          class="kep-slide aktiv"
+          style="
+            background-image: url(&quot;https://i0.wp.com/szolnokiovodak.hu/wp-content/uploads/2024/08/IMG_0013.jpg?resize=1024%2C683&ssl=1&quot;);
+          "
+        ></div>
+        <div
+          class="kep-slide"
+          style="
+            background-image: url(&quot;https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg&quot;);
+          "
+        ></div>
+        <div
+          class="kep-slide"
+          style="
+            background-image: url(&quot;https://regioportal.hu/wp-content/uploads/stadler-szolnok-vasuti-jarmugyarto-kft-szolnok.jpg&quot;);
+          "
+        ></div>
+      </div>
       <div class="hero-overlay"></div>
       <div class="hero-tartalom">
         <h1 class="hero-cim">Mezőgazdasági és Élelmiszeripari Létesítmények</h1>
-    </div>
-</section>
-
-<!-- KARTYAK -->
-<section class="munkaink-kategoriak">
-
-    <div class="projekt-grid">
-        <div class="projekt-kartya" data-galeria="https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg, https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg, https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=800" data-galeria="" data-tipus="ipari" data-helyszin="Szolnok" data-ev="2021">
-            <div class="kartya-hatter" style="background-image: url('https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg');"></div>
-            <div class="kartya-overlay"></div>
-            <div class="kartya-badge">Ipari létesítmény</div>
-            <div class="kartya-tartalom">
-                <h3>Ring Autóház Kft.</h3>
-                <p class="kartya-meta">5000 Szolnok, Fék u. 4. &bull; 2021</p>
-                <button class="reszletek-gomb">Részletek</button>
-            </div>
-            <div class="kartya-rejtett-reszletek" style="display: none;">
-                <p>Autószalon energetikai felújítása, autószalon bővítése</p>
-            </div>
-        </div>
-        <div class="projekt-kartya" data-galeria="https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg, https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg, https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=800" data-galeria="" data-tipus="ipari" data-helyszin="Szolnok" data-ev="2021">
-            <div class="kartya-hatter" style="background-image: url('https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg');"></div>
-            <div class="kartya-overlay"></div>
-            <div class="kartya-badge">Ipari létesítmény</div>
-            <div class="kartya-tartalom">
-                <h3>Ring Autóház Kft.</h3>
-                <p class="kartya-meta">5000 Szolnok, Fék u. 4. &bull; 2021</p>
-                <button class="reszletek-gomb">Részletek</button>
-            </div>
-            <div class="kartya-rejtett-reszletek" style="display: none;">
-                <p>Autószalon energetikai felújítása, autószalon bővítése</p>
-            </div>
-        </div>
-        <div class="projekt-kartya" data-galeria="https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg, https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg, https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=800" data-galeria="" data-tipus="ipari" data-helyszin="Szolnok" data-ev="2021">
-            <div class="kartya-hatter" style="background-image: url('https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg');"></div>
-            <div class="kartya-overlay"></div>
-            <div class="kartya-badge">Ipari létesítmény</div>
-            <div class="kartya-tartalom">
-                <h3>Ring Autóház Kft.</h3>
-                <p class="kartya-meta">5000 Szolnok, Fék u. 4. &bull; 2021</p>
-                <button class="reszletek-gomb">Részletek</button>
-            </div>
-            <div class="kartya-rejtett-reszletek" style="display: none;">
-                <p>Autószalon energetikai felújítása, autószalon bővítése</p>
-            </div>
-        </div>
-        
-    
-    
-    </div>
-</section>
-
-<div id="projekt-modal" class="projekt-modal" role="dialog" aria-modal="true" aria-labelledby="modal-cim">
-  <div class="modal-tartalom">
-    <button type="button" id="modal-bezaras" class="modal-bezaras" aria-label="Bezárás">&times;</button>
-    <div class="modal-grid">
-      
-      <!-- BAL OLDAL: LAPOZÓS KÉP KONTÉNER -->
-      <div class="modal-kep-tarolo">
-        <button type="button" id="modal-elozo" class="slider-gomb slider-elozo" aria-label="Előző">&#10094;</button>
-        
-        <!-- ÚJ: A kivágó és a csúszósín -->
-        <div class="modal-kep-kivago">
-          <div id="modal-kep-track" class="modal-kep-track"></div>
-        </div>
-
-        <button type="button" id="modal-kovetkezo" class="slider-gomb slider-kovetkezo" aria-label="Következő">&#10095;</button>
       </div>
+    </section>
 
-      <!-- JOBB OLDAL: SZÖVEGES TARTALOM -->
-      <div class="modal-szoveg">
-        <div id="modal-badge-szoveg" class="modal-badge"></div>
-        <h2 id="modal-cim"></h2>
-        <p id="modal-meta-szoveg" class="modal-meta"></p>
-        <div id="modal-leiras" class="modal-leiras"></div>
+    <!-- KARTYAK -->
+    <section class="munkaink-kategoriak">
+      <div class="projekt-grid">
+        <div
+          class="projekt-kartya"
+          data-galeria="https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg, https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg, https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=800"
+          data-galeria=""
+          data-tipus="ipari"
+          data-helyszin="Szolnok"
+          data-ev="2021"
+        >
+          <div
+            class="kartya-hatter"
+            style="
+              background-image: url(&quot;https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg&quot;);
+            "
+          ></div>
+          <div class="kartya-overlay"></div>
+          <div class="kartya-badge">Ipari létesítmény</div>
+          <div class="kartya-tartalom">
+            <h3>Ring Autóház Kft.</h3>
+            <p class="kartya-meta">5000 Szolnok, Fék u. 4. &bull; 2021</p>
+            <button class="reszletek-gomb">Részletek</button>
+          </div>
+          <div class="kartya-rejtett-reszletek" style="display: none">
+            <p>Autószalon energetikai felújítása, autószalon bővítése</p>
+          </div>
+        </div>
+        <div
+          class="projekt-kartya"
+          data-galeria="https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg, https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg, https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=800"
+          data-galeria=""
+          data-tipus="ipari"
+          data-helyszin="Szolnok"
+          data-ev="2021"
+        >
+          <div
+            class="kartya-hatter"
+            style="
+              background-image: url(&quot;https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg&quot;);
+            "
+          ></div>
+          <div class="kartya-overlay"></div>
+          <div class="kartya-badge">Ipari létesítmény</div>
+          <div class="kartya-tartalom">
+            <h3>Ring Autóház Kft.</h3>
+            <p class="kartya-meta">5000 Szolnok, Fék u. 4. &bull; 2021</p>
+            <button class="reszletek-gomb">Részletek</button>
+          </div>
+          <div class="kartya-rejtett-reszletek" style="display: none">
+            <p>Autószalon energetikai felújítása, autószalon bővítése</p>
+          </div>
+        </div>
+        <div
+          class="projekt-kartya"
+          data-galeria="https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg, https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg, https://images.pexels.com/photos/1750096/pexels-photo-1750096.jpeg?auto=compress&cs=tinysrgb&w=800"
+          data-galeria=""
+          data-tipus="ipari"
+          data-helyszin="Szolnok"
+          data-ev="2021"
+        >
+          <div
+            class="kartya-hatter"
+            style="
+              background-image: url(&quot;https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg&quot;);
+            "
+          ></div>
+          <div class="kartya-overlay"></div>
+          <div class="kartya-badge">Ipari létesítmény</div>
+          <div class="kartya-tartalom">
+            <h3>Ring Autóház Kft.</h3>
+            <p class="kartya-meta">5000 Szolnok, Fék u. 4. &bull; 2021</p>
+            <button class="reszletek-gomb">Részletek</button>
+          </div>
+          <div class="kartya-rejtett-reszletek" style="display: none">
+            <p>Autószalon energetikai felújítása, autószalon bővítése</p>
+          </div>
+        </div>
       </div>
-      
+    </section>
+
+    <div
+      id="projekt-modal"
+      class="projekt-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-cim"
+    >
+      <div class="modal-tartalom">
+        <button
+          type="button"
+          id="modal-bezaras"
+          class="modal-bezaras"
+          aria-label="Bezárás"
+        >
+          &times;
+        </button>
+        <div class="modal-grid">
+          <!-- BAL OLDAL: LAPOZÓS KÉP KONTÉNER -->
+          <div class="modal-kep-tarolo">
+            <button
+              type="button"
+              id="modal-elozo"
+              class="slider-gomb slider-elozo"
+              aria-label="Előző"
+            >
+              &#10094;
+            </button>
+
+            <!-- ÚJ: A kivágó és a csúszósín -->
+            <div class="modal-kep-kivago">
+              <div id="modal-kep-track" class="modal-kep-track"></div>
+            </div>
+
+            <button
+              type="button"
+              id="modal-kovetkezo"
+              class="slider-gomb slider-kovetkezo"
+              aria-label="Következő"
+            >
+              &#10095;
+            </button>
+          </div>
+
+          <!-- JOBB OLDAL: SZÖVEGES TARTALOM -->
+          <div class="modal-szoveg">
+            <div id="modal-badge-szoveg" class="modal-badge"></div>
+            <h2 id="modal-cim"></h2>
+            <p id="modal-meta-szoveg" class="modal-meta"></p>
+            <div id="modal-leiras" class="modal-leiras"></div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<!-- ========================================= -->
-<!-- KÉPNÉZEGETŐ (LIGHTBOX) A MODAL FÖLÉ       -->
-<!-- ========================================= -->
-<div id="lightbox-overlay" class="rejtett">
-    <button type="button" id="lightbox-bezar" aria-label="Bezárás">&times;</button>
-    
-    <div class="lightbox-kozep">
-        <button type="button" id="lb-elozo" class="lb-gomb" aria-label="Előző kép">&lt;</button>
+    <!-- ========================================= -->
+    <!-- KÉPNÉZEGETŐ (LIGHTBOX) A MODAL FÖLÉ       -->
+    <!-- ========================================= -->
+    <div id="lightbox-overlay" class="rejtett">
+      <button type="button" id="lightbox-bezar" aria-label="Bezárás">
+        &times;
+      </button>
+
+      <div class="lightbox-kozep">
+        <button
+          type="button"
+          id="lb-elozo"
+          class="lb-gomb"
+          aria-label="Előző kép"
+        >
+          &lt;
+        </button>
         <div class="lightbox-fokep-tarolo">
-            <img id="lightbox-fokep" alt="Kinagyított kép">
+          <img id="lightbox-fokep" alt="Kinagyított kép" />
         </div>
-        <button type="button" id="lb-kovetkezo" class="lb-gomb" aria-label="Következő kép">&gt;</button>
-    </div>
+        <button
+          type="button"
+          id="lb-kovetkezo"
+          class="lb-gomb"
+          aria-label="Következő kép"
+        >
+          &gt;
+        </button>
+      </div>
 
-    <!-- Ide kerülnek a kis képek -->
-    <div class="lightbox-miniaturok" id="lightbox-thumbs"></div>
-</div>
+      <!-- Ide kerülnek a kis képek -->
+      <div class="lightbox-miniaturok" id="lightbox-thumbs"></div>
+    </div>
     <footer id="kapcsolat" class="lablec">
-        <div class="lablec-tartalom">
-            <div class="lablec-marka">
-                <a href="index.html" class="lablec-logo"><img src="karolyhaz-logo.webp" alt="Károlyház Kft." width="600" height="396" loading="lazy" decoding="async"></a>
-                <p>Szolnoki székhelyű építőipari generálkivitelező. 2008 óta valósítunk meg lakó-, ipari és intézményi beruházásokat a tervezéstől az átadásig.</p>
-            </div>
-            <nav class="lablec-oszlop" aria-label="Lábléc navigáció">
-                <h3>Oldalak</h3>
-                <ul>
-                    <li><a href="rolunk.html">Rólunk</a></li>
-                    <li><a href="munkaink.html">Referenciák</a></li>
-                    <li><a href="szolgaltatasaink.html">Tevékenységek</a></li>
-                    <li><a href="aktualis.html">Aktuális</a></li>
-                    <li><a href="karrier.html">Karrier</a></li>
-                </ul>
-            </nav>
-            <div class="lablec-oszlop lablec-kapcsolat">
-                <h3>Kapcsolat</h3>
-                <address>
-                    <p>5000 Szolnok, Vércse utca 21.</p>
-                    <p><a href="tel:+3656516030">06 56 / 516-030</a></p>
-                    <p><a href="mailto:karolyhaz@gmail.com">karolyhaz@gmail.com</a></p>
-                </address>
-            </div>
+      <div class="lablec-tartalom">
+        <div class="lablec-marka">
+          <a href="index.html" class="lablec-logo"
+            ><img
+              src="karolyhaz-logo.webp"
+              alt="Károlyház Kft."
+              width="600"
+              height="396"
+              loading="lazy"
+              decoding="async"
+          /></a>
+          <p>
+            Szolnoki székhelyű építőipari generálkivitelező. 2008 óta valósítunk
+            meg lakó-, ipari és intézményi beruházásokat a tervezéstől az
+            átadásig.
+          </p>
         </div>
-        <div class="lablec-impresszum">
-            <div class="szerzoi-jog">&copy; 2026 Károlyház Kft. Minden jog fenntartva.</div>
-            <div class="jogi-linkek">
-                <a href="impresszum.html">Impresszum</a>
-                <a href="palyazatok.html">Pályázatok</a>
-                <a href="sutik.html">Süti tájékoztató</a>
-            </div>
+        <nav class="lablec-oszlop" aria-label="Lábléc navigáció">
+          <h3>Oldalak</h3>
+          <ul>
+            <li><a href="rolunk.html">Rólunk</a></li>
+            <li><a href="munkaink.html">Referenciák</a></li>
+            <li><a href="szolgaltatasaink.html">Tevékenységek</a></li>
+            <li><a href="aktualis.html">Aktuális</a></li>
+            <li><a href="karrier.html">Karrier</a></li>
+          </ul>
+        </nav>
+        <div class="lablec-oszlop lablec-kapcsolat">
+          <h3>Kapcsolat</h3>
+          <address>
+            <p>5000 Szolnok, Vércse utca 21.</p>
+            <p><a href="tel:+3656516030">06 56 / 516-030</a></p>
+            <p><a href="mailto:karolyhaz@gmail.com">karolyhaz@gmail.com</a></p>
+          </address>
         </div>
+      </div>
+      <div class="lablec-impresszum">
+        <div class="szerzoi-jog">
+          &copy; 2026 Károlyház Kft. Minden jog fenntartva.
+        </div>
+        <div class="jogi-linkek">
+          <a href="impresszum.html">Impresszum</a>
+          <a href="palyazatok.html">Pályázatok</a>
+          <a href="sutik.html">Süti tájékoztató</a>
+        </div>
+      </div>
     </footer>
     <div id="suti-sav" class="suti-tarolo rejtett">
-        <div class="suti-tartalom">
-            <div class="suti-szoveg">
-                <h3>Vigyázunk az adataidra! </h3>
-                <p>Weboldalunk alapvető működéséhez és a látogatói élmény javításához (statisztikákhoz) sütiket használunk. A "Mindent elfogadok" gombra kattintva hozzájárulsz ezek használatához. <a href="sutik.html" target="_blank">Részletes tájékoztató</a></p>
-            </div>
-            <div class="suti-gombok">
-                <button id="suti-alap-gomb" class="suti-gomb-szurke">Csak a szükségesek</button>
-                <button id="suti-elfogad-gomb" class="suti-gomb-arany">Mindent elfogadok</button>
-            </div>
+      <div class="suti-tartalom">
+        <div class="suti-szoveg">
+          <h3>Vigyázunk az adataidra!</h3>
+          <p>
+            Weboldalunk alapvető működéséhez és a látogatói élmény javításához
+            (statisztikákhoz) sütiket használunk. A "Mindent elfogadok" gombra
+            kattintva hozzájárulsz ezek használatához.
+            <a href="sutik.html" target="_blank">Részletes tájékoztató</a>
+          </p>
         </div>
+        <div class="suti-gombok">
+          <button id="suti-alap-gomb" class="suti-gomb-szurke">
+            Csak a szükségesek
+          </button>
+          <button id="suti-elfogad-gomb" class="suti-gomb-arany">
+            Mindent elfogadok
+          </button>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
