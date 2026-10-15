@@ -2,18 +2,29 @@
 <html lang="hu">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0", maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aktuális - Károlyház Kft.</title>
     <meta name="description" content="Legfrissebb híreink, legújabb építőipari projektjeink indulása és sikeres átadások. Kövesse nyomon vállalatunk aktuális beruházásait és mérföldköveit.">
-    <link rel="stylesheet" href="style.css" />
+    <meta name="theme-color" content="#2b2a2a">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="hu_HU">
+    <meta property="og:site_name" content="Károlyház Kft.">
+    <meta property="og:title" content="Aktuális - Károlyház Kft.">
+    <meta property="og:description" content="Legfrissebb híreink, legújabb építőipari projektjeink indulása és sikeres átadások. Kövesse nyomon vállalatunk aktuális beruházásait és mérföldköveit.">
+    <link rel="icon" type="image/webp" href="karolyhaz-logo.webp">
+    <link rel="preconnect" href="https://i0.wp.com">
+    <link rel="preconnect" href="https://csomor.hu">
+    <link rel="preconnect" href="https://magyarepitok.hu">
+    <link rel="preconnect" href="https://lelepo.hu">
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <title>Aktuális - Károlyház kft.</title>
   </head>
   <body>
     <!-- FEJLEC -->
 
     <header class="fejlec">
         <div class="logo">
-            <a href="index.html" class="karolyhaz"><img src="karolyhaz-logo.webp" alt="karolyhaz logo"></a>
+            <a href="index.html" class="karolyhaz"><img src="karolyhaz-logo.webp" alt="Károlyház Kft. logó" width="600" height="396"></a>
         </div>
 
         <nav class="navigacio">
@@ -28,9 +39,9 @@
                       <a href="munkaink.html" class="fo-link">Referenciák</a>
                       
                       <!-- 2. Ha ide kattint, kinyitja a menüt (a nyíl pici marad, de a gomb körülötte nagy) -->
-                      <div class="nyil-kattinto" onclick="this.closest('.lenyilomenu-tarolo').classList.toggle('kattintva')">
-                          <span class="nyil">▼</span>
-                      </div>
+                      <button type="button" class="nyil-kattinto" aria-label="Referenciák almenü" aria-expanded="false">
+                          <span class="nyil" aria-hidden="true">▼</span>
+                      </button>
                   </div>
               <ul class="lenyilomenu-tartalom">
                 <li><a href="tarsashazak.html">Társasházak és Lakóépületek</a></li>
@@ -46,7 +57,7 @@
                 <li><a href="szolgaltatasaink.html" >Tevékenységek</a></li>
                 <li><a href="aktualis.html" class="aktiv-navigacio">Aktuális</a></li>
                 <li class="lenyilomenu-tarolo">
-                  <a href="#" class="lenyilo-gomb">Céginformációk <span class="nyil">▼</span></a>
+                  <a href="#" class="lenyilo-gomb" role="button" aria-haspopup="true" aria-expanded="false">Céginformációk <span class="nyil" aria-hidden="true">▼</span></a>
                   <ul class="lenyilomenu-tartalom">
                     <li><a href="impresszum.html">Impresszum és Cégadatok</a></li>
                         <li><a href="palyazatok.html">Pályázatok</a></li>
@@ -57,14 +68,14 @@
             </ul>
         </nav>
         <div class="kapcsolat">
-            <a href="kapcsolat.html" class="gomb">Kapcsolat<span class="mobil-rejt">felvétel</span></a>
+            <a href="#kapcsolat" class="gomb">Kapcsolat<span class="mobil-rejt">felvétel</span></a>
         </div>
         
-        <div class="lenyilomenu">
+        <button type="button" class="lenyilomenu" aria-label="Menü megnyitása" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </button>
     </header>
 
     <!-- HERO -->
@@ -207,22 +218,22 @@
 
      <footer id="kapcsolat" class="lablec">
         <div class="lablec-kepsav">
-            <img src=https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Építkezés 1">
-            <img src="https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg" alt="Építkezés 2">
-            <img src="https://lh5.googleusercontent.com/p/AF1QipORlzDY9g82D1MOj13boWE4AKnGX6qheUHArVv3=w650-h480-k-no" alt="Építkezés 3">
-            <img src="https://regioportal.hu/wp-content/uploads/stadler-szolnok-vasuti-jarmugyarto-kft-szolnok.jpg" alt="Építkezés 4">
+            <img src="https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Építkezés 1" loading="lazy" decoding="async">
+            <img src="https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg" alt="Építkezés 2" loading="lazy" decoding="async">
+            <img src="https://lh5.googleusercontent.com/p/AF1QipORlzDY9g82D1MOj13boWE4AKnGX6qheUHArVv3=w650-h480-k-no" alt="Építkezés 3" loading="lazy" decoding="async">
+            <img src="https://regioportal.hu/wp-content/uploads/stadler-szolnok-vasuti-jarmugyarto-kft-szolnok.jpg" alt="Építkezés 4" loading="lazy" decoding="async">
         </div>
         <div class="lablec-tartalom">
             <div class="lablec-kapcsolat">
                 <h2>KÁROLYHÁZ KFT.</h2>
-                <h4>Kapcsolat</h4>
+                <h3>Kapcsolat</h3>
                 <p><strong>Cím:</strong> 5000 Szolnok, Vércse utca 21.</p>
                 <p><strong>Telefonszám:</strong><a href="tel:+3656516030"> 06 56/516-030</a></p>
                 <p><strong>Email:</strong> <a href="mailto:karolyhaz@gmail.com">karolyhaz@gmail.com</a></p>
                 <p>barmit meg lehet idetenni</p>
             </div>
             <div class="lablec-logo">
-                <a href="index.html"><img src="karolyhaz-logo.webp" alt="Károlyház kft."></a>
+                <a href="index.html"><img src="karolyhaz-logo.webp" alt="Károlyház Kft." width="600" height="396" loading="lazy" decoding="async"></a>
             </div>
         </div>
         <div class="lablec-impresszum">

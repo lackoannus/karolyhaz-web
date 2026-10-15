@@ -2004,7 +2004,7 @@ img {
   margin-bottom: 1rem;
   letter-spacing: 2px;
 }
-.lablec-kapcsolat h4 {
+.lablec-kapcsolat h3 {
   font-size: 1.3rem;
   color: var(--szin-kiemeles);
   text-transform: uppercase;
@@ -2037,10 +2037,10 @@ img {
   align-items: center;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   font-size: 0.9rem;
-  color: #777777;
+  color: #9a9a9a;
 }
 .jogi-linkek a {
-  color: #777777;
+  color: #9a9a9a;
   text-decoration: none;
   margin-left: 2rem;
   transition: color 0.3s ease;
@@ -3428,4 +3428,46 @@ body.fooldal .hero,
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
+}
+
+/* ========================================= */
+/* AKADÁLYMENTESSÉG ÉS TELJESÍTMÉNY */
+/* ========================================= */
+
+/* A div/span helyett használt gombok böngészős alapstílusának nullázása
+   (:where = 0 specificitás, így a meglévő szabályok érvényben maradnak) */
+:where(.lenyilomenu, .nyil-kattinto, .modal-bezaras, #lightbox-bezar, .varos-bezar) {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  line-height: 1;
+}
+
+/* Billentyűzetes navigáció: látható fókusz, egérkattintásnál nem */
+:focus-visible {
+  outline: 2px solid var(--szin-kiemeles);
+  outline-offset: 3px;
+}
+
+/* Mozgásérzékeny látogatók: animációk kikapcsolása */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .animacio-balrol,
+  .animacio-fade,
+  .animacio-jobbrol,
+  .animacio-jobbrol-alap,
+  .animacio-alulrol {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

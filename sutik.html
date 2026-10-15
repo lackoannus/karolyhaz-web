@@ -1,18 +1,19 @@
 <!doctype html>
 <html lang="hu">
   <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <meta
-      name="description"
-      content="Károlyház Kft. - Süti (Cookie) Tájékoztató"
-    />
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Süti Tájékoztató - Károlyház Kft.</title>
+    <meta name="description" content="Károlyház Kft. - Süti (Cookie) Tájékoztató">
+    <meta name="theme-color" content="#2b2a2a">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="hu_HU">
+    <meta property="og:site_name" content="Károlyház Kft.">
+    <meta property="og:title" content="Süti Tájékoztató - Károlyház Kft.">
+    <meta property="og:description" content="Károlyház Kft. - Süti (Cookie) Tájékoztató">
+    <link rel="icon" type="image/webp" href="karolyhaz-logo.webp">
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <title>Károlyház kft. - Süti Tájékoztató</title>
   </head>
   <body>
     <header class="fejlec">
@@ -42,7 +43,7 @@
                   )
                 "
               >
-                <span class="nyil">▼</span>
+                <span class="nyil" aria-hidden="true">▼</span>
               </div>
             </div>
             <ul class="lenyilomenu-tartalom">
@@ -82,7 +83,7 @@
           <li><a href="aktualis.html">Aktuális</a></li>
           <li class="lenyilomenu-tarolo">
             <a href="#" class="lenyilo-gomb" class="aktiv-navigacio"
-              >Céginformációk <span class="nyil">▼</span></a
+              >Céginformációk <span class="nyil" aria-hidden="true">▼</span></a
             >
             <ul class="lenyilomenu-tartalom">
               <li><a href="impresszum.html">Impresszum és Cégadatok</a></li>
@@ -98,16 +99,16 @@
         </ul>
       </nav>
       <div class="kapcsolat">
-        <a href="kapcsolat.html" class="gomb"
+        <a href="#kapcsolat" class="gomb"
           >Kapcsolat<span class="mobil-rejt">felvétel</span></a
         >
       </div>
 
-      <div class="lenyilomenu">
+      <button type="button" class="lenyilomenu" aria-label="Menü megnyitása" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
     </header>
 
     <!-- KISEBB HERO SZEKCIÓ -->

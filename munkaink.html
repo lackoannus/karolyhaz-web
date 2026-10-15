@@ -2,18 +2,29 @@
 <html lang="hu">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0", maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Munkáink - Károlyház Kft.</title>
     <meta name="description" content="Tekintse meg sikeresen átadott építőipari projektjeinket! Ipari létesítmények, közintézmények és egyedi beruházások országszerte.">
-    <link rel="stylesheet" href="style.css" />
+    <meta name="theme-color" content="#2b2a2a">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="hu_HU">
+    <meta property="og:site_name" content="Károlyház Kft.">
+    <meta property="og:title" content="Munkáink - Károlyház Kft.">
+    <meta property="og:description" content="Tekintse meg sikeresen átadott építőipari projektjeinket! Ipari létesítmények, közintézmények és egyedi beruházások országszerte.">
+    <link rel="icon" type="image/webp" href="karolyhaz-logo.webp">
+    <link rel="preconnect" href="https://i0.wp.com">
+    <link rel="preconnect" href="https://images.pexels.com">
+    <link rel="preconnect" href="https://regioportal.hu">
+    <link rel="preconnect" href="https://lelepo.hu">
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <title>Munkáink - Károlyház kft.</title>
   </head>
   <body>
     <!-- FEJLEC -->
 
     <header class="fejlec">
         <div class="logo">
-            <a href="index.html" class="karolyhaz"><img src="karolyhaz-logo.webp" alt="karolyhaz logo"></a>
+            <a href="index.html" class="karolyhaz"><img src="karolyhaz-logo.webp" alt="Károlyház Kft. logó" width="600" height="396"></a>
         </div>
 
         <nav class="navigacio">
@@ -28,9 +39,9 @@
                       <a href="munkaink.html" class="fo-link" >Referenciák</a>
                       
                       <!-- 2. Ha ide kattint, kinyitja a menüt (a nyíl pici marad, de a gomb körülötte nagy) -->
-                      <div class="nyil-kattinto" onclick="this.closest('.lenyilomenu-tarolo').classList.toggle('kattintva')">
-                          <span class="nyil">▼</span>
-                      </div>
+                      <button type="button" class="nyil-kattinto" aria-label="Referenciák almenü" aria-expanded="false">
+                          <span class="nyil" aria-hidden="true">▼</span>
+                      </button>
                   </div>
               <ul class="lenyilomenu-tartalom">
                 <li><a href="tarsashazak.html">Társasházak és Lakóépületek</a></li>
@@ -46,7 +57,7 @@
                 <li><a href="szolgaltatasaink.html">Tevékenységek</a></li>
                 <li><a href="aktualis.html">Aktuális</a></li>
                 <li class="lenyilomenu-tarolo">
-                  <a href="#" class="lenyilo-gomb">Céginformációk <span class="nyil">▼</span></a>
+                  <a href="#" class="lenyilo-gomb" role="button" aria-haspopup="true" aria-expanded="false">Céginformációk <span class="nyil" aria-hidden="true">▼</span></a>
                   <ul class="lenyilomenu-tartalom">
                     <li><a href="impresszum.html">Impresszum és Cégadatok</a></li>
                         <li><a href="palyazatok.html">Pályázatok</a></li>
@@ -57,14 +68,14 @@
             </ul>
         </nav>
         <div class="kapcsolat">
-            <a href="kapcsolat.html" class="gomb">Kapcsolat<span class="mobil-rejt">felvétel</span></a>
+            <a href="#kapcsolat" class="gomb">Kapcsolat<span class="mobil-rejt">felvétel</span></a>
         </div>
         
-        <div class="lenyilomenu">
+        <button type="button" class="lenyilomenu" aria-label="Menü megnyitása" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </button>
     </header>
 
     <!-- HERO -->
@@ -93,7 +104,7 @@ megvalósításában.
             <!-- 1. KATEGÓRIA KÁRTYA -->
         <a href="tarsashazak.html" class="kategoria-kartya animacio-alulrol">
             <div class="k-kep-tarolo">
-                <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260" alt="Társasházak és Lakóépületek">
+                <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260" alt="Társasházak és Lakóépületek" loading="lazy" decoding="async">
             </div>
             <div class="k-tartalom">
                 <span class="k-szam">01</span>
@@ -106,7 +117,7 @@ megvalósításában.
         <!-- 2. KATEGÓRIA KÁRTYA -->
         <a href="ipari-letesitmenyek.html" class="kategoria-kartya animacio-alulrol" style="transition-delay: 0.2s;">
             <div class="k-kep-tarolo">
-                <img src="https://regioportal.hu/wp-content/uploads/stadler-szolnok-vasuti-jarmugyarto-kft-szolnok.jpg" alt="Ipari Létesítmények">
+                <img src="https://regioportal.hu/wp-content/uploads/stadler-szolnok-vasuti-jarmugyarto-kft-szolnok.jpg" alt="Ipari Létesítmények" loading="lazy" decoding="async">
             </div>
             <div class="k-tartalom">
                 <span class="k-szam">02</span>
@@ -119,7 +130,7 @@ megvalósításában.
         <!-- 3. KATEGÓRIA KÁRTYA -->
         <a href="kozintezmenyek.html" class="kategoria-kartya animacio-alulrol">
             <div class="k-kep-tarolo">
-                <img src="https://i0.wp.com/szolnokiovodak.hu/wp-content/uploads/2024/08/IMG_0013.jpg?resize=1024%2C683&ssl=1" alt="Közintézmények">
+                <img src="https://i0.wp.com/szolnokiovodak.hu/wp-content/uploads/2024/08/IMG_0013.jpg?resize=1024%2C683&ssl=1" alt="Közintézmények" loading="lazy" decoding="async">
             </div>
             <div class="k-tartalom">
                 <span class="k-szam">03</span>
@@ -132,7 +143,7 @@ megvalósításában.
         <!-- 4. KATEGÓRIA KÁRTYA -->
         <a href="oktatasi-epuletek.html" class="kategoria-kartya animacio-alulrol" style="transition-delay: 0.2s;">
             <div class="k-kep-tarolo">
-                <img src="https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Oktatási és nevelési épületek">
+                <img src="https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Oktatási és nevelési épületek" loading="lazy" decoding="async">
             </div>
             <div class="k-tartalom">
                 <span class="k-szam">04</span>
@@ -145,7 +156,7 @@ megvalósításában.
         <!-- 5. KATEGÓRIA KÁRTYA -->
         <a href="kereskedelmi-epuletek.html" class="kategoria-kartya animacio-alulrol">
             <div class="k-kep-tarolo">
-                <img src="https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Kereskedelmi és Üzleti épületek">
+                <img src="https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Kereskedelmi és Üzleti épületek" loading="lazy" decoding="async">
             </div>
             <div class="k-tartalom">
                 <span class="k-szam">05</span>
@@ -158,7 +169,7 @@ megvalósításában.
         <!-- 6. KATEGÓRIA KÁRTYA -->
         <a href="sport-letesitmenyek.html" class="kategoria-kartya animacio-alulrol" style="transition-delay: 0.2s;">
             <div class="k-kep-tarolo">
-                <img src="https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Sport- és Szabadidő- Létesítmények">
+                <img src="https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Sport- és Szabadidő- Létesítmények" loading="lazy" decoding="async">
             </div>
             <div class="k-tartalom">
                 <span class="k-szam">06</span>
@@ -171,7 +182,7 @@ megvalósításában.
         <!-- 7. KATEGÓRIA KÁRTYA -->
         <a href="mezogazdasagi-letesitmenyek.html" class="kategoria-kartya animacio-alulrol">
             <div class="k-kep-tarolo">
-                <img src="https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Mezőgazdasági és Élelmiszeripari Létesítmények">
+                <img src="https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Mezőgazdasági és Élelmiszeripari Létesítmények" loading="lazy" decoding="async">
             </div>
             <div class="k-tartalom">
                 <span class="k-szam">07</span>
@@ -184,7 +195,7 @@ megvalósításában.
         <!-- 8. KATEGÓRIA KÁRTYA -->
         <a href="felujitasok.html" class="kategoria-kartya animacio-alulrol" style="transition-delay: 0.2s;">
             <div class="k-kep-tarolo">
-                <img src="https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Felújítások és Rekonstrukciók">
+                <img src="https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Felújítások és Rekonstrukciók" loading="lazy" decoding="async">
             </div>
             <div class="k-tartalom">
                 <span class="k-szam">08</span>
@@ -239,7 +250,7 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
 <!-- ========================================= -->
 <div id="varos-modal" class="varos-modal rejtett">
     <div class="varos-modal-tartalom">
-        <span class="varos-bezar">&times;</span>
+        <button type="button" class="varos-bezar" aria-label="Bezárás">&times;</button>
         <h3 id="varos-modal-cim" class="arany-cim">Város neve</h3>
         <div id="varos-projekt-lista" class="projekt-grid"></div>
     </div>
@@ -250,18 +261,18 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
 <!-- ========================================= -->
 <div id="projekt-modal" class="projekt-modal rejtett">
   <div class="modal-tartalom">
-    <span id="modal-bezaras" class="modal-bezaras">&times;</span>
+    <button type="button" id="modal-bezaras" class="modal-bezaras" aria-label="Bezárás">&times;</button>
     <div class="modal-grid">
       
       <!-- BAL OLDAL: LAPOZÓS KÉP KONTÉNER -->
       <div class="modal-kep-tarolo">
-        <button id="modal-elozo" class="slider-gomb slider-elozo">&#10094;</button>
+        <button type="button" id="modal-elozo" class="slider-gomb slider-elozo" aria-label="Előző">&#10094;</button>
         
         <div class="modal-kep-kivago">
           <div id="modal-kep-track" class="modal-kep-track"></div>
         </div>
 
-        <button id="modal-kovetkezo" class="slider-gomb slider-kovetkezo">&#10095;</button>
+        <button type="button" id="modal-kovetkezo" class="slider-gomb slider-kovetkezo" aria-label="Következő">&#10095;</button>
       </div>
 
       <!-- JOBB OLDAL: SZÖVEGES TARTALOM -->
@@ -285,20 +296,20 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
 
         <!-- 1. PRÉMIUM SZŰRŐSÁV -->
         <div class="szuro-sav-tarolo">
-            <select id="szuro-tipus">
+            <select id="szuro-tipus" aria-label="Szűrés típusra">
                 <option value="osszes">Összes típus betöltése...</option>
             </select>
             
-            <select id="szuro-ev">
+            <select id="szuro-ev" aria-label="Szűrés évre">
                 <option value="osszes">Összes év betöltése...</option>
             </select>
             
-            <select id="szuro-helyszin">
+            <select id="szuro-helyszin" aria-label="Szűrés településre">
                 <option value="osszes">Összes település betöltése...</option>
             </select>
             
             <!-- Törlés gomb -->
-            <button id="szuro-torles" class="gomb" style="padding: 0.6rem 1.5rem; background-color: transparent; border: 1px solid var(--szin-kiemeles); color: var(--szin-kiemeles);">Szűrők törlése</button>
+            <button type="button" id="szuro-torles" class="gomb" style="padding: 0.6rem 1.5rem; background-color: transparent; border: 1px solid var(--szin-kiemeles); color: var(--szin-kiemeles);">Szűrők törlése</button>
         </div>
 
         <!-- 2. A SŰRŰ KÁRTYARÁCS (Nincs display:none, ide jön az összes kártya!) -->
@@ -1039,21 +1050,21 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
 
 
 
-<div id="projekt-modal" class="projekt-modal">
+<div id="projekt-modal" class="projekt-modal" role="dialog" aria-modal="true" aria-labelledby="modal-cim">
   <div class="modal-tartalom">
-    <span id="modal-bezaras" class="modal-bezaras">&times;</span>
+    <button type="button" id="modal-bezaras" class="modal-bezaras" aria-label="Bezárás">&times;</button>
     <div class="modal-grid">
       
       <!-- BAL OLDAL: LAPOZÓS KÉP KONTÉNER -->
       <div class="modal-kep-tarolo">
-        <button id="modal-elozo" class="slider-gomb slider-elozo">&#10094;</button>
+        <button type="button" id="modal-elozo" class="slider-gomb slider-elozo" aria-label="Előző">&#10094;</button>
         
         <!-- ÚJ: A kivágó és a csúszósín -->
         <div class="modal-kep-kivago">
           <div id="modal-kep-track" class="modal-kep-track"></div>
         </div>
 
-        <button id="modal-kovetkezo" class="slider-gomb slider-kovetkezo">&#10095;</button>
+        <button type="button" id="modal-kovetkezo" class="slider-gomb slider-kovetkezo" aria-label="Következő">&#10095;</button>
       </div>
 
       <!-- JOBB OLDAL: SZÖVEGES TARTALOM -->
@@ -1073,14 +1084,14 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
 <!-- KÉPNÉZEGETŐ (LIGHTBOX) A MODAL FÖLÉ       -->
 <!-- ========================================= -->
 <div id="lightbox-overlay" class="rejtett">
-    <div id="lightbox-bezar">&times;</div>
+    <button type="button" id="lightbox-bezar" aria-label="Bezárás">&times;</button>
     
     <div class="lightbox-kozep">
-        <button id="lb-elozo" class="lb-gomb">&lt;</button>
+        <button type="button" id="lb-elozo" class="lb-gomb" aria-label="Előző kép">&lt;</button>
         <div class="lightbox-fokep-tarolo">
-            <img id="lightbox-fokep" src="" alt="Kinagyított kép">
+            <img id="lightbox-fokep" alt="Kinagyított kép">
         </div>
-        <button id="lb-kovetkezo" class="lb-gomb">&gt;</button>
+        <button type="button" id="lb-kovetkezo" class="lb-gomb" aria-label="Következő kép">&gt;</button>
     </div>
 
     <!-- Ide kerülnek a kis képek -->
@@ -1091,22 +1102,22 @@ A látogató ezt nem látja, de a térkép ebből fogja felépíteni a pöttyök
 
      <footer id="kapcsolat" class="lablec">
         <div class="lablec-kepsav">
-            <img src=https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Építkezés 1">
-            <img src="https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg" alt="Építkezés 2">
-            <img src="https://lh5.googleusercontent.com/p/AF1QipORlzDY9g82D1MOj13boWE4AKnGX6qheUHArVv3=w650-h480-k-no" alt="Építkezés 3">
-            <img src="https://regioportal.hu/wp-content/uploads/stadler-szolnok-vasuti-jarmugyarto-kft-szolnok.jpg" alt="Építkezés 4">
+            <img src="https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Építkezés 1" loading="lazy" decoding="async">
+            <img src="https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg" alt="Építkezés 2" loading="lazy" decoding="async">
+            <img src="https://lh5.googleusercontent.com/p/AF1QipORlzDY9g82D1MOj13boWE4AKnGX6qheUHArVv3=w650-h480-k-no" alt="Építkezés 3" loading="lazy" decoding="async">
+            <img src="https://regioportal.hu/wp-content/uploads/stadler-szolnok-vasuti-jarmugyarto-kft-szolnok.jpg" alt="Építkezés 4" loading="lazy" decoding="async">
         </div>
         <div class="lablec-tartalom">
             <div class="lablec-kapcsolat">
                 <h2>KÁROLYHÁZ KFT.</h2>
-                <h4>Kapcsolat</h4>
+                <h3>Kapcsolat</h3>
                 <p><strong>Cím:</strong> 5000 Szolnok, Vércse utca 21.</p>
                 <p><strong>Telefonszám:</strong><a href="tel:+3656516030"> 06 56/516-030</a></p>
                 <p><strong>Email:</strong> <a href="mailto:karolyhaz@gmail.com">karolyhaz@gmail.com</a></p>
                 <p>barmit meg lehet idetenni</p>
             </div>
             <div class="lablec-logo">
-                <a href="index.html"><img src="karolyhaz-logo.webp" alt="Károlyház kft."></a>
+                <a href="index.html"><img src="karolyhaz-logo.webp" alt="Károlyház Kft." width="600" height="396" loading="lazy" decoding="async"></a>
             </div>
         </div>
         <div class="lablec-impresszum">

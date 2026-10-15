@@ -75,7 +75,7 @@ window.nyisdMegAProjektModalt = function (kartya) {
     if (foKepUrl) {
       const dia1 = document.createElement("div");
       dia1.className = "modal-dia-blokk";
-      dia1.innerHTML = `<img src="${foKepUrl}" class="modal-fokep">`;
+      dia1.innerHTML = `<img src="${foKepUrl}" class="modal-fokep" alt="">`;
       track.appendChild(dia1);
       diakSzama++;
     }
@@ -85,7 +85,7 @@ window.nyisdMegAProjektModalt = function (kartya) {
       dia2.className = "modal-dia-blokk";
       let gridHtml = `<h4 class="dia-cim">Kivitelezés közben</h4><div class="kep-racs-2x2">`;
       kivKepek.forEach((url, index) => {
-        gridHtml += `<img src="${url}" class="racs-kep" onclick="window.nyisdMegALightboxot(${index}, this)">`;
+        gridHtml += `<img src="${url}" class="racs-kep" alt="" loading="lazy" decoding="async" onclick="window.nyisdMegALightboxot(${index}, this)">`;
       });
       gridHtml += `</div>`;
       dia2.innerHTML = gridHtml;
@@ -99,7 +99,7 @@ window.nyisdMegAProjektModalt = function (kartya) {
       dia3.className = "modal-dia-blokk";
       let gridHtml = `<h4 class="dia-cim">Elkészült projekt</h4><div class="kep-racs-3x3">`;
       keszKepek.forEach((url, index) => {
-        gridHtml += `<img src="${url}" class="racs-kep" onclick="window.nyisdMegALightboxot(${index}, this)">`;
+        gridHtml += `<img src="${url}" class="racs-kep" alt="" loading="lazy" decoding="async" onclick="window.nyisdMegALightboxot(${index}, this)">`;
       });
       gridHtml += `</div>`;
       dia3.innerHTML = gridHtml;
@@ -156,8 +156,10 @@ window.nyisdMegALightboxot = function (induloIndex, kattintottKep) {
 
   lightboxKepek.forEach((url, i) => {
     const img = document.createElement("img");
+    img.loading = "lazy";
     img.src = url;
     img.className = "lb-thumb";
+    img.alt = "";
     img.onclick = () => window.frissitLightboxKepet(i);
     thumbsTarolo.appendChild(img);
   });
@@ -194,9 +196,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const lenyilomenuGomb = document.querySelector(".lenyilomenu");
     const fejlec = document.querySelector(".fejlec");
     if (lenyilomenuGomb && fejlec) {
-      lenyilomenuGomb.addEventListener("click", () =>
-        fejlec.classList.toggle("mobil-nyitva"),
-      );
+      lenyilomenuGomb.addEventListener("click", () => {
+        const nyitva = fejlec.classList.toggle("mobil-nyitva");
+        lenyilomenuGomb.setAttribute("aria-expanded", nyitva);
+        lenyilomenuGomb.setAttribute(
+          "aria-label",
+          nyitva ? "Menü bezárása" : "Menü megnyitása",
+        );
+      });
     }
   } catch (e) {
     console.log(e);
@@ -205,9 +212,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // 2. HERO KÉPCSERE
   try {
     const kepek = document.querySelectorAll(".kep-slide");
-    if (kepek.length >= 2) {
+    const csokkentettMozgas = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (kepek.length >= 2 && !csokkentettMozgas) {
       let aktualisKep = 0;
       setInterval(() => {
+        // Háttérben lévő fülön nem váltunk képet (CPU / akkumulátor kímélése)
+        if (document.hidden) return;
         kepek[aktualisKep].classList.remove("aktiv");
         aktualisKep = (aktualisKep + 1) % kepek.length;
         kepek[aktualisKep].classList.add("aktiv");
@@ -223,9 +235,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const tevekenysegKepek = document.querySelectorAll(".tevekenyseg-kep");
     if (tevekenysegElemek.length > 0) {
       tevekenysegElemek.forEach((elem) => {
-        ["mouseenter", "click", "touchstart"].forEach((esemeny) => {
-          elem.addEventListener(esemeny, function (e) {
-            if (esemeny === "touchstart") e.preventDefault();
+        // A touchstart + preventDefault mobilon blokkolta a görgetést a lista felett;
+        // érintésre a click esemény is lefut, így az elég.
+        ["mouseenter", "click"].forEach((esemeny) => {
+          elem.addEventListener(esemeny, function () {
             tevekenysegElemek.forEach((el) =>
               el.classList.remove("aktiv-elem"),
             );
@@ -318,27 +331,34 @@ document.addEventListener("DOMContentLoaded", function () {
   // 6. LEGÖRDÜLŐ MENÜ MOTOR ÉS KATTINTÁS (Kijavítva!)
   try {
     const lenyiloTarolok = document.querySelectorAll(".lenyilomenu-tarolo");
-    lenyiloTarolok.forEach((tarolo) => {
-      const nyilKattinto = tarolo.querySelector(".nyil-kattinto");
-      const regiGomb = tarolo.querySelector(".lenyilo-gomb");
+    const vezerlo = (t) =>
+      t.querySelector(".nyil-kattinto") || t.querySelector(".lenyilo-gomb");
+    const allapotBeallit = (t, nyitva) => {
+      t.classList.toggle("kattintva", nyitva);
+      vezerlo(t)?.setAttribute("aria-expanded", nyitva);
+    };
 
-      const vezerloElem = nyilKattinto ? nyilKattinto : regiGomb;
+    lenyiloTarolok.forEach((tarolo) => {
+      const vezerloElem = vezerlo(tarolo);
 
       if (vezerloElem) {
         vezerloElem.addEventListener("click", function (e) {
           e.preventDefault();
           e.stopPropagation();
           lenyiloTarolok.forEach((m) => {
-            if (m !== tarolo) m.classList.remove("kattintva");
+            if (m !== tarolo) allapotBeallit(m, false);
           });
-          tarolo.classList.toggle("kattintva");
+          allapotBeallit(tarolo, !tarolo.classList.contains("kattintva"));
         });
       }
     });
     document.addEventListener("click", (e) => {
       lenyiloTarolok.forEach((t) => {
-        if (!t.contains(e.target)) t.classList.remove("kattintva");
+        if (!t.contains(e.target)) allapotBeallit(t, false);
       });
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") lenyiloTarolok.forEach((t) => allapotBeallit(t, false));
     });
   } catch (e) {
     console.log(e);
@@ -408,7 +428,11 @@ document.addEventListener("DOMContentLoaded", function () {
           alkalmazZoom();
         };
         initTerkepMeret();
-        window.addEventListener("resize", initTerkepMeret);
+        let atmeretezesIdozito;
+        window.addEventListener("resize", () => {
+          clearTimeout(atmeretezesIdozito);
+          atmeretezesIdozito = setTimeout(initTerkepMeret, 150);
+        });
 
         document.getElementById("zoom-in")?.addEventListener("click", () => {
           jelenlegiZoom = Math.min(jelenlegiZoom + 0.3, 4.5);
@@ -580,6 +604,24 @@ document.addEventListener("DOMContentLoaded", function () {
     pModal?.addEventListener("click", (e) => {
       if (e.target === pModal) window.bezarProjektModalt();
     });
+
+    // Billentyűzet: Esc bezár (legfelső réteg először), nyilak lapoznak a lightboxban
+    document.addEventListener("keydown", (e) => {
+      const lightbox = document.getElementById("lightbox-overlay");
+      const lightboxNyitva = lightbox && !lightbox.classList.contains("rejtett");
+      const vModal = document.getElementById("varos-modal");
+
+      if (lightboxNyitva && e.key === "ArrowRight") {
+        document.getElementById("lb-kovetkezo")?.click();
+      } else if (lightboxNyitva && e.key === "ArrowLeft") {
+        document.getElementById("lb-elozo")?.click();
+      } else if (e.key === "Escape") {
+        if (lightboxNyitva) lightbox.classList.add("rejtett");
+        else if (pModal?.classList.contains("aktiv")) window.bezarProjektModalt();
+        else if (vModal && !vModal.classList.contains("rejtett"))
+          vModal.classList.add("rejtett");
+      }
+    });
   } catch (e) {
     console.log(e);
   }
@@ -600,10 +642,19 @@ document.addEventListener("click", function (e) {
 });
 
 // OKOS MENÜ (Felfelé görgetésre előcsúszik)
-window.addEventListener("scroll", function () {
-  const fejlec = document.querySelector(".fejlec");
-  if (!fejlec || fejlec.classList.contains("mobil-nyitva")) return;
-  const akGorgetes = window.pageYOffset || document.documentElement.scrollTop;
-  if (akGorgetes > 50) fejlec.classList.add("gorgetve");
-  else fejlec.classList.remove("gorgetve");
-});
+// passive + requestAnimationFrame: képkockánként legfeljebb egyszer fut, nem fogja a görgetést
+let gorgetesKeretKerve = false;
+window.addEventListener(
+  "scroll",
+  function () {
+    if (gorgetesKeretKerve) return;
+    gorgetesKeretKerve = true;
+    requestAnimationFrame(() => {
+      gorgetesKeretKerve = false;
+      const fejlec = document.querySelector(".fejlec");
+      if (!fejlec || fejlec.classList.contains("mobil-nyitva")) return;
+      fejlec.classList.toggle("gorgetve", window.scrollY > 50);
+    });
+  },
+  { passive: true },
+);
