@@ -13,6 +13,9 @@
     <meta property="og:title" content="Oldal nem található | Károlyház Kft.">
     <meta property="og:description" content="Károlyház Kft. - A keresett oldal nem található">
     <link rel="icon" type="image/webp" href="karolyhaz-logo.webp">
+    <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <script>document.documentElement.classList.add("js")</script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
   </head>
@@ -23,69 +26,50 @@
     </header>
 
     <!-- 404 TARTALOM (Középre zárt, elegáns hibaoldal) -->
-    <section
-      class="hiba-szekcio"
-      style="
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 0 var(--oldal-padding);
-        background-color: var(--szin-sotet);
-      "
-    >
-      <!-- Hatalmas arany 404-es felirat -->
-      <h1
-        style="
-          font-size: clamp(6rem, 15vw, 12rem);
-          color: var(--szin-kiemeles);
-          line-height: 1;
-          margin-bottom: 1rem;
-          font-family: monospace;
-        "
-      >
-        404
-      </h1>
-
-      <h2
-        style="
-          font-size: clamp(1.5rem, 4vw, 2.5rem);
-          color: var(--szin-feher);
-          margin-bottom: 1.5rem;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-        "
-      >
-        Itt valami összedőlt!
-      </h2>
-
-      <p
-        style="
-          color: var(--szin-szoveg);
-          font-size: 1.1rem;
-          max-width: 600px;
-          line-height: 1.6;
-          margin-bottom: 3rem;
-        "
-      >
+    <section class="hiba-szekcio">
+      <p class="hiba-kod">404</p>
+      <h1 class="hiba-cim">Itt valami összedőlt!</h1>
+      <p class="hiba-szoveg">
         Lehet, hogy elgépelted a webcímet, vagy az oldal, amit keresel időközben
         áthelyezésre került. Ne aggódj, a főoldalról mindent újra megtalálsz!
       </p>
-
-      <!-- Vissza a főoldalra gomb (a meglévő .gomb stílusodat használja) -->
-      <a
-        href="index.html"
-        class="gomb"
-        style="font-size: 1.1rem; padding: 1rem 3rem"
-        >Vissza a főoldalra</a
-      >
+      <a href="index.html" class="gomb">Vissza a főoldalra</a>
     </section>
 
     <!-- LÁBLÉC (Ide másold be a pontos láblécedet!) -->
     <footer id="kapcsolat" class="lablec">
-      <!-- ... -->
+        <div class="lablec-tartalom">
+            <div class="lablec-marka">
+                <a href="index.html" class="lablec-logo"><img src="karolyhaz-logo.webp" alt="Károlyház Kft." width="600" height="396" loading="lazy" decoding="async"></a>
+                <p>Szolnoki székhelyű építőipari generálkivitelező. 2008 óta valósítunk meg lakó-, ipari és intézményi beruházásokat a tervezéstől az átadásig.</p>
+            </div>
+            <nav class="lablec-oszlop" aria-label="Lábléc navigáció">
+                <h3>Oldalak</h3>
+                <ul>
+                    <li><a href="rolunk.html">Rólunk</a></li>
+                    <li><a href="munkaink.html">Referenciák</a></li>
+                    <li><a href="szolgaltatasaink.html">Tevékenységek</a></li>
+                    <li><a href="aktualis.html">Aktuális</a></li>
+                    <li><a href="karrier.html">Karrier</a></li>
+                </ul>
+            </nav>
+            <div class="lablec-oszlop lablec-kapcsolat">
+                <h3>Kapcsolat</h3>
+                <address>
+                    <p>5000 Szolnok, Vércse utca 21.</p>
+                    <p><a href="tel:+3656516030">06 56 / 516-030</a></p>
+                    <p><a href="mailto:karolyhaz@gmail.com">karolyhaz@gmail.com</a></p>
+                </address>
+            </div>
+        </div>
+        <div class="lablec-impresszum">
+            <div class="szerzoi-jog">&copy; 2026 Károlyház Kft. Minden jog fenntartva.</div>
+            <div class="jogi-linkek">
+                <a href="impresszum.html">Impresszum</a>
+                <a href="palyazatok.html">Pályázatok</a>
+                <a href="sutik.html">Süti tájékoztató</a>
+            </div>
+        </div>
     </footer>
   </body>
 </html>
