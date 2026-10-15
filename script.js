@@ -279,6 +279,43 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(e);
   }
 
+  // 4/B. SZÁMLÁLÓK (Rólunk: data-cel értékig számol fel, amikor láthatóvá válik)
+  try {
+    const szamlalok = document.querySelectorAll("[data-cel]");
+    const csokkentett = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const szamol = (elem) => {
+      const cel = parseInt(elem.getAttribute("data-cel"), 10) || 0;
+      if (csokkentett) {
+        elem.textContent = cel;
+        return;
+      }
+      const idotartam = 1400;
+      const kezdes = performance.now();
+      const lepes = (most) => {
+        const arany = Math.min((most - kezdes) / idotartam, 1);
+        const lassulo = 1 - Math.pow(1 - arany, 3);
+        elem.textContent = Math.round(cel * lassulo);
+        if (arany < 1) requestAnimationFrame(lepes);
+      };
+      requestAnimationFrame(lepes);
+    };
+    const szamlaloFigyelo = new IntersectionObserver(
+      (bejegyzesek, figyelo) => {
+        bejegyzesek.forEach((b) => {
+          if (!b.isIntersecting) return;
+          szamol(b.target);
+          figyelo.unobserve(b.target);
+        });
+      },
+      { threshold: 0.5 },
+    );
+    szamlalok.forEach((elem) => szamlaloFigyelo.observe(elem));
+  } catch (e) {
+    console.log(e);
+  }
+
   // 5. MUNKÁINK SZŰRŐ MOTOR
   try {
     const tipusSelect = document.getElementById("szuro-tipus");

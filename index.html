@@ -17,6 +17,9 @@
     <link rel="preconnect" href="https://regioportal.hu">
     <link rel="preconnect" href="https://lh5.googleusercontent.com">
     <link rel="preload" as="image" href="https://i0.wp.com/szolnokiovodak.hu/wp-content/uploads/2024/08/IMG_0013.jpg?resize=1024%2C683&amp;ssl=1" fetchpriority="high">
+    <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <script>document.documentElement.classList.add("js")</script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <script type="application/ld+json">
@@ -124,11 +127,19 @@
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-tartalom">
+            <p class="hero-cimke">Építőipari generálkivitelezés</p>
             <h1 class="hero-cim fo-hero-cim">Károlyház Kft.</h1>
-            <h2>ÉPÍTŐIPARI GENERÁL KIVITELEZÉS</h2>
-            <p>Komplex építési beruházások megvalósítása a tervezéstől a kivitelezésig</p>
-            <a href="munkaink.html" class="hero-gomb">Referenciák</a>
+            <p class="hero-lead">Komplex építési beruházások megvalósítása a tervezéstől a kivitelezésig.</p>
+            <div class="hero-gombok">
+                <a href="munkaink.html" class="hero-gomb">Referenciák</a>
+                <a href="#kapcsolat" class="gomb-szellem">Kapcsolatfelvétel</a>
+            </div>
         </div>
+        <ul class="hero-tenyek">
+            <li><strong>2008</strong><span>óta a piacon</span></li>
+            <li><strong>ISO</strong><span>9001 · 14001 · 45001</span></li>
+            <li><strong>8</strong><span>építési szakterület</span></li>
+        </ul>
 
     </section>
 
@@ -147,6 +158,7 @@
             
             
             <div class="fooldal-rolunk-szoveg">
+                <p class="szekcio-cimke">Rólunk</p>
                 <h2 class="animacio-balrol">Több mint kivitelezés</h2>
                 <div class="szoveg-kiemeles">
                     <p>A Károlyház Kft. 2008 óta vesz részt különböző léptékű építési beruházások megvalósításában. Szolnoki székhelyű építőipari vállalkozásként lakó-, ipari, intézményi és egyéb épületek kivitelezésében szerzett tapasztalatot.</p>
@@ -176,6 +188,7 @@
 
     <section class="fooldal-tevekenysegek">
         <div class="tevekenyseg-fejlec">
+            <p class="szekcio-cimke">Szakterületek</p>
             <h2>Mit építünk</h2>
         </div>
         <div class="interaktiv-lista-grid">
@@ -249,6 +262,7 @@
         <div class="szolg-kontener">
             
             <div class="szolg-fejlec">
+                <p class="szekcio-cimke">Szolgáltatások</p>
                 <h2>Miben tudunk segíteni?</h2>
                 <p>Szakértelmünk a tervezéstől a műszaki átadásig mindenre kiterjed.</p>
             </div>
@@ -292,7 +306,8 @@
 <section class="kiemelt-referenciak-szekcio">
     <div class="k-referencia-kontener">
         <div class="k-szekcio-fejlec">
-            <h2>Kiemelt Referenciák</h2>
+            <p class="szekcio-cimke">Referenciák</p>
+            <h2>Kiemelt referenciák</h2>
             <p>Olyan munkák, amelyekre különösen büszkék vagyunk, és hűen tükrözik a minőséget.</p>
         </div>
         
@@ -380,7 +395,7 @@
 
       <!-- JOBB OLDAL: SZÖVEGES TARTALOM -->
       <div class="modal-szoveg">
-        <div id="modal-badge-szoveg" style="display:inline-block; border: 1px solid var(--szin-kiemeles); color: var(--szin-kiemeles); padding: 0.4rem 1rem; border-radius: 4px; text-transform: uppercase; font-size: 0.8rem; font-weight: bold; margin-bottom: 1rem;"></div>
+        <div id="modal-badge-szoveg" class="modal-badge"></div>
         <h2 id="modal-cim"></h2>
         <p id="modal-meta-szoveg" class="modal-meta"></p>
         <div id="modal-leiras" class="modal-leiras"></div>
@@ -429,32 +444,36 @@
 
 
     <footer id="kapcsolat" class="lablec">
-        <div class="lablec-kepsav">
-            <img src="https://lelepo.hu/wp-content/uploads/2024/01/tiszafured.jpg" alt="Építkezés 1" loading="lazy" decoding="async">
-            <img src="https://ringautohaz.hu/assets/img/hyundai_szolnok.jpg" alt="Építkezés 2" loading="lazy" decoding="async">
-            <img src="https://lh5.googleusercontent.com/p/AF1QipORlzDY9g82D1MOj13boWE4AKnGX6qheUHArVv3=w650-h480-k-no" alt="Építkezés 3" loading="lazy" decoding="async">
-            <img src="https://regioportal.hu/wp-content/uploads/stadler-szolnok-vasuti-jarmugyarto-kft-szolnok.jpg" alt="Építkezés 4" loading="lazy" decoding="async">
-        </div>
         <div class="lablec-tartalom">
-            <div class="lablec-kapcsolat">
-                <h2>KÁROLYHÁZ KFT.</h2>
-                <h3>Kapcsolat</h3>
-                <p><strong>Cím:</strong> 5000 Szolnok, Vércse utca 21.</p>
-                <p><strong>Telefonszám:</strong><a href="tel:+3656516030"> 06 56/516-030</a></p>
-                <p><strong>Email:</strong> <a href="mailto:karolyhaz@gmail.com">karolyhaz@gmail.com</a></p>
-                <p>barmit meg lehet idetenni</p>
+            <div class="lablec-marka">
+                <a href="index.html" class="lablec-logo"><img src="karolyhaz-logo.webp" alt="Károlyház Kft." width="600" height="396" loading="lazy" decoding="async"></a>
+                <p>Szolnoki székhelyű építőipari generálkivitelező. 2008 óta valósítunk meg lakó-, ipari és intézményi beruházásokat a tervezéstől az átadásig.</p>
             </div>
-            <div class="lablec-logo">
-                <a href="index.html"><img src="karolyhaz-logo.webp" alt="Károlyház Kft." width="600" height="396" loading="lazy" decoding="async"></a>
+            <nav class="lablec-oszlop" aria-label="Lábléc navigáció">
+                <h3>Oldalak</h3>
+                <ul>
+                    <li><a href="rolunk.html">Rólunk</a></li>
+                    <li><a href="munkaink.html">Referenciák</a></li>
+                    <li><a href="szolgaltatasaink.html">Tevékenységek</a></li>
+                    <li><a href="aktualis.html">Aktuális</a></li>
+                    <li><a href="karrier.html">Karrier</a></li>
+                </ul>
+            </nav>
+            <div class="lablec-oszlop lablec-kapcsolat">
+                <h3>Kapcsolat</h3>
+                <address>
+                    <p>5000 Szolnok, Vércse utca 21.</p>
+                    <p><a href="tel:+3656516030">06 56 / 516-030</a></p>
+                    <p><a href="mailto:karolyhaz@gmail.com">karolyhaz@gmail.com</a></p>
+                </address>
             </div>
         </div>
         <div class="lablec-impresszum">
-            <div class="szerzoi-jog">
-                &copy; 2026 Károlyház Kft. Minden jog fenntartva.
-            </div>
+            <div class="szerzoi-jog">&copy; 2026 Károlyház Kft. Minden jog fenntartva.</div>
             <div class="jogi-linkek">
-                <a href="impresszum.html">Impresszum és Cégadatok</a>
-
+                <a href="impresszum.html">Impresszum</a>
+                <a href="palyazatok.html">Pályázatok</a>
+                <a href="sutik.html">Süti tájékoztató</a>
             </div>
         </div>
     </footer>

@@ -12,6 +12,9 @@
     <meta property="og:title" content="Süti Tájékoztató - Károlyház Kft.">
     <meta property="og:description" content="Károlyház Kft. - Süti (Cookie) Tájékoztató">
     <link rel="icon" type="image/webp" href="karolyhaz-logo.webp">
+    <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <script>document.documentElement.classList.add("js")</script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
   </head>
@@ -112,39 +115,19 @@
     </header>
 
     <!-- KISEBB HERO SZEKCIÓ -->
-    <section
-      class="statik-hero"
-      style="
-        background-image: linear-gradient(
-          rgba(26, 26, 26, 0.9),
-          rgba(26, 26, 26, 0.95)
-        );
-        height: 30vh;
-        min-height: 250px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      "
-    >
+    <section class="statik-hero statik-hero-kicsi">
       <div
         class="hero-tartalom"
-        style="text-align: center; width: 100%; padding: 0"
       >
-        <h1 class="hero-cim" style="margin-bottom: 0">Süti Tájékoztató</h1>
+        <h1 class="hero-cim">Süti Tájékoztató</h1>
       </div>
     </section>
 
     <!-- HIVATALOS SÜTI SZÖVEGEZÉS -->
-    <section class="impresszum-szekcio" style="padding-top: 4rem">
+    <section class="impresszum-szekcio">
       <div class="impresszum-tartalom">
         <div class="impresszum-fejlec">
-          <h2
-            style="
-              font-size: 1.5rem;
-              color: var(--szin-szoveg);
-              text-transform: none;
-              letter-spacing: normal;
-            "
+          <h2 class="impresszum-alcim"
           >
             Hivatalos tájékoztató a weboldalon alkalmazott adatkezelési
             technológiákról
@@ -155,12 +138,6 @@
         <div class="adat-blokk">
           <h2>1. Általános rendelkezések</h2>
           <p
-            style="
-              color: var(--szin-szoveg);
-              line-height: 1.8;
-              font-size: 1.1rem;
-              margin-bottom: 1.5rem;
-            "
           >
             A <strong>Károlyház Kft.</strong> (székhely: 5000 Szolnok, Vércse
             utca 21., a továbbiakban: Adatkezelő) a weboldalának működtetése, a
@@ -168,11 +145,6 @@
             érdekében sütiket (cookie-kat) használ.
           </p>
           <p
-            style="
-              color: var(--szin-szoveg);
-              line-height: 1.8;
-              font-size: 1.1rem;
-            "
           >
             A jelen tájékoztató célja, hogy az Európai Parlament és a Tanács
             (EU) 2016/679 rendelete (GDPR), valamint az információs
@@ -186,11 +158,6 @@
         <div class="adat-blokk">
           <h2>2. Mik azok a sütik (cookie-k)?</h2>
           <p
-            style="
-              color: var(--szin-szoveg);
-              line-height: 1.8;
-              font-size: 1.1rem;
-            "
           >
             A süti egy olyan kisméretű adatfájl (szöveges fájl), amely a
             weboldal látogatásakor a felhasználó számítógépére, okostelefonjára
@@ -209,7 +176,6 @@
             <span class="adat-cimke">Feltétlenül szükséges sütik</span>
             <span class="adat-ertek">
               <strong
-                style="color: white; display: block; margin-bottom: 0.5rem"
                 >Működést biztosító (Alap) sütik</strong
               >
               Ezek a sütik elengedhetetlenek a weboldal megfelelő működéséhez,
@@ -226,7 +192,6 @@
             <span class="adat-cimke">Statisztikai sütik</span>
             <span class="adat-ertek">
               <strong
-                style="color: white; display: block; margin-bottom: 0.5rem"
                 >Analitikai mérések (Pl. Google Analytics)</strong
               >
               Ezek a sütik segítenek nekünk megérteni, hogy a látogatók hogyan
@@ -248,12 +213,6 @@
         <div class="adat-blokk">
           <h2>4. A sütik kezelése és a hozzájárulás visszavonása</h2>
           <p
-            style="
-              color: var(--szin-szoveg);
-              line-height: 1.8;
-              font-size: 1.1rem;
-              margin-bottom: 1.5rem;
-            "
           >
             A látogatónak joga van bármikor módosítani a sütikre vonatkozó
             beállításait. A weboldalunkon megadott hozzájárulását visszavonhatja
@@ -262,11 +221,6 @@
             Ekkor a beállító panel újra megjelenik.
           </p>
           <p
-            style="
-              color: var(--szin-szoveg);
-              line-height: 1.8;
-              font-size: 1.1rem;
-            "
           >
             Ezen felül a modern böngészők (Google Chrome, Firefox, Safari, Edge)
             mindegyike lehetőséget biztosít a sütik teljes letiltására vagy
@@ -281,7 +235,38 @@
 
     <!-- LÁBLÉC (Ide másold be a pontos láblécedet az index.html-ből!) -->
     <footer id="kapcsolat" class="lablec">
-      <!-- ... A te lábléced kódja ... -->
+        <div class="lablec-tartalom">
+            <div class="lablec-marka">
+                <a href="index.html" class="lablec-logo"><img src="karolyhaz-logo.webp" alt="Károlyház Kft." width="600" height="396" loading="lazy" decoding="async"></a>
+                <p>Szolnoki székhelyű építőipari generálkivitelező. 2008 óta valósítunk meg lakó-, ipari és intézményi beruházásokat a tervezéstől az átadásig.</p>
+            </div>
+            <nav class="lablec-oszlop" aria-label="Lábléc navigáció">
+                <h3>Oldalak</h3>
+                <ul>
+                    <li><a href="rolunk.html">Rólunk</a></li>
+                    <li><a href="munkaink.html">Referenciák</a></li>
+                    <li><a href="szolgaltatasaink.html">Tevékenységek</a></li>
+                    <li><a href="aktualis.html">Aktuális</a></li>
+                    <li><a href="karrier.html">Karrier</a></li>
+                </ul>
+            </nav>
+            <div class="lablec-oszlop lablec-kapcsolat">
+                <h3>Kapcsolat</h3>
+                <address>
+                    <p>5000 Szolnok, Vércse utca 21.</p>
+                    <p><a href="tel:+3656516030">06 56 / 516-030</a></p>
+                    <p><a href="mailto:karolyhaz@gmail.com">karolyhaz@gmail.com</a></p>
+                </address>
+            </div>
+        </div>
+        <div class="lablec-impresszum">
+            <div class="szerzoi-jog">&copy; 2026 Károlyház Kft. Minden jog fenntartva.</div>
+            <div class="jogi-linkek">
+                <a href="impresszum.html">Impresszum</a>
+                <a href="palyazatok.html">Pályázatok</a>
+                <a href="sutik.html">Süti tájékoztató</a>
+            </div>
+        </div>
     </footer>
 
     <!-- SÜTI SÁV (Ide másold be a süti sávodat az index.html aljából!) -->
